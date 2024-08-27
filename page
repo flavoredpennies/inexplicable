@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tangible Intangibles</title>
     <style>
+        /* Basic styling for the site */
         body {
             font-family: Arial, sans-serif;
             display: flex;
@@ -40,7 +41,7 @@
 <body>
     <div class="container">
         <h1>Tangible Intangibles</h1>
-        <p>Welcome to inexplicable.box, where the domain name itself serves as your gateway to my Ethereum address. Here are all my cryptocurrency addresses:</p>
+        <p>by inexplicable.box. Here are my cryptocurrency addresses:</p>
         
         <p id="ethAddress">inexplicable.box</p>
         <button onclick="copyToClipboard('#ethAddress')">Copy Ethereum Address</button>
@@ -59,6 +60,7 @@
     </div>
 
     <script>
+        // Function to copy text to clipboard
         function copyToClipboard(elementId) {
             var aux = document.createElement("input");
             aux.setAttribute("value", document.querySelector(elementId).textContent);
