@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tangible Intangibles</title>
+    <style>
+        /* Basic styling for the site */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        button {
+            margin: 10px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        p {
+            max-width: 600px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tangible Intangibles</h1>
+        <p>by inexplicable.box. Here are my cryptocurrency addresses:</p>
+        
+        <p id="ethAddress">inexplicable.box</p>
+        <button onclick="copyToClipboard('#ethAddress')">Copy Ethereum Address</button>
+
+        <p id="solanaAddress">4aFmmwnohmhsUs6f1dxyrhdtk1mktvUbtFrhYLfGquoq</p>
+        <button onclick="copyToClipboard('#solanaAddress')">Copy Solana Address</button>
+
+        <p id="bitcoinAddress">bc1q23wwaahla22sk9udfalh40jqgqqkp5qmvp9eg</p>
+        <button onclick="copyToClipboard('#bitcoinAddress')">Copy Bitcoin Address</button>
+
+        <p id="dogecoinAddress">DTA57EzWBJk3KoqWDSYSWNrNU2U7btMRYd</p>
+        <button onclick="copyToClipboard('#dogecoinAddress')">Copy Dogecoin Address</button>
+
+        <p id="litecoinAddress">LaWy6cW2LQCdg8i72ksVMSfR8m5wxRvG7c</p>
+        <button onclick="copyToClipboard('#litecoinAddress')">Copy Litecoin Address</button>
+    </div>
+
+    <script>
+        // Function to copy text to clipboard
+        function copyToClipboard(elementId) {
+            var aux = document.createElement("input");
+            aux.setAttribute("value", document.querySelector(elementId).textContent);
+            document.body.appendChild(aux);
+            aux.select();
+            document.execCommand("copy");
+            document.body.removeChild(aux);
+            alert("Address copied to clipboard!");
+        }
+    </script>
+</body>
+</html>
