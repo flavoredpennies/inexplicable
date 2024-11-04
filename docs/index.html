@@ -240,20 +240,24 @@
         </div>
 
         <div class="signup-container">
-            <h2>⌛ Subscribe to iNEXPLICABLE Updates ⌛</h2>
-            <p>Be the first to know about new inventory across all timelines!</p>
-            <form class="signup-form" action="/submit" method="POST">
-                <input type="email" placeholder="Enter your email (any timeline)" required>
-                <button type="submit">(Enter Email To Traverse Planes)</button>
-            </form>
-            <p><small class="glitch-text">* Your email will be stored in a quantum-safe vault</small></p>
-        </div>
-
-        <div class="next-showing">
-            <h2>Next Temporal Manifestation:</h2>
-            <p>Ocala, FL Geek Fest - TBA 2024</p>
-            <p>Inverness, FL Geek Fest - TBA 2024</p>
-        </div>
+    <h2>⌛ Subscribe to iNEXPLICABLE Updates ⌛</h2>
+    <p>Be the first to know about new inventory across all timelines!</p>
+    
+    <!-- Formspree form integration -->
+    <form action="https://formspree.io/f/xwpklzwl" method="POST" class="signup-form">
+        <label>
+            Your email:
+            <input type="email" name="email" placeholder="Enter your email (any timeline)" required>
+        </label>
+        <label>
+            Your message:
+            <textarea name="message" placeholder="Your message here"></textarea>
+        </label>
+        <button type="submit">(Enter Email To Traverse Planes)</button>
+    </form>
+    
+    <p><small class="glitch-text">* Your email will be stored in a quantum-safe vault</small></p>
+</div>
 
         <div class="product-preview">
             <h3>Currently In Stock*</h3>
