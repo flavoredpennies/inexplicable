@@ -3,72 +3,311 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tangible Intangibles</title>
+    <title>CLOCKBUSTER - Where Late-Fees pay YOU</title>
     <style>
-        /* Basic styling for the site */
+        :root {
+            --vhs-blue: #000066;
+            --static-gray: #222222;
+            --rewind-yellow: #FFD700;
+            --tracking-green: #00FF66;
+        }
+        
         body {
-            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--vhs-blue);
+            color: #fff;
+            font-family: "Courier New", monospace;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .tracking-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                transparent 50%, 
+                rgba(0, 0, 0, 0.1) 50%
+            );
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .static-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAGFBMVEUAAAA/Pz9fX1+fn5+/v7/f39///////+8dlUoAAABBSURBVDjLY2AYBaNgFIyCUTAKRsEoGAWjYBSMglEwCkbBKBgFo2AUjIJRMApGwSgYBaNgFIyCUTAKRsEoGAUDDQAh8gEB5BMTiAAAAABJRU5ErkJggg==');
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 99;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: tracking 0.2s infinite;
+        }
+
+        .logo h1 {
+            font-size: 3em;
+            color: var(--rewind-yellow);
+            text-shadow: 4px 4px 0 var(--tracking-green),
+                         -4px -4px 0 #ff0033;
+            margin: 0;
+        }
+
+        .tagline {
+            text-align: center;
+            font-style: italic;
+            color: var(--tracking-green);
+            margin-bottom: 40px;
+        }
+
+        .next-showing {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+
+        .product-preview {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .glitch-text {
+            animation: glitch 3s infinite;
+        }
+
+        .signup-container {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 40px 0;
+            border: 2px solid var(--tracking-green);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .signup-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--tracking-green);
+            animation: scan 2s linear infinite;
+        }
+
+        .signup-form {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto;
         }
-        h1 {
-            color: #333;
-            text-align: center;
+
+        .signup-form input {
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid var(--tracking-green);
+            padding: 10px;
+            color: var(--tracking-green);
+            font-family: "Courier New", monospace;
+            font-size: 1em;
+            border-radius: 5px;
         }
-        .container {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-        button {
-            margin: 10px;
-            padding: 5px 10px;
+
+        .signup-form button {
+            background: var(--tracking-green);
+            color: var(--vhs-blue);
+            border: none;
+            padding: 10px 20px;
+            font-family: "Courier New", monospace;
+            font-weight: bold;
+            font-size: 1em;
             cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease;
         }
-        p {
-            max-width: 600px;
-            text-align: center;
+
+        .signup-form button:hover {
+            background: var(--rewind-yellow);
+            transform: scale(1.02);
+        }
+
+        /* Crypto Section Styles */
+        .crypto-section {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 40px;
+            border: 2px solid var(--rewind-yellow);
+        }
+
+        .crypto-address {
+            color: var(--tracking-green);
+            font-family: "Courier New", monospace;
+            margin: 10px 0;
+            word-break: break-all;
+        }
+
+        .copy-btn {
+            background: var(--tracking-green);
+            color: var(--vhs-blue);
+            border: none;
+            padding: 8px 15px;
+            font-family: "Courier New", monospace;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background: var(--rewind-yellow);
+            transform: scale(1.02);
+        }
+
+        #copiedMessage {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--tracking-green);
+            color: var(--vhs-blue);
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: none;
+            animation: glitch 0.3s infinite;
+        }
+
+        @keyframes tracking {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(1px); }
+            100% { transform: translateY(0); }
+        }
+
+        @keyframes glitch {
+            0% { transform: translateX(0); }
+            2% { transform: translateX(3px); }
+            4% { transform: translateX(-3px); }
+            6% { transform: translateX(0); }
+            100% { transform: translateX(0); }
+        }
+
+        @keyframes scan {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100px); }
+        }
+
+        @keyframes fade-in-out {
+            0% { opacity: 0; transform: translateY(-20px); }
+            10% { opacity: 1; transform: translateY(0); }
+            90% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-20px); }
         }
     </style>
 </head>
 <body>
+    <div class="tracking-lines"></div>
+    <div class="static-overlay"></div>
+    
     <div class="container">
-        <h1>Tangible Intangibles</h1>
-        <p>by inexplicable.box. Here are my cryptocurrency addresses:</p>
+        <div class="logo">
+            <h1>CLOCKBUSTER</h1>
+        </div>
         
-        <p id="ethAddress">inexplicable.box</p>
-        <button onclick="copyToClipboard('#ethAddress')">Copy Ethereum Address</button>
+        <div class="tagline">
+            <p>Where Late Fees pay YOU</p>
+        </div>
 
-        <p id="solanaAddress">4aFmmwnohmhsUs6f1dxyrhdtk1mktvUbtFrhYLfGquoq</p>
-        <button onclick="copyToClipboard('#solanaAddress')">Copy Solana Address</button>
+        <div class="signup-container">
+            <h2>⌛ Subscribe to iNEXPLICABLE Updates ⌛</h2>
+            <p>Be the first to know about new inventory across all timelines!</p>
+            <form class="signup-form" action="/submit" method="POST">
+                <input type="email" placeholder="Enter your email (any timeline)" required>
+                <button type="submit">(Enter Email To Traverse Planes)</button>
+            </form>
+            <p><small class="glitch-text">* Your email will be stored in a quantum-safe vault</small></p>
+        </div>
 
-        <p id="bitcoinAddress">bc1q23wwaahla22sk9udfalh40jqgqqkp5qmvp9eg</p>
-        <button onclick="copyToClipboard('#bitcoinAddress')">Copy Bitcoin Address</button>
+        <div class="next-showing">
+            <h2>Next Temporal Manifestation:</h2>
+            <p>Ocala, FL Geek Fest - TBA 2024</p>
+            <p>Inverness, FL Geek Fest - TBA 2024</p>
+        </div>
 
-        <p id="dogecoinAddress">DTA57EzWBJk3KoqWDSYSWNrNU2U7btMRYd</p>
-        <button onclick="copyToClipboard('#dogecoinAddress')">Copy Dogecoin Address</button>
+        <div class="product-preview">
+            <h3>Currently In Stock*</h3>
+            <ul>
+                <li>Rediculous and Confusing Virtual Boy Games</li>
+                <li>Alternate Timeline N64 Cartridges</li>
+                <li>Original Paradoxical SNES Games</li>
+            </ul>
+            <p><small>*Stock exists in quantum superposition until observed (TBA)</small></p>
+        </div>
 
-        <p id="litecoinAddress">LaWy6cW2LQCdg8i72ksVMSfR8m5wxRvG7c</p>
-        <button onclick="copyToClipboard('#litecoinAddress')">Copy Litecoin Address</button>
+        <div class="contact">
+            <h3>Temporal Communications:</h3>
+            <p>Email: [realclockbuster@gmail.com]</p>
+            <p class="glitch-text">Please allow 3-5 business days across all timelines for response</p>
+        </div>
+
+        <!-- Crypto Section -->
+        <div class="crypto-section">
+            <h3>⚡ Inexplicable Transaction Ports ⚡</h3>
+            <p>by clockbuster.eth</p>
+            
+            <p class="crypto-address" id="ethAddress">clockbuster.eth</p>
+            <button class="copy-btn" onclick="copyToClipboard('ethAddress')">COPY Clockbuster.eth</button>
+            
+            <p class="crypto-address" id="solanaAddress">4aFmmwnohmhsUs6f1dxyrhdtk1mktvUbtFrhYLfGquoq</p>
+            <button class="copy-btn" onclick="copyToClipboard('solanaAddress')">COPY SOL ADDRESS</button>
+            
+            <p class="crypto-address" id="bitcoinAddress">bc1q23wwaahla22sk9udfalh40jqgqqkp5qmvp9eg</p>
+            <button class="copy-btn" onclick="copyToClipboard('bitcoinAddress')">COPY BTC ADDRESS</button>
+            
+            <p class="crypto-address" id="dogecoinAddress">DTA57EzWBJk3KoqWDSYSWNrNU2U7btMRYd</p>
+            <button class="copy-btn" onclick="copyToClipboard('dogecoinAddress')">COPY DOGE ADDRESS</button>
+            
+            <p class="crypto-address" id="litecoinAddress">LaWy6cW2LQCdg8i72ksVMSfR8m5wxRvG7c</p>
+            <button class="copy-btn" onclick="copyToClipboard('litecoinAddress')">COPY LTC ADDRESS</button>
+        </div>
     </div>
 
+    <div id="copiedMessage" class="copied-message">ADDRESS COPIED TO TEMPORAL BUFFER</div>
+
     <script>
-        // Function to copy text to clipboard
         function copyToClipboard(elementId) {
-            var aux = document.createElement("input");
-            aux.setAttribute("value", document.querySelector(elementId).textContent);
-            document.body.appendChild(aux);
-            aux.select();
-            document.execCommand("copy");
-            document.body.removeChild(aux);
-            alert("Address copied to clipboard!");
+            const text = document.getElementById(elementId).textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                const message = document.getElementById('copiedMessage');
+                message.style.display = 'block';
+                message.style.animation = 'fade-in-out 2s forwards';
+                
+                setTimeout(() => {
+                    message.style.display = 'none';
+                    message.style.animation = '';
+                }, 2000);
+            });
         }
     </script>
 </body>
