@@ -268,7 +268,59 @@
 </head>
 <body>
     <div class="tracking-lines"></div>
-    <div class="static-overlay"></div>
+    <div class="static-overlay"></div><!-- Copy and paste this entire block right after your <div class="static-overlay"></div> line -->
+<style>
+    .condition-guide {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        width: 280px;
+        background: rgba(0, 0, 0, 0.7);
+        border: 2px solid #00FF66; /* tracking-green */
+        border-radius: 10px;
+        padding: 15px;
+        color: #FFD700; /* rewind-yellow */
+        font-family: "Courier New", monospace;
+        z-index: 10;
+        animation: tracking 0.2s infinite;
+    }
+    
+    .condition-guide h3 {
+        color: #00FF66; /* tracking-green */
+        margin-top: 0;
+        text-align: center;
+        text-shadow: 2px 2px 0 #000;
+    }
+    
+    .condition-guide p {
+        font-size: 0.9em;
+        margin-bottom: 10px;
+    }
+    
+    .condition-title {
+        color: #ffffff;
+        font-weight: bold;
+    }
+</style>
+
+<div class="condition-guide">
+    <h3 class="glitch-text">Condition Guide for Discs</h3>
+    <p><small>(For legal reasons, all conditions are subjective. For cosmic reasons, all conditions are meaningless.)</small></p>
+    
+    <p><span class="condition-title">Very Good</span><br>
+    Disc looks like it was viewed only once- that means it's free from normal wear. Perhaps only admired. Maybe just whispered to.<br>
+    No scratches, scuffs, or signs of existential crisis.</p>
+    
+    <p><span class="condition-title">Good</span><br>
+    This disc has lived a good life so far. It has been loved and cared for. It has been passed from hand to hand and has normal wear.<br>
+    Possibly a light scratch or scuff that doesn't affect performance.<br>
+    The case may have minor shelf wear.</p>
+    
+    <p><span class="condition-title">Acceptable</span><br>
+    The disc has been through a lot but remains functional. Still plays like a champ. TESTED! Expect visible scratches, scuffs, and perhaps a lingering resentment toward its previous owner.<br>
+    The outer case may be stained, distressed, or non-existent (just like all of us).<br>
+    It works, and it knows things...</p>
+</div>
     
     <div class="container">
         <div class="logo">
