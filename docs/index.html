@@ -21,484 +21,107 @@
       overflow-x: hidden;
     }
     /* Jitter (mild shake) keyframes */
-    @keyframes jitter1 {
-      0%   { transform: translate(0,0) rotate(0); }
-      25%  { transform: translate(0.7px,-0.7px) rotate(-0.25deg); }
-      50%  { transform: translate(-0.7px,0.7px) rotate(0.25deg); }
-      75%  { transform: translate(0.7px,0.7px) rotate(-0.25deg); }
-      100% { transform: translate(0,0) rotate(0); }
-    }
-    @keyframes jitter2 {
-      0%   { transform: translate(0,0) scale(1); }
-      20%  { transform: translate(-0.34px,0.34px) scale(1.007); }
-      40%  { transform: translate(0.34px,-0.34px) scale(0.993); }
-      60%  { transform: translate(-0.34px,-0.34px) scale(1.003); }
-      80%  { transform: translate(0.34px,0.34px) scale(0.997); }
-      100% { transform: translate(0,0) scale(1); }
-    }
-    /* VHS horizontal tracking lines overlay */
-    .tracking-lines {
-      position: fixed; inset: 0;
-      background: repeating-linear-gradient(
-        to bottom,
-        transparent 0, transparent 2px,
-        rgba(0,0,0,0.1) 2px, rgba(0,0,0,0.1) 4px
-      );
-      pointer-events: none;
-      z-index: 100;
-      animation: jitter2 0.2s infinite;
-    }
-    /* Static noise overlay */
-    .static-overlay {
-      position: fixed; inset: 0;
-      background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAGFBMVEUAAAA/Pz9fX1+fn5+/v7/f39///////+8dlUoAAABBSURBVDjLY2AYBaNgFIyCUTAKRsEoGAWjYBSMglEwCkbBKBgFo2AUjIJRMApGwSgYBaNgFIyCUTAKRsEoGAUDDQAh8gEB5BMTiAAAABJRU5ErkJggg==');
-      opacity: 0.05;
-      pointer-events: none;
-      z-index: 99;
-      animation: jitter1 0.3s infinite;
-    }
-    /* Main content container */
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 40px 20px;
-      position: relative;
-      z-index: 1;
-      background: rgba(0,0,0,0.4);
-      border: 3px solid var(--cb-green);
-      border-radius: 12px;
-      animation: jitter2 1.69s infinite;
-    }
-    /* Logo styling (jittery Impact text) */
-    .logo h1 {
-      font-size: 3em;
-      color: var(--cb-gold);
-      text-shadow: 4px 4px 0 var(--cb-green), -4px -4px 0 var(--cb-pink);
-      margin: 0;
-      font-family: Impact, Arial Black, sans-serif;
-      animation: jitter1 0.1s infinite;
-      cursor: pointer;
-      transition: transform 0.5s;
-    }
-    .tagline h2 {
-      font-style: italic;
-      color: var(--cb-green);
-      margin-bottom: 40px;
-      animation: jitter2 0.15s infinite;
-    }
-    .description-container, .signup-container, .product-preview, .lorem-container {
-      /* Each section gets a wild neon gradient background and dashed borders */
-      padding: 20px;
-      border-radius: 10px;
-      margin-bottom: 40px;
-      animation: jitter2 0.2s infinite;
-    }
-    .description-container {
-      background: linear-gradient(135deg, var(--cb-purple), var(--cb-pink));
-      border: 2px dashed var(--cb-pink);
-    }
-    .signup-container {
-      background: linear-gradient(135deg, var(--cb-pink), var(--cb-green));
-      border: 2px dashed var(--cb-purple);
-    }
-    .product-preview {
-      background: linear-gradient(135deg, var(--cb-green), var(--cb-purple));
-      border: 2px dashed var(--cb-pink);
-    }
-    .lorem-container {
-      background: linear-gradient(135deg, var(--cb-purple), var(--cb-green));
-      border: 2px dashed var(--cb-pink);
-    }
-    /* Retro fixed-position button (eBay warp) */
-    .retro-button {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      font-family: "Courier New", monospace;
-      border-radius: 5px;
-      padding: 15px 30px;
-      border: 2px solid var(--cb-gold);
-      text-decoration: none;
-      display: inline-block;
-      cursor: pointer;
-      background: linear-gradient(45deg, var(--cb-purple), var(--cb-pink));
-      color: var(--cb-gold);
-      box-shadow: 4px 4px 0 var(--cb-green);
-      transition: all 0.2s ease;
-      animation: jitter1 0.2s infinite;
-      z-index: 110;
-    }
-    .retro-button:hover {
-      background: linear-gradient(45deg, var(--cb-gold), var(--cb-green));
-      color: var(--cb-purple);
-      box-shadow: 4px 4px 0 var(--cb-pink);
-      border-color: var(--cb-purple);
-    }
-    /* Fixed condition guide panel (top-right) */
-    .condition-guide {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      width: 280px;
-      background: rgba(0,0,0,0.7);
-      border: 2px solid var(--cb-green);
-      border-radius: 10px;
-      padding: 15px;
-      color: var(--cb-gold);
-      font-family: "Courier New", monospace;
-      z-index: 100;
-      animation: jitter1 0.12s infinite;
-    }
-    .condition-guide h3 {
-      color: var(--cb-green);
-      margin-top: 0;
-      text-align: center;
-      text-shadow: 2px 2px 0 #000;
-      animation: jitter2 0.18s infinite;
-    }
-    .condition-guide p {
-      font-size: 0.9em;
-      margin-bottom: 10px;
-    }
+    @keyframes jitter1 { 0% { transform: translate(0,0) rotate(0); } 25% { transform: translate(0.7px,-0.7px) rotate(-0.25deg); } 50% { transform: translate(-0.7px,0.7px) rotate(0.25deg); } 75% { transform: translate(0.7px,0.7px) rotate(-0.25deg); } 100% { transform: translate(0,0) rotate(0); } }
+    @keyframes jitter2 { 0% { transform: translate(0,0) scale(1); } 20% { transform: translate(-0.34px,0.34px) scale(1.007); } 40% { transform: translate(0.34px,-0.34px) scale(0.993); } 60% { transform: translate(-0.34px,-0.34px) scale(1.003); } 80% { transform: translate(0.34px,0.34px) scale(0.997); } 100% { transform: translate(0,0) scale(1); } }
+    /* Overlays */
+    .tracking-lines, .static-overlay { position: fixed; inset: 0; pointer-events: none; z-index: 100; }
+    .tracking-lines { background: repeating-linear-gradient(to bottom, transparent 0, transparent 2px, rgba(0,0,0,0.1) 2px, rgba(0,0,0,0.1) 4px); animation: jitter2 0.2s infinite; }
+    .static-overlay { background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAGFBMVEUAAAA/Pz9fX1+fn5+/v7/f39///////+8dlUoAAABBSURBVDjLY2AYBaNgFIyCUTAKRsEoGAWjYBSMglEwCkbBKBgFo2AUjIJRMApGwSgYBaNgFIyCUTAKRsEoGAUDDQAh8gEB5BMTiAAAABJRU5ErkJggg=='); opacity: 0.05; animation: jitter1 0.3s infinite; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; position: relative; z-index: 1; background: rgba(0,0,0,0.4); border: 3px solid var(--cb-green); border-radius: 12px; animation: jitter2 1.69s infinite; }
+    .logo h1 { font-size: 3em; color: var(--cb-gold); text-shadow: 4px 4px 0 var(--cb-green), -4px -4px 0 var(--cb-pink); margin: 0; font-family: Impact, Arial Black, sans-serif; animation: jitter1 0.1s infinite; cursor: pointer; transition: transform 0.5s; }
+    .tagline h2 { font-style: italic; color: var(--cb-green); margin-bottom: 40px; animation: jitter2 0.15s infinite; }
+    .description-container, .signup-container, .product-preview { padding: 20px; border-radius: 10px; margin-bottom: 40px; animation: jitter2 0.2s infinite; }
+    .description-container { background: linear-gradient(135deg, var(--cb-purple), var(--cb-pink)); border: 2px dashed var(--cb-pink); }
+    .signup-container { background: linear-gradient(135deg, var(--cb-pink), var(--cb-green)); border: 2px dashed var(--cb-purple); }
+    .product-preview { background: linear-gradient(135deg, var(--cb-green), var(--cb-purple)); border: 2px dashed var(--cb-pink); }
+    .retro-button { position: fixed; top: 20px; left: 20px; font-family: "Courier New", monospace; border-radius: 5px; padding: 15px 30px; border: 2px solid var(--cb-gold); text-decoration: none; display: inline-block; cursor: pointer; background: linear-gradient(45deg, var(--cb-purple), var(--cb-pink)); color: var(--cb-gold); box-shadow: 4px 4px 0 var(--cb-green); transition: all 0.2s ease; animation: jitter1 0.2s infinite; z-index: 110; }
+    .retro-button:hover { background: linear-gradient(45deg, var(--cb-gold), var(--cb-green)); color: var(--cb-purple); box-shadow: 4px 4px 0 var(--cb-pink); border-color: var(--cb-purple); }
+    .condition-guide { position: fixed; top: 20px; right: 20px; width: 280px; background: rgba(0,0,0,0.7); border: 2px solid var(--cb-green); border-radius: 10px; padding: 15px; color: var(--cb-gold); font-family: "Courier New", monospace; z-index: 100; animation: jitter1 0.12s infinite; }
+    .condition-guide h3 { color: var(--cb-green); margin-top: 0; text-align: center; text-shadow: 2px 2px 0 #000; animation: jitter2 0.18s infinite; }
+    .condition-guide p { font-size: 0.9em; margin-bottom: 10px; }
     .condition-title { color: #fff; font-weight: bold; }
-    /* Responsive adjustments for small screens */
     @media screen and (max-width: 768px) {
-      .condition-guide {
-        position: static;
-        width: auto;
-        margin: 20px auto;
-        max-width: 90%;
-      }
-      .retro-button {
-        position: static;
-        margin-bottom: 20px;
-      }
-      .logo h1 { font-size: 8vw; }   /* scale logo text with viewport width */
+      .condition-guide { position: static; width: auto; margin: 20px auto; max-width: 90%; }
+      .retro-button { position: static; margin-bottom: 20px; }
+      .logo h1 { font-size: 8vw; }
       .tagline h2 { font-size: 6vw; }
     }
-    /* Simple fade animation (not heavily used after all) */
-    @keyframes fade-in-out {
-      0% { opacity: 0; transform: translateY(-20px); }
-      10% { opacity: 1; transform: translateY(0); }
-      90% { opacity: 1; transform: translateY(0); }
-      100% { opacity: 0; transform: translateY(-20px); }
-    }
-    /* Retro marquee styling */
-    marquee {
-      background: #000;
-      color: #0f0;
-      font-family: "Courier New", monospace;
-      font-size: 1em;
-      /* z-index above other elements so it scrolls on top */
-      z-index: 200;
-      display: block;
-    }
-    /* Blink animation for warning text */
-    @keyframes blink {
-      50% { opacity: 0; }
-    }
-    .blink {
-      animation: blink 1s step-end infinite;
-    }
-    /* Glitch text effect: multi-layer colored shadows */
-    .glitch-text {
-      position: relative;
-      display: inline-block;
-    }
-    .glitch-text::before, .glitch-text::after {
-      content: attr(data-text);
-      position: absolute;
-      top: 0;
-      left: 0;
-      /* default will be hidden, we’ll reveal slices via clip in keyframes */
-      overflow: hidden;
-    }
-    .glitch-text::before {
-      color: var(--cb-pink);
-      z-index: 2;
-      animation: glitch-anim 2s infinite;
-    }
-    .glitch-text::after {
-      color: var(--cb-green);
-      z-index: 1;
-      animation: glitch-anim2 3s infinite;
-    }
-    @keyframes glitch-anim {
-      0%   { clip: rect(0, 9999px, 0, 0); }
-      5%   { clip: rect(10px, 9999px, 50px, 0); transform: translate(-2px, -2px); }
-      10%  { clip: rect(5px, 9999px, 20px, 0); transform: translate(2px, 0); }
-      15%  { clip: rect(15px, 9999px, 30px, 0); transform: translate(-2px, 2px); }
-      20%  { clip: rect(10px, 9999px, 40px, 0); }
-      25%  { clip: rect(0, 9999px, 30px, 0); transform: translate(0, 2px); }
-      30%  { clip: rect(5px, 9999px, 50px, 0); transform: translate(-2px, -2px); }
-      35%  { clip: rect(10px, 9999px, 25px, 0); transform: translate(2px, 2px); }
-      40%  { clip: rect(10px, 9999px, 30px, 0); }
-      45%  { clip: rect(5px, 9999px, 20px, 0); transform: translate(2px, -2px); }
-      50%  { clip: rect(15px, 9999px, 35px, 0); }
-      55%  { clip: rect(0, 9999px, 0, 0); transform: translate(-2px, 0); }
-      60%  { clip: rect(10px, 9999px, 45px, 0); transform: translate(0, 2px); }
-      65%  { clip: rect(0, 9999px, 35px, 0); }
-      70%  { clip: rect(5px, 9999px, 15px, 0); transform: translate(2px, 0); }
-      75%  { clip: rect(10px, 9999px, 30px, 0); transform: translate(-2px, 2px); }
-      80%  { clip: rect(10px, 9999px, 30px, 0); }
-      85%  { clip: rect(5px, 9999px, 50px, 0); transform: translate(0, -2px); }
-      90%  { clip: rect(0, 9999px, 40px, 0); transform: translate(-2px, 0); }
-      95%  { clip: rect(5px, 9999px, 25px, 0); transform: translate(2px, 2px); }
-      100% { clip: rect(0, 9999px, 0, 0); transform: translate(0); }
-    }
-    @keyframes glitch-anim2 {
-      0%   { clip: rect(0, 9999px, 0, 0); }
-      5%   { clip: rect(5px, 9999px, 30px, 0); transform: translate(2px, 0); }
-      10%  { clip: rect(15px, 9999px, 40px, 0); transform: translate(-2px, 0); }
-      15%  { clip: rect(0, 9999px, 30px, 0); transform: translate(2px, -2px); }
-      20%  { clip: rect(5px, 9999px, 25px, 0); }
-      25%  { clip: rect(5px, 9999px, 45px, 0); transform: translate(-2px, 2px); }
-      30%  { clip: rect(0, 9999px, 20px, 0); transform: translate(0, 2px); }
-      35%  { clip: rect(10px, 9999px, 35px, 0); transform: translate(2px, -2px); }
-      40%  { clip: rect(5px, 9999px, 25px, 0); }
-      45%  { clip: rect(10px, 9999px, 50px, 0); transform: translate(-2px, 2px); }
-      50%  { clip: rect(0, 9999px, 40px, 0); }
-      55%  { clip: rect(15px, 9999px, 30px, 0); transform: translate(2px, 0); }
-      60%  { clip: rect(10px, 9999px, 20px, 0); transform: translate(0, -2px); }
-      65%  { clip: rect(5px, 9999px, 50px, 0); }
-      70%  { clip: rect(0, 9999px, 35px, 0); transform: translate(-2px, 0); }
-      75%  { clip: rect(5px, 9999px, 20px, 0); transform: translate(2px, 2px); }
-      80%  { clip: rect(5px, 9999px, 20px, 0); }
-      85%  { clip: rect(10px, 9999px, 40px, 0); transform: translate(0, 2px); }
-      90%  { clip: rect(0, 9999px, 30px, 0); transform: translate(-2px, -2px); }
-      95%  { clip: rect(10px, 9999px, 45px, 0); transform: translate(2px, 0); }
-      100% { clip: rect(0, 9999px, 0, 0); transform: translate(0); }
-    }
-    /* VHS glitch mode (intensify static when active) */
+    marquee { background: #000; color: #0f0; font-family: "Courier New", monospace; font-size: 1em; z-index: 200; display: block; }
+    @keyframes blink { 50% { opacity: 0; } }
+    .blink { animation: blink 1s step-end infinite; }
+    .glitch-text { position: relative; display: inline-block; }
+    .glitch-text::before, .glitch-text::after { content: attr(data-text); position: absolute; top: 0; left: 0; overflow: hidden; }
+    .glitch-text::before { color: var(--cb-pink); z-index: 2; animation: glitch-anim 2s infinite; }
+    .glitch-text::after { color: var(--cb-green); z-index: 1; animation: glitch-anim2 3s infinite; }
     .vhs-glitch .static-overlay { opacity: 0.2 !important; animation: jitter1 0.1s infinite !important; }
     .vhs-glitch .tracking-lines { animation: jitter2 0.1s infinite !important; }
-    /* Modal (fake Windows 95 dialog) */
-    .modal {
-      position: fixed;
-      top: 40%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 300px;
-      border: 2px solid #000;
-      background: #C0C0C0;
-      font-family: Tahoma, sans-serif;
-      color: #000;
-      z-index: 999;
-    }
-    .modal .titlebar {
-      background: navy;
-      color: #fff;
-      padding: 4px;
-      font-size: 0.9em;
-      font-weight: bold;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .modal .modal-close {
-      cursor: pointer;
-      padding: 0 5px;
-      background: silver;
-      border: 2px solid #000;
-    }
-    .modal .body {
-      padding: 15px;
-      background: #ECE9D8;
-      text-align: center;
-    }
-    .modal .body p {
-      margin: 10px 0;
-    }
-    .modal .body button {
-      font-family: Tahoma, sans-serif;
-      padding: 2px 10px;
-    }
+    .modal { position: fixed; top: 40%; left: 50%; transform: translate(-50%, -50%); width: 300px; border: 2px solid #000; background: #C0C0C0; font-family: Tahoma, sans-serif; color: #000; z-index: 999; }
+    .modal .titlebar { background: navy; color: #fff; padding: 4px; font-size: 0.9em; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
+    .modal .modal-close { cursor: pointer; padding: 0 5px; background: silver; border: 2px solid #000; }
+    .modal .body { padding: 15px; background: #ECE9D8; text-align: center; }
+    .modal .body p { margin: 10px 0; }
+    .modal .body button { font-family: Tahoma, sans-serif; padding: 2px 10px; }
     .hidden { display: none; }
   </style>
 </head>
 <body>
-  <!-- Static VHS overlay effects -->
   <div class="tracking-lines"></div>
   <div class="static-overlay"></div>
-  <!-- Scrolling infomercial marquee -->
-  <marquee behavior="scroll" direction="left" scrollamount="4">
-    ORDER THIS INSTANT! Use Coupon Code REWINDREALITY to unlock 9.999999% percent off at Ebay checkout!
-    <b>ACT IMMEDIATELY! ~ And don't forget follow us, because these items are offered at low, low prices that are only going up, up, and awaaaayyyyy.</b>
-  </marquee>
-
-  <!-- Condition Guide side panel -->
+  <marquee behavior="scroll" direction="left" scrollamount="4">ORDER THIS INSTANT! Use Coupon Code REWINDREALITY to unlock 9.999999% off at eBay checkout! ACT NOW!</marquee>
   <div class="condition-guide">
     <h3 class="glitch-text" data-text="Condition Guide for Discs">Condition Guide for Discs</h3>
     <p><small>(For legal reasons, all conditions are subjective. For cosmic reasons, all conditions are meaningless.)</small></p>
-    <p>
-      <span class="condition-title">Very Good</span><br>
-      Disc looks like it was viewed only once. That means it's free from any obvious or significant wear. Perhaps it was only admired. Maybe just whispered to.<br>
-      No scratches, scuffs, or signs of existential crisis.
-    </p>
-    <p>
-      <span class="condition-title">Good</span><br>
-      This disc has lived a good life so far. It has been loved and cared for. It has been passed from hand to hand and has the normal wear you might see on a well-loved disc.<br>
-      Possibly a light scratch or scuff that doesn't affect performance.<br>
-      The case may have some significant shelf wear.
-    </p>
-    <p>
-      <span class="condition-title">Acceptable</span><br>
-      The disc has been through a lot but remains functional. Still plays like a champ. TESTED! Expect visible scratches, scuffs, and perhaps a lingering resentment toward its previous owner.<br>
-      The outer case may be stained, distressed, or non-existent (just like all of us).<br>
-
-    </p>
+    <p><span class="condition-title">Very Good</span> Disc looks like it was viewed only once. No scratches or existential scars.</p>
+    <p><span class="condition-title">Good</span> Normal wear. Light scuff possible. Case may show shelf battle damage.</p>
+    <p><span class="condition-ellipsis">Acceptable</span> Visible scratches/scuffs but fully functional. Case may be missing.</p>
   </div>
-
-  <!-- Retro Warp Button (eBay link) -->
-  <a href="https://www.ebay.com/usr/clockbustervideo" class="retro-button" target="_blank">
-    Warp to Clockbuster eBay Store
-  </a>
-
-  <!-- Main content container -->
+  <a href="https://www.ebay.com/str/clockbustervideo" class="retro-button" target="_blank">Warp to Clockbuster eBay Store</a>
   <div class="container">
     <div class="logo"><h1>CLOCKBUSTER</h1></div>
-    <div class="tagline">
-      <h2 class="glitch-text" data-text="Rewind Reality">Rewind Reality</h2>
-    </div>
-
+    <div class="tagline"><h2 class="glitch-text" data-text="Rewind Reality">Rewind Reality</h2></div>
     <div class="description-container">
       <h2 class="glitch-text" data-text="CLOCKBUSTER VIDEO RENTAL">CLOCKBUSTER VIDEO RENTAL</h2>
-      <p>CLOCKBUSTER is your interdimensional video 'rental' marketplace. We rescue lost, rare and impossible film &amp; gaming artifacts from across multiple timelines, including yours.</p>
-      <p>We specialize in the curation of customized/personalized OEM game cartridges with replica boxes, VHS clamshell &amp; slipcovers and exclusive DVD boxset "restorations".</p>
+      <p>Interdimensional video marketplace rescuing lost media from across timelines.</p>
       <h2>Official Corporate History</h2>
-      <p>In the year [REDACTED], a media preservation logistical operation known as CLOCKBUSTER emerged from hidden tears in our spacetime. Clockbuster saw the consumer wandering into the black void in search of media items, only to discover that it's all disappearing and never coming back.</p>
-      <p>In response, Clockbuster developed a physics-bending, modified 1996 56k ActionTec AOL modem kit, which transfers lost media from alternate realities straight into this one..</p>
+      <p>Born from tears in spacetime, CLOCKBUSTER deploys modified 1996 AOL kits to retrieve vanished artifacts.</p>
       <h2>TODAY</h2>
-      <p>CLOCKBUSTER now operates as a roving temporal retail experience, <span style="color:white;">materializing at carefully selected festivals and markets across the multiverse (in Florida).</span> We continue our corporate mission of rescuing endangered media and finding them safe homes, where they will be loved and cared for.</p>
-      <p>
-        <span class="blink">WARNING:</span> All items exist in quantum superposition (on eBay). 
-        <span style="color:black;">
-<p><b>And look out for our booth at:</b></span>
-      </p>
-      <h2><b>GeekFest Ocala, August 14, 2025.</b></h2>
+      <p>Roving multiversal retail at festivals in Florida.</p>
+      <p><span class="blink">WARNING:</span> All items exist in quantum superposition on eBay.</p>
+      <h2>GeekFest Ocala, August 14, 2025.</h2>
     </div>
-
     <div class="signup-container">
       <h2>Need More?</h2>
-      <p style="font-size:33px; font-family:'Courier New', monospace; color:#ff6600; background:#000; text-shadow:2px 2px 4px #aaa; padding:10px; border:2px dashed #00ff00; border-radius:8px;">
-        <span style="color:#00ccff; text-decoration:underline; font-weight:bold;">
-          Have ideas for cursed media items?
-        </span>
-      </p>
-      <p>Ever wanted to put someone on the cover of a movie or game?</p>
-      <form action="https://formspree.io/f/xwpklzwl" method="POST" class="signup-form">
-        <p><label>Your email:</p>
-          <input type="email" name="email" placeholder="Electronic Mail" required />
-        </label>
-        <p><label>Your message:</p>
-          <textarea name="message" placeholder="Your ideas here"></textarea>
-        </label>
-        <button type="submit">(Submit For Remembership Card)</button>
+      <form action="https://formspree.io/f/xwpklzwl" method="POST">
+        <label>Your email:<input type="email" name="email" placeholder="Electronic Mail" required></label>
+        <label>Your message:<textarea name="message" placeholder="Your ideas here"></textarea></label>
+        <button type="submit">Submit For Remembership Card</button>
       </form>
-      <p>
-        <small class="glitch-text" data-text="* We will NEVER share your email.">* We will NEVER share your email.</small> 
-        (<a href="https://formspree.io/legal/privacy-policy/" style="color: var(--cb-gold);">Privacy Policy</a>)
-      </p>
+      <p><small class="glitch-text" data-text="* We will NEVER share your email."></small></p>
     </div>
-
     <div class="product-preview">
       <h3 class="glitch-text" data-text="Interpolations Currently In Stock*">Interpolations Currently In Stock*</h3>
-      <center>
-        <!-- Embedded analog static animation -->
-        <img src="https://media.tenor.com/lk5YUP4Co1QAAAAM/static-glitch.gif" alt="Analog TV Static" style="width:100%; max-width:100%; height:auto;" />
-      </center>
-      <p><small>* Virtual Boy - Nintend-No 69 - Stupid Nintend-No </small></p>
+      <center><img src="https://media.tenor.com/lk5YUP4Co1QAAAAM/static-glitch.gif" alt="Static" style="width:100%;max-width:100%;height:auto;"></center>
     </div>
+    <!-- X.com Embeds -->
+    <a class="twitter-timeline" data-theme="dark" data-chrome="nofooter noheader" href="https://x.com/realclockbuster">Tweets by @realclockbuster</a>
+    <a href="https://x.com/realclockbuster" class="twitter-follow-button" data-show-count="false">Follow @realclockbuster</a>
   </div>
-
-  <!-- Audio control for background static -->
-  <center>
-    <button onclick="document.getElementById('static-audio').play()" style="font-family:'Courier New', monospace;">
-      Play An Awful Sounding Clicking Noise Indefinitely
-    </button>
-  </center>
-  <audio id="static-audio" loop onplay="this.volume=0.2" src="data:audio/wav;base64,UklGRhQAAABXQVZFZm10IBAAAAABAAEAIlYAAESsAAACABAAZGF0YQAAAAAagP9/AGCAf39/h4N+f35+j4t7f3t9goB/gICAf4CAgH+AgIB/gICAf4CAgH+AgIB/gICAf4CAgP+AgID/gICA/4CAAIAA/4CAgP+AgID/AAAA/4CAgP+AgID/AAAA/4CAgP+AgID/AAAAAAAAAAAAAAD///8="></audio>
-
-  <!-- Netscape-era best viewed banner -->
-  <center>
-    <font face="Tahoma" color="cyan" size="2">
-      Best viewed in Netscape Navigator 4.0 @ 800x600 resolution
-    </font>
-  </center>
-
-  <!-- Faux Windows 95 alert dialog -->
+  <center><button onclick="document.getElementById('static-audio').play()">Play Background Static</button></center>
+  <audio id="static-audio" loop src="data:audio/wav;base64,UklGRhQAAABXQVZFZm10IBAAAAABAAEAIlYAAESsAAACABAAZGF0YQAAAAAagP9/AGCAf39"></audio>
+  <center><font face="Tahoma" color="cyan" size="2">Best viewed in Netscape Navigator 4.0 @ 800x600</font></center>
   <div id="fake-modal" class="modal hidden">
-    <div class="titlebar">
-      <span class="modal-title">REALITY CHECK</span>
-      <span class="modal-close" onclick="document.getElementById('fake-modal').style.display='none';">X</span>
-    </div>
-    <div class="body">
-      <p>You possess the burdon of choice.</p>
-      <button onclick="document.getElementById('fake-modal').style.display='none';">Ignore Your Reality</button>
-    </div>
+    <div class="titlebar"><span>REALITY CHECK</span><span class="modal-close" onclick="this.parentElement.parentElement.style.display='none';">X</span></div>
+    <div class="body"><p>You possess the burden of choice.</p><button onclick="this.parentElement.parentElement.style.display='none';">Ignore Your Reality</button></div>
   </div>
-
-  <!-- Invisible hotspot link (Easter egg trigger) -->
-  <a href="#" onclick="alert('Easter Egg Uncovered! The simulation is crumbling.')" 
-     style="position: fixed; bottom: 5px; right: 5px; width: 20px; height: 20px; opacity: 0; z-index: 120;">
-  </a>
-
+  <a href="#" onclick="alert('Easter Egg Uncovered!');" style="position:fixed;bottom:5px;right:5px;width:20px;height:20px;opacity:0;z-index:120;"></a>
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   <script>
-    // Konami Code Easter Egg Activation
-    const konamiCode = ["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"];
-    let konamiIndex = 0;
-    document.addEventListener('keyup', function(e) {
-      if (e.key === konamiCode[konamiIndex]) {
-        konamiIndex++;
-        if (konamiIndex === konamiCode.length) {
-          // Full code entered – trigger glitch
-          konamiIndex = 0;
-          document.body.classList.add('vhs-glitch');
-          alert("CONGRATS! You have too much time on your hands...");
-          setTimeout(() => {
-            document.body.classList.remove('vhs-glitch');
-          }, 3000);
-        }
-      } else {
-        // reset if sequence breaks
-        konamiIndex = 0;
-      }
-    });
-    // Glitchy navigation: first click on Warp button misdirects
-    let warpClicked = false;
-    document.querySelector('.retro-button').addEventListener('click', function(ev) {
-      if (!warpClicked) {
-        ev.preventDefault();
-        warpClicked = true;
-        alert("Temporal warp malfunction! Try again...");
-        window.open('https://www.ebay.com/str/clockbustervideo', '_blank');
-      }
-      // second click (warpClicked true) will proceed normally
-    });
-    // Logo click prank: spin and alert
-    document.querySelector('.logo h1').addEventListener('click', function() {
-      this.style.transform = 'rotateX(360deg)';  // spin around
-      setTimeout(() => {
-        alert("Please do not tap the sign!");
-      }, 500);
-    });
-    // Idle 20s: show fake system alert modal
-    setTimeout(() => {
-      document.getElementById('fake-modal').style.display = 'block';
-    }, 20000);
+    // Konami
+    const code = ["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"],arr=[];
+    document.addEventListener('keyup',e=>{arr.push(e.key);if(arr.slice(-code.length).join(',')===code.join(',')){document.body.classList.add('vhs-glitch');alert('CONGRATS!');setTimeout(()=>document.body.classList.remove('vhs-glitch'),3000);}});
+    document.querySelector('.retro-button').addEventListener('click',e=>{e.preventDefault();if(!e.target.dataset.done){e.target.dataset.done=true;alert('Warp fail! Try again');window.open('https://www.ebay.com/str/clockbustervideo','_blank');}else window.open(e.target.href,'_blank');});
+    document.querySelector('.logo h1').addEventListener('click',function(){this.style.transform='rotateX(360deg)';setTimeout(()=>alert('Please do not tap the sign!'),500);});
+    setTimeout(()=>document.getElementById('fake-modal').style.display='block',20000);
   </script>
 </body>
 </html>
-<a class="twitter-timeline" 
-   data-theme="dark"
-   data-chrome="nofooter noheader"
-   href="https://x.com/realclockbuster">
-  Tweets by @realclockbuster
-</a>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-<a href="https://x.com/realclockbuster" class="twitter-follow-button" data-show-count="false">
-  Follow @realclockbuster
-</a>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
