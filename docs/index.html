@@ -50,7 +50,8 @@
     .condition-title { color: #fff; font-weight: bold; }
     @media screen and (max-width: 768px) {
       .condition-guide { position: static; width: auto; margin: 20px auto; max-width: 90%; }
-      .retro-button { position: static; margin-bottom: 20px; }
+      /* keep the warp button fixed on mobile, too */
+      .retro-button { position: fixed; top: 20px; left: 20px; }
       .logo h1 { font-size: 8vw; }
       .tagline h2 { font-size: 6vw; }
     }
