@@ -1,75 +1,214 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head><!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2QP1SKWQGC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-2QP1SKWQGC');
-</script>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CLOCKBUSTER - Rewind Reality</title>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CLOCKBUSTER — Rewind Reality</title>
+  <meta name="description" content="Clockbuster is your interdimensional video rental hallucination. Lore + contraband + usable media theory." />
   <style>
-    :root {
-      --cb-purple: #800080;
-      --cb-pink:   #ff69b4;
-      --cb-green:  #006400;
-      --cb-gold:   #ffd700;
+    :root{
+      --ink:#0a0a0a; --paper:#fbfbfb; --muted:#6b6b6b; --accent:#0df; --line:#e9e9e1;
     }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, var(--cb-purple), var(--cb-pink));
-      color: var(--cb-gold);
-      font-family: "Courier New", monospace;
-      overflow-x: hidden;
-    }
-    /* Jitter (mild shake) keyframes */
-    @keyframes jitter1 { 0% { transform: translate(0,0) rotate(0); } 25% { transform: translate(0.7px,-0.7px) rotate(-0.25deg); } 50% { transform: translate(-0.7px,0.7px) rotate(0.25deg); } 75% { transform: translate(0.7px,0.7px) rotate(-0.25deg); } 100% { transform: translate(0,0) rotate(0); } }
-    @keyframes jitter2 { 0% { transform: translate(0,0) scale(1); } 20% { transform: translate(-0.34px,0.34px) scale(1.007); } 40% { transform: translate(0.34px,-0.34px) scale(0.993); } 60% { transform: translate(-0.34px,-0.34px) scale(1.003); } 80% { transform: translate(0.34px,0.34px) scale(0.997); } 100% { transform: translate(0,0) scale(1); } }
-    /* Overlays */
-    .tracking-lines, .static-overlay { position: fixed; inset: 0; pointer-events: none; z-index: 100; }
-    .tracking-lines { background: repeating-linear-gradient(to bottom, transparent 0, transparent 2px, rgba(0,0,0,0.1) 2px, rgba(0,0,0,0.1) 4px); animation: jitter2 0.2s infinite; }
-    .static-overlay { background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAGFBMVEUAAAA/Pz9fX1+fn5+/v7/f39///////+8dlUoAAABBSURBVDjLY2AYBaNgFIyCUTAKRsEoGAWjYBSMglEwCkbBKBgFo2AUjIJRMApGwSgYBaNgFIyCUTAKRsEoGAUDDQAh8gEB5BMTiAAAABJRU5ErkJggg=='); opacity: 0.05; animation: jitter1 0.3s infinite; }
-    .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; position: relative; z-index: 1; background: rgba(0,0,0,0.4); border: 3px solid var(--cb-green); border-radius: 12px; animation: jitter2 1.69s infinite; }
-    .logo h1 { font-size: 3em; color: var(--cb-gold); text-shadow: 4px 4px 0 var(--cb-green), -4px -4px 0 var(--cb-pink); margin: 0; font-family: Impact, Arial Black, sans-serif; animation: jitter1 0.1s infinite; cursor: pointer; transition: transform 0.5s; }
-    .tagline h2 { font-style: italic; color: var(--cb-green); margin-bottom: 40px; animation: jitter2 0.15s infinite; }
-    .description-container, .signup-container, .product-preview { padding: 20px; border-radius: 10px; margin-bottom: 40px; animation: jitter2 0.2s infinite; }
-    .description-container { background: linear-gradient(135deg, var(--cb-purple), var(--cb-pink)); border: 2px dashed var(--cb-pink); }
-    .signup-container { background: linear-gradient(135deg, var(--cb-pink), var(--cb-green)); border: 2px dashed var(--cb-purple); }
-    .product-preview { background: linear-gradient(135deg, var(--cb-green), var(--cb-purple)); border: 2px dashed var(--cb-pink); }
-    .retro-button { position: fixed; top: 20px; left: 20px; font-family: "Courier New", monospace; border-radius: 5px; padding: 15px 30px; border: 2px solid var(--cb-gold); text-decoration: none; display: inline-block; cursor: pointer; background: linear-gradient(45deg, var(--cb-purple), var(--cb-pink)); color: var(--cb-gold); box-shadow: 4px 4px 0 var(--cb-green); transition: all 0.2s ease; animation: jitter1 0.2s infinite; z-index: 110; }
-    .retro-button:hover { background: linear-gradient(45deg, var(--cb-gold), var(--cb-green)); color: var(--cb-purple); box-shadow: 4px 4px 0 var(--cb-pink); border-color: var(--cb-purple); }
-    .condition-guide { position: fixed; top: 20px; right: 20px; width: 280px; background: rgba(0,0,0,0.7); border: 2px solid var(--cb-green); border-radius: 10px; padding: 15px; color: var(--cb-gold); font-family: "Courier New", monospace; z-index: 100; animation: jitter1 0.12s infinite; }
-    .condition-guide h3 { color: var(--cb-green); margin-top: 0; text-align: center; text-shadow: 2px 2px 0 #000; animation: jitter2 0.18s infinite; }
-    .condition-guide p { font-size: 0.9em; margin-bottom: 10px; }
-    .condition-title { color: #fff; font-weight: bold; }
-    @media screen and (max-width: 768px) {
-      .condition-guide { position: static; width: auto; margin: 20px auto; max-width: 90%; }
-      /* keep the warp button fixed on mobile, too */
-      .retro-button { position: fixed; top: 20px; left: 20px; }
-      .logo h1 { font-size: 8vw; }
-      .tagline h2 { font-size: 6vw; }
-    }
-    marquee { background: #000; color: #0f0; font-family: "Courier New", monospace; font-size: 1em; z-index: 200; display: block; }
-    @keyframes blink { 50% { opacity: 0; } }
-    .blink { animation: blink 1s step-end infinite; }
-    .glitch-text { position: relative; display: inline-block; }
-    .glitch-text::before, .glitch-text::after { content: attr(data-text); position: absolute; top: 0; left: 0; overflow: hidden; }
-    .glitch-text::before { color: var(--cb-pink); z-index: 2; animation: glitch-anim 2s infinite; }
-    .glitch-text::after { color: var(--cb-green); z-index: 1; animation: glitch-anim2 3s infinite; }
-    .vhs-glitch .static-overlay { opacity: 0.2 !important; animation: jitter1 0.1s infinite !important; }
-    .vhs-glitch .tracking-lines { animation: jitter2 0.1s infinite !important; }
-    .modal { position: fixed; top: 40%; left: 50%; transform: translate(-50%, -50%); width: 300px; border: 2px solid #000; background: #C0C0C0; font-family: Tahoma, sans-serif; color: #000; z-index: 999; }
-    .modal .titlebar { background: navy; color: #fff; padding: 4px; font-size: 0.9em; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
-    .modal .modal-close { cursor: pointer; padding: 0 5px; background: silver; border: 2px solid #000; }
-    .modal .body { padding: 15px; background: #ECE9D8; text-align: center; }
-    .modal .body p { margin: 10px 0; }
-    .modal .body button { font-family: Tahoma, sans-serif; padding: 2px 10px; }
-    .hidden { display: none; }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, sans-serif}
+    a{color:var(--ink);text-underline-offset:2px}
+
+    .shell{min-height:100svh;display:grid;grid-template-rows:auto 1fr auto}
+    header{position:sticky;top:0;background:rgba(255,255,255,.85);backdrop-filter:saturate(1.1) blur(8px);border-bottom:1px solid var(--line);z-index:10}
+    .bar{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.8rem 1rem}
+    .brand{font-weight:900;letter-spacing:.04em}
+    .tag{font-size:.85rem;color:var(--muted)}
+    .pill{font-size:.8rem;border:1px dashed #cfcfc9;padding:.35rem .6rem;border-radius:999px;color:#111;background:#fff}
+
+    /* HERO */
+    .hero{display:grid;place-items:center;padding:12svh 1rem 9svh}
+    .card{max-width:980px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.05);padding:1.2rem;position:relative;overflow:hidden}
+    .tape{position:absolute;inset:-1px;border-radius:18px;pointer-events:none;background:repeating-linear-gradient(90deg, rgba(0,0,0,.045), rgba(0,0,0,.045) 1px, transparent 1px, transparent 5px)}
+    .cover{display:grid;grid-template-columns:1.15fr .85fr;gap:2rem;align-items:center}
+    @media (max-width: 860px){.cover{grid-template-columns:1fr;gap:1.2rem}}
+    .title{font-size:clamp(2rem,4.2vw,3.4rem);line-height:1.04;font-weight:900;letter-spacing:.01em}
+    .subtitle{font-size:clamp(1rem,2.1vw,1.2rem);color:#333}
+    .fineprint{font-size:.9rem;color:var(--muted)}
+
+    .ctaRow{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}
+    .btn{appearance:none;border:1.5px solid var(--ink);background:#fff;border-radius:999px;padding:.7rem 1rem;font-weight:700;cursor:pointer;transition:transform .05s ease, box-shadow .15s ease}
+    .btn:hover{transform:translateY(-1px)}
+    .btn[disabled]{opacity:.45;cursor:not-allowed}
+    .btn-primary{background:var(--ink);color:#fff;border-color:var(--ink);box-shadow:0 0 0 3px rgba(0,0,0,.045)}
+
+    /* manual */
+    main{display:grid;gap:2rem;padding:0 1rem 10svh}
+    .manual{max-width:980px;margin-inline:auto;display:grid;gap:1.2rem}
+    .h{font-weight:900;text-transform:uppercase;letter-spacing:.06em;font-size:.95rem}
+    .section{border:1px solid var(--line);border-radius:16px;background:#fff;padding:1.2rem}
+    .section p{margin:.6rem 0}
+    .callout{border-left:4px solid var(--accent);padding-left:.8rem}
+
+    /* tiny footer + tabbar */
+    footer{padding:3rem 1rem;color:#333}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:980px;margin:0 auto}
+    @media (max-width:820px){.grid{grid-template-columns:1fr}}
+    .tiny{font-size:.85rem;color:#555}
+
+    .fake-tabbar{position:fixed;inset:auto 0 0 0;display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border-top:1px solid var(--line);padding:.3rem .4rem;z-index:9}
+    .fake-tabbar button{background:none;border:0;padding:.45rem .2rem;font-size:.85rem;color:#222}
+    @media (min-width:820px){.fake-tabbar{display:none}}
+
+    /* overlay */
+    .overlay{position:fixed;inset:0;background:rgba(10,10,10,.86);color:#f2f2f2;display:none;place-items:center;text-align:center;z-index:100}
+    .overlay .box{max-width:720px;padding:1.2rem}
+    .overlay .box h2{margin:.2rem 0 .6rem}
+
+    /* pulse for Konami */
+    .pulse{animation:pulse 1.2s ease-in-out infinite alternate}
+    @keyframes pulse{from{transform:scale(1)}to{transform:scale(1.03)}}
   </style>
 </head>
+<body>
+<div class="shell">
+  <header>
+    <div class="bar">
+      <div>
+        <div class="brand">CLOCKBUSTER</div>
+        <div class="tag">Interdimensional Video Rental — <span id="tagline">Rewind Reality</span></div>
+      </div>
+      <div class="pill" aria-live="polite">Coupon REWINDREALITY = 9.999999% off</div>
+    </div>
+  </header>
+
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="card">
+      <div class="tape" aria-hidden="true"></div>
+      <div class="cover">
+        <div>
+          <h1 class="title" id="hero-title">You found the last video store that knows it's a book.</h1>
+          <p class="subtitle">Simple landing. All plot, no fluff. Lore + Exclusives + Playbook — in phases.</p>
+          <div class="ctaRow">
+            <button id="ignoreReality" class="btn" disabled title="Be patient. Late fees apply to time.">Ignore Your Reality (unlocks soon)</button>
+            <a class="btn" href="https://www.ebay.com/str/clockbuster" target="_blank" rel="noopener">Browse the Evidence (eBay)</a>
+            <button id="openOverlay" class="btn btn-primary" title="REALITY CHECK">REALITY CHECK ×</button>
+          </div>
+          <p class="fineprint">NO REFUNDS on wasted Time. Space sold separately. Meaning not included.</p>
+        </div>
+        <aside>
+          <div class="section callout" role="note">
+            <div class="h">Condition Guide for Discs</div>
+            <p><span class="tiny">(For legal reasons, all conditions are subjective. For cosmic reasons, all conditions are meaningless.)</span></p>
+            <p><strong>Very Good</strong> — Disc looks like it was viewed only once. That means it's free from any obvious or significant wear. Perhaps it was only admired. Maybe just whispered to.<br> No scratches, scuffs, or signs of existential crisis.</p>
+            <p><strong>Good</strong> — This disc has lived a good life so far. It has been loved and cared for. It has been passed from hand to hand and has the normal wear you might see on a well-loved disc.<br> Possibly a light scratch or scuff that doesn't affect performance.<br> The case may have some significant shelf wear.</p>
+            <p><strong>Acceptable</strong> — The disc has been through multiple iterations of the universe. Still plays like a champ. TESTED! Expect visible scratches, scuffs, and perhaps a lingering resentment toward its previous owner.<br> The outer case may be stained, distressed, or non-existent (just like all of us).</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <div class="manual" id="manual">
+      <section class="section" id="phase-1">
+        <div class="h">Phase 1 — Retrieval & Ritual</div>
+        <p class="tiny">[placeholder copy]</p>
+      </section>
+      <section class="section" id="phase-2">
+        <div class="h">Phase 2 — Conditioning & Conversion</div>
+        <p class="tiny">[placeholder copy]</p>
+      </section>
+      <section class="section" id="phase-3">
+        <div class="h">Phase 3 — Field Operations (In Progress)</div>
+        <p class="tiny">[placeholder copy]</p>
+      </section>
+      <section class="section" id="phase-0">
+        <div class="h">Phase 0 — Inquiries & Remembership</div>
+        <form action="https://formspree.io/f/xwpklzwl" method="POST" class="grid" style="grid-template-columns:1fr;gap:.6rem">
+          <label class="tiny">Your email:<br><input type="email" name="email" placeholder="Electronic Mail" required style="width:100%;padding:.6rem;border:1px solid #ddd;border-radius:10px"></label>
+          <label class="tiny">Your message:<br><textarea name="message" placeholder="Your ideas here" rows="4" style="width:100%;padding:.6rem;border:1px solid #ddd;border-radius:10px"></textarea></label>
+          <button class="btn" type="submit">Submit For Remembership Card</button>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="grid">
+      <div class="tiny">Play "Irreversible Clicking Noise" • Best viewed in Netscape Navigator 4.0 @ 800×600 • Konami code enabled</div>
+      <div class="tiny" style="text-align:right">© CLOCKBUSTER. Rewind Reality.</div>
+    </div>
+  </footer>
+</div>
+
+<!-- Fake native tabbar for phones -->
+<nav class="fake-tabbar" aria-label="Ghost navigation">
+  <button data-jump="#phase-1">Phase 1</button>
+  <button data-jump="#phase-2">Phase 2</button>
+  <button data-jump="#phase-3">Phase 3</button>
+  <button id="tabKonami" title="Secret">◎</button>
+</nav>
+
+<!-- Reality-check overlay -->
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="rcTitle" aria-describedby="rcBody">
+  <div class="box">
+    <h2 id="rcTitle">REALITY CHECK ×</h2>
+    <p id="rcBody">You possess the burden of choice. This page is a shelf. The shelf is a lesson. Continue anyway?</p>
+    <div class="ctaRow" style="justify-content:center">
+      <button class="btn" id="closeOverlay">Continue browsing</button>
+      <a class="btn btn-primary" href="https://x.com/realclockbuster" target="_blank" rel="noopener">Follow @realclockbuster</a>
+    </div>
+  </div>
+</div>
+
+<audio id="static-audio" loop src="data:audio/wav;base64,UklGRhQAAABXQVZFZm10IBAAAAABAAEAIlYAAESsAAACABAAZGF0YQAAAAAagP9/AGCAf39"></audio>
+<div style="text-align:center;padding-bottom:4rem"><button class="btn" id="annoySound">Play Irreversible Clicking Noise</button></div>
+
+<script>
+  // Ignore Your Reality: timed popup like the original (20s), and button opens it immediately
+  const overlay=document.getElementById('overlay');
+  const openOverlay=document.getElementById('openOverlay'); // present in hero
+  const closeOverlay=document.getElementById('closeOverlay');
+  setTimeout(()=>{ overlay.style.display='grid' }, 20000);
+  if(openOverlay){ openOverlay.addEventListener('click',()=>{overlay.style.display='grid'}) }
+  if(closeOverlay){ closeOverlay.addEventListener('click',()=>{overlay.style.display='none'}) }
+
+  const ignoreBtn=document.getElementById('ignoreReality');
+  setTimeout(()=>{ if(ignoreBtn){ignoreBtn.disabled=false; ignoreBtn.textContent='Ignore Your Reality'} }, 8000);
+  if(ignoreBtn){ ignoreBtn.addEventListener('click',()=>{ overlay.style.display='grid' }) }
+
+  // Annoying sound toggle
+  const annoy=document.getElementById('annoySound');
+  if(annoy){annoy.addEventListener('click',()=>{
+    const a=document.getElementById('static-audio');
+    if(a.paused) a.play(); else a.pause();
+  });}
+
+  // Fake native tab bar for phones (smooth scroll)
+  document.querySelectorAll('.fake-tabbar [data-jump]').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const id=btn.getAttribute('data-jump');
+      document.querySelector(id).scrollIntoView({behavior:'smooth', block:'start'});
+    })
+  })
+
+  // Konami Code → toggles pulse, swaps tagline, enables a secret mode
+  const KONAMI=["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"];
+  let buff=[]; let secret=false;
+  addEventListener('keydown', (e)=>{
+    buff.push(e.key);
+    if(buff.length>10) buff.shift();
+    if(KONAMI.every((k,i)=>buff[i]===k)){
+      secret=!secret; buff=[];
+      document.getElementById('tagline').textContent = secret? 'Rewind <you>' : 'Rewind Reality';
+      document.querySelector('.card').classList.toggle('pulse');
+      document.title = secret? 'CLOCKBUSTER — Developer Tape' : 'CLOCKBUSTER — Rewind Reality';
+      document.getElementById('tabKonami').textContent = secret? 'CHAOS' : '◎';
+    }
+  });
+
+  // Chaos switch — lightly reflows the grid, simulating a "broken" layout
+  document.getElementById('tabKonami').addEventListener('click', ()=>{
+    document.querySelector('.manual').style.transform = `rotate(${(Math.random()-.5)*.8}deg)`;
+    document.querySelectorAll('.section').forEach((el,i)=>{
+      el.style.filter = `hue-rotate(${(i*22)%360}deg)`;
+    });
+  });
+</script>
+</body>
+</html>
