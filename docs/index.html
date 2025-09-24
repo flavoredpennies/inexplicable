@@ -19,6 +19,9 @@
     .brand{font-weight:900;letter-spacing:.04em}
     .tag{font-size:.85rem;color:var(--muted)}
     .pill{font-size:.8rem;border:1px dashed #cfcfc9;padding:.35rem .6rem;border-radius:999px;color:#111;background:#fff}
+    .brandlink{display:block;text-decoration:none;color:inherit}
+    .brandlink:hover .brand{text-decoration:underline}
+    .pill{cursor:pointer}
 
     /* HERO */
     .hero{display:grid;place-items:center;padding:12svh 1rem 9svh}
@@ -68,11 +71,11 @@
 <div class="shell">
   <header>
     <div class="bar">
-      <div>
-        <div class="brand">Clockbuster Video Store (eBay)</div>
-        <div class="tag">interdimensional video rental<span id="tagline"><p>Rewind Reality</p></span></div>
-      </div>
-      <div class="pill" aria-live="polite">Use eBay Coupon REWINDREALITY for 9.999999% off</div>
+      <a class="brandlink" href="https://www.ebay.com/str/clockbustervideo" target="_blank" rel="noopener" aria-label="Open Clockbuster Video Store on eBay">
+        <div class="brand">Clockbuster Video Store</div>
+        <div class="tag">interdimensional video rental — <span id="tagline">Rewind Reality</span></div>
+      </a>
+      <button class="pill" id="copyCoupon" type="button" data-code="REWINDREALITY" title="Click to copy coupon code">Use eBay Coupon <strong>REWINDREALITY</strong> for 9.999999% off</button>
     </div>
   </header>
 
@@ -223,6 +226,22 @@
       el.style.filter = `hue-rotate(${(i*22)%360}deg)`;
     });
   });
+  // Copy coupon code to clipboard from sticky banner
+  const couponBtn = document.getElementById('copyCoupon');
+  if (couponBtn) {
+    couponBtn.addEventListener('click', async () => {
+      const code = couponBtn.dataset.code || 'REWINDREALITY';
+      try {
+        await navigator.clipboard.writeText(code);
+      } catch (e) {
+        const tmp = document.createElement('textarea');
+        tmp.value = code; document.body.appendChild(tmp); tmp.select(); document.execCommand('copy'); tmp.remove();
+      }
+      const prev = couponBtn.innerHTML;
+      couponBtn.innerHTML = 'Copied ' + code + ' ✓';
+      setTimeout(()=>{ couponBtn.innerHTML = prev; }, 1800);
+    });
+  }
 </script>
 </body>
 </html>
