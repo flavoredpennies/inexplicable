@@ -3,79 +3,116 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CLOCKBUSTER : Rewind Reality</title>
+  <title>CLOCKBUSTER ❄ Rewind Reality</title>
   <meta name="description" content="Clockbuster is your interdimensional video rental hallucination." />
   <style>
     :root{
-      --ink:#0a0a0a; --paper:#fbfbfb; --muted:#6b6b6b; --accent:#0df; --line:#e9e9e1;
+      --ink:#042317; --paper:#f8f3eb; --muted:#5c6c68; --accent:#c21807; --line:rgba(4,35,23,.16);
+      --frost:#d9eef9; --pine:#0f5132;
     }
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, sans-serif}
+    body{
+      background:linear-gradient(180deg, rgba(15,81,50,.22), rgba(15,81,50,0) 32%),
+                 radial-gradient(110% 110% at 50% 0%, rgba(210,44,22,.14), transparent 60%),
+                 var(--paper);
+      position:relative;
+    }
     a{color:var(--ink);text-underline-offset:2px}
 
     .shell{min-height:100svh;display:grid;grid-template-rows:auto 1fr auto}
-    header{position:sticky;top:0;background:rgba(255,255,255,.85);backdrop-filter:saturate(1.1) blur(8px);border-bottom:1px solid var(--line);z-index:10}
-    .bar{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.8rem 1rem}
+    header{position:sticky;top:0;background:rgba(248,243,235,.9);backdrop-filter:saturate(1.1) blur(8px);border-bottom:1px solid var(--line);z-index:10}
+    .bar{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.9rem 1rem}
     .brand{font-weight:900;letter-spacing:.04em}
-    .tag{font-size:.85rem;color:var(--muted)}
-    .pill{font-size:.8rem;border:1px dashed #cfcfc9;padding:.35rem .6rem;border-radius:999px;color:#111;background:#fff}
+    .tag{font-size:.85rem;color:var(--muted);display:flex;align-items:center;gap:.4rem}
+    .tag svg{width:1rem;height:1rem;fill:var(--accent)}
+    .pill{font-size:.8rem;border:1px dashed rgba(4,35,23,.3);padding:.45rem .85rem;border-radius:999px;color:#fff;background:linear-gradient(120deg, var(--accent), #eb4d2c);box-shadow:0 8px 16px rgba(194,24,7,.26)}
     .brandlink{display:block;text-decoration:none;color:inherit}
     .brandlink:hover .brand{text-decoration:underline}
     .pill{cursor:pointer}
 
     /* HERO */
     .hero{display:grid;place-items:center;padding:12svh 1rem 9svh}
-    .card{max-width:980px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.05);padding:1.2rem;position:relative;overflow:hidden}
-    .tape{position:absolute;inset:-1px;border-radius:18px;pointer-events:none;background:repeating-linear-gradient(90deg, rgba(0,0,0,.045), rgba(0,0,0,.045) 1px, transparent 1px, transparent 5px)}
+    .card{max-width:980px;background:rgba(255,255,255,.92);border:1px solid rgba(4,35,23,.15);border-radius:22px;box-shadow:0 25px 60px rgba(12,47,31,.18);padding:1.2rem;position:relative;overflow:hidden}
+    .tape{position:absolute;inset:-1px;border-radius:22px;pointer-events:none;background:linear-gradient(135deg, rgba(210,44,22,.18), rgba(15,81,50,.1));mix-blend-mode:multiply}
+    .card::after{content:"";position:absolute;inset:18px;border:1px dashed rgba(4,35,23,.18);border-radius:18px;pointer-events:none}
     .cover{display:grid;grid-template-columns:1.15fr .85fr;gap:2rem;align-items:center}
     @media (max-width: 860px){.cover{grid-template-columns:1fr;gap:1.2rem}}
-    .title{font-size:clamp(2rem,4.2vw,3.4rem);line-height:1.04;font-weight:900;letter-spacing:.01em}
-    .subtitle{font-size:clamp(1rem,2.1vw,1.2rem);color:#333}
+    .title{font-size:clamp(2rem,4.2vw,3.4rem);line-height:1.04;font-weight:900;letter-spacing:.01em;text-shadow:0 6px 18px rgba(4,35,23,.2)}
+    .subtitle{font-size:clamp(1rem,2.1vw,1.2rem);color:var(--pine);font-weight:600}
+    .festive-note{display:inline-flex;align-items:center;gap:.4rem;background:rgba(210,44,22,.08);padding:.35rem .7rem;border-radius:999px;font-size:.85rem;color:var(--accent);font-weight:600;margin-bottom:.6rem}
+    .festive-note svg{width:1rem;height:1rem;fill:currentColor}
     .fineprint{font-size:.9rem;color:var(--muted)}
 
     .ctaRow{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}
-    .btn{appearance:none;border:1.5px solid var(--ink);background:#fff;border-radius:999px;padding:.7rem 1rem;font-weight:700;cursor:pointer;transition:transform .05s ease, box-shadow .15s ease}
-    .btn:hover{transform:translateY(-1px)}
+    .btn{appearance:none;border:1.5px solid var(--ink);background:#fff;border-radius:999px;padding:.7rem 1.1rem;font-weight:700;cursor:pointer;transition:transform .05s ease, box-shadow .15s ease, background .2s ease, color .2s ease}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 10px 18px rgba(4,35,23,.16)}
     .btn[disabled]{opacity:.45;cursor:not-allowed}
-    .btn-primary{background:var(--ink);color:#fff;border-color:var(--ink);box-shadow:0 0 0 3px rgba(0,0,0,.045)}
+    .btn-primary{background:linear-gradient(130deg, var(--accent), #ff6b3d);color:#fff;border-color:rgba(194,24,7,.9);box-shadow:0 0 0 3px rgba(194,24,7,.12)}
+    .btn-ghost{background:rgba(15,81,50,.08);border-color:rgba(15,81,50,.2);color:var(--pine)}
 
     /* manual */
     main{display:grid;gap:2rem;padding:0 1rem 10svh}
     .manual{max-width:980px;margin-inline:auto;display:grid;gap:1.2rem}
     .h{font-weight:900;text-transform:uppercase;letter-spacing:.06em;font-size:.95rem}
-    .section{border:1px solid var(--line);border-radius:16px;background:#fff;padding:1.2rem}
+    .section{border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.92);padding:1.2rem;box-shadow:0 12px 26px rgba(12,47,31,.08)}
     .section p{margin:.6rem 0}
-    .callout{border-left:4px solid var(--accent);padding-left:.8rem}
+    .callout{border-left:4px solid var(--pine);padding-left:.8rem;background:rgba(15,81,50,.08);border-radius:0 12px 12px 0}
 
     /* tiny footer + tabbar */
-    footer{padding:3rem 1rem;color:#333}
+    footer{padding:3rem 1rem;color:#2b3f36;background:rgba(15,81,50,.06)}
     .grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:980px;margin:0 auto}
     @media (max-width:820px){.grid{grid-template-columns:1fr}}
-    .tiny{font-size:.85rem;color:#555}
+    .tiny{font-size:.85rem;color:#4b6055}
 
-    .fake-tabbar{position:fixed;inset:auto 0 0 0;display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border-top:1px solid var(--line);padding:.3rem .4rem;z-index:9}
-    .fake-tabbar button{background:none;border:0;padding:.45rem .2rem;font-size:.85rem;color:#222}
+    .fake-tabbar{position:fixed;inset:auto 0 0 0;display:grid;grid-template-columns:repeat(4,1fr);background:rgba(248,243,235,.96);border-top:1px solid var(--line);padding:.3rem .4rem;z-index:9}
+    .fake-tabbar button{background:none;border:0;padding:.45rem .2rem;font-size:.85rem;color:#2b3f36}
     @media (min-width:820px){.fake-tabbar{display:none}}
 
     /* overlay */
-    .overlay{position:fixed;inset:0;background:rgba(10,10,10,.86);color:#f2f2f2;display:none;place-items:center;text-align:center;z-index:100}
+    .overlay{position:fixed;inset:0;background:rgba(9,31,22,.86);color:#f2f2f2;display:none;place-items:center;text-align:center;z-index:100}
     .overlay .box{max-width:720px;padding:1.2rem}
     .overlay .box h2{margin:.2rem 0 .6rem}
 
     /* pulse for Konami */
     .pulse{animation:pulse 1.2s ease-in-out infinite alternate}
     @keyframes pulse{from{transform:scale(1)}to{transform:scale(1.03)}}
+
+    /* snowfall */
+    .snow{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:2}
+    .snowflake{position:absolute;top:-10vh;color:var(--frost);opacity:.9;font-size:clamp(.4rem, 1vw + .4rem, 1.3rem);animation:fall var(--dur) linear infinite;left:var(--pos);animation-delay:var(--delay,0s)}
+    @keyframes fall{
+      to{transform:translate3d(0,110vh,0) rotate(360deg);}
+    }
+    @media (prefers-reduced-motion: reduce){
+      .snow{display:none}
+    }
   </style>
 </head>
 <body>
+<div class="snow" aria-hidden="true">
+  <span class="snowflake" style="--pos:5%;--dur:18s;--delay:-2s">✼</span>
+  <span class="snowflake" style="--pos:15%;--dur:14s;--delay:-6s">✻</span>
+  <span class="snowflake" style="--pos:28%;--dur:22s;--delay:-12s">❆</span>
+  <span class="snowflake" style="--pos:37%;--dur:17s;--delay:-4s">✽</span>
+  <span class="snowflake" style="--pos:46%;--dur:26s;--delay:-18s">❄</span>
+  <span class="snowflake" style="--pos:55%;--dur:16s;--delay:-8s">✺</span>
+  <span class="snowflake" style="--pos:63%;--dur:20s;--delay:-14s">❅</span>
+  <span class="snowflake" style="--pos:74%;--dur:18s;--delay:-10s">✵</span>
+  <span class="snowflake" style="--pos:82%;--dur:24s;--delay:-16s">✼</span>
+  <span class="snowflake" style="--pos:90%;--dur:19s;--delay:-5s">❉</span>
+</div>
 <div class="shell">
   <header>
     <div class="bar">
       <a class="brandlink" href="https://www.ebay.com/str/clockbustervideo" target="_blank" rel="noopener" aria-label="Open Clockbuster Video Store on eBay">
         <div class="brand"><b>Clockbuster Video Rental Store</b></div>
-        <div class="tag"><i> now with anachronic tape return </i><span id="tagline"><p>Rewind Reality</span></div></p>
+        <div class="tag">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.25a.75.75 0 0 1 .75.75v1.69l1.52-.88a.75.75 0 0 1 .75 1.3l-1.53.89 1.53.88a.75.75 0 1 1-.75 1.3l-1.52-.88V9a.75.75 0 0 1-1.5 0V7.21l-1.52.88a.75.75 0 0 1-.75-1.3l1.52-.88-1.52-.89a.75.75 0 1 1 .75-1.3l1.52.89V3a.75.75 0 0 1 .75-.75Zm7.53 6.22a.75.75 0 0 1 .75.75v1.69l1.52-.88a.75.75 0 1 1 .75 1.3l-1.52.89 1.52.88a.75.75 0 1 1-.75 1.3l-1.52-.88V15a.75.75 0 0 1-1.5 0v-1.79l-1.52.88a.75.75 0 1 1-.75-1.3l1.52-.88-1.52-.89a.75.75 0 1 1 .75-1.3l1.52.89v-1.7a.75.75 0 0 1 .75-.75Zm-15.06 0a.75.75 0 0 1 .75.75v1.69l1.52-.88a.75.75 0 0 1 .75 1.3l-1.52.89 1.52.88a.75.75 0 0 1-.75 1.3l-1.52-.88V15a.75.75 0 0 1-1.5 0v-1.79l-1.52.88a.75.75 0 1 1-.75-1.3l1.52-.88-1.52-.89a.75.75 0 0 1 .75-1.3l1.52.89v-1.7a.75.75 0 0 1 .75-.75ZM12 14.25a.75.75 0 0 1 .75.75v1.69l1.52-.88a.75.75 0 1 1 .75 1.3l-1.53.89 1.53.88a.75.75 0 0 1-.75 1.3l-1.52-.88V21a.75.75 0 0 1-1.5 0v-1.79l-1.52.88a.75.75 0 1 1-.75-1.3l1.52-.88-1.52-.89a.75.75 0 1 1 .75-1.3l1.52.89v-1.7a.75.75 0 0 1 .75-.75Z"/></svg>
+          <span id="tagline">Crimbus Day Festivus Sale!</span>
+        </div>
       </a>
-      <button class="pill" id="copyCoupon" type="button" data-code="REWINDREALITY" title="Click to copy coupon code">Use eBay Coupon <strong>REWINDREALITY</strong> for 9.999999% off</button>
+      <button class="pill" id="copyCoupon" type="button" data-code="REWINDREALITY" title="Click to copy coupon code">Use eBay Coupon <strong>REWINDREALITY</strong> for 9.9999% off</button>
     </div>
   </header>
 
@@ -84,12 +121,21 @@
       <div class="tape" aria-hidden="true"></div>
       <div class="cover">
         <div>
-          <h1 class="title" id="hero-title">Clockbuster Exclusive</h1>
-          <p class="subtitle">ridiculous & confusing</p><p>impossible lost media </p>
+          <div class="festive-note" aria-label="Seasonal programming note">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5c.33 0 .63.2.74.5l1.51 4.04 4.35.17a.78.78 0 0 1 .43 1.39l-3.43 2.68 1.14 4.2a.78.78 0 0 1-1.17.86L12 12.97l-3.57 2.37a.78.78 0 0 1-1.17-.86l1.14-4.2-3.43-2.68a.78.78 0 0 1 .43-1.39l4.35-.17 1.51-4.04c.1-.3.4-.5.74-.5Z"/></svg>
+            Mandatory limited-time savings! <p>Celebrate Crimbus.</p>
+            <p>Observe Festivus.</p>
+Receive 11.0001% OFF as compensation for participating in either!
+          </div>
+          <h1 class="title" id="hero-title">Clockbuster's Crimbus Day Festivus Sale!</h1>
+          <p class="subtitle"><i>ridiculous & confusing</i></p>
+          <p>Rare and impossible lost media, guaranteed to arrive before your alternate reality relatives do.</p>
           <div class="ctaRow">
-            <button id="ignoreReality" class="btn" disabled title="Urgency motivator.">Ignore Your Reality (unlocks when observed!)</button>
+            <button id="ignoreReality" class="btn btn-primary" disabled title="Urgency motivator.">REALITY CHECK (unlocks when observed!)</button>
             <a class="btn" href="https://www.ebay.com/str/clockbustervideo" target="_blank" rel="noopener">Clockbuster Video Store (eBay)</a>
-            <button id="openOverlay" class="btn btn-primary" title="REALITY CHECK">REALITY CHECK ×</button>
+            <a class="btn btn-ghost" href="https://sora.chatgpt.com/p/s_69154b4c57448191a9a5b225adcb36e6?psh=HXVzZXItVWhVdkszdExhdzdacUNuY3BkeHM5MkM5.XD9fBXQwnLn7">CRIMBUS DAY FESTIVUS SALE! 11.0001% OFF!</a>
+            <a class="btn" href="https://x.com/realclockbuster" target="_blank" rel="noopener">Clockbuster Video Slop (SORA)</a>
+             <a class="btn" href="https://x.com/realclockbuster" target="_blank" rel="noopener">Clockbuster Video 'X'-clusives (X.com)</a>
           </div>
           <p class="fineprint">No exchanges/store credit for wasted time. Space sold separately. Meaning and ennui not included.</p>
         </div>
@@ -129,9 +175,13 @@
     These releases are fully interpolated to conform with all legal doctrine.
     </p>
       </section>
+      <section class="section" id="lunchplans">
+        <div class="h">LUNCH PLANS</div>
+        <p class="tiny">• Maybe something spicy?<br>• Will anyone even deliver all the way here?<br>• No? We'll just skip eating today.</p>
+      </section>
       <section class="section" id="phase-3">
         <div class="h">Phase 3 : Field Operations (In Progress)</div>
-        <p class="tiny">November 23, 2025: GeekFest Ocala</p>
+        <p class="tiny">NOV 23rd, 2025: GEEKFEST OCALA</p>
       </section>
       <section class="section" id="phase-0">
         <div class="h">Phase 0 : Inquiries & Remembership</div>
@@ -146,8 +196,8 @@
 
   <footer>
     <div class="grid">
-      <div class="tiny">The feature 'Play "Irreversible Clicking Noise"' is best viewed in 1997 Netscape Navigator 4.0 @ 800×600 • Konami code enabled</div>
-      <div class="tiny" style="text-align:right">© CLOCKBUSTER VIDEO. Rewind Reality.</div>
+      <div class="tiny">The feature 'Play "Irreversible Clicking Noise"' is best viewed in 1997 Netscape Navigator 4.0 @ 800×600 • Gags engaged via Konami code</div>
+      <div class="tiny" style="text-align:right"> CLOCKBUSTER VIDEO© 2025-2026<p>Serving you since <span style="text-decoration: line-through; color:#ff4040"><b>[REDACTED]</b></span></p> <p>Rewind Reality</p></div>
     </div>
   </footer>
 </div>
@@ -163,12 +213,12 @@
 <!-- Reality-check overlay -->
 <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="rcTitle" aria-describedby="rcBody">
   <div class="box">
-    <h2 id="rcTitle">REALITY CHECK ×</h2>
-    <p id="rcBody">you possess the burden of choice.</p>
- <p>ignore your reality?</p>
+    <h2 id="rcTitle">REALITY CHECK</h2>
+    <p id="rcBody">You possess the burden of gift selection.</p>
+    <p>Ignore your reality? or accept the retail holiday burden?</p>
     <div class="ctaRow" style="justify-content:center">
-      <button class="btn" id="closeOverlay">Continue browsing</button>
-      <a class="btn btn-primary" href="https://x.com/realclockbuster" target="_blank" rel="noopener">Follow @realclockbuster</a>
+      <button class="btn" id="closeOverlay">Ignore reality</button>
+      <a class="btn btn-primary" href="https://www.ebay.com/str/clockbustervideo" target="_blank" rel="noopener">See our store..</a>
     </div>
   </div>
 </div>
@@ -204,7 +254,7 @@
     })
   })
 
-  // Konami Code → toggles pulse, swaps tagline, enables a secret mode
+  // Konami Code toggles pulse, swaps tagline, enables a secret mode
   const KONAMI=["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"];
   let buff=[]; let secret=false;
   addEventListener('keydown', (e)=>{
@@ -214,7 +264,7 @@
       secret=!secret; buff=[];
       document.getElementById('tagline').textContent = secret? 'Rewind <you>' : 'Rewind Reality';
       document.querySelector('.card').classList.toggle('pulse');
-      document.title = secret? 'CLOCKBUSTER — Developer Tape' : 'CLOCKBUSTER — Rewind Reality';
+      document.title = secret? 'CLOCKBUSTER — Developer Tape' : 'YOU DO NOT BELONG HERE, BOY';
       document.getElementById('tabKonami').textContent = secret? 'CHAOS' : '◎';
     }
   });
@@ -223,7 +273,7 @@
   document.getElementById('tabKonami').addEventListener('click', ()=>{
     document.querySelector('.manual').style.transform = `rotate(${(Math.random()-.5)*.8}deg)`;
     document.querySelectorAll('.section').forEach((el,i)=>{
-      el.style.filter = `hue-rotate(${(i*22)%360}deg)`;
+      el.style.filter = `hue-rotate(${(i*66)%270}deg)`;
     });
   });
   // Copy coupon code to clipboard from sticky banner
