@@ -26,117 +26,93 @@ property: 'Athleta'
   <meta name="p:domain_verify" content="68708d52a831cdc83d07062044b2e14c"/>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CLOCKBUSTER ♥ Human Mating Season Day ends 2/14</title>
+  <title>CLOCKBUSTER — Tax Day Compliance Window</title>
   <meta name="description" content="Clockbuster is your interdimensional video rental hallucination." />
   <style>
     :root{
-      --ink:#2e0b1e; --paper:#fdf1f6; --muted:#7a5667; --accent:#d81b60; --line:rgba(46,11,30,.16);
-      --pine:#8a1d4c;
+      --ink:#18263a;
+      --paper:#f2f2ec;
+      --muted:#4d5a68;
+      --accent:#1f4e79;
+      --line:rgba(24,38,58,.24);
+      --govgray:#c8ced4;
+      --form:#d9d2b6;
+      --stamp:#9f2d2d;
+      --container:#efe3b0;
+      --file:#d7c58a;
     }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, sans-serif}
-    body{
-      background:linear-gradient(180deg, rgba(216,27,96,.14), rgba(216,27,96,0) 32%),
-                 radial-gradient(110% 110% at 50% 0%, rgba(255,109,178,.2), transparent 60%),
-                 var(--paper);
-      position:relative;
-    }
+    html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
+    body{background:var(--paper);position:relative}
     a{color:var(--ink);text-underline-offset:2px}
 
     .shell{min-height:100svh;display:grid;grid-template-rows:auto 1fr auto}
-    header{position:sticky;top:0;background:rgba(248,243,235,.9);backdrop-filter:saturate(1.1) blur(8px);border-bottom:1px solid var(--line);z-index:10}
+    header{position:sticky;top:0;background:repeating-linear-gradient(180deg, rgba(24,38,58,.07) 0 1px, transparent 1px 10px), var(--container);backdrop-filter:saturate(1) blur(2px);border-bottom:2px solid var(--line);z-index:10}
     .bar{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.9rem 1rem}
     .brand{font-weight:900;letter-spacing:.04em}
-    .tag{font-size:.85rem;color:var(--muted);display:flex;align-items:center;gap:.4rem}
-    .tag svg{width:1rem;height:1rem;fill:var(--accent)}
-    .pill{font-size:.8rem;border:1px dashed rgba(4,35,23,.3);padding:.45rem .85rem;border-radius:999px;color:#fff;background:linear-gradient(120deg, var(--accent), #eb4d2c);box-shadow:0 8px 16px rgba(194,24,7,.26)}
+    .tag{font-size:.85rem;color:var(--muted);display:flex;align-items:center;gap:.4rem;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
+    .pill{font-size:.8rem;border:1px dashed var(--line);padding:.45rem .85rem;border-radius:4px;color:#132134;background:var(--form);box-shadow:none;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
     .brandlink{display:block;text-decoration:none;color:inherit}
     .brandlink:hover .brand{text-decoration:underline}
     .pill{cursor:pointer}
 
     /* HERO */
     .hero{display:grid;place-items:center;padding:12svh 1rem 9svh}
-    .card{max-width:980px;background:rgba(255,255,255,.92);border:1px solid rgba(4,35,23,.15);border-radius:22px;box-shadow:0 25px 60px rgba(12,47,31,.18);padding:1.2rem;position:relative;overflow:hidden}
-    .tape{position:absolute;inset:-1px;border-radius:22px;pointer-events:none;background:linear-gradient(135deg, rgba(216,27,96,.2), rgba(138,29,76,.12));mix-blend-mode:multiply}
-    .card::after{content:"";position:absolute;inset:18px;border:1px dashed rgba(4,35,23,.18);border-radius:18px;pointer-events:none}
+    .card{max-width:980px;background:repeating-linear-gradient(180deg, rgba(24,38,58,.08) 0 1px, transparent 1px 10px), var(--container);border:2px solid var(--line);border-radius:4px;box-shadow:0 10px 24px rgba(24,38,58,.12);padding:1.2rem;position:relative;overflow:hidden}
+    .tape{position:absolute;inset:auto 1.2rem 1rem auto;pointer-events:none;background:var(--file);padding:.2rem .55rem;border:1px solid rgba(0,0,0,.2);font-size:.72rem;font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;letter-spacing:.05em;transform:rotate(-7deg)}
+    .tape::before{content:"FILED: 02/022/20222"}
+    .card::before{content:"TAX DAY PROVISIONAL";position:absolute;right:1rem;top:1rem;border:2px solid var(--stamp);color:var(--stamp);font-weight:800;padding:.2rem .55rem;transform:rotate(-9deg);font-size:.72rem;letter-spacing:.08em}
+    .card::after{content:"";position:absolute;inset:18px;border:1px dashed rgba(24,38,58,.28);border-radius:2px;pointer-events:none}
     .cover{display:grid;grid-template-columns:1.15fr .85fr;gap:2rem;align-items:center}
     @media (max-width: 860px){.cover{grid-template-columns:1fr;gap:1.2rem}}
     .title{font-size:clamp(2rem,4.2vw,3.4rem);line-height:1.04;font-weight:900;letter-spacing:.01em;text-shadow:0 6px 18px rgba(4,35,23,.2)}
-    .subtitle{font-size:clamp(1rem,2.1vw,1.2rem);color:var(--pine);font-weight:600}
-    .festive-note{display:inline-flex;align-items:center;gap:.4rem;background:rgba(216,27,96,.12);padding:.35rem .7rem;border-radius:999px;font-size:.85rem;color:var(--accent);font-weight:600;margin-bottom:.6rem}
-    .festive-note svg{width:1rem;height:1rem;fill:currentColor}
+    .subtitle{font-size:clamp(1rem,2.1vw,1.2rem);color:var(--ink);font-weight:700;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;text-transform:uppercase;letter-spacing:.05em}
+    .festive-note{display:inline-flex;align-items:center;gap:.4rem;background:repeating-linear-gradient(180deg, rgba(24,38,58,.08) 0 1px, transparent 1px 10px), var(--container);padding:.35rem .7rem;border:1px solid var(--line);border-radius:2px;font-size:.85rem;color:var(--ink);font-weight:700;margin-bottom:.6rem;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
     .fineprint{font-size:.9rem;color:var(--muted)}
 
     .ctaRow{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}
-    .btn{appearance:none;border:1.5px solid var(--ink);background:#fff;border-radius:999px;padding:.7rem 1.1rem;font-weight:700;cursor:pointer;transition:transform .05s ease, box-shadow .15s ease, background .2s ease, color .2s ease}
-    .btn:hover{transform:translateY(-1px);box-shadow:0 10px 18px rgba(4,35,23,.16)}
+    .btn{appearance:none;border:1.5px solid var(--ink);background:#fff;border-radius:2px;padding:.7rem 1.1rem;font-weight:700;cursor:pointer;transition:box-shadow .15s ease, background .2s ease, color .2s ease}
+    .btn:hover{box-shadow:0 2px 0 rgba(24,38,58,.35)}
     .btn[disabled]{opacity:.45;cursor:not-allowed}
-    .btn-primary{background:linear-gradient(130deg, var(--accent), #ff6b3d);color:#fff;border-color:rgba(194,24,7,.9);box-shadow:0 0 0 3px rgba(194,24,7,.12)}
-    .btn-ghost{background:rgba(138,29,76,.08);border-color:rgba(138,29,76,.2);color:var(--pine)}
+    .btn-primary{background:var(--accent);color:#fff;border-color:#173b5a;box-shadow:none}
+    .btn-ghost{background:#e8ecf1;border-color:#8d99a7;color:#21344b}
 
     /* manual */
     main{display:grid;gap:2rem;padding:0 1rem 10svh}
     .manual{max-width:980px;margin-inline:auto;display:grid;gap:1.2rem}
     .h{font-weight:900;text-transform:uppercase;letter-spacing:.06em;font-size:.95rem}
-    .section{border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.92);padding:1.2rem;box-shadow:0 12px 26px rgba(12,47,31,.08)}
+    .section{border:1px solid var(--line);border-radius:2px;background:repeating-linear-gradient(180deg, rgba(24,38,58,.06) 0 1px, transparent 1px 10px), var(--container);padding:1.2rem;box-shadow:none}
     .section p{margin:.6rem 0}
-    .callout{border-left:4px solid var(--pine);padding-left:.8rem;background:rgba(216,27,96,.08);border-radius:0 12px 12px 0}
+    .callout{border-left:4px solid var(--accent);padding-left:.8rem;background:repeating-linear-gradient(180deg, rgba(24,38,58,.08) 0 1px, transparent 1px 10px), var(--container);border-radius:0}
 
     /* tiny footer + tabbar */
-    footer{padding:3rem 1rem;color:#2b3f36;background:rgba(216,27,96,.06)}
+    footer{padding:3rem 1rem;color:#2b3f36;background:repeating-linear-gradient(180deg, rgba(24,38,58,.07) 0 1px, transparent 1px 10px), var(--container)}
     .grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:980px;margin:0 auto}
     @media (max-width:820px){.grid{grid-template-columns:1fr}}
     .tiny{font-size:.85rem;color:#4b6055}
 
-    .fake-tabbar{position:fixed;inset:auto 0 0 0;display:grid;grid-template-columns:repeat(4,1fr);background:rgba(248,243,235,.96);border-top:1px solid var(--line);padding:.3rem .4rem;z-index:9}
+    .fake-tabbar{position:fixed;inset:auto 0 0 0;display:grid;grid-template-columns:repeat(4,1fr);background:repeating-linear-gradient(180deg, rgba(24,38,58,.07) 0 1px, transparent 1px 10px), var(--container);border-top:2px solid var(--line);padding:.3rem .4rem;z-index:9}
     .fake-tabbar button{background:none;border:0;padding:.45rem .2rem;font-size:.85rem;color:#2b3f36}
     @media (min-width:820px){.fake-tabbar{display:none}}
 
     /* overlay */
-    .overlay{position:fixed;inset:0;background:rgba(46,11,30,.9);color:#f2f2f2;display:none;place-items:center;text-align:center;z-index:100}
-    .overlay .box{max-width:720px;padding:1.2rem}
+    .overlay{position:fixed;inset:0;background:rgba(24,38,58,.92);color:#f2f2f2;display:none;place-items:center;text-align:center;z-index:100}
+    .overlay .box{max-width:720px;padding:1.2rem;background:repeating-linear-gradient(180deg, rgba(24,38,58,.08) 0 1px, transparent 1px 10px), var(--container);color:var(--ink);border:2px solid var(--line)}
     .overlay .box h2{margin:.2rem 0 .6rem}
 
     /* pulse for Konami */
-    .pulse{animation:pulse 1.2s ease-in-out infinite alternate}
-    @keyframes pulse{from{transform:scale(1)}to{transform:scale(1.03)}}
-
-    /* heart blizzard */
-    .heartstorm{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:2;mix-blend-mode:multiply}
-    .heartstorm span{position:absolute;top:-12vh;left:var(--pos);font-size:clamp(.6rem, 1.2vw + .4rem, 1.6rem);opacity:.9;color:#ff2d6f;animation:heartfall var(--dur) linear infinite;animation-delay:var(--delay,0s)}
-    @keyframes heartfall{
-      to{transform:translate3d(0,120vh,0) rotate(360deg);}
-    }
-    @media (prefers-reduced-motion: reduce){
-      .heartstorm{display:none}
-    }
+    .pulse{outline:2px dotted var(--stamp);outline-offset:4px}
   </style>
 </head>
 <body>
-<div class="heartstorm" aria-hidden="true">
-  <span style="--pos:4%;--dur:14s;--delay:-2s">♥</span>
-  <span style="--pos:12%;--dur:18s;--delay:-8s">♥</span>
-  <span style="--pos:22%;--dur:16s;--delay:-6s">♥</span>
-  <span style="--pos:31%;--dur:20s;--delay:-12s">♥</span>
-  <span style="--pos:40%;--dur:15s;--delay:-4s">♥</span>
-  <span style="--pos:48%;--dur:22s;--delay:-10s">♥</span>
-  <span style="--pos:57%;--dur:17s;--delay:-7s">♥</span>
-  <span style="--pos:66%;--dur:19s;--delay:-11s">♥</span>
-  <span style="--pos:75%;--dur:21s;--delay:-9s">♥</span>
-  <span style="--pos:84%;--dur:16s;--delay:-5s">♥</span>
-  <span style="--pos:92%;--dur:23s;--delay:-13s">♥</span>
-</div>
 <div class="shell">
   <header>
     <div class="bar">
       <a class="brandlink" href="https://www.ebay.com/str/clockbustervideo" target="_blank" rel="noopener" aria-label="Open Clockbuster Video Store on eBay">
         <div class="brand"><b>Clockbuster Video Rental Store</b></div>
-        <div class="tag">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.35-9.6-9.1C.74 8.2 2.4 4.5 6 4.5c1.86 0 3.52.9 4.6 2.3C11.68 5.4 13.34 4.5 15.2 4.5c3.6 0 5.26 3.7 3.6 7.4C19.5 16.65 12 21 12 21Z"/></svg>
-          <span id="tagline">Rewind Reality</span>
-        </div>
+        <div class="tag"><span id="tagline">Rewind Reality</span></div>
       </a>
-      <button class="pill" id="copyCoupon" type="button" data-code="MATINGSEASON" title="Click to copy coupon code">Copy eBay Coupon <strong>REWINDREALITY</strong> for 9.999% off everything</button>
+      <button class="pill" id="copyCoupon" type="button" data-code="REWINDREALITY" title="Click to copy coupon code">File Rebate Code <strong>REWINDREALITY</strong> for 5.000% off everything</button>
     </div>
   </header>
 
@@ -146,16 +122,15 @@ property: 'Athleta'
       <div class="cover">
         <div>
           <div class="festive-note" aria-label="Seasonal programming note">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.35-9.6-9.1C.74 8.2 2.4 4.5 6 4.5c1.86 0 3.52.9 4.6 2.3C11.68 5.4 13.34 4.5 15.2 4.5c3.6 0 5.26 3.7 3.6 7.4C19.5 16.65 12 21 12 21Z"/></svg>
-            Mandatory limited-time mating ritual savings protocol. Receive an automatic 5% off everything.
+            Mandatory limited-time tax compliance savings protocol. Receive an automatic 5% off everything.
           </div>
           <h1 class="title" id="hero-title">CLOCKBUSTER</h1>
-          <p class="subtitle"><i>Human Mating Season Day Month-Long Corporate Holiday</i></p>
-          <p>Rare and impossible lost media, guaranteed to arrive before the month-long corporate holiday ends.</p>
+          <p class="subtitle"><i>Tax Day Extended Compliance Window</i></p>
+          <p>Rare and impossible lost media, processed under strict procedural timelines before filing season closes.</p>
           <div class="ctaRow">
             <button id="ignoreReality" class="btn btn-primary" disabled title="Urgency motivator.">REALITY CHECK (unlocks when observed)</button>
             <a class="btn" href="https://www.ebay.com/str/clockbustervideo" target="_blank" rel="noopener">Clockbuster Video Store (eBay)</a>
-            <a class="btn btn-ghost" href="https://www.ebay.com/str/clockbustervideo">HUMAN MATING SEASON Day MONTH-LONG VALENTINES ADJACENT SALES EVENT = 5.000% OFF EVERYTHING</a>
+            <a class="btn btn-ghost" href="https://www.ebay.com/str/clockbustervideo">TAX DAY EXTENDED COMPLIANCE EVENT = 5.000% OFF EVERYTHING</a>
             <a class="btn" href="https://sora.chatgpt.com/profile/clockbuster" target="_blank" rel="noopener">Clockbuster Video Slop (SORA)</a>
              <a class="btn" href="https://x.com/realclockbuster" target="_blank" rel="noopener">Clockbuster 'X'clusives Sold-Out Status (X.com)</a>
           </div>
@@ -221,8 +196,8 @@ property: 'Athleta'
   <div class="h">Phase 2.6 : Legal Interpolation & Doctrine Conformance</div>
   <p class="tiny">These releases are fully interpolated to conform with all legal doctrine.</p>
 </section>
-      <section class="section" id="human-mating-season-manifest">
-        <div class="h">Phase 69: Human Mating Season Day Month-and-a-half-Long Mandatory 5.0000% Corpo-Holiday Markdown Sales Event</div>
+      <section class="section" id="tax-day-manifest">
+        <div class="h">Phase 69: Tax Day Extended Mandatory 5.0000% Bureaucratic Markdown Event</div>
         <p class="tiny">It is possible that you may encounter REAL existing physical media in the store.<br> THIS IS NORMAL.<br>• DO NOT make sudden movements around the inventory and DO follow CLOCKBUSTER VIDEO on eBay.</p>
       </section>
       <section class="section" id="phase-3">
@@ -232,8 +207,8 @@ property: 'Athleta'
       <section class="section" id="phase-0">
         <div class="h">Phase 0 : Inquiries & Remembership</div>
         <form action="https://formspree.io/f/xwpklzwl" method="POST" class="grid" style="grid-template-columns:1fr;gap:.6rem">
-          <label class="tiny">Your email:<br><input type="email" name="email" placeholder="Electronic Mail" required style="width:100%;padding:.6rem;border:1px solid #ddd;border-radius:10px"></label>
-          <label class="tiny">Your message:<br><textarea name="message" placeholder="Ask/Suggest Anything" rows="4" style="width:100%;padding:.6rem;border:1px solid #ddd;border-radius:10px"></textarea></label>
+          <label class="tiny">Your email:<br><input type="email" name="email" placeholder="Electronic Mail" required style="width:100%;padding:.6rem;border:1px solid var(--line);border-radius:2px;background:repeating-linear-gradient(180deg, rgba(24,38,58,.05) 0 1px, transparent 1px 10px), var(--container);font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace"></label>
+          <label class="tiny">Your message:<br><textarea name="message" placeholder="Ask/Suggest Anything" rows="4" style="width:100%;padding:.6rem;border:1px solid var(--line);border-radius:2px;background:repeating-linear-gradient(180deg, rgba(24,38,58,.05) 0 1px, transparent 1px 10px), var(--container);font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace"></textarea></label>
           <button class="btn" type="submit">Submit For Remembership Card</button>
         </form>
       </section>
@@ -242,7 +217,7 @@ property: 'Athleta'
 
   <footer>
     <div class="grid">
-      <div class="tiny">The feature 'Play "Irreversible Clicking Noise"' is best viewed in 1997 Netscape Navigator 4.0 @ 800×600 • Romance mode engaged via Konami code</div>
+      <div class="tiny">The feature 'Play "Irreversible Clicking Noise"' is best viewed in 1997 Netscape Navigator 4.0 @ 800×600 • Audit mode engaged via Konami code</div>
       <div class="tiny" style="text-align:right"> CLOCKBUSTER VIDEO© 2025-2026<p>Serving you since <span style="text-decoration: line-through; color:#ff4040"><b>[REDACTED]</b></span></p> <p>Rewind Reality</p></div>
     </div>
   </footer>
@@ -260,8 +235,8 @@ property: 'Athleta'
 <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="rcTitle" aria-describedby="rcBody">
   <div class="box">
     <h2 id="rcTitle">REALITY CHECK</h2>
-    <p id="rcBody">You possess the burden of month-long affection rituals. Accept the corporate consequences?</p>
-    <p>Ignore your reality? or accept the retail romance burden?</p>
+    <p id="rcBody">You possess the burden of prolonged filing obligations. Accept the corporate consequences?</p>
+    <p>Ignore your reality? or accept the retail compliance burden?</p>
     <div class="ctaRow" style="justify-content:center">
       <button class="btn" id="closeOverlay">Ignore reality</button>
       <a class="btn btn-primary" href="https://www.ebay.com/str/clockbustervideo" target="_blank" rel="noopener">See our store..</a>
@@ -308,9 +283,9 @@ property: 'Athleta'
     if(buff.length>10) buff.shift();
     if(KONAMI.every((k,i)=>buff[i]===k)){
       secret=!secret; buff=[];
-      document.getElementById('tagline').textContent = secret? 'Rewind <you>' : 'Rewind Reality for Human Mating Season';
+      document.getElementById('tagline').textContent = secret? 'Rewind <you>' : 'Rewind Reality for Tax Day';
       document.querySelector('.card').classList.toggle('pulse');
-      document.title = secret? 'CLOCKBUSTER — Developer Tape' : 'CLOCKBUSTER — Human Mating Season';
+      document.title = secret? 'CLOCKBUSTER — Developer Tape' : 'CLOCKBUSTER — Tax Day Compliance Window';
       document.getElementById('tabKonami').textContent = secret? 'CHAOS' : '◎';
     }
   });
