@@ -27,7 +27,7 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; }
-    html { min-height: 100%; scroll-behavior: smooth; }
+    html { min-height: 100%; scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
     body {
       margin: 0;
       min-height: 100vh;
@@ -63,6 +63,10 @@
     }
 
     a { color: inherit; }
+
+    a, button, input, textarea {
+      touch-action: manipulation;
+    }
 
     .store-access {
       position: fixed;
@@ -494,7 +498,7 @@
       .site-frame { padding: 76px 14px 22px; }
       .book { grid-template-columns: 1fr; min-height: auto; }
       .stage { min-height: 720px; }
-      .sidebar { order: -1; }
+      .sidebar { order: 0; }
       .nav-list { grid-template-columns: repeat(3, 1fr); }
       .nav-item { font-size: 10px; padding: 11px; }
       .premium-card-grid { grid-template-columns: 1fr; }
@@ -508,12 +512,14 @@
       .lead { font-size: 18px; }
       .body-copy { font-size: 15px; }
       .nav-list { display: none; }
-      .mobile-bottom { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+      .mobile-bottom { display: none; }
       .sidebar { padding: 16px; border-radius: 22px; }
       h1 { font-size: clamp(40px, 15vw, 62px); }
       h2 { font-size: clamp(30px, 11vw, 46px); }
       .button-row { gap: 10px; }
       .cta, button.cta { width: 100%; text-align: center; }
+      .control-btn, .nav-item, .cta, button.cta, .store-access { font-size: 16px; }
+      input, textarea, button { font-size: 16px; }
     }
   </style>
 </head>
