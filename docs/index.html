@@ -5,6 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>CLOCKBUSTER ONLINE / Portal to Obsolete Media & Found-Object Détournement Services</title>
   <meta name="description" content="Clockbuster Video by Obsolete House / rare out-of-print DVDs, VHS, cassette tapes, CDs, software, promo media and parody collectibles / interdimensional video store built on obsolete media culture." />
+  <!--
+  ADOBE FONTS (Typekit) EMBED
+  Replace XXXXXXX with your Adobe Fonts Project ID.
+  https://fonts.adobe.com/
+  Recommended kit contents once you set this up:
+    - Eurostile Extended / Microgramma-style face for the CLOCKBUSTER wordmark
+    - ITC Avant Garde Gothic for the "Continuity Channels" subtitle + nav
+    - Adobe Garamond Pro Italic for the ARCHIVES channel button
+    - Myriad Pro or Source Sans 3 for general interface text
+    - Cooper Black (or similar) for the REMEMBERSHIP channel button
+  Until the kit is live, everything below falls back to web-safe approximations
+  (Impact, Georgia italic, Arial Narrow, Brush Script MT, small-caps) so the
+  layout and personality-per-button effect still reads correctly.
+  -->
+  <!-- <link rel="stylesheet" href="https://use.typekit.net/XXXXXXX.css"> -->
   <style>
     :root {
       --page-blue: #064b9b;
@@ -19,12 +34,17 @@
       --gray-3: #9f9f9f;
       --gray-4: #565656;
       --white: #ffffff;
-    }
 
+      /* Adobe Fonts placeholders — swap these once the Typekit project is live */
+      --font-wordmark: 'Eurostile-fallback', Impact, 'Arial Narrow', sans-serif;
+      --font-nav: 'AvantGarde-fallback', 'Century Gothic', Futura, Arial, sans-serif;
+      --font-archives: 'Garamond-fallback', 'Adobe Garamond Pro', Garamond, 'Times New Roman', serif;
+      --font-interface: Tahoma, Verdana, Arial, sans-serif;
+      --font-playful: 'CooperBlack-fallback', 'Brush Script MT', cursive;
+    }
     * {
       box-sizing: border-box;
     }
-
     html {
       min-height: 100%;
       background:
@@ -32,27 +52,23 @@
         linear-gradient(180deg, #093f8f 0%, #001d4d 55%, #000f2d 100%);
       background-size: 24px 24px, auto;
     }
-
     body {
       margin: 0;
       padding: 12px 0 24px;
       color: var(--ink);
-      font-family: Tahoma, Verdana, Arial, sans-serif;
+      font-family: var(--font-interface);
       font-size: 12px;
       line-height: 1.35;
     }
-
     a {
       color: #003e9f;
       font-weight: bold;
       text-decoration: underline;
     }
-
     a:hover {
       color: #b00000;
       background: #fff6bf;
     }
-
     .browser-shell {
       width: 780px;
       max-width: calc(100vw - 18px);
@@ -61,7 +77,6 @@
       background: #ececec;
       box-shadow: 0 0 0 2px #001d4d, 0 12px 40px rgba(0,0,0,.55);
     }
-
     .window-title {
       display: flex;
       align-items: center;
@@ -74,12 +89,10 @@
       border-bottom: 1px solid #001f55;
       letter-spacing: .02em;
     }
-
     .window-controls {
       display: flex;
       gap: 3px;
     }
-
     .window-controls span {
       display: inline-flex;
       width: 17px;
@@ -92,7 +105,6 @@
       font-size: 10px;
       line-height: 1;
     }
-
     .toolbar {
       display: flex;
       align-items: center;
@@ -104,7 +116,6 @@
       white-space: nowrap;
       overflow-x: auto;
     }
-
     .tool-button {
       display: inline-flex;
       align-items: center;
@@ -118,7 +129,6 @@
       font-weight: bold;
       text-decoration: none;
     }
-
     .keyword-bar {
       display: grid;
       grid-template-columns: auto 1fr auto;
@@ -128,22 +138,19 @@
       background: #dedede;
       border-bottom: 1px solid #8b8b8b;
     }
-
     .keyword-label {
       font-weight: bold;
       color: #333;
     }
-
     .keyword-input {
       height: 21px;
       padding: 2px 6px;
       border: 1px inset #aaa;
       background: #fff;
-      font-family: Tahoma, Verdana, Arial, sans-serif;
+      font-family: var(--font-interface);
       color: #003a91;
       font-weight: bold;
     }
-
     .go-button {
       height: 22px;
       padding: 1px 10px;
@@ -156,48 +163,192 @@
       cursor: pointer;
     }
 
-    .masthead {
-      position: relative;
-      padding: 14px 14px 12px;
-      color: #fff;
+    /* ============================================================
+       AOL "CHANNELS"-STYLE MASTHEAD
+       Replaces the old plain blue banner. Left column = ID card
+       (logo placeholder, division subtitle, return link, search).
+       Right side = a grid of department buttons, each with its own
+       typeface/color personality, the way AOL Channels varied every
+       tile. All hrefs below are the SAME links already used in the
+       left-nav panel further down the page — nothing new is linked.
+       ============================================================ */
+    .aol-masthead {
+      display: grid;
+      grid-template-columns: 30% 1fr;
+      gap: 10px;
+      padding: 12px;
       background:
-        linear-gradient(135deg, rgba(255,255,255,.18), transparent 35%),
+        linear-gradient(135deg, rgba(255,255,255,.12), transparent 40%),
         linear-gradient(90deg, #003075 0%, #0064c7 48%, #001f5c 100%);
       border-bottom: 3px solid #ffcf00;
-      overflow: hidden;
     }
-
-    .masthead:after {
-      content: "";
-      position: absolute;
-      right: -42px;
-      top: -42px;
-      width: 160px;
-      height: 160px;
-      border: 18px solid rgba(255,255,255,.16);
+    .aol-id-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      padding: 12px 8px 10px;
+      border: 1px solid rgba(255,255,255,.45);
+      background: rgba(0,0,0,.18);
+      text-align: center;
+    }
+    .aol-logo-placeholder {
+      width: 92px;
+      height: 92px;
+      flex-shrink: 0;
       border-radius: 50%;
-    }
-
-    .masthead h1 {
-      position: relative;
-      z-index: 1;
-      margin: 0;
-      font-size: 34px;
-      line-height: 1;
-      letter-spacing: .09em;
-      text-shadow: 2px 2px 0 #00183c;
-    }
-
-    .masthead .tag {
-      position: relative;
-      z-index: 1;
-      margin-top: 5px;
-      color: #fff1a8;
-      font-size: 13px;
+      border: 3px solid var(--hot-yellow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.22), transparent 65%);
+      color: var(--hot-yellow);
+      font-family: var(--font-wordmark);
       font-weight: bold;
+      font-size: 11px;
+      letter-spacing: .03em;
+      line-height: 1.25;
+    }
+    /* Swap the placeholder above for your real mark later, e.g.:
+       <img src="clockbuster-logo.png" alt="Clockbuster Video" class="aol-logo-placeholder"
+            style="border-radius:50%; object-fit:cover;">
+       Layout will not change. */
+    .aol-subtitle {
+      font-family: var(--font-nav);
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--hot-yellow);
+    }
+    .aol-return {
+      font-family: var(--font-interface);
+      font-size: 11px;
+      color: var(--soft-blue) !important;
+      text-decoration: underline;
+      background: none;
+    }
+    .aol-return:hover {
+      color: #fff !important;
+      background: none;
+    }
+    .aol-search {
+      display: flex;
+      width: 100%;
+      gap: 4px;
+      margin-top: 2px;
+    }
+    .aol-search input {
+      flex: 1;
+      min-width: 0;
+      height: 20px;
+      border: 1px inset #999;
+      padding: 2px 4px;
+      font-family: var(--font-interface);
+      font-size: 10px;
+    }
+    .aol-search button {
+      height: 22px;
+      padding: 0 8px;
+      border: 1px solid #555;
+      border-top-color: #fff;
+      border-left-color: #fff;
+      background: linear-gradient(#fff, #bebebe);
+      font-weight: bold;
+      font-size: 10px;
+      cursor: pointer;
+    }
+    .aol-channels-title {
+      grid-column: 1 / -1;
+      margin: 0 0 2px;
+      color: var(--hot-yellow);
+      font-family: var(--font-nav);
+      font-size: 10px;
       letter-spacing: .22em;
       text-transform: uppercase;
+      text-align: right;
+      opacity: .85;
     }
+    .aol-channels {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px;
+      align-content: start;
+    }
+    .channel-btn {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 8px 6px;
+      text-align: center;
+      text-decoration: none !important;
+      border: 1px solid rgba(0,0,0,.35);
+      box-shadow: inset 1px 1px 0 rgba(255,255,255,.45), 2px 2px 0 rgba(0,0,0,.28);
+    }
+    .channel-btn:hover {
+      filter: brightness(1.08);
+    }
+    .channel-new-burst {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      padding: 1px 4px;
+      background: var(--alert-red);
+      color: #fff;
+      font-family: Impact, Arial, sans-serif;
+      font-size: 8px;
+      letter-spacing: .04em;
+      transform: rotate(-8deg);
+      border: 1px solid #5d0000;
+    }
+    .ch-retail {
+      background: linear-gradient(#ffd84f, #d79c00);
+      color: #3a1f00 !important;
+      font-family: Impact, 'Arial Black', sans-serif;
+      font-weight: 900;
+      font-size: 14px;
+      letter-spacing: .03em;
+    }
+    .ch-compliance {
+      background: linear-gradient(#eaeaea, #9a9a9a);
+      color: #111 !important;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-variant: small-caps;
+      font-size: 13px;
+      letter-spacing: .1em;
+    }
+    .ch-extractions {
+      background: linear-gradient(#8fd0ff, #1f74c9);
+      color: #001b3f !important;
+      font-family: 'Arial Narrow', Arial, sans-serif;
+      font-weight: bold;
+      font-size: 13px;
+      letter-spacing: .02em;
+      transform: scaleX(.94);
+    }
+    .ch-quality {
+      background: linear-gradient(#c9ffd0, #1f9e3a);
+      color: #04240c !important;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-style: italic;
+      font-size: 13px;
+    }
+    .ch-archives {
+      background: linear-gradient(#ffcfcf, #b00000);
+      color: #fff !important;
+      font-family: var(--font-archives);
+      font-style: italic;
+      font-size: 13px;
+    }
+    .ch-remembership {
+      background: linear-gradient(#f3d9ff, #8a3fd6);
+      color: #fff !important;
+      font-family: var(--font-playful);
+      font-size: 16px;
+      font-weight: bold;
+    }
+    /* end AOL masthead block */
 
     .event-strip {
       display: flex;
@@ -209,11 +360,9 @@
       border-bottom: 1px solid #936d00;
       font-weight: bold;
     }
-
     .event-strip strong {
       color: var(--alert-red);
     }
-
     .content-grid {
       display: grid;
       grid-template-columns: 172px 1fr 180px;
@@ -221,14 +370,12 @@
       padding: 8px;
       background: #c7dffd;
     }
-
     .panel {
       margin-bottom: 8px;
       border: 1px solid #6f92bb;
       background: #fff;
       box-shadow: inset 1px 1px 0 #fff, 2px 2px 0 rgba(0,0,0,.08);
     }
-
     .panel-title {
       padding: 4px 6px;
       color: #fff;
@@ -239,23 +386,19 @@
       letter-spacing: .04em;
       text-transform: uppercase;
     }
-
     .panel-title.yellow {
       color: #001b3f;
       background: linear-gradient(#fff6bf, #ffd13f);
       border-bottom-color: #ad8200;
     }
-
     .panel-title.red {
       color: #fff;
       background: linear-gradient(#d70000, #890000);
       border-bottom-color: #5d0000;
     }
-
     .panel-body {
       padding: 7px;
     }
-
     .left-nav a,
     .right-list a {
       display: block;
@@ -264,18 +407,15 @@
       text-decoration: none;
       color: #003e9f;
     }
-
     .left-nav a:before {
       content: "▶ ";
       color: #ff9c00;
     }
-
     .left-nav a:hover,
     .right-list a:hover {
       background: #fff1a8;
       color: #b00000;
     }
-
     .login-row {
       display: grid;
       grid-template-columns: 56px 1fr;
@@ -283,7 +423,6 @@
       align-items: center;
       margin-bottom: 4px;
     }
-
     .fake-input {
       height: 19px;
       padding: 2px 4px;
@@ -292,7 +431,6 @@
       color: #777;
       font-size: 11px;
     }
-
     .small-button {
       display: inline-block;
       margin-top: 4px;
@@ -305,21 +443,18 @@
       font-weight: bold;
       text-decoration: none;
     }
-
     .hero {
       border: 1px solid #547aa8;
       background:
         linear-gradient(90deg, rgba(255,255,255,.9), rgba(255,255,255,.65)),
         repeating-linear-gradient(45deg, #cde6ff 0, #cde6ff 8px, #eaf6ff 8px, #eaf6ff 16px);
     }
-
     .hero h2 {
       margin: 0 0 5px;
       color: #003a91;
       font-size: 22px;
       letter-spacing: .02em;
     }
-
     .hero .coupon {
       display: inline-block;
       margin: 7px 0 2px;
@@ -330,14 +465,12 @@
       font-size: 15px;
       font-weight: bold;
     }
-
     .phase-tabs {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 4px;
       margin: 7px 0 0;
     }
-
     .phase-tab {
       padding: 5px 4px;
       border: 1px solid #375f8f;
@@ -347,13 +480,11 @@
       font-weight: bold;
       color: #003a91;
     }
-
     .bulletline {
       margin: 4px 0;
       padding-left: 16px;
       background: linear-gradient(90deg, #ffcf00 0 8px, transparent 8px);
     }
-
     .notice {
       padding: 6px 7px;
       border: 1px solid #ad8200;
@@ -361,7 +492,6 @@
       color: #2a2100;
       font-weight: bold;
     }
-
     .red-notice {
       padding: 6px 7px;
       border: 1px solid #8e0000;
@@ -369,7 +499,6 @@
       color: #760000;
       font-weight: bold;
     }
-
     .condition h3,
     .copy-block h3 {
       margin: 9px 0 3px;
@@ -378,30 +507,25 @@
       letter-spacing: .04em;
       text-transform: uppercase;
     }
-
     .copy-block p,
     .condition p {
       margin: 0 0 8px;
     }
-
     .mini-status {
       display: grid;
       grid-template-columns: 1fr auto;
       gap: 4px 7px;
       font-size: 11px;
     }
-
     .mini-status div:nth-child(odd) {
       font-weight: bold;
       color: #003a91;
     }
-
     .meter {
       height: 14px;
       border: 1px inset #999;
       background: linear-gradient(90deg, #13a300 0 74%, #fff 74%);
     }
-
     .fake-marquee {
       overflow: hidden;
       white-space: nowrap;
@@ -411,18 +535,15 @@
       color: #fff;
       font-weight: bold;
     }
-
     .fake-marquee span {
       display: inline-block;
       padding: 4px 0;
       animation: crawl 22s linear infinite;
     }
-
     @keyframes crawl {
       from { transform: translateX(100%); }
       to { transform: translateX(-100%); }
     }
-
     .artifact-card {
       display: grid;
       grid-template-columns: 52px 1fr;
@@ -432,7 +553,6 @@
       border: 1px solid #bdd7f2;
       background: #f4faff;
     }
-
     .icon-box {
       display: flex;
       align-items: center;
@@ -445,7 +565,6 @@
       font-weight: bold;
       color: #003a91;
     }
-
     .footer {
       padding: 8px;
       background: #e7e7e7;
@@ -454,44 +573,39 @@
       text-align: center;
       font-size: 11px;
     }
-
     .barcode {
       margin: 5px auto 0;
       max-width: 280px;
       height: 26px;
       background: repeating-linear-gradient(90deg, #111 0 2px, transparent 2px 5px, #111 5px 6px, transparent 6px 10px);
     }
-
     @media (max-width: 760px) {
       body {
         padding: 0;
       }
-
       .browser-shell {
         width: 100%;
         max-width: 100%;
         border-left: 0;
         border-right: 0;
       }
-
-      .masthead h1 {
-        font-size: 27px;
+      .aol-masthead {
+        grid-template-columns: 1fr;
       }
-
+      .aol-channels-title {
+        text-align: left;
+      }
       .content-grid {
         grid-template-columns: 1fr;
       }
-
       .phase-tabs {
         grid-template-columns: repeat(2, 1fr);
       }
-
       .event-strip,
       .keyword-bar {
         grid-template-columns: 1fr;
         display: block;
       }
-
       .keyword-input {
         width: 100%;
         margin: 4px 0;
@@ -505,7 +619,6 @@
       <span>CLOCKBUSTER ONLINE 7.0 BLAZING SPEED with 1,000,000 Free Trial Hours</span>
       <div class="window-controls" aria-hidden="true"><span>_</span><span>□</span><span>X</span></div>
     </div>
-
     <div class="toolbar" aria-label="quick links">
       <a class="tool-button" href="#welcome">Welcome</a>
       <a class="tool-button" href="#sale">Sale</a>
@@ -514,16 +627,40 @@
       <a class="tool-button" href="#condition">Condition</a>
       <a class="tool-button" href="#contact">Contact</a>
     </div>
-
     <form class="keyword-bar" action="https://www.ebay.com/str/clockbustervideo" method="get">
       <span class="keyword-label">Keyword:</span>
       <input class="keyword-input" type="text" value="OBSOLETE HOUSE" aria-label="keyword" />
       <button class="go-button" type="submit">Go</button>
     </form>
 
-    <header class="masthead" id="welcome">
-      <h1>CLOCKBUSTER</h1>
-      <div class="tag">R E W I N D &nbsp; R E A L I T Y</div>
+    <!-- AOL CHANNELS-STYLE MASTHEAD -->
+    <header class="aol-masthead" id="welcome">
+      <div class="aol-id-card">
+        <!--
+          PLACEHOLDER LOGO. Replace this whole div's contents with:
+          <img src="clockbuster-logo.png" alt="Clockbuster Video">
+          and it will drop into this circle at the same size/position.
+        -->
+        <div class="aol-logo-placeholder">CLOCKBUSTER<br>VIDEO</div>
+        <div class="aol-subtitle">Continuity Channels</div>
+        <a class="aol-return" href="#welcome">Return to Welcome</a>
+        <form class="aol-search" action="https://www.ebay.com/str/clockbustervideo" method="get">
+          <input type="text" name="_nkw" placeholder="Locate Artifact" aria-label="Locate Artifact" />
+          <button type="submit">Go</button>
+        </form>
+      </div>
+      <div class="aol-channels-title">Consumer Departments</div>
+      <div class="aol-channels">
+        <a class="channel-btn ch-retail" href="https://www.ebay.com/str/clockbustervideo">RETAIL</a>
+        <a class="channel-btn ch-compliance" href="#exclusives">COMPLIANCE</a>
+        <a class="channel-btn ch-extractions" href="https://www.ebay.com/sch/i.html?_dkr=1&iconV2Request=true&_blrs=recall_filtering&_ssn=clockbustervideo&store_name=clockbustervideo&_oac=1&_sop=10&LH_SALE_CURRENCY=0&_pgn=1">EXTRACTIONS</a>
+        <a class="channel-btn ch-quality" href="#condition">QUALITY</a>
+        <a class="channel-btn ch-archives" href="https://x.com/realclockbuster">
+          ARCHIVES
+          <span class="channel-new-burst">New!</span>
+        </a>
+        <a class="channel-btn ch-remembership" href="#contact">Remembership</a>
+      </div>
     </header>
 
     <div class="event-strip" id="sale">
@@ -531,11 +668,9 @@
       <span>SALES PROGRAM: <strong>UNDEFINED 9% OFF EVENT HORIZON PHENOMENON</strong></span>
       <span>COUPON: <strong>REWINDREALITY</strong></span>
     </div>
-
     <div class="fake-marquee" aria-hidden="true">
       <span>REMEMBERSHIP NOTICE: The world will end in seven days, unless you dig a giant hole! Use coupon code REWINDREALITY for 9.999% off everything. Do nothing and experience a smaller markdown as assigned by the marketing department.</span>
     </div>
-
     <main class="content-grid">
       <aside class="left-col">
         <section class="panel left-nav">
@@ -549,7 +684,6 @@
             <a href="#contact">Remembership</a>
           </div>
         </section>
-
         <section class="panel">
           <div class="panel-title yellow">Member Sign-In</div>
           <div class="panel-body">
@@ -558,7 +692,6 @@
             <a class="small-button" href="https://www.ebay.com/str/clockbustervideo">Enter Store</a>
           </div>
         </section>
-
         <section class="panel">
           <div class="panel-title">ReMembership Status</div>
           <div class="panel-body mini-status">
@@ -568,7 +701,6 @@
             <div>Ennui</div><div>Not Included in your Remembership</div>
           </div>
         </section>
-
         <section class="panel">
           <div class="panel-title">Connection Test</div>
           <div class="panel-body">
@@ -578,7 +710,6 @@
           </div>
         </section>
       </aside>
-
       <section class="main-col">
         <section class="panel hero">
           <div class="panel-title red">Clockbuster Video</div>
@@ -598,7 +729,6 @@
             </div>
           </div>
         </section>
-
         <section class="panel" id="shop">
           <div class="panel-title">Access Terminals</div>
           <div class="panel-body copy-block">
@@ -607,7 +737,6 @@
             <p><a href="https://x.com/realclockbuster">Sold-Out Hall of Fame X.com</a>: archival record of successful extractions.</p>
           </div>
         </section>
-
         <section class="panel">
           <div class="panel-title yellow">Reality Check</div>
           <div class="panel-body copy-block">
@@ -617,7 +746,6 @@
             <p>(For legal reasons, all conditions are subjective. For cosmic reasons, all conditions are meaningless.)</p>
           </div>
         </section>
-
         <section class="panel" id="exclusives">
           <div class="panel-title red">Assurance of Stupidity/Legal Compliance Desk</div>
           <div class="panel-body copy-block">
@@ -636,30 +764,25 @@
                 <p>Clockbuster Exclusives are assembled from authentic, found vintage cartridges whose previous timelines have been administratively retired by God.<br> This, as previously stated, pretends to care about the enviorment and plastics, etc. by reducing the warmth of the solar system.</p>
               </div>
             </div>
-            <div class="notice">NO ILLEGAL ROM-HACKS. ALL VINTAGE CARTRIDGES. HUMAN ONLY TRANSACTIONS, ABSOLUTELY <u>NO</U> DOGS <u>OR</u> BIRDS may place an order.</div>
+            <div class="notice">NO ILLEGAL ROM-HACKS. ALL VINTAGE CARTRIDGES. HUMAN ONLY TRANSACTIONS, ABSOLUTELY <u>NO</u> DOGS <u>OR</u> BIRDS may place an order.</div>
           </div>
         </section>
-
         <section class="panel" id="condition">
           <div class="panel-title">Condition Guide</div>
           <div class="panel-body condition">
             <h3>VERY GOOD</h3>
             <p>Disc looks like it was viewed only once. Free from any obvious or significant wear. Perhaps it was only admired. Maybe just whispered to. No scratches, scuffs, or signs of existential crisis.</p>
-
             <h3>GOOD</h3>
             <p>This disc has lived a good life so far. It has been loved and cared for. Passed from hand to hand with the normal wear you might see on a well-loved disc. Possibly a light scratch or scuff that doesn't affect performance. The case may have some significant shelf wear.</p>
-
             <h3>ACCEPTABLE</h3>
             <p>The disc has been through multiple iterations of the universe. Still plays like a champ. TESTED. Expect visible scratches, scuffs, and perhaps a lingering resentment toward its previous owner. The outer case may be stained, distressed, or non-existent (just like all of us).</p>
           </div>
         </section>
-
         <section class="panel">
           <div class="panel-title">Operational Phases</div>
           <div class="panel-body copy-block">
             <h3>PHASE 1 [ACTIVE]</h3>
             <p>Temporal Retrieval: Extract artifacts from errant timelines that God has abandoned. Uses a nuclear-modified 1996 56k ActionTec AOL modem kit, running on an unlimited supply of expired AOL free-trial discs. Transfers lost media from alternate realities. Sponsored by America Online dial-up service.</p>
-
             <h3>PHASE 2 [ACTIVE]</h3>
             <p>Conditioning & Conversion. Proprietary Nostalgic Endowment Effect assigns a sense of ownership prior to purchase.</p>
             <p class="bulletline">2.1 Choice Compression & Artificial scarcity. Urgency implied and supply denied.</p>
@@ -669,18 +792,16 @@
             <p class="bulletline">2.5 Reciprocity & Social Proof: Small acts of giving. Trust accumulated organically.</p>
             <p class="bulletline">2.6 Satire and Fair Use: Fully interpolated. All legal doctrine conformed to.</p>
             <p class="bulletline">Phase 69: Memory All Day Extended Mandatory 7.000% Observance Markdown Event. Ongoing.</p>
-
             <h3>PHASE 3 [IN PROGRESS]</h3>
             <p>Public Compliance. Sold-out artifacts, field sightings, and retail deployments are recorded for future remembership review.</p>
           </div>
         </section>
-
         <section class="panel" id="contact">
           <div class="panel-title yellow">Inquiries & ReMembership</div>
           <div class="panel-body copy-block">
             <p>Contact portal for existing and prospective ReMembers.</p>
             <p>Sales@clockbuster.net</p>
-            <<form action="https://formspree.io/f/xwpklzwl" method="POST">
+            <form action="https://formspree.io/f/xwpklzwl" method="POST">
               <p><label>Your Email<br><input style="width:100%; height:22px; border:1px inset #999;" type="email" name="email"></label></p>
               <p><label>Your Message<br><textarea style="width:100%; height:82px; border:1px inset #999;" name="message"></textarea></label></p>
               <button class="go-button" type="submit">Submit For ReMembership</button>
@@ -688,7 +809,6 @@
           </div>
         </section>
       </section>
-
       <aside class="right-col">
         <section class="panel right-list">
           <div class="panel-title yellow">Today on Clockbuster</div>
@@ -698,7 +818,6 @@
             <a href="https://x.com/realclockbuster">Review Sold-Out Extractions (X.com)</a>
           </div>
         </section>
-
         <section class="panel">
           <div class="panel-title">ReMembership Benefits</div>
           <div class="panel-body mini-status">
@@ -710,7 +829,6 @@
           </div>
           <div class="barcode" aria-hidden="true"></div>
         </section>
-
         <section class="panel">
           <div class="panel-title red">Company Promise</div>
           <div class="panel-body copy-block">
@@ -719,7 +837,6 @@
             <p></p>
           </div>
         </section>
-
         <section class="panel">
           <div class="panel-title">Best Viewed In:</div>
           <div class="panel-body">
@@ -730,7 +847,6 @@
         </section>
       </aside>
     </main>
-
     <footer class="footer">
       CLOCKBUSTER VIDEO By <a href="https://www.obsoletehouse.com">Obsolete House</a>© 2025-2026<br>
       Serving you since 2.22.2022 | Rewind Reality<br>
