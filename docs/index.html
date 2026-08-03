@@ -7,41 +7,37 @@
   <meta name="description" content="Clockbuster Video by Obsolete House / rare out-of-print DVDs, VHS, cassette tapes, CDs, software, promo media and parody collectibles / interdimensional video store built on obsolete media culture." />
   <!--
   ADOBE FONTS (Typekit) EMBED
-  Replace XXXXXXX with your Adobe Fonts Project ID.
-  https://fonts.adobe.com/
-  Recommended kit contents once you set this up:
-    - Eurostile Extended / Microgramma-style face for the CLOCKBUSTER wordmark
-    - ITC Avant Garde Gothic for the "Continuity Channels" subtitle + nav
-    - Adobe Garamond Pro Italic for the ARCHIVES channel button
-    - Myriad Pro or Source Sans 3 for general interface text
-    - Cooper Black (or similar) for the REMEMBERSHIP channel button
-  Until the kit is live, everything below falls back to web-safe approximations
-  (Impact, Georgia italic, Arial Narrow, Brush Script MT, small-caps) so the
-  layout and personality-per-button effect still reads correctly.
+  Kit contents (confirmed names from fonts.adobe.com):
+    - eurostile-extended        -> CLOCKBUSTER wordmark
+    - adobe-garamond-pro        -> ARCHIVES channel button
+    - myriad-pro                -> general interface text
+    - cooper-black-std          -> reserved for playful accents
+    - dottonoji                 -> every instance of the word "Remembership"
   -->
   <link rel="stylesheet" href="https://use.typekit.net/rxf5hlm.css">
   <style>
     :root {
-  --page-blue: #064b9b;
-  --deep-blue: #002d72;
-  --soft-blue: #dbeeff;
-  --panel-blue: #a9d5ff;
-  --hot-yellow: #fff1a8;
-  --alert-red: #b00000;
-  --ink: #001b3f;
-  --gray-1: #f4f4f4;
-  --gray-2: #d6d6d6;
-  --gray-3: #9f9f9f;
-  --gray-4: #565656;
-  --white: #ffffff;
+      --page-blue: #064b9b;
+      --deep-blue: #002d72;
+      --soft-blue: #dbeeff;
+      --panel-blue: #a9d5ff;
+      --hot-yellow: #fff1a8;
+      --alert-red: #b00000;
+      --ink: #001b3f;
+      --gray-1: #f4f4f4;
+      --gray-2: #d6d6d6;
+      --gray-3: #9f9f9f;
+      --gray-4: #565656;
+      --white: #ffffff;
 
-  /* Correct Adobe Fonts names */
-  --font-wordmark: "eurostile-extended", Impact, "Arial Narrow", sans-serif;
-  --font-nav: "itc-avant-garde-gothic-pro", "Century Gothic", Futura, Arial, sans-serif;
-  --font-archives: "adobe-garamond-pro", Garamond, "Times New Roman", serif;
-  --font-interface: "myriad-pro", Tahoma, Verdana, Arial, sans-serif;
-  --font-playful: "cooper-black-std", "Brush Script MT", cursive;
-}
+      /* Correct Adobe Fonts (Typekit) names, unquoted per fonts.adobe.com usage */
+      --font-wordmark: eurostile-extended, sans-serif;
+      --font-nav: itc-avant-garde-gothic-pro, Futura, Arial, sans-serif;
+      --font-archives: adobe-garamond-pro, serif;
+      --font-interface: myriad-pro, sans-serif;
+      --font-playful: cooper-black-std, serif;
+      --font-remembership: dottonoji, sans-serif;
+    }
 
     * {
       box-sizing: border-box;
@@ -166,12 +162,6 @@
 
     /* ============================================================
        AOL "CHANNELS"-STYLE MASTHEAD
-       Replaces the old plain blue banner. Left column = ID card
-       (logo placeholder, division subtitle, return link, search).
-       Right side = a grid of department buttons, each with its own
-       typeface/color personality, the way AOL Channels varied every
-       tile. All hrefs below are the SAME links already used in the
-       left-nav panel further down the page — nothing new is linked.
        ============================================================ */
     .aol-masthead {
       display: grid;
@@ -210,10 +200,6 @@
       letter-spacing: .03em;
       line-height: 1.25;
     }
-    /* Swap the placeholder above for your real mark later, e.g.:
-       <img src="clockbuster-logo.png" alt="Clockbuster Video" class="aol-logo-placeholder"
-            style="border-radius:50%; object-fit:cover;">
-       Layout will not change. */
     .aol-subtitle {
       font-family: var(--font-nav);
       font-size: 10px;
@@ -345,11 +331,17 @@
     .ch-remembership {
       background: linear-gradient(#f3d9ff, #8a3fd6);
       color: #fff !important;
-      font-family: var(--font-playful);
+      /* Every instance of the word "Remembership" uses dottonoji, per brand rule below */
+      font-family: var(--font-remembership);
       font-size: 16px;
       font-weight: bold;
     }
     /* end AOL masthead block */
+
+    /* Brand rule: the word "Remembership" (in any casing) always renders in dottonoji */
+    .rmb-font {
+      font-family: var(--font-remembership);
+    }
 
     .event-strip {
       display: flex;
@@ -637,18 +629,12 @@
     <!-- AOL CHANNELS-STYLE MASTHEAD -->
     <header class="aol-masthead" id="welcome">
       <div class="aol-id-card">
-        <!--
-          PLACEHOLDER LOGO. Replace this whole div's contents with:
-          <img src="clockbuster-logo.png" alt="Clockbuster Video">
-          and it will drop into this circle at the same size/position.
-        -->
         <img
-  src="clockbustervideologofinal.png"
-  alt="Clockbuster Video"
-  class="aol-logo-placeholder"
-  style="border-radius:50%; object-fit:cover;"
->
-
+          src="clockbustervideologofinal.png"
+          alt="Clockbuster Video"
+          class="aol-logo-placeholder"
+          style="border-radius:50%; object-fit:cover;"
+        >
         <div class="aol-subtitle">Continuity Channels</div>
         <a class="aol-return" href="#welcome">Return to Welcome</a>
         <form class="aol-search" action="https://www.ebay.com/str/clockbustervideo" method="get">
@@ -676,7 +662,7 @@
       <span>COUPON: <strong>REWINDREALITY</strong></span>
     </div>
     <div class="fake-marquee" aria-hidden="true">
-      <span>REMEMBERSHIP NOTICE: The world will end in seven days, unless you dig a giant hole! Use coupon code REWINDREALITY for 9.999% off everything. Do nothing and experience a smaller markdown as assigned by the marketing department.</span>
+      <span><span class="rmb-font">REMEMBERSHIP</span> NOTICE: The world will end in seven days, unless you dig a giant hole! Use coupon code REWINDREALITY for 9.999% off everything. Do nothing and experience a smaller markdown as assigned by the marketing department.</span>
     </div>
     <main class="content-grid">
       <aside class="left-col">
@@ -688,7 +674,7 @@
             <a href="#exclusives">Fake Games</a>
             <a href="https://x.com/realclockbuster">Archive</a>
             <a href="#condition">Condition Center</a>
-            <a href="#contact">Remembership</a>
+            <a href="#contact" class="rmb-font">Remembership</a>
           </div>
         </section>
         <section class="panel">
@@ -700,12 +686,12 @@
           </div>
         </section>
         <section class="panel">
-          <div class="panel-title">ReMembership Status</div>
+          <div class="panel-title"><span class="rmb-font">ReMembership</span> Status</div>
           <div class="panel-body mini-status">
             <div>Standing</div><div>Technically Acceptable</div>
             <div>Memory</div><div>Inaccessible</div>
             <div>Rental Term</div><div>5000 years</div>
-            <div>Ennui</div><div>Not Included in your Remembership</div>
+            <div>Ennui</div><div>Not Included in your <span class="rmb-font">Remembership</span></div>
           </div>
         </section>
         <section class="panel">
@@ -727,7 +713,7 @@
             <p>Please check the number, confirm the timeline, and try your transaction again. Certain physical-media objects have remained temporarily marked down while Clockbuster attempts to reach the appropriate dimension.</p>
             <p>Please remain on the line. This transaction may be monitored for quality assurance, reality stability, or evidence of illegal streaming services.</p>
             <div class="coupon">..or use coupon code REWINDREALITY for 9.999% off everything.</div>
-            <p>All orders come complete with a REMEMBERSHIP CARD.</p>
+            <p>All orders come complete with a <span class="rmb-font">REMEMBERSHIP</span> CARD.</p>
             <div class="phase-tabs" aria-label="operational phases">
               <div class="phase-tab">PHASE 1<br>Extract</div>
               <div class="phase-tab">PHASE 2<br>Detournement</div>
@@ -804,14 +790,14 @@
           </div>
         </section>
         <section class="panel" id="contact">
-          <div class="panel-title yellow">Inquiries & ReMembership</div>
+          <div class="panel-title yellow">Inquiries & <span class="rmb-font">ReMembership</span></div>
           <div class="panel-body copy-block">
             <p>Contact portal for existing and prospective ReMembers.</p>
             <p>Sales@clockbuster.net</p>
             <form action="https://formspree.io/f/xwpklzwl" method="POST">
               <p><label>Your Email<br><input style="width:100%; height:22px; border:1px inset #999;" type="email" name="email"></label></p>
               <p><label>Your Message<br><textarea style="width:100%; height:82px; border:1px inset #999;" name="message"></textarea></label></p>
-              <button class="go-button" type="submit">Submit For ReMembership</button>
+              <button class="go-button" type="submit">Submit For <span class="rmb-font">ReMembership</span></button>
             </form>
           </div>
         </section>
@@ -826,7 +812,7 @@
           </div>
         </section>
         <section class="panel">
-          <div class="panel-title">ReMembership Benefits</div>
+          <div class="panel-title"><span class="rmb-font">ReMembership</span> Benefits</div>
           <div class="panel-body mini-status">
             <div>Rental Terms</div><div>5000 YEARS</div>
             <div>Secure Shipping</div><div>EXTREMELY</div>
