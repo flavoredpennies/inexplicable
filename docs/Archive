@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CLOCKBUSTER ARCHIVES / Sold-Out Field Reports</title>
+  <meta name="description" content="Clockbuster Video Archives: a record of sold-out extractions, discontinued exclusives, and retired display artifacts." />
+  <!--
+  ADOBE FONTS (Typekit) EMBED
+  Same kit as the main storefront page (kitId rxf5hlm). This uses the JS
+  embed, not the CSS <link>, because the kit contains dottonoji (a Japanese
+  font) -- kits with a CJK font return a 412 error over plain CSS embed and
+  must use this script method instead.
+  -->
+  <script>
+    (function(d) {
+      var config = {
+        kitId: 'rxf5hlm',
+        scriptTimeout: 3000,
+        async: true
+      },
+      h = d.documentElement, t = setTimeout(function() {
+        h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+      }, config.scriptTimeout),
+      tk = d.createElement("script"), f = false,
+      s = d.getElementsByTagName("script")[0], a;
+      h.className += " wf-loading";
+      tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+      tk.async = true;
+      tk.onload = tk.onreadystatechange = function() {
+        a = this.readyState;
+        if (f || a && a != "complete" && a != "loaded") return;
+        f = true;
+        clearTimeout(t);
+        try { Typekit.load(config); } catch (e) {}
+      };
+      s.parentNode.insertBefore(tk, s);
+    })(document);
+  </script>
+  <style>
+    :root {
+      --page-blue: #064b9b;
+      --deep-blue: #002d72;
+      --soft-blue: #dbeeff;
+      --panel-blue: #a9d5ff;
+      --hot-yellow: #fff1a8;
+      --alert-red: #b00000;
+      --ink: #001b3f;
+      --gray-1: #f4f4f4;
+      --gray-2: #d6d6d6;
+      --gray-3: #9f9f9f;
+      --gray-4: #565656;
+      --white: #ffffff;
+
+      --font-wordmark: eurostile-extended, sans-serif;
+      --font-nav: itc-avant-garde-gothic-pro, Futura, Arial, sans-serif;
+      --font-archives: adobe-garamond-pro, serif;
+      --font-interface: myriad-pro, sans-serif;
+      --font-playful: cooper-black-std, serif;
+      --font-remembership: dottonoji, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html {
+      min-height: 100%;
+      background:
+        radial-gradient(circle at 20px 20px, rgba(255,255,255,.28) 0 1px, transparent 2px),
+        linear-gradient(180deg, #093f8f 0%, #001d4d 55%, #000f2d 100%);
+      background-size: 24px 24px, auto;
+    }
+    body {
+      margin: 0;
+      padding: 12px 0 24px;
+      color: var(--ink);
+      font-family: var(--font-interface);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+    a { color: #003e9f; font-weight: bold; text-decoration: underline; }
+    a:hover { color: #b00000; background: #fff6bf; }
+    .browser-shell {
+      width: 780px;
+      max-width: calc(100vw - 18px);
+      margin: 0 auto;
+      border: 2px solid #b7cfff;
+      background: #ececec;
+      box-shadow: 0 0 0 2px #001d4d, 0 12px 40px rgba(0,0,0,.55);
+    }
+    .window-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 24px;
+      padding: 3px 6px;
+      color: #fff;
+      font-weight: bold;
+      background: linear-gradient(90deg, #003a91, #1a75d2, #003a91);
+      border-bottom: 1px solid #001f55;
+      letter-spacing: .02em;
+    }
+    .window-controls { display: flex; gap: 3px; }
+    .window-controls span {
+      display: inline-flex;
+      width: 17px; height: 17px;
+      align-items: center; justify-content: center;
+      border: 1px solid #222;
+      background: linear-gradient(#fff, #bdbdbd);
+      color: #111; font-size: 10px; line-height: 1;
+    }
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px;
+      border-top: 1px solid #fff;
+      border-bottom: 1px solid #9a9a9a;
+      background: linear-gradient(#fefefe, #cfcfcf);
+      white-space: nowrap;
+      overflow-x: auto;
+    }
+    .tool-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      padding: 2px 7px;
+      border: 1px solid #737373;
+      border-top-color: #fff;
+      border-left-color: #fff;
+      background: linear-gradient(#ffffff, #d0d0d0);
+      color: #001b3f;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .archive-header {
+      padding: 14px;
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.14), transparent 40%),
+        linear-gradient(90deg, #003075 0%, #0064c7 48%, #001f5c 100%);
+      border-bottom: 3px solid #ffcf00;
+    }
+    .archive-header h1 {
+      margin: 0;
+      font-family: var(--font-archives);
+      font-style: italic;
+      font-size: 28px;
+      letter-spacing: .02em;
+      text-shadow: 2px 2px 0 #00183c;
+    }
+    .archive-header .tag {
+      margin-top: 4px;
+      font-family: var(--font-nav);
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--hot-yellow);
+    }
+    .archive-header .back-link {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 11px;
+      color: var(--soft-blue) !important;
+    }
+    main {
+      padding: 10px;
+      background: #c7dffd;
+    }
+    .panel {
+      margin-bottom: 10px;
+      border: 1px solid #6f92bb;
+      background: #fff;
+      box-shadow: inset 1px 1px 0 #fff, 2px 2px 0 rgba(0,0,0,.08);
+    }
+    .panel-title {
+      padding: 4px 6px;
+      color: #fff;
+      background: linear-gradient(#1f74c9, #003f93);
+      border-bottom: 1px solid #002b65;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .panel-title.red {
+      color: #fff;
+      background: linear-gradient(#d70000, #890000);
+      border-bottom-color: #5d0000;
+    }
+    .panel-body { padding: 10px; }
+    .archive-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+    }
+    .archive-card {
+      position: relative;
+      border: 1px solid #6f92bb;
+      background: #f4faff;
+      box-shadow: inset 1px 1px 0 #fff, 2px 2px 0 rgba(0,0,0,.08);
+    }
+    .archive-photo {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      border-bottom: 1px solid #6f92bb;
+      background: repeating-linear-gradient(45deg, #dbeeff 0, #dbeeff 8px, #eaf6ff 8px, #eaf6ff 16px);
+    }
+    .archive-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    /*
+      PLACEHOLDER STATE: cards without a real photo yet show this dashed
+      "upload image here" box instead of an <img>. Once you have a filename
+      in the /archive-images/ folder, just swap the placeholder div for:
+        <img src="archive-images/your-file.jpg" alt="Item name">
+      inside .archive-photo, and delete the .photo-placeholder div.
+    */
+    .photo-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 10px;
+      border: 2px dashed #6f92bb;
+      color: #375f8f;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: .04em;
+    }
+    .sold-stamp {
+      position: absolute;
+      top: 8px;
+      right: -6px;
+      padding: 3px 10px;
+      background: var(--alert-red);
+      color: #fff;
+      font-family: Impact, Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: .06em;
+      transform: rotate(8deg);
+      border: 1px solid #5d0000;
+      box-shadow: 1px 1px 0 rgba(0,0,0,.3);
+    }
+    .archive-info { padding: 8px; }
+    .archive-info h3 {
+      margin: 0 0 3px;
+      color: #003a91;
+      font-size: 13px;
+      letter-spacing: .02em;
+    }
+    .archive-meta {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 2px 6px;
+      font-size: 10px;
+      color: #333;
+    }
+    .archive-meta span:nth-child(odd) {
+      font-weight: bold;
+      color: #003a91;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+    }
+    .archive-notes {
+      margin: 6px 0 0;
+      font-size: 11px;
+      color: #444;
+      line-height: 1.3;
+    }
+    .footer {
+      padding: 8px;
+      background: #e7e7e7;
+      border-top: 1px solid #8b8b8b;
+      color: #333;
+      text-align: center;
+      font-size: 11px;
+    }
+    @media (max-width: 760px) {
+      body { padding: 0; }
+      .browser-shell { width: 100%; max-width: 100%; border-left: 0; border-right: 0; }
+      .archive-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+    }
+  </style>
+</head>
+<body>
+  <div class="browser-shell">
+    <div class="window-title">
+      <span>CLOCKBUSTER ARCHIVES / Field Reports Terminal</span>
+      <div class="window-controls" aria-hidden="true"><span>_</span><span>□</span><span>X</span></div>
+    </div>
+    <div class="toolbar" aria-label="quick links">
+      <a class="tool-button" href="index.html#welcome">Welcome</a>
+      <a class="tool-button" href="index.html#sale">Sale</a>
+      <a class="tool-button" href="index.html#shop">Shop</a>
+      <a class="tool-button" href="index.html#exclusives">Exclusives</a>
+      <a class="tool-button" href="index.html#condition">Condition</a>
+      <a class="tool-button" href="index.html#contact">Contact</a>
+    </div>
+    <header class="archive-header">
+      <h1>The Archives</h1>
+      <div class="tag">Field Reports / Sold-Out Extractions</div>
+      <a class="back-link" href="index.html#welcome">&larr; Return to Welcome</a>
+    </header>
+    <main>
+      <section class="panel">
+        <div class="panel-title red">Sold-Out Record</div>
+        <div class="panel-body">
+          <p style="margin-top:0;">Every artifact below has completed its retail phase and been retired to the permanent record. Sold once, documented forever.</p>
+
+          <!--
+            ============================================================
+            HOW TO ADD A REAL ITEM
+            1. Put your image file in an "archive-images" folder next to
+               this HTML file (create the folder if it doesn't exist).
+            2. Inside the matching .archive-photo below, delete the
+               <div class="photo-placeholder">...</div> and replace it with:
+                 <img src="archive-images/your-filename.jpg" alt="Item name here">
+            3. Edit the h3 title, the meta rows (Sold / Price / Condition),
+               and the notes paragraph to describe that specific item.
+            4. Copy one whole <div class="archive-card">...</div> block to
+               add another item to the grid -- no other code needs to change.
+            ============================================================
+          -->
+
+          <div class="archive-grid">
+
+            <div class="archive-card">
+              <div class="archive-photo">
+                <div class="photo-placeholder">UPLOAD IMAGE<br>archive-images/item-01.jpg</div>
+                <span class="sold-stamp">SOLD OUT</span>
+              </div>
+              <div class="archive-info">
+                <h3>Untitled Artifact 01</h3>
+                <div class="archive-meta">
+                  <span>Sold</span><span>—</span>
+                  <span>Condition</span><span>—</span>
+                </div>
+                <p class="archive-notes">Description goes here once the item details are filled in.</p>
+              </div>
+            </div>
+
+            <div class="archive-card">
+              <div class="archive-photo">
+                <div class="photo-placeholder">UPLOAD IMAGE<br>archive-images/item-02.jpg</div>
+                <span class="sold-stamp">SOLD OUT</span>
+              </div>
+              <div class="archive-info">
+                <h3>Untitled Artifact 02</h3>
+                <div class="archive-meta">
+                  <span>Sold</span><span>—</span>
+                  <span>Condition</span><span>—</span>
+                </div>
+                <p class="archive-notes">Description goes here once the item details are filled in.</p>
+              </div>
+            </div>
+
+            <div class="archive-card">
+              <div class="archive-photo">
+                <div class="photo-placeholder">UPLOAD IMAGE<br>archive-images/item-03.jpg</div>
+                <span class="sold-stamp">SOLD OUT</span>
+              </div>
+              <div class="archive-info">
+                <h3>Untitled Artifact 03</h3>
+                <div class="archive-meta">
+                  <span>Sold</span><span>—</span>
+                  <span>Condition</span><span>—</span>
+                </div>
+                <p class="archive-notes">Description goes here once the item details are filled in.</p>
+              </div>
+            </div>
+
+            <div class="archive-card">
+              <div class="archive-photo">
+                <div class="photo-placeholder">UPLOAD IMAGE<br>archive-images/item-04.jpg</div>
+                <span class="sold-stamp">SOLD OUT</span>
+              </div>
+              <div class="archive-info">
+                <h3>Untitled Artifact 04</h3>
+                <div class="archive-meta">
+                  <span>Sold</span><span>—</span>
+                  <span>Condition</span><span>—</span>
+                </div>
+                <p class="archive-notes">Description goes here once the item details are filled in.</p>
+              </div>
+            </div>
+
+            <div class="archive-card">
+              <div class="archive-photo">
+                <div class="photo-placeholder">UPLOAD IMAGE<br>archive-images/item-05.jpg</div>
+                <span class="sold-stamp">SOLD OUT</span>
+              </div>
+              <div class="archive-info">
+                <h3>Untitled Artifact 05</h3>
+                <div class="archive-meta">
+                  <span>Sold</span><span>—</span>
+                  <span>Condition</span><span>—</span>
+                </div>
+                <p class="archive-notes">Description goes here once the item details are filled in.</p>
+              </div>
+            </div>
+
+            <div class="archive-card">
+              <div class="archive-photo">
+                <div class="photo-placeholder">UPLOAD IMAGE<br>archive-images/item-06.jpg</div>
+                <span class="sold-stamp">SOLD OUT</span>
+              </div>
+              <div class="archive-info">
+                <h3>Untitled Artifact 06</h3>
+                <div class="archive-meta">
+                  <span>Sold</span><span>—</span>
+                  <span>Condition</span><span>—</span>
+                </div>
+                <p class="archive-notes">Description goes here once the item details are filled in.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      CLOCKBUSTER VIDEO By <a href="https://www.obsoletehouse.com">Obsolete House</a>© 2025-2026<br>
+      <a href="index.html#welcome">Return to Clockbuster Online</a>
+    </footer>
+  </div>
+</body>
+</html>
