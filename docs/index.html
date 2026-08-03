@@ -13,8 +13,40 @@
     - myriad-pro                -> general interface text
     - cooper-black-std          -> reserved for playful accents
     - dottonoji                 -> every instance of the word "Remembership"
+
+  IMPORTANT: dottonoji (Yokokaku) is a Japanese-language font. Adobe Fonts
+  kits containing a CJK (Chinese/Japanese/Korean) font CANNOT be loaded with
+  the plain <link rel="stylesheet"> CSS embed -- Adobe's servers return a 412
+  error for the whole kit if you try. The JS embed below is Adobe's required
+  method for kits like this one. If you ever remove dottonoji from the kit,
+  the plain CSS <link> would work again, but as long as it's in there, use
+  this script.
   -->
-  <link rel="stylesheet" href="https://use.typekit.net/rxf5hlm.css">
+  <script>
+    (function(d) {
+      var config = {
+        kitId: 'rxf5hlm',
+        scriptTimeout: 3000,
+        async: true
+      },
+      h = d.documentElement, t = setTimeout(function() {
+        h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+      }, config.scriptTimeout),
+      tk = d.createElement("script"), f = false,
+      s = d.getElementsByTagName("script")[0], a;
+      h.className += " wf-loading";
+      tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+      tk.async = true;
+      tk.onload = tk.onreadystatechange = function() {
+        a = this.readyState;
+        if (f || a && a != "complete" && a != "loaded") return;
+        f = true;
+        clearTimeout(t);
+        try { Typekit.load(config); } catch (e) {}
+      };
+      s.parentNode.insertBefore(tk, s);
+    })(document);
+  </script>
   <style>
     :root {
       --page-blue: #064b9b;
