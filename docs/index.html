@@ -280,37 +280,113 @@
       font-size: 10px;
       cursor: pointer;
     }
+    .aol-channels-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-width: 0;
+    }
     .aol-channels-title {
-      grid-column: 1 / -1;
       margin: 0 0 2px;
       color: var(--hot-yellow);
       font-family: var(--font-nav);
       font-size: 10px;
       letter-spacing: .22em;
       text-transform: uppercase;
-      text-align: right;
+      text-align: center;
       opacity: .85;
+      width: 100%;
+      max-width: 420px;
     }
+
+    /* ============================================================
+       CONSUMER DEPARTMENT BUTTONS (revised)
+       - auto-fit grid so the row always spans edge-to-edge at any
+         viewport width instead of assuming exactly 2 columns
+       - fixed a class-name mismatch that left the LIVE EXTRACTIONS
+         button completely unstyled (it was calling a class that
+         didn't exist in this sheet, ch-LIVEextractions vs ch-extractions)
+       - added CRT-ish hover/press chrome: light sweep, scanlines,
+         lift on hover, press-in on click, pulsing badge
+       ============================================================ */
     .aol-channels {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 6px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 7px;
       align-content: start;
+      justify-content: center;
+      width: 100%;
+      max-width: 420px;
+      margin: 0 auto;
     }
     .channel-btn {
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 48px;
-      padding: 8px 6px;
+      min-height: 50px;
+      padding: 9px 6px;
       text-align: center;
       text-decoration: none !important;
       border: 1px solid rgba(0,0,0,.35);
       box-shadow: inset 1px 1px 0 rgba(255,255,255,.45), 2px 2px 0 rgba(0,0,0,.28);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      transition: transform .1s ease-out, box-shadow .1s ease-out, filter .15s ease-out;
     }
-    .channel-btn:hover {
-      filter: brightness(1.08);
+    /* clipped inner layer -- shine sweep + scanlines live here so they
+       never spill past the button, without clipping the badge above */
+    .btn-fx {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .btn-fx::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -65%;
+      width: 40%;
+      height: 100%;
+      background: linear-gradient(115deg, transparent 0%, rgba(255,255,255,.8) 50%, transparent 100%);
+      transform: skewX(-20deg);
+      transition: left .55s ease;
+    }
+    .channel-btn:hover .btn-fx::before,
+    .channel-btn:focus-visible .btn-fx::before {
+      left: 130%;
+    }
+    .btn-fx::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(0deg, rgba(0,0,0,.08) 0 1px, transparent 1px 3px);
+      opacity: 0;
+      transition: opacity .15s ease;
+    }
+    .channel-btn:hover .btn-fx::after,
+    .channel-btn:focus-visible .btn-fx::after {
+      opacity: 1;
+    }
+    .btn-label {
+      position: relative;
+      z-index: 2;
+    }
+    .channel-btn:hover,
+    .channel-btn:focus-visible {
+      filter: brightness(1.12) saturate(1.15);
+      box-shadow: inset 1px 1px 0 rgba(255,255,255,.6), 3px 3px 0 rgba(0,0,0,.35), 0 0 9px rgba(255,255,255,.55);
+      transform: translateY(-2px);
+      outline: none;
+    }
+    .channel-btn:active {
+      transform: translateY(1px) scale(.96);
+      box-shadow: inset 2px 2px 5px rgba(0,0,0,.55);
+      filter: brightness(.9);
+      transition: transform .04s ease-out, filter .04s ease-out;
     }
     .channel-new-burst {
       position: absolute;
@@ -322,8 +398,14 @@
       font-family: Impact, Arial, sans-serif;
       font-size: 8px;
       letter-spacing: .04em;
-      transform: rotate(-8deg);
       border: 1px solid #5d0000;
+      z-index: 3;
+      animation: burstPulse 1.15s ease-in-out infinite;
+      transform-origin: center;
+    }
+    @keyframes burstPulse {
+      0%, 100% { transform: rotate(-8deg) scale(1); }
+      50% { transform: rotate(-8deg) scale(1.18); }
     }
     .ch-retail {
       background: linear-gradient(#ffd84f, #d79c00);
@@ -346,9 +428,9 @@
       color: #001b3f !important;
       font-family: 'Arial Narrow', Arial, sans-serif;
       font-weight: bold;
-      font-size: 13px;
+      font-size: 12px;
       letter-spacing: .02em;
-      transform: scaleX(.94);
+      line-height: 1.15;
     }
     .ch-quality {
       background: linear-gradient(#c9ffd0, #1f9e3a);
@@ -369,10 +451,10 @@
       color: #fff !important;
       /* Every instance of the word "Remembership" uses dottonoji, per brand rule below */
       font-family: var(--font-remembership);
-      font-size: 16px;
+      font-size: 15px;
       font-weight: bold;
     }
-    /* end AOL masthead block */
+    /* end consumer department buttons block */
 
     /* Brand rule: the word "Remembership" (in any casing) always renders in dottonoji */
     .rmb-font {
@@ -594,6 +676,49 @@
       font-weight: bold;
       color: #003a91;
     }
+    /* larger infinity glyph -- it's the whole point of that box */
+    .icon-box-infinity {
+      font-size: 38px;
+      line-height: 1;
+    }
+    /* OH wordmark, stacked and shrunk to actually fit the 52x42 box
+       instead of running the link text at full paragraph size */
+    .icon-box-oh {
+      padding: 2px;
+    }
+    .icon-box-oh a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      width: 100%;
+      text-decoration: none !important;
+      color: inherit;
+      line-height: 1;
+    }
+    .icon-box-oh a:hover {
+      background: none;
+      color: #b00000;
+    }
+    .oh-by {
+      font-family: var(--font-interface);
+      font-size: 7px;
+      font-weight: normal;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #4a6b96;
+    }
+    .oh-mark {
+      font-family: var(--font-wordmark);
+      font-size: 19px;
+      font-weight: 900;
+      letter-spacing: .02em;
+    }
+    .oh-mark sup {
+      font-size: 8px;
+      top: -.6em;
+    }
     .footer {
       padding: 8px;
       background: #e7e7e7;
@@ -640,6 +765,28 @@
         margin: 4px 0;
       }
     }
+    @media (max-width: 420px) {
+      /* always 3 across, 3 across -- shrink the buttons themselves, never the column count */
+      .aol-channels {
+        gap: 4px;
+      }
+      .channel-btn {
+        min-height: 42px;
+        padding: 6px 3px;
+        font-size: 9.5px;
+        letter-spacing: 0 !important;
+      }
+      .ch-retail,
+      .ch-remembership {
+        font-size: 11px;
+      }
+      .ch-compliance,
+      .ch-extractions,
+      .ch-quality,
+      .ch-archives {
+        font-size: 9.5px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -671,25 +818,26 @@
           class="aol-logo-placeholder"
           style="border-radius:50%; object-fit:cover;"
         >
-        <div class="aol-subtitle"><div class="--hot-yellow font-remembership">CHANNELS</div>
+        <div class="aol-subtitle">CHANNELS</div>
         <form class="aol-search" action="https://www.ebay.com/str/clockbustervideo" method="get">
           <input type="text" name="_nkw" placeholder="Locate Artifact" aria-label="Search ANY dead format media" />
           <button type="submit">Go</button>
         </form>
       </div>
-      <div class="aol-channels-title">Consumer Departments</div>
-      <div class="aol-channels">
-        <a class="channel-btn ch-retail" href="https://www.ebay.com/str/clockbustervideo">RETAIL</a>
-        <a class="channel-btn ch-compliance" href="#exclusives">COMPLIANCE</a>
-        <a class="channel-btn ch-LIVEextractions" href="https://www.ebay.com/str/clockbustervideo/Clockbuster-Exclusives/_i.html?store_cat=23705171015">LIVE EXTRACTIONS
-          <span class="channel-new-burst">New!</span>
-        </a>
-        <a class="channel-btn ch-quality" href="#condition">QUALITY</a>
-        <a class="channel-btn ch-archives" href="archive.html">
-          ARCHIVES
-          <span class="channel-new-burst">SOLD OUT!</span>
-        </a>
-        <a class="channel-btn ch-remembership" href="#contact">Remembership</a>
+      <div class="aol-channels-col">
+        <div class="aol-channels-title">Consumer Departments</div>
+        <div class="aol-channels">
+          <a class="channel-btn ch-retail" href="https://www.ebay.com/str/clockbustervideo"><span class="btn-fx" aria-hidden="true"></span><span class="btn-label">RETAIL</span></a>
+          <a class="channel-btn ch-compliance" href="#exclusives"><span class="btn-fx" aria-hidden="true"></span><span class="btn-label">COMPLIANCE</span></a>
+          <a class="channel-btn ch-extractions" href="https://www.ebay.com/str/clockbustervideo/Clockbuster-Exclusives/_i.html?store_cat=23705171015"><span class="btn-fx" aria-hidden="true"></span><span class="btn-label">LIVE EXTRACTIONS</span>
+            <span class="channel-new-burst">New!</span>
+          </a>
+          <a class="channel-btn ch-quality" href="#condition"><span class="btn-fx" aria-hidden="true"></span><span class="btn-label">QUALITY</span></a>
+          <a class="channel-btn ch-archives" href="archive.html"><span class="btn-fx" aria-hidden="true"></span><span class="btn-label">ARCHIVES</span>
+            <span class="channel-new-burst">SOLD OUT!</span>
+          </a>
+          <a class="channel-btn ch-remembership" href="#contact"><span class="btn-fx" aria-hidden="true"></span><span class="btn-label">Remembership</span></a>
+        </div>
       </div>
     </header>
 
@@ -781,14 +929,14 @@
           <div class="panel-body copy-block">
             <div class="red-notice">NOTICE: All Clockbuster Exclusive display products undergo mandatory Timeline-Continuity Compliance Checks™ prior to public release. Certified college-dropouts on staff will confirm they remain within an acceptable <u>Divergence Index</u> limits and do not exceed the paradox allotment that are otherwise assigned to standard retail objects. </div>
             <div class="artifact-card">
-              <div class="icon-box"><a href="https://www.obsoletehouse.com">by OH™</a></div>
+              <div class="icon-box icon-box-oh"><a href="https://www.obsoletehouse.com"><span class="oh-by">by</span><span class="oh-mark">OH<sup>™</sup></span></a></div>
               <div>
                 <h3 style="margin-top:0;"></h3>
                 <p>Every display artifact includes documented evidence that it is objectively stupid.<br> Independent review confirms the object possesses no practical function beyond occupying shelf space and pretending to preserve the enviornment.<br> Any perceived value beyond these parameters should not be considered as that would be an inane way to conduct one's life.</p>
               </div>
             </div>
             <div class="artifact-card">
-              <div class="icon-box"><span>&infin;</span></div>
+              <div class="icon-box icon-box-infinity"><span>&infin;</span></div>
               <div>
                 <h3 style="margin-top:0;">Our Pledge to the Enviornment</h3>
                 <p>Clockbuster Exclusives are assembled from authentic, found vintage cartridges whose previous timelines have been administratively retired by God.<br> This, as previously stated, pretends to care about the enviorment and plastics, etc. by reducing the warmth of the solar system.</p>
