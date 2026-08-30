@@ -420,11 +420,13 @@
     function saveCard(card) { localStorage.setItem(STORAGE_KEY, JSON.stringify(card)); }
     function clearCard() { localStorage.removeItem(STORAGE_KEY); }
 
-    function escapeHtml(str) {
-      return String(str)
-        .replace(/&/g, "&").replace(/</g, "<")
-        .replace(/>/g, ">").replace(/"/g, """);
-    }
+  function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
 
     function portraitSvg(seed, name) {
       var hue = seed % 360;
