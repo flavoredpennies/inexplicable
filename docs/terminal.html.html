@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CLOCKBUSTER ONLINE / ReMembership Terminal</title>
+  <meta name="description" content="Issue your Clockbuster ReMembership card. Timeline-continuity compliance, 56.66k extraction, 5000-year rental term. By Obsolete House." />
+  <!--
+    ============================================================
+    HOW TO PUT THIS ON CLOCKBUSTER.NET (GitHub Pages)
+    ============================================================
+    1. Save this file as  terminal.html
+       in the SAME folder as your existing index.html
+    2. (Optional) copy clockbuster-logo.png next to it,
+       or keep using your existing clockbustervideologofinal.png
+    3. In index.html, point the Remembership channel at this file:
+
+         <a class="channel-btn ch-remembership" href="terminal.html">
+           <span class="btn-label">Remembership</span>
+         </a>
+
+       and the toolbar link:
+
+         <a class="tool-button" href="terminal.html">Remembership</a>
+
+    That is the whole deploy. No build step. No Node. No React.
+    GitHub Pages will serve this like any other HTML page.
+
+    Want to change the joke list? Edit ARTIFACTS near the bottom.
+    Want to change colors? Edit the :root variables at the top of <style>.
+    ============================================================
+  -->
+  <script>
+    (function(d) {
+      var config = { kitId: "rxf5hlm", scriptTimeout: 3000, async: true },
+          h = d.documentElement, t = setTimeout(function() {
+            h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+          }, config.scriptTimeout),
+          tk = d.createElement("script"), f = false,
+          s = d.getElementsByTagName("script")[0], a;
+      h.className += " wf-loading";
+      tk.src = "https://use.typekit.net/" + config.kitId + ".js";
+      tk.async = true;
+      tk.onload = tk.onreadystatechange = function() {
+        a = this.readyState;
+        if (f || a && a != "complete" && a != "loaded") return;
+        f = true;
+        clearTimeout(t);
+        try { Typekit.load(config); } catch (e) {}
+      };
+      s.parentNode.insertBefore(tk, s);
+    })(document);
+  </script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;1,500&family=IBM+Plex+Mono:wght@400;600&family=Lilita+One&family=Michroma&family=Source+Sans+3:wght@400;600;700&family=Yuji+Syuku&display=swap" />
+  <style>
+    :root {
+      --page-blue: #064b9b;
+      --deep-blue: #002d72;
+      --soft-blue: #dbeeff;
+      --hot-yellow: #fff1a8;
+      --alert-red: #b00000;
+      --ink: #001b3f;
+      --font-wordmark: eurostile-extended, Michroma, "Arial Narrow", sans-serif;
+      --font-nav: itc-avant-garde-gothic-pro, Futura, Arial, sans-serif;
+      --font-interface: myriad-pro, "Source Sans 3", "Trebuchet MS", sans-serif;
+      --font-remembership: dottonoji, "Yuji Syuku", "Arial Black", sans-serif;
+      --font-mono: "IBM Plex Mono", "Lucida Console", monospace;
+    }
+    * { box-sizing: border-box; }
+    html {
+      min-height: 100%;
+      background:
+        radial-gradient(circle at 20px 20px, rgba(255,255,255,.28) 0 1px, transparent 2px),
+        linear-gradient(180deg, #093f8f 0%, #001d4d 55%, #000f2d 100%);
+      background-size: 24px 24px, auto;
+    }
+    body {
+      margin: 0;
+      padding: 12px 0 24px;
+      color: var(--ink);
+      font-family: var(--font-interface);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+    a { color: #003e9f; font-weight: 700; text-decoration: underline; }
+    a:hover { color: var(--alert-red); background: #fff6bf; }
+    button { font-family: inherit; cursor: pointer; }
+    .rmb-font { font-family: var(--font-remembership); }
+    .browser-shell {
+      width: 780px;
+      max-width: calc(100vw - 18px);
+      margin: 0 auto;
+      border: 2px solid #b7cfff;
+      background: #ececec;
+      box-shadow: 0 0 0 2px #001d4d, 0 12px 40px rgba(0,0,0,.55);
+    }
+    .window-title {
+      display: flex; align-items: center; justify-content: space-between;
+      min-height: 24px; padding: 3px 6px; color: #fff; font-weight: 700;
+      background: linear-gradient(90deg, #003a91, #1a75d2, #003a91);
+      border-bottom: 1px solid #001f55; font-size: 12px;
+    }
+    .window-controls { display: flex; gap: 3px; }
+    .window-controls span {
+      display: inline-flex; width: 17px; height: 17px;
+      align-items: center; justify-content: center;
+      border: 1px solid #222; background: linear-gradient(#fff, #bdbdbd);
+      color: #111; font-size: 10px;
+    }
+    .toolbar {
+      display: flex; align-items: center; gap: 6px; padding: 6px;
+      border-top: 1px solid #fff; border-bottom: 1px solid #9a9a9a;
+      background: linear-gradient(#fefefe, #cfcfcf);
+      overflow-x: auto; white-space: nowrap;
+    }
+    .tool-button {
+      display: inline-flex; padding: 4px 9px;
+      border: 1px solid #737373; border-top-color: #fff; border-left-color: #fff;
+      background: linear-gradient(#fff, #d0d0d0); color: #001b3f;
+      font-weight: 700; text-decoration: none; font-size: 12px;
+    }
+    .tool-button:hover { background: #fff1a8; color: #b00000; }
+    .tool-button.is-active { border-color: #fff #737373 #737373 #fff; background: #d6d6d6; }
+    .aol-masthead {
+      display: grid; grid-template-columns: 30% 1fr; gap: 10px; padding: 12px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.12), transparent 40%),
+        linear-gradient(90deg, #003075 0%, #0064c7 48%, #001f5c 100%);
+      border-bottom: 3px solid #ffcf00;
+    }
+    .aol-id-card {
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      padding: 12px 8px 10px; border: 1px solid rgba(255,255,255,.45);
+      background: rgba(0,0,0,.18); text-align: center;
+    }
+    .aol-logo {
+      width: 92px; height: 92px; border-radius: 50%;
+      border: 3px solid var(--hot-yellow); object-fit: cover; background: #001b3f;
+    }
+    .aol-subtitle {
+      font-family: var(--font-nav); font-size: 10px; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--hot-yellow);
+    }
+    .event-strip {
+      display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap;
+      padding: 5px 8px; color: #000; font-weight: 700; font-size: 11px;
+      background: linear-gradient(#fff6bf, #ffd84f); border-bottom: 1px solid #936d00;
+    }
+    .event-strip strong { color: var(--alert-red); }
+    .fake-marquee {
+      overflow: hidden; white-space: nowrap; background: #002d72; color: #fff;
+      font-weight: 700; border-top: 1px solid #fff; border-bottom: 1px solid #777;
+    }
+    .fake-marquee span { display: inline-block; padding: 4px 0; animation: crawl 22s linear infinite; }
+    @keyframes crawl { from { transform: translateX(100%); } to { transform: translateX(-100%); } }
+    .terminal-body { padding: 10px; background: #c7dffd; }
+    .panel {
+      margin-bottom: 10px; border: 1px solid #6f92bb; background: #fff;
+      box-shadow: inset 1px 1px 0 #fff, 2px 2px 0 rgba(0,0,0,.08);
+    }
+    .panel-title {
+      padding: 4px 6px; color: #fff; font-size: 11px; font-weight: 700;
+      letter-spacing: .04em; text-transform: uppercase;
+      background: linear-gradient(#1f74c9, #003f93); border-bottom: 1px solid #002b65;
+    }
+    .panel-title.yellow { color: #001b3f; background: linear-gradient(#fff6bf, #ffd13f); border-bottom-color: #ad8200; }
+    .panel-title.red { color: #fff; background: linear-gradient(#d70000, #890000); border-bottom-color: #5d0000; }
+    .panel-body { padding: 12px; }
+    .notice { padding: 6px 7px; border: 1px solid #ad8200; background: #fff6bf; color: #2a2100; font-weight: 700; }
+    .red-notice { padding: 6px 7px; border: 1px solid #8e0000; background: #fff0f0; color: #760000; font-weight: 700; }
+    .crt-term {
+      background: #00140c; color: #7cff9a; font-family: var(--font-mono);
+      font-size: 12px; line-height: 1.55; padding: 14px; min-height: 220px;
+      border: 2px inset #333; text-shadow: 0 0 6px rgba(124,255,154,.45);
+    }
+    .cursor {
+      display: inline-block; width: 8px; height: 12px; background: #7cff9a;
+      margin-left: 2px; animation: blink 1s steps(1) infinite; vertical-align: -1px;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+    .meter { height: 14px; border: 1px inset #999; background: #fff; overflow: hidden; }
+    .meter > span { display: block; height: 100%; background: linear-gradient(#13a300, #0b6b00); }
+    .check-row {
+      display: grid; grid-template-columns: 18px 1fr; gap: 8px;
+      padding: 8px 0; border-bottom: 1px solid #d7e8ff;
+    }
+    .check-row.pending { opacity: .45; }
+    .check-box {
+      width: 16px; height: 16px; border: 1px solid #375f8f; background: #fff;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 900; color: #0b6b00;
+    }
+    .field-label {
+      display: block; font-weight: 700; color: #003a91; font-size: 11px;
+      letter-spacing: .04em; text-transform: uppercase; margin-bottom: 4px;
+    }
+    .field-stack { display: flex; flex-direction: column; gap: 12px; }
+    .field-input {
+      height: 28px; padding: 2px 8px; border: 1px inset #aaa; width: 100%;
+      color: #003a91; font-weight: 700; font-family: inherit;
+    }
+    .human-check { display: flex; gap: 8px; align-items: flex-start; font-weight: 700; }
+    .human-check input { width: 18px; height: 18px; accent-color: #003a91; }
+    .go-button, .win-button {
+      min-height: 32px; padding: 4px 14px; border: 1px solid #555;
+      border-top-color: #fff; border-left-color: #fff;
+      background: linear-gradient(#fff, #bebebe); color: #111; font-weight: 700;
+      text-decoration: none; display: inline-flex; align-items: center;
+    }
+    .go-button.primary {
+      background: linear-gradient(#fff6bf, #ffd13f); border-color: #ad8200;
+      color: #3a1f00; min-height: 44px; font-size: 14px;
+    }
+    .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .phase-tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-top: 8px; }
+    .phase-tab {
+      padding: 6px 4px; border: 1px solid #375f8f; text-align: center;
+      font-size: 10px; font-weight: 700; color: #003a91;
+      background: linear-gradient(#fff, #b8dcff);
+    }
+    .phase-tab.is-on { background: linear-gradient(#fff6bf, #ffd13f); color: #3a1f00; }
+    .hero-copy h1 {
+      margin: 0 0 6px; color: #003a91; font-size: 22px;
+      font-family: var(--font-wordmark); letter-spacing: .02em;
+    }
+    .membership-card {
+      position: relative;
+      background: linear-gradient(180deg, #003a91 0 38px, #f7fbff 38px 100%);
+      border: 2px solid #00183c; box-shadow: 4px 4px 0 rgba(0,0,0,.25);
+    }
+    .card-head {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 8px 12px; color: #fff1a8; font-family: var(--font-wordmark);
+      font-size: 12px; letter-spacing: .16em; text-transform: uppercase;
+    }
+    .card-body { display: grid; grid-template-columns: 88px 1fr; gap: 12px; padding: 12px; }
+    .card-portrait { width: 88px; height: 110px; border: 1px solid #375f8f; background: #001b3f; }
+    .card-name { margin: 0 0 6px; font-family: var(--font-wordmark); font-size: 22px; color: #003a91; }
+    .card-meta { display: grid; grid-template-columns: auto 1fr; gap: 2px 10px; font-size: 11px; }
+    .card-meta dt { font-weight: 700; color: #003a91; text-transform: uppercase; }
+    .barcode {
+      margin: 8px 12px 12px; height: 42px;
+      background: repeating-linear-gradient(90deg, #111 0 2px, transparent 2px 5px, #111 5px 6px, transparent 6px 9px, #111 9px 12px, transparent 12px 14px);
+    }
+    .barcode-caption {
+      text-align: center; font-family: var(--font-mono); font-size: 11px;
+      letter-spacing: .28em; margin: 0 12px 12px;
+    }
+    .coupon {
+      display: inline-block; margin: 8px 0 0; padding: 6px 8px;
+      border: 2px dotted #8e0000; background: #fff6bf; color: #8e0000; font-weight: 700;
+    }
+    .footer-bar {
+      padding: 8px; background: #e7e7e7; border-top: 1px solid #8b8b8b;
+      color: #333; text-align: center; font-size: 11px;
+    }
+    .hidden { display: none !important; }
+    @media (max-width: 760px) {
+      body { padding: 0; }
+      .browser-shell { width: 100%; max-width: 100%; border-left: 0; border-right: 0; }
+      .aol-masthead, .card-body { grid-template-columns: 1fr; }
+      .phase-tabs { grid-template-columns: 1fr 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .fake-marquee span, .cursor { animation: none; }
+    }
+    @media print {
+      html, body { background: #fff; padding: 0; }
+      .no-print { display: none !important; }
+      .browser-shell { box-shadow: none; border: 0; width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="browser-shell">
+    <div class="window-title no-print">
+      <span>CLOCKBUSTER ONLINE / ReMembership Terminal 7.0</span>
+      <div class="window-controls" aria-hidden="true"><span>_</span><span>□</span><span>X</span></div>
+    </div>
+    <nav class="toolbar no-print">
+      <a class="tool-button" href="index.html#welcome">Welcome</a>
+      <a class="tool-button" href="index.html#sale">Sale</a>
+      <a class="tool-button" href="https://www.ebay.com/str/clockbustervideo">Shop</a>
+      <a class="tool-button" href="archive.html">Archives</a>
+      <a class="tool-button is-active" href="terminal.html">Remembership</a>
+      <a class="tool-button" href="https://www.obsoletehouse.com">by OH ™</a>
+    </nav>
+
+    <header class="aol-masthead no-print">
+      <div class="aol-id-card">
+        <!-- Uses your existing site logo if this file sits next to index.html.
+             Fallback: a yellow circle with CB if the image 404s. -->
+        <img class="aol-logo" src="clockbustervideologofinal.png" alt="Clockbuster Video"
+             onerror="this.onerror=null;this.src='clockbuster-logo.png';" />
+        <div class="aol-subtitle">CHANNELS</div>
+        <div class="aol-subtitle" style="opacity:.85;letter-spacing:.08em">Terminal 7.0</div>
+      </div>
+      <div style="color:#fff;padding:8px 4px">
+        <div class="aol-subtitle" style="margin-bottom:8px">Consumer Department</div>
+        <h1 class="rmb-font" style="margin:0;color:#fff1a8;font-size:28px;line-height:1.1">ReMembership</h1>
+        <p style="margin:8px 0 0;color:#dbeeff;max-width:420px">
+          Mandatory card. Optional meaning. Issued at 56.66k from an abandoned timeline
+          using a nuclear-modified ActionTec modem.
+        </p>
+      </div>
+    </header>
+
+    <div class="event-strip no-print">
+      <span>TIMLINE INDICATOR: <strong>ERROR</strong></span>
+      <span>SALES PROGRAM: <strong>UNDEFINED</strong></span>
+      <span>COUPON: <strong>REWINDREALITY</strong></span>
+    </div>
+    <div class="fake-marquee no-print" aria-hidden="true">
+      <span>
+        <span class="rmb-font">REMEMBERSHIP</span> NOTICE: The world will end in seven days,
+        unless you dig a giant hole! Use coupon code REWINDREALITY for 9.999% off everything.
+        Human only transactions. Absolutely NO dogs OR birds.
+      </span>
+    </div>
+
+    <main class="terminal-body" id="app"></main>
+
+    <footer class="footer-bar no-print">
+      CLOCKBUSTER By <a href="https://www.obsoletehouse.com">Obsolete House</a>© 2025-2026<br>
+      Serving you since 2.22.2022 | Rewind Reality<br>
+      Obsolete House · P.O. Box 2222 · SILVER SPRINGS FL 34489-2222 · (220) 223-3332
+    </footer>
+  </div>
+
+  <script>
+    /* ============================================================
+       THE APP  (plain JavaScript — no libraries)
+       Read top to bottom. Each function is one screen.
+       ============================================================ */
+
+    var STORAGE_KEY = "clockbuster-remembership-v1";
+
+    var ARTIFACTS = [
+      { title: "Elon Musk's PayPal Microtransactions for #SNES", compatibility: "Stupid Nintend-No", batch: "5", notes: "Wrap, lock and stake your Fartcoins™.", status: "SOLD OUT" },
+      { title: "KFC Super Double Down Challenge", compatibility: "Stupid Nintend-No", batch: "5", notes: "Collect bacon & cheese to exorcize the ghost of Margaret Thatcher.", status: "SOLD OUT" },
+      { title: "SURGE 64", compatibility: "Nintend-No 69", batch: "5", notes: "Self-inflicted marketing stress, then soda supremacy.", status: "SOLD OUT" },
+      { title: "Super O.J. Simpson’s Low-Speed Chase ’94 for SNES", compatibility: "Stupid Nintend-No", batch: "5", notes: "On the advice of counsel, I respectfully invoke my Fifth Amendment right.", status: "SOLD OUT" },
+      { title: "M. Night Shyamalan's Blockbuster 2: The Animated Movie", compatibility: "Stupid Nintend-No", batch: "5", notes: "The first ever sequel to precede the original.", status: "SOLD OUT" },
+      { title: "Idiocracy: Ow!! My Balls, Hosted by America’s Dad Bob Saget", compatibility: "Nintendo-No 69", batch: "5", notes: "Saget gets reanimated and is forced to host a bastardized version of his own flagship program.", status: "SOLD OUT" },
+      { title: "I Think You Should Leave Egg Game", compatibility: "Stupid Nintend-No", batch: "5", notes: "One egg is forty eggs.", status: "SOLD OUT" },
+      { title: "I Think You Should Leave Supermarket Swap VR for Virtual Boy", compatibility: "Virtual Roy", batch: "5", notes: "We have Yesterday's Ham.", status: "SOLD OUT" },
+      { title: "Mark Zuckerberg's Metaverse for Virtual Boy", compatibility: "Virtual Roy", batch: "5", notes: "Now with Legs™.", status: "SOLD OUT" },
+      { title: "Werner Herzog's Lessons of Darkness", compatibility: "Game Roy", batch: "15", notes: "Scorched-earth documentary for stereoscopic red-black immersion.", status: "ON SALE!" },
+      { title: "My Dinner with Andre VR for Virtual Boy", compatibility: "Virtual Roy", batch: "15", notes: "Headset stays locked until the Aranygaluska is served.", status: "ON SALE!" },
+      { title: "Super Dirty Work", compatibility: "Stupid Nintend-No", batch: "15", notes: "A fake display piece. You will not play it. You will look at it.", status: "ON SALE!" },
+      { title: "Tom Selleck's Reverse Mortgage 64", compatibility: "Nintend-No 69", batch: "15", notes: "Description coming soon.", status: "ON SALE!" },
+      { title: "Super Norm MacDonald Live", compatibility: "Stupid Nintend-No", batch: "15", notes: "The California Pizza Kitchen Signature Pepperoni Frozen Flatbread™ cooked itself.", status: "SOLD OUT" }
+    ];
+
+    var EDITIONS = ["AUSTERITY", "RARE HOLOGRAPHIC", "CIB", "?"];
+    var STANDINGS = ["Technically Acceptable", "Certified College-Dropout", "Paradox-Adjacent", "Timeline-Unstable but Charming", "Within Divergence Index Limits"];
+
+    var DIALUP = [
+      "> ATDT 1-800-REWIND-REALITY",
+      "DIALING............",
+      "USING EXPIRED AOL FREE-TRIAL DISC #2222",
+      "CARRIER DETECTED @ 56.66k",
+      "CONNECT 56666",
+      "PROTOCOL: NUCLEAR-MODIFIED ACTIONTEC",
+      "SPONSOR: AMERICA ONLINE DIAL-UP SERVICE",
+      "ROUTING THROUGH ABANDONED TIMELINE...",
+      "GOD HAS LEFT THIS SECTOR",
+      "SMILE-DETECTOR™ ONLINE",
+      "EXTRACTION CHANNEL OPEN",
+      "REMEMBERSHIP DESK: READY"
+    ];
+
+    var CHECKS = [
+      { label: "Human verification", detail: "Not a dog. Not a bird." },
+      { label: "Paradox allotment", detail: "Within house limits." },
+      { label: "Divergence Index", detail: "Charm-priced remainder." },
+      { label: "Timeline-continuity", detail: "Error, but a polite one." },
+      { label: "Nostalgic Endowment Effect", detail: "Ownership assigned pre-purchase." },
+      { label: "Smile-Detector™", detail: "Expression: legally sufficient." }
+    ];
+
+    function hashString(value) {
+      var h = 2222;
+      for (var i = 0; i < value.length; i++) h = Math.imul(h ^ value.charCodeAt(i), 16777619);
+      return h >>> 0;
+    }
+
+    function issueMembership(screenName, realName, coordinates) {
+      screenName = (screenName || "GUEST").trim();
+      realName = (realName || "").trim();
+      coordinates = (coordinates || "UNVERIFIED").trim();
+      var seed = hashString(screenName.toLowerCase() + "|" + coordinates.toLowerCase() + "|" + realName.toLowerCase());
+      var a = (seed % 9000) + 1000;
+      var b = ((seed >>> 8) % 9000) + 1000;
+      return {
+        screenName: screenName,
+        realName: realName,
+        coordinates: coordinates,
+        memberId: "CB-" + a + "-" + b,
+        timeline: String(200000 + (seed % 22222)).padStart(6, "2"),
+        divergence: (9 + (seed % 999) / 1000).toFixed(3) + "%",
+        paradox: String((seed % 69) + 1),
+        standing: STANDINGS[(seed + 3) % STANDINGS.length],
+        edition: EDITIONS[(seed + 11) % EDITIONS.length],
+        artifact: ARTIFACTS[(seed + 17) % ARTIFACTS.length],
+        issuedAt: new Date().toISOString().slice(0, 10),
+        seed: seed
+      };
+    }
+
+    function loadCard() {
+      try {
+        var raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return null;
+        var parsed = JSON.parse(raw);
+        return parsed && parsed.memberId ? parsed : null;
+      } catch (e) { return null; }
+    }
+
+    function saveCard(card) { localStorage.setItem(STORAGE_KEY, JSON.stringify(card)); }
+    function clearCard() { localStorage.removeItem(STORAGE_KEY); }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, "&").replace(/</g, "<")
+        .replace(/>/g, ">").replace(/"/g, """);
+    }
+
+    function portraitSvg(seed, name) {
+      var hue = seed % 360;
+      var hue2 = (seed * 7) % 360;
+      var initials = name.split(/\s+/).slice(0, 2).map(function (p) { return (p[0] || "").toUpperCase(); }).join("") || "CB";
+      return '<svg class="card-portrait" viewBox="0 0 88 110" aria-hidden="true">' +
+        '<rect width="88" height="110" fill="hsl(' + hue + ' 40% 18%)"/>' +
+        '<circle cx="44" cy="42" r="22" fill="hsl(' + hue2 + ' 55% 62%)"/>' +
+        '<rect x="18" y="68" width="52" height="36" rx="18" fill="hsl(' + hue2 + ' 40% 42%)"/>' +
+        '<text x="44" y="48" text-anchor="middle" fill="#001b3f" font-size="16" font-weight="700" font-family="Arial">' + escapeHtml(initials) + '</text>' +
+        '<text x="44" y="104" text-anchor="middle" fill="#fff1a8" font-size="6" letter-spacing="1" font-family="Arial">SMILE-DETECTOR</text>' +
+        '</svg>';
+    }
+
+    function cardHtml(m) {
+      return '<article class="membership-card">' +
+        '<div class="card-head"><span>Clockbuster Video</span><span class="rmb-font" style="letter-spacing:.02em;text-transform:none">ReMembership</span></div>' +
+        '<div class="card-body">' + portraitSvg(m.seed, m.screenName) +
+        '<div><h2 class="card-name">' + escapeHtml(m.screenName) + '</h2>' +
+        '<dl class="card-meta">' +
+        '<dt>Member ID</dt><dd>' + escapeHtml(m.memberId) + '</dd>' +
+        '<dt>Timeline</dt><dd>#' + escapeHtml(m.timeline) + '</dd>' +
+        '<dt>Coordinates</dt><dd>' + escapeHtml(m.coordinates) + '</dd>' +
+        '<dt>Standing</dt><dd>' + escapeHtml(m.standing) + '</dd>' +
+        '<dt>Divergence</dt><dd>' + escapeHtml(m.divergence) + '</dd>' +
+        '<dt>Paradox</dt><dd>Allotment ' + escapeHtml(m.paradox) + '/69</dd>' +
+        '<dt>Edition</dt><dd>' + escapeHtml(m.edition) + '</dd>' +
+        '<dt>Term</dt><dd>5000 YEARS</dd>' +
+        '<dt>Issued</dt><dd>' + escapeHtml(m.issuedAt) + '</dd>' +
+        '</dl></div></div>' +
+        '<div class="barcode" aria-hidden="true"></div>' +
+        '<p class="barcode-caption">' + escapeHtml(m.memberId) + '</p></article>';
+    }
+
+    var app = document.getElementById("app");
+    var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function showWelcome() {
+      var existing = loadCard();
+      var actions = existing
+        ? '<button class="go-button primary" type="button" id="view">View card on file (' + escapeHtml(existing.memberId) + ')</button>' +
+          '<button class="go-button" type="button" id="reissue">Reissue from a new timeline</button>'
+        : '<button class="go-button primary" type="button" id="connect">CONNECT AT 56.66k</button>';
+      app.innerHTML =
+        '<section class="panel"><div class="panel-title red">Clockbuster Video · Access Terminal</div><div class="panel-body hero-copy">' +
+        '<h1>Trusted worldwide for obsolete entertainment.</h1>' +
+        '<p>A <span class="rmb-font">ReMembership</span> Card is included with all orders. This terminal issues yours in advance, which is either efficient or a threat.</p>' +
+        '<p>Clockbuster extracts parody objects from abandoned timelines. Obsolete House sells the authentic media separately. Do not confuse the two, even though we keep putting them in the same sentence.</p>' +
+        '<div class="notice">Rental term: 5000 years. No exchanges for wasted time. Meaning and ennui are optional.</div>' +
+        '<div class="phase-tabs" aria-hidden="true"><div class="phase-tab is-on">PHASE 1 Identify</div><div class="phase-tab">PHASE 2 Extract</div><div class="phase-tab">PHASE 3 Lunch</div><div class="phase-tab">PHASE 69 IDK</div></div>' +
+        '<div class="actions">' + actions + '</div></div></section>';
+      var connect = document.getElementById("connect");
+      var view = document.getElementById("view");
+      var reissue = document.getElementById("reissue");
+      if (connect) connect.onclick = showDialup;
+      if (view) view.onclick = function () { showCard(existing); };
+      if (reissue) reissue.onclick = function () { clearCard(); showDialup(); };
+    }
+
+    function showDialup() {
+      app.innerHTML =
+        '<section class="panel"><div class="panel-title">PHASE 1 · Temporal Retrieval</div><div class="panel-body">' +
+        '<p style="margin-top:0">Nuclear-modified 1996 56k ActionTec AOL modem kit. Unlimited expired trial discs. Please remain on the line.</p>' +
+        '<div class="crt-term" id="crt"></div>' +
+        '<p style="margin:10px 0 4px;font-weight:700;color:#003a91">Handshake <span id="pct">0</span>%</p>' +
+        '<div class="meter"><span id="bar" style="width:0%"></span></div></div></section>';
+      var crt = document.getElementById("crt");
+      var pct = document.getElementById("pct");
+      var bar = document.getElementById("bar");
+      var i = 0;
+      function tick() {
+        i += 1;
+        crt.innerHTML = DIALUP.slice(0, i).map(function (line) { return "<div>" + escapeHtml(line) + "</div>"; }).join("") +
+          (i < DIALUP.length ? '<span class="cursor"></span>' : "");
+        var p = Math.round((i / DIALUP.length) * 100);
+        pct.textContent = String(p);
+        bar.style.width = p + "%";
+        if (i >= DIALUP.length) setTimeout(showIdentify, reduced ? 200 : 700);
+        else setTimeout(tick, reduced ? 0 : 420);
+      }
+      tick();
+    }
+
+    function showIdentify() {
+      app.innerHTML =
+        '<section class="panel"><div class="panel-title yellow">Fill Out Your <span class="rmb-font">ReMembership</span> Form</div><div class="panel-body">' +
+        '<p style="margin-top:0">Come forward with knowledge about newly abandoned timelines. Screen names are assigned a sense of ownership prior to purchase (Nostalgic Endowment Effect, proprietary).</p>' +
+        '<form class="field-stack" id="form">' +
+        '<label><span class="field-label">Screen Name</span><input class="field-input" id="screen" maxlength="32" placeholder="AOLKid2222" /></label>' +
+        '<label><span class="field-label">Civilian Name (optional)</span><input class="field-input" id="real" maxlength="48" placeholder="as it appears on no official document" /></label>' +
+        '<label><span class="field-label">Timeline Coordinates</span><input class="field-input" id="coords" maxlength="80" placeholder="Silver Springs FL, or any hole you intend to dig" /></label>' +
+        '<label class="human-check"><input type="checkbox" id="human" /><span>I am a human. I am not a dog. I am not a bird. I accept a 5000-year rental term and Timeline-Continuity Compliance Checks™.</span></label>' +
+        '<div id="err"></div>' +
+        '<div class="actions"><button class="go-button primary" type="submit">Submit For <span class="rmb-font">ReMembership</span></button></div>' +
+        '</form></div></section>';
+      document.getElementById("form").onsubmit = function (e) {
+        e.preventDefault();
+        var screen = document.getElementById("screen").value;
+        var real = document.getElementById("real").value;
+        var coords = document.getElementById("coords").value;
+        var human = document.getElementById("human").checked;
+        var err = document.getElementById("err");
+        if (!screen.trim()) { err.innerHTML = '<div class="red-notice">Screen name is required. Guests still need a handle.</div>'; return; }
+        if (!coords.trim()) { err.innerHTML = '<div class="red-notice">Timeline coordinates required. A city, a hole, or a feeling.</div>'; return; }
+        if (!human) { err.innerHTML = '<div class="red-notice">NO DOGS OR BIRDS may place an order.</div>'; return; }
+        var card = issueMembership(screen, real, coords);
+        saveCard(card);
+        showCompliance(card);
+      };
+    }
+
+    function showCompliance(card) {
+      app.innerHTML =
+        '<section class="panel"><div class="panel-title">Timeline-Continuity Compliance Checks™</div><div class="panel-body">' +
+        '<p style="margin-top:0">Certified college-dropouts are reviewing paradox allotments for <strong>' + escapeHtml(card.screenName) + '</strong>. Divergence Index target: ' + escapeHtml(card.divergence) + '.</p>' +
+        '<div id="checks"></div><div id="result"></div></div></section>';
+      var box = document.getElementById("checks");
+      var n = 0;
+      function tick() {
+        n += 1;
+        box.innerHTML = CHECKS.map(function (c, idx) {
+          var done = idx < n;
+          return '<div class="check-row' + (done ? "" : " pending") + '"><span class="check-box">' + (done ? "X" : "") + '</span><div><strong>' + escapeHtml(c.label) + '</strong><div style="color:#444;font-size:12px">' + escapeHtml(c.detail) + '</div></div></div>';
+        }).join("");
+        if (n >= CHECKS.length) {
+          document.getElementById("result").innerHTML = '<div class="notice" style="margin-top:12px">COMPLIANCE RESULT: ' + escapeHtml(card.standing) + '. Card may now be printed, laminated, or taped to a Virtual Roy headset.</div>';
+          setTimeout(function () { showCard(card); }, reduced ? 200 : 900);
+        } else setTimeout(tick, reduced ? 0 : 480);
+      }
+      tick();
+    }
+
+    function showCard(m) {
+      app.innerHTML =
+        '<section class="panel"><div class="panel-title yellow">Your <span class="rmb-font">ReMembership</span> Card</div><div class="panel-body">' +
+        '<p style="margin-top:0">Validity: until collapse. Secure shipping: EXTREMELY. This card is stored in this browser so you do not have to remember, which is the entire point.</p>' +
+        cardHtml(m) +
+        '<div class="coupon">Coupon REWINDREALITY · 9.999% off everything</div>' +
+        '<div class="actions no-print">' +
+        '<button class="go-button primary" type="button" onclick="window.print()">Print card</button>' +
+        '<button class="go-button" type="button" id="reissue2">Reissue</button>' +
+        '<a class="win-button" href="https://www.ebay.com/str/clockbustervideo">JUST SHOW ME THE THINGS</a>' +
+        '</div></div></section>' +
+        '<section class="panel"><div class="panel-title red">Field Assignment</div><div class="panel-body">' +
+        '<p style="margin-top:0">You are responsible for this extraction for the duration of your rental term. Do not attempt to play it. It is a display object.</p>' +
+        '<h3 style="margin:0 0 4px;color:#003a91">' + escapeHtml(m.artifact.title) + '</h3>' +
+        '<p style="margin:0 0 6px;font-size:12px"><strong>Compatibility</strong> ' + escapeHtml(m.artifact.compatibility) + ' · <strong>Batch</strong> ' + escapeHtml(m.artifact.batch) + ' · <strong>' + escapeHtml(m.artifact.status) + '</strong></p>' +
+        '<p style="margin:0">' + escapeHtml(m.artifact.notes) + '</p>' +
+        '<p style="margin:10px 0 0;font-size:12px;color:#444">Edition assigned: <strong>' + escapeHtml(m.edition) + '</strong>. If you possess information regarding abandoned timeline openings, keep this card. Sales@clockbuster.net</p>' +
+        '</div></section>';
+      document.getElementById("reissue2").onclick = function () { clearCard(); showDialup(); };
+    }
+
+    showWelcome();
+  </script>
+</body>
+</html>
