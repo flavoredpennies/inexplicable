@@ -840,7 +840,745 @@
         </div>
       </div>
     </header>
+<!--
+  CLOCKBUSTER VHS ARCHIVE CAROUSEL
+  Paste this ENTIRE block in index.html immediately AFTER </header>
+  (right below the Consumer Departments buttons, above .event-strip).
 
+  Uses Adobe Fonts already on the page (kit rxf5hlm):
+    eurostile-extended, adobe-garamond-pro, cooper-black-std,
+    itc-avant-garde-gothic-pro, myriad-pro.
+
+  To add a tape: append an object to window.CB_VHS_TAPES below.
+  All slides link to archive.html.
+-->
+<style id="cb-vhs-css">
+/* ============================================================
+   CLOCKBUSTER VHS ARCHIVE CAROUSEL
+   Self-contained. Prefix: cb-vhs-
+   Sits flush under the Consumer Departments masthead.
+   ============================================================ */
+.cb-vhs {
+  --cb-plastic: #141414;
+  --cb-plastic-hi: #2e2e2e;
+  --cb-plastic-lo: #070707;
+  --cb-led: #ff2a12;
+  --cb-amber: #ffb000;
+  --cb-screen: #030603;
+  --cb-label: #f3e2a4;
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  padding: 9px 10px 11px;
+  color: #f3f3f3;
+  font-family: var(--font-interface);
+  background:
+    radial-gradient(circle at 12% 0%, rgba(255,255,255,.07), transparent 32%),
+    linear-gradient(180deg, #3f3f3f 0%, #1c1c1c 14%, #0c0c0c 100%);
+  border-top: 0;
+  border-bottom: 3px solid #ffcf00;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.18), inset 0 -1px 0 #000;
+  user-select: none;
+}
+.cb-vhs *,
+.cb-vhs *::before,
+.cb-vhs *::after { box-sizing: border-box; }
+.cb-vhs a { color: inherit; text-decoration: none; font-weight: inherit; background: none; }
+.cb-vhs a:hover { color: inherit; background: none; }
+
+.cb-vhs-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+  min-height: 18px;
+}
+.cb-vhs-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  min-width: 0;
+}
+.cb-vhs-wordmark {
+  font-family: var(--font-wordmark);
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: .12em;
+  color: var(--hot-yellow);
+  text-shadow: 0 0 8px rgba(255,207,0,.35);
+}
+.cb-vhs-channel {
+  font-family: var(--font-archives);
+  font-style: italic;
+  font-size: 16px;
+  color: #fff;
+  letter-spacing: .02em;
+}
+.cb-vhs-leds {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-nav);
+  font-size: 9px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: #9a9a9a;
+}
+.cb-vhs-rec {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--cb-led);
+}
+.cb-vhs-rec i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--cb-led);
+  box-shadow: 0 0 6px var(--cb-led);
+  animation: cbVhsBlink 1.1s steps(1, end) infinite;
+}
+.cb-vhs-counter {
+  font-variant-numeric: tabular-nums;
+  color: var(--cb-amber);
+  letter-spacing: .08em;
+  text-shadow: 0 0 6px rgba(255,176,0,.55);
+  font-size: 11px;
+}
+.cb-vhs-speed {
+  padding: 1px 5px;
+  border: 1px solid #555;
+  color: #d7d7d7;
+}
+
+.cb-vhs-stage {
+  display: grid;
+  grid-template-columns: 228px 1fr;
+  gap: 10px;
+  align-items: stretch;
+}
+
+.cb-vhs-crt {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--cb-screen);
+  border: 3px solid #0a0a0a;
+  border-radius: 10px 10px 8px 8px / 12px 12px 6px 6px;
+  box-shadow:
+    inset 0 0 0 2px #2a2a2a,
+    inset 0 0 18px rgba(0,0,0,.65),
+    0 0 0 1px #000,
+    3px 4px 0 rgba(0,0,0,.45);
+  cursor: pointer;
+}
+.cb-vhs-crt:focus-visible {
+  outline: 2px solid var(--hot-yellow);
+  outline-offset: 3px;
+}
+.cb-vhs-frame {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: contrast(1.08) saturate(.86) sepia(.12) brightness(.96);
+  transform: scale(1.04);
+}
+.cb-vhs-crt.is-glitch .cb-vhs-frame {
+  animation: cbVhsGlitch .45s steps(2, end);
+}
+.cb-vhs-scan {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0,0,0,.22) 0px,
+      rgba(0,0,0,.22) 1px,
+      transparent 1px,
+      transparent 3px
+    ),
+    radial-gradient(ellipse at center, transparent 42%, rgba(0,0,0,.55) 100%);
+  mix-blend-mode: multiply;
+}
+.cb-vhs-scan::before {
+  content: "";
+  position: absolute;
+  inset: -20% 0 auto;
+  height: 28%;
+  background: linear-gradient(to bottom, transparent, rgba(255,255,255,.07), transparent);
+  animation: cbVhsRoll 7s linear infinite;
+}
+.cb-vhs-scan::after {
+  content: "";
+  position: absolute;
+  left: -2%;
+  right: -2%;
+  bottom: 9%;
+  height: 7px;
+  opacity: .22;
+  background: linear-gradient(90deg, #ff0044, #ffe600, #19ff64, #1ea1ff, #ff0044);
+  mix-blend-mode: screen;
+  animation: cbVhsTrackBar 5.5s linear infinite;
+}
+.cb-vhs-osd {
+  pointer-events: none;
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-family: var(--font-nav);
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  text-shadow: 1px 1px 0 #000, 0 0 6px #000;
+}
+.cb-vhs-osd-play {
+  color: #d8ffd8;
+  font-size: 9px;
+}
+.cb-vhs-osd-play[data-paused="true"] { color: #ffe089; }
+.cb-vhs-osd-title {
+  color: #fff;
+  font-size: 10px;
+  letter-spacing: .06em;
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cb-vhs-stamp {
+  position: absolute;
+  top: 10px;
+  right: -4px;
+  padding: 3px 9px;
+  background: var(--alert-red);
+  color: #fff;
+  font-family: Impact, "Arial Black", sans-serif;
+  font-size: 11px;
+  letter-spacing: .06em;
+  transform: rotate(8deg);
+  border: 1px solid #5d0000;
+  box-shadow: 1px 1px 0 rgba(0,0,0,.4);
+  z-index: 3;
+}
+.cb-vhs-stamp.is-sale {
+  background: #1f9e3a;
+  border-color: #0c4d1c;
+}
+
+.cb-vhs-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 2px 2px 0 4px;
+}
+.cb-vhs-now {
+  font-family: var(--font-playful);
+  font-size: 13px;
+  color: var(--hot-yellow);
+  letter-spacing: .04em;
+  line-height: 1;
+}
+.cb-vhs-title {
+  margin: 4px 0 4px;
+  font-family: var(--font-wordmark);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: .03em;
+  color: #fff;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+.cb-vhs-notes {
+  margin: 0 0 8px;
+  flex: 1;
+  font-size: 11px;
+  line-height: 1.35;
+  color: #cfcfcf;
+  max-height: 52px;
+  overflow: hidden;
+}
+.cb-vhs-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  margin-bottom: 8px;
+  font-size: 10px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: #9ad0ff;
+  font-family: var(--font-nav);
+}
+.cb-vhs-meta b { color: #fff; font-weight: 600; }
+
+.cb-vhs-transport {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: auto;
+}
+.cb-vhs-btn {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  height: 28px;
+  padding: 0 8px;
+  border: 1px solid #111;
+  border-top-color: #6a6a6a;
+  border-left-color: #6a6a6a;
+  background: linear-gradient(#3c3c3c, #1a1a1a);
+  color: #eee;
+  font-family: var(--font-nav);
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.18);
+}
+.cb-vhs-btn:hover,
+.cb-vhs-btn:focus-visible {
+  filter: brightness(1.18);
+  outline: none;
+  color: var(--hot-yellow);
+}
+.cb-vhs-btn:active { transform: translateY(1px); filter: brightness(.9); }
+.cb-vhs-btn.is-play {
+  min-width: 54px;
+  background: linear-gradient(#5a1a1a, #2a0000);
+  color: #ffd0d0;
+}
+.cb-vhs-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 8px;
+  height: 28px;
+  padding: 0 10px;
+  width: max-content;
+  background: linear-gradient(#ffcfcf, #b00000);
+  color: #fff !important;
+  font-family: var(--font-archives);
+  font-style: italic;
+  font-size: 13px;
+  border: 1px solid #5d0000;
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,.35), 2px 2px 0 rgba(0,0,0,.35);
+}
+.cb-vhs-cta:hover {
+  filter: brightness(1.12);
+  color: #fff !important;
+}
+
+.cb-vhs-well {
+  display: flex;
+  gap: 8px;
+  margin-top: 9px;
+  padding: 8px 6px 6px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x proximity;
+  background:
+    repeating-linear-gradient(90deg, #1a1a1a 0 10px, #101010 10px 12px),
+    linear-gradient(#2a2a2a, #111);
+  border: 1px solid #000;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,.6);
+  scrollbar-width: thin;
+  scrollbar-color: #666 #111;
+}
+.cb-vhs-tape {
+  appearance: none;
+  flex: 0 0 86px;
+  width: 86px;
+  padding: 6px 5px 5px;
+  border: 1px solid #000;
+  background:
+    linear-gradient(180deg, #3a3a3a 0%, #1c1c1c 18%, #141414 100%);
+  cursor: pointer;
+  scroll-snap-align: start;
+  text-align: left;
+  box-shadow: 1px 2px 0 rgba(0,0,0,.5);
+  color: inherit;
+}
+.cb-vhs-tape:hover { filter: brightness(1.12); }
+.cb-vhs-tape.is-on {
+  outline: 2px solid var(--hot-yellow);
+  outline-offset: 1px;
+  transform: translateY(-3px);
+}
+.cb-vhs-tape-window {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 2px solid #3a3a3a;
+  background: #000;
+}
+.cb-vhs-tape-window img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(.8) contrast(1.05);
+}
+.cb-vhs-tape-label {
+  margin-top: 4px;
+  min-height: 26px;
+  padding: 2px 3px;
+  background: var(--cb-label);
+  color: #1a1208;
+  font-family: var(--font-nav);
+  font-size: 7.5px;
+  letter-spacing: .03em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+.cb-vhs-hint {
+  margin: 6px 2px 0;
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #8a8a8a;
+  font-family: var(--font-nav);
+}
+.cb-vhs-hint a {
+  color: var(--hot-yellow);
+  text-decoration: underline;
+}
+
+@keyframes cbVhsBlink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: .15; }
+}
+@keyframes cbVhsRoll {
+  from { transform: translateY(-10%); }
+  to { transform: translateY(420%); }
+}
+@keyframes cbVhsTrackBar {
+  0% { transform: translateY(0); opacity: .12; }
+  40% { opacity: .28; }
+  100% { transform: translateY(-18px); opacity: .08; }
+}
+@keyframes cbVhsGlitch {
+  0% { transform: scale(1.04) translate(0,0); filter: contrast(1.08) saturate(.86) sepia(.12); }
+  25% { transform: scale(1.04) translate(-7px, 2px) skewX(-5deg); filter: hue-rotate(50deg) saturate(2.2) contrast(1.4); }
+  50% { transform: scale(1.08) translate(6px, -3px); }
+  75% { transform: scale(1.04) translate(-3px, 1px) scaleY(1.08); }
+  100% { transform: scale(1.04) translate(0,0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cb-vhs-rec i,
+  .cb-vhs-scan::before,
+  .cb-vhs-scan::after,
+  .cb-vhs-crt.is-glitch .cb-vhs-frame { animation: none; }
+}
+
+@media (max-width: 640px) {
+  .cb-vhs-stage { grid-template-columns: 1fr; }
+  .cb-vhs-crt { max-width: none; width: 100%; }
+  .cb-vhs-head { flex-wrap: wrap; }
+  .cb-vhs-cta { margin-left: 0; }
+  .cb-vhs-transport { flex-wrap: wrap; }
+}
+
+@media (max-width: 420px) {
+  .cb-vhs { padding: 8px 7px 9px; }
+  .cb-vhs-wordmark { font-size: 11px; letter-spacing: .08em; }
+  .cb-vhs-channel { font-size: 14px; }
+  .cb-vhs-tape { flex-basis: 76px; width: 76px; }
+}
+</style>
+<section class="cb-vhs" id="cb-vhs-carousel" data-archive="archive.html" aria-label="Clockbuster Archives VHS player">
+  <div class="cb-vhs-head">
+    <div class="cb-vhs-brand">
+      <span class="cb-vhs-wordmark">CLOCKBUSTER</span>
+      <span class="cb-vhs-channel">Archives</span>
+    </div>
+    <div class="cb-vhs-leds">
+      <span class="cb-vhs-rec"><i aria-hidden="true"></i>REC</span>
+      <span class="cb-vhs-speed">SP</span>
+      <span class="cb-vhs-counter">00:00:00</span>
+    </div>
+  </div>
+  <div class="cb-vhs-stage">
+    <a class="cb-vhs-crt" href="archive.html">
+      <img class="cb-vhs-frame" alt="">
+      <div class="cb-vhs-scan" aria-hidden="true"></div>
+      <div class="cb-vhs-osd">
+        <span class="cb-vhs-osd-play">► PLAY</span>
+        <span class="cb-vhs-osd-title"></span>
+      </div>
+      <span class="cb-vhs-stamp">SOLD OUT</span>
+    </a>
+    <div class="cb-vhs-info">
+      <div class="cb-vhs-now">NOW PLAYING</div>
+      <h2 class="cb-vhs-title"></h2>
+      <p class="cb-vhs-notes"></p>
+      <div class="cb-vhs-meta"></div>
+      <a class="cb-vhs-cta" href="archive.html">Enter Archives</a>
+      <div class="cb-vhs-transport">
+        <button type="button" class="cb-vhs-btn" data-vhs-prev aria-label="Rewind">◄◄</button>
+        <button type="button" class="cb-vhs-btn is-play" data-vhs-play>PAUSE</button>
+        <button type="button" class="cb-vhs-btn" data-vhs-next aria-label="Fast forward">►►</button>
+      </div>
+    </div>
+  </div>
+  <div class="cb-vhs-well" role="tablist" aria-label="Archive tapes"></div>
+  <p class="cb-vhs-hint">Rented indefinitely · click the screen or <a href="archive.html">open the sold-out record</a></p>
+</section>
+<script>
+window.CB_VHS_TAPES = [
+  {
+    "title": "Elon Musk's PayPal Microtransactions for #SNES",
+    "short": "PayPal Microtransactions",
+    "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/1.JPG",
+    "stamp": "SOLD OUT",
+    "compat": "Stupid Nintend-No",
+    "batch": "5",
+    "notes": "Wrap, lock and stake your Fartcoins™; participate in FUN & SAFE social media market manipulation campaigns."
+  },
+  {
+    "title": "KFC Super Double Down Challenge",
+    "short": "KFC Super Double Down",
+    "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/2.JPG",
+    "stamp": "SOLD OUT",
+    "compat": "Stupid Nintend-No",
+    "batch": "5",
+    "notes": "Collect bacon & cheese to exorcize the ghost of Margarat Thatcher. Build your party with every actor who ever played 'The Colonel'."
+  },
+  {
+    "title": "SURGE 64",
+    "short": "SURGE 64",
+    "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/3.JPG",
+    "stamp": "SOLD OUT",
+    "compat": "Nintend-No 69",
+    "batch": "5",
+    "notes": "Subject yourself to a relentless onslaught of self-inflicted marketing stress, then utilize that trauma to fight for soda supremecy."
+  },
+  {
+    "title": "Super O.J. Simpson’s Low-Speed Chase ‘94 for SNES",
+    "short": "O.J. Low-Speed Chase '94",
+    "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/4.JPG",
+    "stamp": "SOLD OUT",
+    "compat": "Stupid Nintend-No",
+    "batch": "5",
+    "notes": "“On the advice of counsel, I respectfully invoke my Fifth Amendment right and decline to answer.”"
+  },
+  {
+    "title": "M. Night Shyamalan's Blockbuster 2: The Animated Movie: The Official Video Game of the Movie Remastered",
+    "short": "Blockbuster 2 Animated",
+    "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/5.JPG",
+    "stamp": "SOLD OUT",
+    "compat": "Stupid Nintend-No",
+    "batch": "5",
+    "notes": "With no beginning or end, its the first ever sequel to precede the original."
+  },
+  {
+    "title": "Idiocracy: Ow!! My Balls, Hosted by America’s Dad Bob Saget Only on The Violence Channnel (Brought To You By Carl’s JR)",
+    "short": "Idiocracy: Ow!! My Balls",
+    "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/6.JPG",
+    "stamp": "SOLD OUT",
+    "compat": "Nintendo-No 69",
+    "batch": "5",
+    "notes": "Saget gets reanimated and is forced to host a bastardized version of his own flagship program."
+  },
+  {
+    "title": "I Think You Should Leave Egg Game",
+    "short": "ITYSL Egg Game",
+    "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/7.JPG",
+    "stamp": "SOLD OUT",
+    "compat": "Stupid Nintend-No",
+    "batch": "5",
+    "notes": "One egg is forty eggs. Dude, would you like to buy an 80 pack of eggs?"
+  },
+  {
+    "title": "I Think You Should Leave Supermarket Swap VR for Virtual Boy",
+    "short": "Supermarket Swap VR",
+    "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/8.JPG",
+    "stamp": "SOLD OUT",
+    "compat": "Virtual Roy",
+    "batch": "5",
+    "notes": "One can of Smelly beans: 2 for a bunch. Peppers: UP (one-twelve). We have 'Yesterday's Ham'; only $10 bucks... but don't you take a bite out of one of those stinker clams!"
+  },
+  {
+    "title": "Mark Zuckerberg's Metaverse for Virtual Boy",
+    "short": "Zuckerberg's Metaverse",
+    "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/9.JPG",
+    "stamp": "SOLD OUT",
+    "compat": "Virtual Roy",
+    "batch": "5",
+    "notes": "Now with Legs™."
+  },
+  {
+    "title": "Werner Herzog's Lessons of Darkness",
+    "short": "Lessons of Darkness",
+    "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/darkness.jpg",
+    "stamp": "ON SALE!",
+    "compat": "Game Roy",
+    "batch": "15",
+    "notes": "A scorched-earth documentary experience adapted for stereoscopic red-black immersion."
+  },
+  {
+    "title": "My Dinner with Andre VR for Virtual Boy",
+    "short": "My Dinner with Andre VR",
+    "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/IMG_9096.JPG",
+    "stamp": "ON SALE!",
+    "compat": "Virtual Roy",
+    "batch": "15",
+    "notes": "The headset must stay locked until the Aranygaluska is served. If you don't receive Aranygaluska before your espresso, we will terminate your server on-the-spot."
+  },
+  {
+    "title": "Super Dirty Work",
+    "short": "Super Dirty Work",
+    "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/11.JPG",
+    "stamp": "ON SALE!",
+    "compat": "Stupid Nintend-No",
+    "batch": "15",
+    "notes": "Experience the definitive reconstruction of the unrated ‘Dirtier Work’ cut — as a fake display piece."
+  },
+  {
+    "title": "Tom Selleck's Reverse Mortgage 64",
+    "short": "Reverse Mortgage 64",
+    "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/10.jpg",
+    "stamp": "ON SALE!",
+    "compat": "Nintend-No 69",
+    "batch": "15",
+    "notes": "Description coming soon."
+  },
+  {
+    "title": "Super Norm MacDonald Live",
+    "short": "Super Norm MacDonald Live",
+    "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/IMG_6530.JPG",
+    "stamp": "SOLD OUT",
+    "compat": "Stupid Nintend-No",
+    "batch": "15",
+    "notes": "Boy, was it hot outside today.. I went out to buy a California Pizza Kitchen Signature Pepperoni Frozen Flatbread and by the time I got home it was perfectly cooked and entirely eaten.. 100% true."
+  }
+];
+
+(function () {
+  var root = document.getElementById("cb-vhs-carousel");
+  if (!root) return;
+  var tapes = window.CB_VHS_TAPES || [];
+  if (!tapes.length) return;
+  var href = root.getAttribute("data-archive") || "archive.html";
+  var i = 0;
+  var playing = true;
+  var seconds = 0;
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var slideTimer, tickTimer;
+
+  var crt = root.querySelector(".cb-vhs-crt");
+  var frame = root.querySelector(".cb-vhs-frame");
+  var osdPlay = root.querySelector(".cb-vhs-osd-play");
+  var osdTitle = root.querySelector(".cb-vhs-osd-title");
+  var stamp = root.querySelector(".cb-vhs-stamp");
+  var title = root.querySelector(".cb-vhs-title");
+  var notes = root.querySelector(".cb-vhs-notes");
+  var meta = root.querySelector(".cb-vhs-meta");
+  var well = root.querySelector(".cb-vhs-well");
+  var counter = root.querySelector(".cb-vhs-counter");
+  var playBtn = root.querySelector("[data-vhs-play]");
+
+  crt.setAttribute("href", href);
+  root.querySelector(".cb-vhs-cta").setAttribute("href", href);
+  var hintA = root.querySelector(".cb-vhs-hint a");
+  if (hintA) hintA.setAttribute("href", href);
+
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+  function fmt(s) {
+    var h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), sec = s % 60;
+    return pad(h) + ":" + pad(m) + ":" + pad(sec);
+  }
+
+  function renderTapes() {
+    well.innerHTML = "";
+    tapes.forEach(function (t, n) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "cb-vhs-tape" + (n === i ? " is-on" : "");
+      b.setAttribute("data-i", String(n));
+      var win = document.createElement("div");
+      win.className = "cb-vhs-tape-window";
+      var img = document.createElement("img");
+      img.src = t.img;
+      img.alt = "";
+      win.appendChild(img);
+      var lab = document.createElement("div");
+      lab.className = "cb-vhs-tape-label";
+      lab.textContent = t.short;
+      b.appendChild(win);
+      b.appendChild(lab);
+      b.addEventListener("click", function () { go(n); });
+      well.appendChild(b);
+    });
+  }
+
+  function paint() {
+    var t = tapes[i];
+    frame.src = t.img;
+    frame.alt = t.title;
+    osdTitle.textContent = t.short;
+    osdPlay.textContent = playing ? "► PLAY" : "❚❚ PAUSE";
+    osdPlay.setAttribute("data-paused", playing ? "false" : "true");
+    stamp.textContent = t.stamp;
+    stamp.className = "cb-vhs-stamp" + (t.stamp === "ON SALE!" ? " is-sale" : "");
+    title.textContent = t.title;
+    notes.textContent = t.notes;
+    meta.innerHTML =
+      "<span>Compat <b></b></span><span>Batch <b></b></span><span>Tape <b></b></span>";
+    var bs = meta.querySelectorAll("b");
+    bs[0].textContent = t.compat;
+    bs[1].textContent = t.batch;
+    bs[2].textContent = (i + 1) + "/" + tapes.length;
+    playBtn.textContent = playing ? "PAUSE" : "PLAY";
+    Array.prototype.forEach.call(well.children, function (el, n) {
+      el.classList.toggle("is-on", n === i);
+    });
+    var on = well.children[i];
+    if (on && on.scrollIntoView) on.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+  }
+
+  function go(n) {
+    i = (n + tapes.length) % tapes.length;
+    crt.classList.remove("is-glitch");
+    void crt.offsetWidth;
+    crt.classList.add("is-glitch");
+    setTimeout(function () { crt.classList.remove("is-glitch"); }, 450);
+    paint();
+    restartSlide();
+  }
+
+  function restartSlide() {
+    if (slideTimer) clearInterval(slideTimer);
+    if (!playing || reduce) return;
+    slideTimer = setInterval(function () { go(i + 1); }, 4800);
+  }
+
+  root.querySelector("[data-vhs-prev]").addEventListener("click", function () { go(i - 1); });
+  root.querySelector("[data-vhs-next]").addEventListener("click", function () { go(i + 1); });
+  playBtn.addEventListener("click", function () {
+    playing = !playing;
+    paint();
+    restartSlide();
+  });
+
+  tickTimer = setInterval(function () {
+    if (!playing) return;
+    seconds += 1;
+    counter.textContent = fmt(seconds);
+  }, 1000);
+
+  renderTapes();
+  paint();
+  restartSlide();
+})();
+
+</script>
     <div class="event-strip" id="sale">
       <span>TIMLINE INDICATOR: <strong>ERROR</strong></span>
       <span>SALES PROGRAM: <strong>UNDEFINED 9% OFF EVENT HORIZON PHENOMENON</strong></span>
