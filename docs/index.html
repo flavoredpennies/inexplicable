@@ -842,21 +842,18 @@
     </header>
   <!-- ============================================================
      LOG ADVANCE
-     A "Game Roy Reverse" handheld title, Clockbuster universe.
-     Self-contained embed: CSS + markup + JS. Scoped under
-     .logadv- classes and #logadv- ids so it can be dropped into
-     an existing page without colliding with other styles.
-     See the bottom of this file for embed instructions.
+     GBA-style graphical upgrade
+     Clockbuster / Game Roy Reverse
      ============================================================ -->
 
 <style>
   #logadv-root, #logadv-root * { box-sizing: border-box; }
 
   #logadv-root {
-    --logadv-ink: #2c3625;
-    --logadv-screen-bg: #b7c9a8;
-    --logadv-frame: #1c1b26;
-    --logadv-frame-text: #e7e3d2;
+    --logadv-ink: #172515;
+    --logadv-screen-bg: #d8e6c8;
+    --logadv-frame: #20202a;
+    --logadv-frame-text: #eee9d5;
     font-family: 'Press Start 2P', 'Courier New', monospace;
     display: flex;
     justify-content: center;
@@ -892,13 +889,16 @@
     white-space: nowrap;
     overflow: hidden;
   }
-  .logadv-border-top    { grid-row: 1; display: flex; align-items: center; }
-  .logadv-border-bottom { grid-row: 3; display: flex; align-items: center; }
 
-  /* Side bands are pulled out of grid flow entirely and given a hard
-     pixel height. In vertical writing-mode, nowrap text otherwise
-     demands unbounded height to avoid wrapping -- that's what was
-     stretching the whole component thousands of pixels down the page. */
+  .logadv-border-top,
+  .logadv-border-bottom {
+    display: flex;
+    align-items: center;
+  }
+
+  .logadv-border-top { grid-row: 1; }
+  .logadv-border-bottom { grid-row: 3; }
+
   .logadv-border-left,
   .logadv-border-right {
     position: absolute;
@@ -910,7 +910,8 @@
     align-items: center;
     justify-content: flex-start;
   }
-  .logadv-border-left  { left: 0; }
+
+  .logadv-border-left { left: 0; }
   .logadv-border-right { right: 0; }
 
   #logadv-inner {
@@ -924,10 +925,12 @@
   }
 
   #logadv-screenwrap {
-    background: #14131c;
-    border-radius: 4px;
-    padding: 6px;
-    box-shadow: inset 0 3px 8px rgba(0,0,0,0.6);
+    background: #10131a;
+    border-radius: 5px;
+    padding: 7px;
+    box-shadow:
+      inset 0 2px 5px rgba(0,0,0,0.75),
+      0 1px 0 rgba(255,255,255,0.08);
   }
 
   #logadv-canvas {
@@ -958,6 +961,7 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 6px;
   }
+
   #logadv-buttonrow button {
     font-family: inherit;
     font-size: 8px;
@@ -969,6 +973,7 @@
     padding: 6px 4px;
     cursor: pointer;
   }
+
   #logadv-buttonrow button:active {
     background: #4a4868;
     transform: translateY(1px);
@@ -982,11 +987,16 @@
       <div class="logadv-border logadv-border-bottom" id="logadv-border-bottom"></div>
       <div class="logadv-border logadv-border-left" id="logadv-border-left"></div>
       <div class="logadv-border logadv-border-right" id="logadv-border-right"></div>
+
       <div id="logadv-inner">
         <div id="logadv-screenwrap">
           <canvas id="logadv-canvas" width="240" height="160"></canvas>
-          <div id="logadv-legend"><span id="logadv-legend-l">&nbsp;</span><span id="logadv-legend-r">&nbsp;</span></div>
+          <div id="logadv-legend">
+            <span id="logadv-legend-l">&nbsp;</span>
+            <span id="logadv-legend-r">&nbsp;</span>
+          </div>
         </div>
+
         <div id="logadv-buttonrow">
           <button data-k="SELECT">SELECT</button>
           <button data-k="START">START</button>
@@ -995,6 +1005,7 @@
         </div>
       </div>
     </div>
+
     <div class="logadv-caption">LOG ADVANCE &middot; A CLOCKBUSTER PRODUCT</div>
   </div>
 </div>
@@ -1004,12 +1015,12 @@
   var canvas = document.getElementById('logadv-canvas');
   var ctx = canvas.getContext('2d');
   ctx.imageSmoothingEnabled = false;
+
   var legendL = document.getElementById('logadv-legend-l');
   var legendR = document.getElementById('logadv-legend-r');
 
   var W = 240, H = 160;
 
-  /* ---------- frame border text ---------- */
   (function fillBorders() {
     var track = new Array(40).fill('LOG ADVANCE').join('   ') + '   ';
     document.getElementById('logadv-border-top').textContent = track;
@@ -1018,183 +1029,561 @@
     document.getElementById('logadv-border-right').textContent = track;
   })();
 
-  /* ---------- audio (no assets, plain oscillator blips) ---------- */
   var actx = null;
+
   function beep(freq, dur, type) {
     try {
-      if (!actx) actx = new (window.AudioContext || window.webkitAudioContext)();
+      if (!actx) {
+        actx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+
       var o = actx.createOscillator();
       var g = actx.createGain();
+
       o.type = type || 'square';
       o.frequency.value = freq;
       g.gain.value = 0.05;
+
       o.connect(g);
       g.connect(actx.destination);
-      o.start();
-      g.gain.exponentialRampToValueAtTime(0.0001, actx.currentTime + dur);
-      o.stop(actx.currentTime + dur);
-    } catch (e) { /* audio unavailable, proceed silently */ }
-  }
-  function sfxMove() { beep(220, 0.05); }
-  function sfxConfirm() { beep(440, 0.07); }
-  function sfxBack() { beep(180, 0.08); }
-  function sfxNew() { beep(523, 0.09); setTimeout(function(){ beep(784, 0.14); }, 90); }
-  function sfxError() { beep(120, 0.05, 'sawtooth'); setTimeout(function(){ beep(90, 0.12, 'sawtooth'); }, 60); }
 
-  /* ---------- specimen data ---------- */
+      o.start();
+      g.gain.exponentialRampToValueAtTime(
+        0.0001,
+        actx.currentTime + dur
+      );
+      o.stop(actx.currentTime + dur);
+    } catch (e) {}
+  }
+
+  function sfxMove() {
+    beep(220, 0.05);
+  }
+
+  function sfxConfirm() {
+    beep(440, 0.07);
+  }
+
+  function sfxBack() {
+    beep(180, 0.08);
+  }
+
+  function sfxNew() {
+    beep(523, 0.09);
+    setTimeout(function () {
+      beep(784, 0.14);
+    }, 90);
+  }
+
+  function sfxError() {
+    beep(120, 0.05, 'sawtooth');
+    setTimeout(function () {
+      beep(90, 0.12, 'sawtooth');
+    }, 60);
+  }
+
   var SPECIMENS = [
-    { species:'CONIFER',    length:'MEDIUM', bark:'INTACT',    condition:'SOUND',        note:'FOUND NEAR THE TREE LINE.',        color:'#8a5a35', ring:'#c99a5c', rot:2,   knots:[[0.3,0]],           moss:false, crack:false, hollow:false, charred:false, capEnd:'right' },
-    { species:'HARDWOOD',   length:'LONG',   bark:'PARTIAL',   condition:'WEATHERED',    note:'BARK HAS BEGUN TO SEPARATE.',      color:'#6b4a34', ring:'#a9805c', rot:-3,  knots:[[0.55,1]],          moss:false, crack:true,  hollow:false, charred:false, capEnd:'left' },
-    { species:'BIRCH',      length:'SHORT',  bark:'INTACT',    condition:'SOUND',        note:'BARK PEELS IN PAPER-THIN LAYERS.', color:'#d8cdb8', ring:'#efe7d6', rot:4,   knots:[],                  moss:false, crack:false, hollow:false, charred:false, capEnd:'right', barkStripe:true },
-    { species:'DRIFTWOOD',  length:'MEDIUM', bark:'STRIPPED',  condition:'BLEACHED',     note:'SMOOTHED BY LONG CONTACT WITH WATER.', color:'#c9bfa8', ring:'#e4dcc7', rot:-2,  knots:[],              moss:false, crack:false, hollow:false, charred:false, capEnd:'left' },
-    { species:'HARDWOOD',   length:'LONG',   bark:'INTACT',    condition:'HOLLOW',       note:'INTERIOR HAS ROTTED OUT.',         color:'#5f4530', ring:'#8a6a48', rot:1,   knots:[[0.2,1]],           moss:false, crack:false, hollow:true,  charred:false, capEnd:'right' },
-    { species:'CONIFER',    length:'SHORT',  bark:'INTACT',    condition:'MOSS-COVERED', note:'NORTH SIDE SHOWS HEAVIER GROWTH.', color:'#7a5232', ring:'#b08a58', rot:-1,  knots:[[0.6,0]],           moss:true,  crack:false, hollow:false, charred:false, capEnd:'left' },
-    { species:'HARDWOOD',   length:'MEDIUM', bark:'PARTIAL',   condition:'SPLIT',        note:'A FRACTURE RUNS THE FULL LENGTH.', color:'#71482c', ring:'#a97a4a', rot:3,   knots:[],                  moss:false, crack:true,  hollow:false, charred:false, capEnd:'right' },
-    { species:'CONIFER',    length:'LONG',   bark:'INTACT',    condition:'SOUND',        note:'A DENSE ARRANGEMENT OF GROWTH RINGS.', color:'#8f5f38', ring:'#d1a468', rot:0,   knots:[[0.4,1],[0.7,0]], moss:false, crack:false, hollow:false, charred:false, capEnd:'left' },
-    { species:'HARDWOOD',   length:'SHORT',  bark:'STRIPPED',  condition:'CHARRED',      note:'SURFACE SHOWS SIGNS OF FIRE EXPOSURE.', color:'#3a322e', ring:'#5c4f47', rot:-4, knots:[],              moss:false, crack:false, hollow:false, charred:true,  capEnd:'right' },
-    { species:'PETRIFIED',  length:'MEDIUM', bark:'ABSENT',    condition:'MINERALIZED',  note:'ORGANIC TISSUE FULLY REPLACED BY MINERAL.', color:'#96938a', ring:'#c4c1b6', rot:2, knots:[],           moss:false, crack:false, hollow:false, charred:false, capEnd:'left', mineral:true },
-    { species:'BIRCH',      length:'LONG',   bark:'INTACT',    condition:'SOUND',        note:'UNUSUALLY STRAIGHT ALONG ITS LENGTH.', color:'#ddd2bd', ring:'#f2ead9', rot:-2,  knots:[[0.5,1]],       moss:false, crack:false, hollow:false, charred:false, capEnd:'right', barkStripe:true },
-    { species:'HARDWOOD',   length:'MEDIUM', bark:'PARTIAL',   condition:'WATERLOGGED',  note:'NOTICEABLY HEAVIER THAN EXPECTED.', color:'#544332', ring:'#7c6650', rot:1,   knots:[[0.35,0]],          moss:true,  crack:false, hollow:false, charred:false, capEnd:'left' },
-    { special:'lincoln', species:'LINCOLN',      length:'MEDIUM', bark:'INTACT', condition:'PRESIDENTIAL', note:'BEARD APPEARS TO BE NATURAL GROWTH.',   color:'#8a5a35', ring:'#c99a5c' },
-    { special:'captain', species:"CAPTAIN'S LOG", length:'MEDIUM', bark:'INTACT', condition:'SEAWORTHY',    note:'STARDATE FIELD LEFT BLANK.',            color:'#6b4a34', ring:'#a9805c' },
-    { special:'syslog',  species:'SYSLOG',        length:'N/A',    bark:'N/A',    condition:'ERROR',        note:'NO ADDITIONAL DATA AVAILABLE.',          color:'#000000', ring:'#000000' }
+    {
+      species:'CONIFER',
+      length:'MEDIUM',
+      bark:'INTACT',
+      condition:'SOUND',
+      note:'FOUND NEAR THE TREE LINE.',
+      color:'#8a5a35',
+      ring:'#c99a5c',
+      rot:2,
+      knots:[[0.3,0]],
+      moss:false,
+      crack:false,
+      hollow:false,
+      charred:false,
+      capEnd:'right'
+    },
+    {
+      species:'HARDWOOD',
+      length:'LONG',
+      bark:'PARTIAL',
+      condition:'WEATHERED',
+      note:'BARK HAS BEGUN TO SEPARATE.',
+      color:'#6b4a34',
+      ring:'#a9805c',
+      rot:-3,
+      knots:[[0.55,1]],
+      moss:false,
+      crack:true,
+      hollow:false,
+      charred:false,
+      capEnd:'left'
+    },
+    {
+      species:'BIRCH',
+      length:'SHORT',
+      bark:'INTACT',
+      condition:'SOUND',
+      note:'BARK PEELS IN PAPER-THIN LAYERS.',
+      color:'#d8cdb8',
+      ring:'#efe7d6',
+      rot:4,
+      knots:[],
+      moss:false,
+      crack:false,
+      hollow:false,
+      charred:false,
+      capEnd:'right',
+      barkStripe:true
+    },
+    {
+      species:'DRIFTWOOD',
+      length:'MEDIUM',
+      bark:'STRIPPED',
+      condition:'BLEACHED',
+      note:'SMOOTHED BY LONG CONTACT WITH WATER.',
+      color:'#c9bfa8',
+      ring:'#e4dcc7',
+      rot:-2,
+      knots:[],
+      moss:false,
+      crack:false,
+      hollow:false,
+      charred:false,
+      capEnd:'left'
+    },
+    {
+      species:'HARDWOOD',
+      length:'LONG',
+      bark:'INTACT',
+      condition:'HOLLOW',
+      note:'INTERIOR HAS ROTTED OUT.',
+      color:'#5f4530',
+      ring:'#8a6a48',
+      rot:1,
+      knots:[[0.2,1]],
+      moss:false,
+      crack:false,
+      hollow:true,
+      charred:false,
+      capEnd:'right'
+    },
+    {
+      species:'CONIFER',
+      length:'SHORT',
+      bark:'INTACT',
+      condition:'MOSS-COVERED',
+      note:'NORTH SIDE SHOWS HEAVIER GROWTH.',
+      color:'#7a5232',
+      ring:'#b08a58',
+      rot:-1,
+      knots:[[0.6,0]],
+      moss:true,
+      crack:false,
+      hollow:false,
+      charred:false,
+      capEnd:'left'
+    },
+    {
+      species:'HARDWOOD',
+      length:'MEDIUM',
+      bark:'PARTIAL',
+      condition:'SPLIT',
+      note:'A FRACTURE RUNS THE FULL LENGTH.',
+      color:'#71482c',
+      ring:'#a97a4a',
+      rot:3,
+      knots:[],
+      moss:false,
+      crack:true,
+      hollow:false,
+      charred:false,
+      capEnd:'right'
+    },
+    {
+      species:'CONIFER',
+      length:'LONG',
+      bark:'INTACT',
+      condition:'SOUND',
+      note:'A DENSE ARRANGEMENT OF GROWTH RINGS.',
+      color:'#8f5f38',
+      ring:'#d1a468',
+      rot:0,
+      knots:[[0.4,1],[0.7,0]],
+      moss:false,
+      crack:false,
+      hollow:false,
+      charred:false,
+      capEnd:'left'
+    },
+    {
+      species:'HARDWOOD',
+      length:'SHORT',
+      bark:'STRIPPED',
+      condition:'CHARRED',
+      note:'SURFACE SHOWS SIGNS OF FIRE EXPOSURE.',
+      color:'#3a322e',
+      ring:'#5c4f47',
+      rot:-4,
+      knots:[],
+      moss:false,
+      crack:false,
+      hollow:false,
+      charred:true,
+      capEnd:'right'
+    },
+    {
+      species:'PETRIFIED',
+      length:'MEDIUM',
+      bark:'ABSENT',
+      condition:'MINERALIZED',
+      note:'ORGANIC TISSUE FULLY REPLACED BY MINERAL.',
+      color:'#96938a',
+      ring:'#c4c1b6',
+      rot:2,
+      knots:[],
+      moss:false,
+      crack:false,
+      hollow:false,
+      charred:false,
+      capEnd:'left',
+      mineral:true
+    },
+    {
+      species:'BIRCH',
+      length:'LONG',
+      bark:'INTACT',
+      condition:'SOUND',
+      note:'UNUSUALLY STRAIGHT ALONG ITS LENGTH.',
+      color:'#ddd2bd',
+      ring:'#f2ead9',
+      rot:-2,
+      knots:[[0.5,1]],
+      moss:false,
+      crack:false,
+      hollow:false,
+      charred:false,
+      capEnd:'right',
+      barkStripe:true
+    },
+    {
+      species:'HARDWOOD',
+      length:'MEDIUM',
+      bark:'PARTIAL',
+      condition:'WATERLOGGED',
+      note:'NOTICEABLY HEAVIER THAN EXPECTED.',
+      color:'#544332',
+      ring:'#7c6650',
+      rot:1,
+      knots:[[0.35,0]],
+      moss:true,
+      crack:false,
+      hollow:false,
+      charred:false,
+      capEnd:'left'
+    },
+    {
+      special:'lincoln',
+      species:'LINCOLN',
+      length:'MEDIUM',
+      bark:'INTACT',
+      condition:'PRESIDENTIAL',
+      note:'BEARD APPEARS TO BE NATURAL GROWTH.',
+      color:'#8a5a35',
+      ring:'#c99a5c'
+    },
+    {
+      special:'captain',
+      species:"CAPTAIN'S LOG",
+      length:'MEDIUM',
+      bark:'INTACT',
+      condition:'SEAWORTHY',
+      note:'STARDATE FIELD LEFT BLANK.',
+      color:'#6b4a34',
+      ring:'#a9805c'
+    },
+    {
+      special:'syslog',
+      species:'SYSLOG',
+      length:'N/A',
+      bark:'N/A',
+      condition:'ERROR',
+      note:'NO ADDITIONAL DATA AVAILABLE.',
+      color:'#000000',
+      ring:'#000000'
+    }
   ];
 
   var found = new Array(SPECIMENS.length).fill(false);
   var order = [];
-  for (var i = 0; i < SPECIMENS.length; i++) order.push(i);
 
-  /* ---------- state machine ---------- */
-  var STATE = 'TITLE';   // TITLE, FIELD, LOOK, INDEX
+  for (var i = 0; i < SPECIMENS.length; i++) {
+    order.push(i);
+  }
+
+  var STATE = 'TITLE';
   var current = 0;
   var blink = true;
   var flashTimer = 0;
 
-  function specimen() { return SPECIMENS[order[current]]; }
-  function specNumber() { return order[current] + 1; }
+  function specimen() {
+    return SPECIMENS[order[current]];
+  }
+
+  function specNumber() {
+    return order[current] + 1;
+  }
 
   function pickNext() {
     current = (current + 1) % order.length;
     var idx = order[current];
+
     if (!found[idx]) {
       found[idx] = true;
-      return true; // newly discovered
+      return true;
     }
+
     return false;
   }
 
-  /* ---------- drawing helpers ---------- */
   function clear(sky, ground) {
-    ctx.fillStyle = sky;
-    ctx.fillRect(0, 0, W, H * 0.6);
-    ctx.fillStyle = ground;
-    ctx.fillRect(0, H * 0.6, W, H * 0.4);
-    ctx.fillStyle = 'rgba(0,0,0,0.06)';
-    for (var y = 0; y < H; y += 4) ctx.fillRect(0, y, W, 1);
+    ctx.fillStyle = sky || '#8fc7e8';
+    ctx.fillRect(0, 0, W, H * 0.60);
+
+    ctx.fillStyle = '#78a96d';
+    ctx.fillRect(0, H * 0.48, W, H * 0.18);
+
+    ctx.fillStyle = ground || '#66894e';
+    ctx.fillRect(0, H * 0.60, W, H * 0.40);
+
+    ctx.fillStyle = '#47704a';
+
+    for (var tx = 0; tx < W; tx += 24) {
+      var th = 10 + ((tx * 7) % 18);
+
+      ctx.fillRect(tx + 5, H * 0.60 - th, 7, th);
+      ctx.fillRect(tx + 1, H * 0.60 - th + 5, 15, 5);
+    }
+
+    ctx.fillStyle = '#557544';
+
+    for (var gx = 0; gx < W; gx += 13) {
+      ctx.fillRect(gx, H * 0.72 + ((gx * 3) % 8), 5, 2);
+      ctx.fillRect(gx + 7, H * 0.84 + ((gx * 5) % 7), 3, 2);
+    }
+
+    ctx.fillStyle = '#385c3b';
+
+    for (var grass = 0; grass < W; grass += 11) {
+      var gy = H - 7 - ((grass * 5) % 9);
+
+      ctx.fillRect(grass, gy, 2, 7);
+
+      if (grass % 3 === 0) {
+        ctx.fillRect(grass + 2, gy + 2, 2, 4);
+      }
+    }
+
+    ctx.fillStyle = 'rgba(255,255,255,0.045)';
+
+    for (var y = 0; y < H; y += 4) {
+      ctx.fillRect(0, y, W, 1);
+    }
   }
 
   function drawLogBody(spec) {
     ctx.save();
-    ctx.translate(W / 2, H * 0.6);
+
+    ctx.translate(W / 2, H * 0.60);
     ctx.rotate((spec.rot || 0) * Math.PI / 180);
 
-    var lenMap = { SHORT: 70, MEDIUM: 100, LONG: 132 };
-    var len = lenMap[spec.length] || 100;
-    var thick = spec.species === 'BIRCH' ? 22 : 30;
-    var x0 = -len / 2, x1 = len / 2;
+    var lenMap = {
+      SHORT: 70,
+      MEDIUM: 102,
+      LONG: 136
+    };
 
-    ctx.fillStyle = 'rgba(0,0,0,0.18)';
-    ctx.fillRect(x0, thick / 2 + 4, len, 6);
+    var len = lenMap[spec.length] || 102;
+    var thick = spec.species === 'BIRCH' ? 24 : 32;
+
+    var x0 = Math.round(-len / 2);
+    var x1 = Math.round(len / 2);
+    var y0 = Math.round(-thick / 2);
+    var y1 = Math.round(thick / 2);
+
+    ctx.fillStyle = '#34452f';
+    ctx.fillRect(x0 + 4, y1 + 5, len - 4, 7);
+
+    ctx.fillStyle = '#30251d';
+    ctx.fillRect(x0 - 2, y0 + 3, len + 4, thick - 6);
+    ctx.fillRect(x0 + 3, y0 - 2, len - 6, 4);
+    ctx.fillRect(x0 + 3, y1 - 2, len - 6, 4);
 
     ctx.fillStyle = spec.color;
-    ctx.fillRect(x0, -thick / 2, len, thick);
+    ctx.fillRect(x0, y0, len, thick);
 
-    ctx.strokeStyle = 'rgba(0,0,0,0.22)';
-    ctx.lineWidth = 1;
-    var stripeGap = spec.barkStripe ? 5 : 9;
-    for (var x = x0 + 4; x < x1 - 4; x += stripeGap) {
-      ctx.beginPath();
-      ctx.moveTo(x, -thick / 2 + 2);
-      ctx.lineTo(x + 2, thick / 2 - 2);
-      ctx.stroke();
+    ctx.fillStyle = 'rgba(255,255,255,0.16)';
+    ctx.fillRect(x0 + 4, y0 + 3, len - 8, 5);
+
+    ctx.fillStyle = 'rgba(0,0,0,0.18)';
+    ctx.fillRect(x0 + 3, y1 - 7, len - 6, 5);
+
+    var stripeGap = spec.barkStripe ? 5 : 10;
+
+    for (var x = x0 + 6; x < x1 - 5; x += stripeGap) {
+      ctx.fillStyle = 'rgba(0,0,0,0.14)';
+      ctx.fillRect(x, y0 + 7, 2, thick - 12);
+
+      ctx.fillStyle = 'rgba(255,255,255,0.07)';
+      ctx.fillRect(x + 2, y0 + 7, 1, thick - 12);
     }
-    ctx.strokeStyle = 'rgba(0,0,0,0.15)';
-    ctx.beginPath();
-    ctx.moveTo(x0 + 2, -2);
-    ctx.lineTo(x1 - 2, 3);
-    ctx.stroke();
 
-    ctx.fillStyle = 'rgba(0,0,0,0.35)';
+    ctx.fillStyle = 'rgba(0,0,0,0.20)';
+    ctx.fillRect(x0 + 5, -1, len - 10, 2);
+
     (spec.knots || []).forEach(function (k) {
-      var kx = x0 + k[0] * len;
-      var ky = k[1] === 0 ? -thick / 2 + 7 : thick / 2 - 7;
-      ctx.beginPath();
-      ctx.ellipse(kx, ky, 4, 3, 0, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.beginPath();
+      var kx = Math.round(x0 + k[0] * len);
+      var ky = k[1] === 0 ? y0 + 8 : y1 - 8;
+
+      ctx.fillStyle = '#39291f';
+      ctx.fillRect(kx - 5, ky - 3, 10, 6);
+
       ctx.fillStyle = spec.ring;
-      ctx.ellipse(kx, ky, 1.6, 1.2, 0, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.fillStyle = 'rgba(0,0,0,0.35)';
+      ctx.fillRect(kx - 2, ky - 2, 4, 4);
+
+      ctx.fillStyle = 'rgba(255,255,255,0.16)';
+      ctx.fillRect(kx - 1, ky - 2, 2, 1);
     });
 
     if (spec.crack) {
-      ctx.strokeStyle = 'rgba(0,0,0,0.5)';
-      ctx.lineWidth = 1.5;
+      ctx.fillStyle = '#30231b';
+
       ctx.beginPath();
-      ctx.moveTo(x0 + 6, -3);
-      ctx.lineTo(x0 + len * 0.35, 2);
-      ctx.lineTo(x0 + len * 0.6, -2);
-      ctx.lineTo(x1 - 6, 4);
-      ctx.stroke();
+      ctx.moveTo(x0 + 6, -2);
+      ctx.lineTo(x0 + len * 0.32, 2);
+      ctx.lineTo(x0 + len * 0.58, -2);
+      ctx.lineTo(x1 - 7, 4);
+      ctx.lineTo(x1 - 7, 6);
+      ctx.lineTo(x0 + len * 0.58, 1);
+      ctx.lineTo(x0 + len * 0.32, 5);
+      ctx.lineTo(x0 + 6, 1);
+      ctx.closePath();
+      ctx.fill();
     }
 
     if (spec.charred) {
-      ctx.fillStyle = 'rgba(0,0,0,0.4)';
-      ctx.fillRect(x0, -thick / 2, len * 0.4, thick);
+      ctx.fillStyle = '#292522';
+      ctx.fillRect(x0, y0, Math.round(len * 0.42), thick);
+
+      ctx.fillStyle = '#41372f';
+
+      for (var c = 0; c < 10; c++) {
+        ctx.fillRect(
+          x0 + ((c * 13) % Math.max(10, Math.round(len * 0.38))),
+          y0 + ((c * 7) % Math.max(5, thick - 5)),
+          3,
+          2
+        );
+      }
     }
 
     if (spec.moss) {
-      ctx.fillStyle = 'rgba(90,120,60,0.7)';
-      for (var m = 0; m < 4; m++) {
-        var mx = x0 + 10 + m * (len / 4);
-        ctx.beginPath();
-        ctx.ellipse(mx, -thick / 2 + 3, 5, 2.5, 0, 0, Math.PI * 2);
-        ctx.fill();
+      ctx.fillStyle = '#47753c';
+
+      for (var m = 0; m < 6; m++) {
+        var mx = x0 + 7 + m * Math.max(7, Math.round(len / 6));
+        var my = y0 + 2 + ((m * 3) % 7);
+
+        ctx.fillRect(mx, my, 7, 4);
+        ctx.fillRect(mx + 2, my - 2, 3, 3);
+      }
+
+      ctx.fillStyle = '#719552';
+
+      for (var mh = 0; mh < 4; mh++) {
+        ctx.fillRect(
+          x0 + 9 + mh * Math.round(len / 5),
+          y0 + 2,
+          3,
+          2
+        );
       }
     }
 
     var capX = spec.capEnd === 'right' ? x1 : x0;
+
+    ctx.fillStyle = '#4b3828';
+    ctx.beginPath();
+    ctx.ellipse(capX, 0, 11, thick / 2 + 1, 0, 0, Math.PI * 2);
+    ctx.fill();
+
     ctx.fillStyle = spec.ring;
     ctx.beginPath();
-    ctx.ellipse(capX, 0, 8, thick / 2, 0, 0, Math.PI * 2);
+    ctx.ellipse(capX, 0, 8, thick / 2 - 2, 0, 0, Math.PI * 2);
     ctx.fill();
-    ctx.strokeStyle = 'rgba(0,0,0,0.25)';
+
+    ctx.strokeStyle = 'rgba(72,48,31,0.55)';
     ctx.lineWidth = 1;
-    for (var r = 3; r < thick / 2; r += 4) {
+
+    for (var r = 3; r < thick / 2 - 2; r += 4) {
       ctx.beginPath();
-      ctx.ellipse(capX, 0, r * 0.5, r, 0, 0, Math.PI * 2);
+      ctx.ellipse(
+        capX,
+        0,
+        Math.max(2, r * 0.55),
+        r,
+        0,
+        0,
+        Math.PI * 2
+      );
       ctx.stroke();
     }
+
+    ctx.fillStyle = 'rgba(255,255,255,0.18)';
+    ctx.fillRect(
+      capX - (spec.capEnd === 'right' ? 5 : -4),
+      -6,
+      3,
+      5
+    );
+
     if (spec.hollow) {
-      ctx.fillStyle = '#2a2018';
+      ctx.fillStyle = '#211914';
+
       ctx.beginPath();
-      ctx.ellipse(capX, 0, 3, thick / 2 - 6, 0, 0, Math.PI * 2);
+      ctx.ellipse(
+        capX,
+        0,
+        4,
+        thick / 2 - 7,
+        0,
+        0,
+        Math.PI * 2
+      );
       ctx.fill();
+
+      ctx.fillStyle = '#0e0b09';
+      ctx.fillRect(
+        capX - 2,
+        -thick / 2 + 7,
+        4,
+        thick - 14
+      );
     }
+
     if (spec.mineral) {
-      ctx.fillStyle = 'rgba(255,255,255,0.15)';
-      ctx.beginPath();
-      ctx.ellipse(capX, 0, 6, thick / 2 - 3, 0, 0, Math.PI * 2);
-      ctx.fill();
+      ctx.fillStyle = 'rgba(255,255,255,0.22)';
+      ctx.fillRect(capX - 5, -7, 3, 14);
+      ctx.fillRect(capX + 1, -4, 2, 8);
     }
-    return { x1: x1, thick: thick };
+
+    return {
+      x1: x1,
+      thick: thick
+    };
   }
 
   function drawLincoln(spec) {
     var dims = drawLogBody(spec);
-    // beard: pale zigzag hanging below the right end
+
     ctx.fillStyle = '#e7e2d3';
+
     ctx.beginPath();
     ctx.moveTo(dims.x1 - 14, dims.thick / 2 - 2);
     ctx.lineTo(dims.x1 - 2, dims.thick / 2 - 2);
@@ -1203,56 +1592,90 @@
     ctx.lineTo(dims.x1 - 12, dims.thick / 2 + 16);
     ctx.closePath();
     ctx.fill();
-    // top hat above the right end
+
     ctx.fillStyle = '#1c1b26';
     ctx.fillRect(dims.x1 - 15, -dims.thick / 2 - 4, 12, 3);
     ctx.fillRect(dims.x1 - 12, -dims.thick / 2 - 20, 6, 16);
+
     ctx.restore();
   }
 
   function drawCaptain(spec) {
     var dims = drawLogBody(spec);
-    // sailor collar over the left end
+
     ctx.fillStyle = '#e3e8ee';
+
     ctx.beginPath();
     ctx.moveTo(-dims.x1 + 2, -dims.thick / 2 - 2);
     ctx.lineTo(-dims.x1 + 22, -dims.thick / 2 - 2);
     ctx.lineTo(-dims.x1 + 12, dims.thick / 2 + 6);
     ctx.closePath();
     ctx.fill();
+
     ctx.strokeStyle = '#4a6fa5';
     ctx.lineWidth = 1.5;
     ctx.stroke();
-    // captain's cap above the left end
+
     ctx.fillStyle = '#e3e8ee';
     ctx.fillRect(-dims.x1 - 2, -dims.thick / 2 - 12, 22, 8);
+
     ctx.fillStyle = '#1c1b26';
     ctx.fillRect(-dims.x1 - 4, -dims.thick / 2 - 5, 26, 3);
+
     ctx.fillStyle = '#d6b24a';
     ctx.fillRect(-dims.x1 + 5, -dims.thick / 2 - 10, 4, 4);
+
     ctx.restore();
   }
 
   function drawSyslog() {
     ctx.fillStyle = '#0a0a0a';
     ctx.fillRect(0, 0, W, H);
+
     ctx.strokeStyle = '#2a2a2a';
     ctx.lineWidth = 1;
-    for (var y = 0; y < H; y += 6) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
-    pixelText('ERROR', W / 2, H / 2 - 10, 20, '#ff5a4e', 'center');
+
+    for (var y = 0; y < H; y += 6) {
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(W, y);
+      ctx.stroke();
+    }
+
+    pixelText(
+      'ERROR',
+      W / 2,
+      H / 2 - 10,
+      20,
+      '#ff5a4e',
+      'center'
+    );
   }
 
   function drawSpecimenVisual(spec) {
-    if (spec.special === 'syslog') { drawSyslog(); return; }
-    clear('#c7d6b9', '#7f9a63');
-    if (spec.special === 'lincoln') { drawLincoln(spec); return; }
-    if (spec.special === 'captain') { drawCaptain(spec); return; }
+    if (spec.special === 'syslog') {
+      drawSyslog();
+      return;
+    }
+
+    clear('#8fc7e8', '#66894e');
+
+    if (spec.special === 'lincoln') {
+      drawLincoln(spec);
+      return;
+    }
+
+    if (spec.special === 'captain') {
+      drawCaptain(spec);
+      return;
+    }
+
     drawLogBody(spec);
     ctx.restore();
   }
 
   function pixelText(text, x, y, size, color, align) {
-    ctx.fillStyle = color || '#2c3625';
+    ctx.fillStyle = color || '#172515';
     ctx.font = size + 'px "Press Start 2P", monospace';
     ctx.textAlign = align || 'left';
     ctx.textBaseline = 'top';
@@ -1260,107 +1683,313 @@
   }
 
   function drawTitle() {
-    clear('#b7c9a8', '#8fa878');
-    pixelText('GAME ROY REVERSE', W / 2, 20, 6, '#4a5a3e', 'center');
-    pixelText('LOG', W / 2, 46, 22, '#2c3625', 'center');
-    pixelText('ADVANCE', W / 2, 74, 12, '#2c3625', 'center');
-    ctx.strokeStyle = '#2c3625';
-    ctx.lineWidth = 2;
-    ctx.strokeRect(24, 100, W - 48, 2);
-    if (blink) pixelText('PRESS START', W / 2, 116, 8, '#2c3625', 'center');
-    pixelText('(C) CLOCKBUSTER', W / 2, H - 16, 6, '#4a5a3e', 'center');
+    clear('#82b9d8', '#6f9858');
+
+    pixelText(
+      'GAME ROY REVERSE',
+      W / 2 + 2,
+      21,
+      6,
+      '#344b3a',
+      'center'
+    );
+
+    pixelText(
+      'GAME ROY REVERSE',
+      W / 2,
+      19,
+      6,
+      '#f2ead0',
+      'center'
+    );
+
+    pixelText(
+      'LOG',
+      W / 2 + 2,
+      45,
+      25,
+      '#30251e',
+      'center'
+    );
+
+    pixelText(
+      'LOG',
+      W / 2,
+      43,
+      25,
+      '#d28a4e',
+      'center'
+    );
+
+    pixelText(
+      'ADVANCE',
+      W / 2 + 1,
+      77,
+      12,
+      '#30251e',
+      'center'
+    );
+
+    pixelText(
+      'ADVANCE',
+      W / 2,
+      76,
+      12,
+      '#f1dfad',
+      'center'
+    );
+
+    ctx.fillStyle = '#263c2d';
+    ctx.fillRect(30, 101, W - 60, 3);
+
+    ctx.fillStyle = '#d9bd7b';
+    ctx.fillRect(34, 102, W - 68, 1);
+
+    if (blink) {
+      pixelText(
+        'PRESS START',
+        W / 2,
+        117,
+        8,
+        '#f3ecd8',
+        'center'
+      );
+    }
+
+    pixelText(
+      '(C) CLOCKBUSTER',
+      W / 2,
+      H - 16,
+      6,
+      '#304936',
+      'center'
+    );
   }
 
   function drawField(overlayNote) {
     var spec = specimen();
+
     drawSpecimenVisual(spec);
-    ctx.fillStyle = spec.special === 'syslog' ? 'rgba(0,0,0,0.7)' : 'rgba(183,201,168,0.9)';
-    ctx.fillRect(0, 0, W, 14);
-    var headColor = spec.special === 'syslog' ? '#e7e3d2' : '#2c3625';
-    pixelText('SPECIMEN ' + String(specNumber()).padStart(3, '0'), 6, 4, 6, headColor);
+
+    ctx.fillStyle = spec.special === 'syslog'
+      ? '#16161b'
+      : '#26392b';
+
+    ctx.fillRect(0, 0, W, 17);
+
+    ctx.fillStyle = '#d4a65d';
+    ctx.fillRect(0, 16, W, 2);
+
+    pixelText(
+      'SPECIMEN ' + String(specNumber()).padStart(3, '0'),
+      6,
+      4,
+      6,
+      '#f0e7ca'
+    );
+
     var seen = found.filter(Boolean).length;
-    pixelText(seen + '/' + SPECIMENS.length, W - 6, 4, 6, headColor, 'right');
-    if (overlayNote) pixelText(overlayNote, W / 2, H - 20, 6, headColor, 'center');
+
+    pixelText(
+      seen + '/' + SPECIMENS.length,
+      W - 6,
+      4,
+      6,
+      '#f0e7ca',
+      'right'
+    );
+
+    if (overlayNote) {
+      pixelText(
+        overlayNote,
+        W / 2,
+        H - 20,
+        6,
+        '#f0e7ca',
+        'center'
+      );
+    }
   }
 
   function drawLook() {
     var spec = specimen();
     var isSys = spec.special === 'syslog';
-    ctx.fillStyle = isSys ? '#0a0a0a' : '#b7c9a8';
+
+    ctx.fillStyle = isSys ? '#111116' : '#9fc7d2';
     ctx.fillRect(0, 0, W, H);
+
     if (!isSys) {
       ctx.save();
-      ctx.translate(0, -34);
+      ctx.translate(0, -30);
       drawSpecimenVisual(spec);
       ctx.restore();
     }
-    var panelColor = isSys ? '#e7e3d2' : '#2c3625';
-    var noteColor = isSys ? '#8a8878' : '#4a5a3e';
-    if (!isSys) {
-      ctx.fillStyle = 'rgba(44,54,37,0.08)';
-      ctx.fillRect(0, 78, W, H - 78);
-      ctx.strokeStyle = '#2c3625';
-      ctx.lineWidth = 1;
-      ctx.strokeRect(6, 82, W - 12, H - 90);
-    }
-    var lines;
-    var ly;
+
     if (isSys) {
-      lines = ['SYSLOG', 'SPECIMEN ' + String(specNumber()).padStart(3, '0'), 'TYPE: LOG', 'STATUS: ERROR'];
-      ly = 30;
-    } else {
-      lines = [
-        'LOG',
+      ctx.fillStyle = '#241f25';
+      ctx.fillRect(6, 7, W - 12, H - 14);
+
+      ctx.strokeStyle = '#ff6255';
+      ctx.strokeRect(7, 8, W - 14, H - 16);
+
+      pixelText('SYSLOG', 14, 18, 9, '#ff6255');
+
+      pixelText(
         'SPECIMEN ' + String(specNumber()).padStart(3, '0'),
-        'TYPE: LOG',
-        'SPECIES: ' + spec.species,
-        'LENGTH: ' + spec.length,
-        'BARK: ' + spec.bark,
-        'CONDITION: ' + spec.condition
-      ];
-      ly = 88;
+        14,
+        38,
+        6,
+        '#e7e3d2'
+      );
+
+      pixelText('TYPE: LOG', 14, 53, 6, '#e7e3d2');
+      pixelText('STATUS: ERROR', 14, 68, 6, '#ff6255');
+      pixelText('NO ADDITIONAL DATA', 14, 91, 5, '#8a8878');
+
+      return;
     }
-    lines.forEach(function (l, i) {
-      pixelText(l, 12, ly, i === 0 ? 9 : 6, panelColor);
-      ly += i === 0 ? 12 : 9;
+
+    ctx.fillStyle = '#f0e6c8';
+    ctx.fillRect(6, 79, W - 12, H - 85);
+
+    ctx.fillStyle = '#293a2a';
+    ctx.fillRect(6, 79, W - 12, 14);
+
+    pixelText(
+      'LOG',
+      12,
+      83,
+      7,
+      '#f3ecd7'
+    );
+
+    pixelText(
+      'SPECIMEN ' + String(specNumber()).padStart(3, '0'),
+      W - 12,
+      83,
+      5,
+      '#f3ecd7',
+      'right'
+    );
+
+    var lines = [
+      'TYPE: LOG',
+      'SPECIES: ' + spec.species,
+      'LENGTH: ' + spec.length,
+      'BARK: ' + spec.bark,
+      'CONDITION: ' + spec.condition
+    ];
+
+    var ly = 98;
+
+    lines.forEach(function (line) {
+      pixelText(line, 12, ly, 5, '#293a2a');
+      ly += 9;
     });
-    pixelText(spec.note, 12, ly + 2, 5, noteColor);
+
+    pixelText(
+      spec.note,
+      12,
+      146,
+      4,
+      '#50674e'
+    );
   }
 
   function drawIndex() {
-    ctx.fillStyle = '#b7c9a8';
+    ctx.fillStyle = '#d8e6c8';
     ctx.fillRect(0, 0, W, H);
-    pixelText('SPECIMEN INDEX', W / 2, 6, 8, '#2c3625', 'center');
+
+    ctx.fillStyle = '#26392b';
+    ctx.fillRect(0, 0, W, 17);
+
+    pixelText(
+      'SPECIMEN INDEX',
+      W / 2,
+      5,
+      8,
+      '#f0e7ca',
+      'center'
+    );
+
     var seen = found.filter(Boolean).length;
-    pixelText(seen + ' OF ' + SPECIMENS.length + ' RECORDED', W / 2, 20, 6, '#4a5a3e', 'center');
-    var cols = 5, cellW = 42, cellH = 30, startX = 8, startY = 34;
+
+    pixelText(
+      seen + ' OF ' + SPECIMENS.length + ' RECORDED',
+      W / 2,
+      22,
+      5,
+      '#4a6045',
+      'center'
+    );
+
+    var cols = 5;
+    var cellW = 42;
+    var cellH = 30;
+    var startX = 8;
+    var startY = 37;
+
     for (var i = 0; i < SPECIMENS.length; i++) {
-      var col = i % cols, row = Math.floor(i / cols);
-      var x = startX + col * cellW, y = startY + row * cellH;
-      ctx.strokeStyle = '#2c3625';
+      var col = i % cols;
+      var row = Math.floor(i / cols);
+      var x = startX + col * cellW;
+      var y = startY + row * cellH;
+
+      ctx.strokeStyle = '#3b5138';
       ctx.strokeRect(x, y, cellW - 6, cellH - 6);
+
       if (found[i]) {
         ctx.save();
+
         ctx.beginPath();
         ctx.rect(x, y, cellW - 6, cellH - 6);
         ctx.clip();
-        ctx.translate(x + (cellW - 6) / 2, y + (cellH - 6) / 2 + 6);
+
+        ctx.translate(
+          x + (cellW - 6) / 2,
+          y + (cellH - 6) / 2 + 6
+        );
+
         ctx.scale(0.24, 0.24);
+
         drawSpecimenVisual(SPECIMENS[i]);
+
         ctx.restore();
-        pixelText(String(i + 1).padStart(3, '0'), x + 2, y + cellH - 12, 5, '#2c3625');
+
+        pixelText(
+          String(i + 1).padStart(3, '0'),
+          x + 2,
+          y + cellH - 12,
+          5,
+          '#2c3d2b'
+        );
       } else {
-        pixelText('???', x + (cellW - 6) / 2, y + (cellH - 6) / 2 - 4, 6, '#7c8a6f', 'center');
+        pixelText(
+          '???',
+          x + (cellW - 6) / 2,
+          y + (cellH - 6) / 2 - 4,
+          6,
+          '#7c8a6f',
+          'center'
+        );
       }
     }
   }
 
-  /* ---------- render loop ---------- */
   function render() {
-    if (STATE === 'TITLE') drawTitle();
-    else if (STATE === 'FIELD') drawField(flashTimer > 0 ? 'NEW SPECIMEN RECORDED' : null);
-    else if (STATE === 'LOOK') drawLook();
-    else if (STATE === 'INDEX') drawIndex();
+    if (STATE === 'TITLE') {
+      drawTitle();
+    } else if (STATE === 'FIELD') {
+      drawField(
+        flashTimer > 0
+          ? 'NEW SPECIMEN RECORDED'
+          : null
+      );
+    } else if (STATE === 'LOOK') {
+      drawLook();
+    } else if (STATE === 'INDEX') {
+      drawIndex();
+    }
   }
 
   function setLegend(l, r) {
@@ -1369,42 +1998,69 @@
   }
 
   function refreshLegend() {
-    if (STATE === 'TITLE') setLegend('', 'START: BEGIN');
-    else if (STATE === 'FIELD') setLegend('SELECT: INDEX', 'A: LOOK   START: NEXT');
-    else if (STATE === 'LOOK') setLegend('', 'A/B: BACK');
-    else if (STATE === 'INDEX') setLegend('', 'B: BACK');
+    if (STATE === 'TITLE') {
+      setLegend('', 'START: BEGIN');
+    } else if (STATE === 'FIELD') {
+      setLegend('SELECT: INDEX', 'A: LOOK   START: NEXT');
+    } else if (STATE === 'LOOK') {
+      setLegend('', 'A/B: BACK');
+    } else if (STATE === 'INDEX') {
+      setLegend('', 'B: BACK');
+    }
   }
 
-  /* ---------- input ---------- */
   function press(key) {
     if (STATE === 'TITLE') {
       if (key === 'START' || key === 'A') {
         STATE = 'FIELD';
         sfxConfirm();
-        if (!found[order[current]]) { found[order[current]] = true; }
+
+        if (!found[order[current]]) {
+          found[order[current]] = true;
+        }
       }
     } else if (STATE === 'FIELD') {
       if (key === 'A') {
         STATE = 'LOOK';
-        specimen().special === 'syslog' ? sfxError() : sfxConfirm();
+
+        specimen().special === 'syslog'
+          ? sfxError()
+          : sfxConfirm();
+
       } else if (key === 'START') {
         var isNew = pickNext();
+
         if (isNew) {
           sfxNew();
           flashTimer = 40;
         } else {
           sfxMove();
         }
-      } else if (key === 'SELECT') { STATE = 'INDEX'; sfxConfirm(); }
+
+      } else if (key === 'SELECT') {
+        STATE = 'INDEX';
+        sfxConfirm();
+      }
+
     } else if (STATE === 'LOOK') {
-      if (key === 'A' || key === 'B') { STATE = 'FIELD'; sfxBack(); }
+      if (key === 'A' || key === 'B') {
+        STATE = 'FIELD';
+        sfxBack();
+      }
+
     } else if (STATE === 'INDEX') {
-      if (key === 'B') { STATE = 'FIELD'; sfxBack(); }
+      if (key === 'B') {
+        STATE = 'FIELD';
+        sfxBack();
+      }
     }
+
     refreshLegend();
   }
 
-  document.querySelectorAll('#logadv-root [data-k]').forEach(function (btn) {
+  document.querySelectorAll(
+    '#logadv-root [data-k]'
+  ).forEach(function (btn) {
     btn.addEventListener('click', function () {
       press(btn.getAttribute('data-k'));
     });
@@ -1413,46 +2069,53 @@
   window.addEventListener('keydown', function (e) {
     var root = document.getElementById('logadv-root');
     var rect = root.getBoundingClientRect();
-    var inView = rect.top < window.innerHeight && rect.bottom > 0;
+
+    var inView =
+      rect.top < window.innerHeight &&
+      rect.bottom > 0;
+
     if (!inView) return;
-    var map = { 'z': 'A', 'Z': 'A', 'x': 'B', 'X': 'B', 'Enter': 'START', 'Shift': 'SELECT' };
-    if (map[e.key]) { press(map[e.key]); e.preventDefault(); }
+
+    var map = {
+      'z': 'A',
+      'Z': 'A',
+      'x': 'B',
+      'X': 'B',
+      'Enter': 'START',
+      'Shift': 'SELECT'
+    };
+
+    if (map[e.key]) {
+      press(map[e.key]);
+      e.preventDefault();
+    }
   });
 
-  /* ---------- main tick ---------- */
   setInterval(function () {
     blink = !blink;
-    if (flashTimer > 0) flashTimer--;
+
+    if (flashTimer > 0) {
+      flashTimer--;
+    }
+
     render();
   }, 420);
 
   refreshLegend();
   render();
+
 })();
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link
+  href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+  rel="stylesheet"
+>
 
 <!-- ============================================================
-EMBED INSTRUCTIONS FOR clockbuster.net
-
-This whole file is one drop-in block: a <style>, the markup
-inside #logadv-root, a <script>, and a Google Fonts <link> for
-the pixel typeface. Paste the entire contents of this file as
-one chunk into your landing page HTML, positioned wherever you
-want it to appear — in your case, between the department
-buttons section and the image carousel section. Nothing here
-depends on page order or other scripts, and everything is
-scoped under #logadv-root / .logadv- so it won't leak into or
-collide with the rest of the page's CSS.
-
-If your site build separates head/body content: the two <link>
-tags can go in <head> (or wherever you already load fonts), and
-everything else (style + markup + script) can stay together at
-the drop point in the body. But leaving it all in place, exactly
-where you paste it, also works fine in plain HTML.
-============================================================ -->
+     END LOG ADVANCE
+     ============================================================ -->
 <!--
   CLOCKBUSTER VHS ARCHIVE CAROUSEL
   Paste this ENTIRE block in index.html immediately AFTER </header>
