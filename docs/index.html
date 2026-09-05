@@ -825,7 +825,7 @@
         </form>
       </div>
       <div class="aol-channels-col">
-        <div class="aol-channels-title">Consumer Departments</div>
+        <div class="aol-channels-title">Temporal Consumer Departments</div>
         <div class="aol-channels">
           <a class="channel-btn ch-retail" href="https://www.ebay.com/str/clockbustervideo"><span class="btn-fx" aria-hidden="true"></span><span class="btn-label">RETAIL</span></a>
           <a class="channel-btn ch-compliance" href="#exclusives"><span class="btn-fx" aria-hidden="true"></span><span class="btn-label">COMPLIANCE</span></a>
@@ -836,23 +836,11 @@
           <a class="channel-btn ch-archives" href="archive.html"><span class="btn-fx" aria-hidden="true"></span><span class="btn-label">ARCHIVES</span>
             <span class="channel-new-burst">SOLD OUT!</span>
           </a>
-          <a class="channel-btn ch-remembership" href="terminal.html"><span class="btn-fx" aria-hidden="true"></span><span class="btn-label">Remembership</span></a>
+          <a class="channel-btn ch-remembership" href="terminal.html"><span class="btn-fx" aria-hidden="true"></span><span class="btn-label">Remembership Simulator</span></a>
         </div>
       </div>
     </header>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>LOG Advance — Preview</title>
-<style>
-  body { margin:0; background:#e8e4da; font-family: Arial, sans-serif; }
-  .site-strip { max-width: 900px; margin: 0 auto; padding: 20px 0; text-align:center; color:#888; font-size:13px; }
-</style>
-</head>
-<body>
-<div class="site-strip">— consumer department buttons would go here —</div>
-<!-- ============================================================
+  <!-- ============================================================
      LOG ADVANCE
      A "Game Roy Reverse" handheld title, Clockbuster universe.
      Self-contained embed: CSS + markup + JS. Scoped under
@@ -872,7 +860,7 @@
     font-family: 'Press Start 2P', 'Courier New', monospace;
     display: flex;
     justify-content: center;
-    padding: 28px 12px;
+    padding: 10px 12px;
     user-select: none;
     -webkit-user-select: none;
   }
@@ -882,15 +870,15 @@
     font-size: 10px;
     color: #8a8878;
     letter-spacing: 1px;
-    margin-top: 10px;
+    margin-top: 6px;
   }
 
   #logadv-frame {
+    position: relative;
     display: grid;
-    grid-template-columns: 16px 1fr 16px;
-    grid-template-rows: 16px 1fr 16px;
+    grid-template-rows: 16px auto 16px;
     width: 100%;
-    max-width: 520px;
+    max-width: 420px;
     border-radius: 4px;
     overflow: hidden;
     box-shadow: 0 8px 22px rgba(0,0,0,0.28);
@@ -899,30 +887,46 @@
   .logadv-border {
     background: var(--logadv-frame);
     color: var(--logadv-frame-text);
-    font-size: 9px;
-    letter-spacing: 3px;
+    font-size: 8px;
+    letter-spacing: 2px;
     white-space: nowrap;
     overflow: hidden;
   }
-  .logadv-border-top    { grid-column: 1 / 4; grid-row: 1; display: flex; align-items: center; }
-  .logadv-border-bottom { grid-column: 1 / 4; grid-row: 3; display: flex; align-items: center; }
-  .logadv-border-left   { grid-column: 1; grid-row: 2; writing-mode: vertical-rl; display: flex; align-items: center; justify-content: flex-start; }
-  .logadv-border-right  { grid-column: 3; grid-row: 2; writing-mode: vertical-rl; display: flex; align-items: center; justify-content: flex-start; }
+  .logadv-border-top    { grid-row: 1; display: flex; align-items: center; }
+  .logadv-border-bottom { grid-row: 3; display: flex; align-items: center; }
+
+  /* Side bands are pulled out of grid flow entirely and given a hard
+     pixel height. In vertical writing-mode, nowrap text otherwise
+     demands unbounded height to avoid wrapping -- that's what was
+     stretching the whole component thousands of pixels down the page. */
+  .logadv-border-left,
+  .logadv-border-right {
+    position: absolute;
+    top: 16px;
+    bottom: 16px;
+    width: 14px;
+    writing-mode: vertical-rl;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .logadv-border-left  { left: 0; }
+  .logadv-border-right { right: 0; }
 
   #logadv-inner {
-    grid-column: 2;
     grid-row: 2;
+    margin: 0 14px;
     background: var(--logadv-frame);
-    padding: 14px 16px 16px;
+    padding: 10px 10px 12px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
   }
 
   #logadv-screenwrap {
     background: #14131c;
     border-radius: 4px;
-    padding: 8px;
+    padding: 6px;
     box-shadow: inset 0 3px 8px rgba(0,0,0,0.6);
   }
 
@@ -952,17 +956,17 @@
   #logadv-buttonrow {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
+    gap: 6px;
   }
   #logadv-buttonrow button {
     font-family: inherit;
-    font-size: 9px;
+    font-size: 8px;
     letter-spacing: 1px;
     color: var(--logadv-frame-text);
     background: #34324a;
     border: 2px solid #4a4868;
     border-radius: 3px;
-    padding: 9px 4px;
+    padding: 6px 4px;
     cursor: pointer;
   }
   #logadv-buttonrow button:active {
@@ -972,7 +976,7 @@
 </style>
 
 <div id="logadv-root">
-  <div style="width:100%; max-width:520px;">
+  <div style="width:100%; max-width:420px;">
     <div id="logadv-frame">
       <div class="logadv-border logadv-border-top" id="logadv-border-top"></div>
       <div class="logadv-border logadv-border-bottom" id="logadv-border-bottom"></div>
@@ -1449,9 +1453,6 @@ everything else (style + markup + script) can stay together at
 the drop point in the body. But leaving it all in place, exactly
 where you paste it, also works fine in plain HTML.
 ============================================================ -->
-<div class="site-strip">— image carousel would go here —</div>
-</body>
-</html>
 <!--
   CLOCKBUSTER VHS ARCHIVE CAROUSEL
   Paste this ENTIRE block in index.html immediately AFTER </header>
