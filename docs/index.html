@@ -5,23 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>CLOCKBUSTER ONLINE / Portal to Found-Object Détournement Services</title>
   <meta name="description" content="Clockbuster Video by Obsolete House / rare out-of-print DVDs, VHS, cassette tapes, CDs, software, promo media and parody collectibles / interdimensional video store built on obsolete media culture." />
-  <!--
-  ADOBE FONTS (Typekit) EMBED
-  Kit contents (confirmed names from fonts.adobe.com):
-    - eurostile-extended        -> CLOCKBUSTER wordmark
-    - adobe-garamond-pro        -> ARCHIVES channel button
-    - myriad-pro                -> general interface text
-    - cooper-black-std          -> reserved for playful accents
-    - dottonoji                 -> every instance of the word "Remembership"
-
-  IMPORTANT: dottonoji (Yokokaku) is a Japanese-language font. Adobe Fonts
-  kits containing a CJK (Chinese/Japanese/Korean) font CANNOT be loaded with
-  the plain <link rel="stylesheet"> CSS embed -- Adobe's servers return a 412
-  error for the whole kit if you try. The JS embed below is Adobe's required
-  method for kits like this one. If you ever remove dottonoji from the kit,
-  the plain CSS <link> would work again, but as long as it's in there, use
-  this script.
-  -->
   <script>
     (function(d) {
       var config = {
@@ -50,20 +33,19 @@
 
   <style>
     :root {
-      --page-blue: #064b9b;
-      --deep-blue: #002d72;
-      --soft-blue: #dbeeff;
-      --panel-blue: #a9d5ff;
-      --hot-yellow: #fff1a8;
-      --alert-red: #b00000;
-      --ink: #001b3f;
+      --page-blue: #3a0d5c; /* Halloween purple */
+      --deep-blue: #160026; /* Dark purple/black */
+      --soft-blue: #ffeedb; /* Soft orange/cream */
+      --panel-blue: #ffb84d; /* Pumpkin orange */
+      --hot-yellow: #ff6600; /* Vibrant orange */
+      --alert-red: #cc0000; /* Blood red */
+      --ink: #11001c;
       --gray-1: #f4f4f4;
       --gray-2: #d6d6d6;
       --gray-3: #9f9f9f;
       --gray-4: #565656;
       --white: #ffffff;
 
-      /* Correct Adobe Fonts (Typekit) names, unquoted per fonts.adobe.com usage */
       --font-wordmark: eurostile-extended, sans-serif;
       --font-nav: itc-avant-garde-gothic-pro, Futura, Arial, sans-serif;
       --font-archives: adobe-garamond-pro, serif;
@@ -72,12 +54,10 @@
       --font-remembership: dottonoji, sans-serif;
     }
 
-    /* Custom classes */
     .font-remembership {
       font-family: var(--font-remembership);
     }
 
-    /* Brand rule: the word "Remembership" (in any casing) always renders in dottonoji */
     .rmb-font {
       font-family: var(--font-remembership);
     }
@@ -89,8 +69,8 @@
     html {
       min-height: 100%;
       background:
-        radial-gradient(circle at 20px 20px, rgba(255,255,255,.28) 0 1px, transparent 2px),
-        linear-gradient(180deg, #093f8f 0%, #001d4d 55%, #000f2d 100%);
+        radial-gradient(circle at 20px 20px, rgba(255,102,0,.28) 0 1px, transparent 2px),
+        linear-gradient(180deg, #1c0033 0%, #0d001a 55%, #05000a 100%);
       background-size: 24px 24px, auto;
     }
 
@@ -104,23 +84,23 @@
     }
 
     a {
-      color: #003e9f;
+      color: #660099;
       font-weight: bold;
       text-decoration: underline;
     }
 
     a:hover {
-      color: #b00000;
-      background: #fff6bf;
+      color: #ff6600;
+      background: #110022;
     }
 
     .browser-shell {
       width: 780px;
       max-width: calc(100vw - 18px);
       margin: 0 auto;
-      border: 2px solid #b7cfff;
+      border: 2px solid #ff8800;
       background: #ececec;
-      box-shadow: 0 0 0 2px #001d4d, 0 12px 40px rgba(0,0,0,.55);
+      box-shadow: 0 0 0 2px #110022, 0 12px 40px rgba(0,0,0,.55);
     }
 
     .window-title {
@@ -131,8 +111,8 @@
       padding: 3px 6px;
       color: #fff;
       font-weight: bold;
-      background: linear-gradient(90deg, #003a91, #1a75d2, #003a91);
-      border-bottom: 1px solid #001f55;
+      background: linear-gradient(90deg, #440066, #660099, #440066);
+      border-bottom: 1px solid #110022;
       letter-spacing: .02em;
     }
 
@@ -175,7 +155,7 @@
       border-top-color: #fff;
       border-left-color: #fff;
       background: linear-gradient(#ffffff, #d0d0d0);
-      color: #001b3f;
+      color: #110022;
       font-weight: bold;
       text-decoration: none;
     }
@@ -201,7 +181,7 @@
       border: 1px inset #aaa;
       background: #fff;
       font-family: var(--font-interface);
-      color: #003a91;
+      color: #660099;
       font-weight: bold;
     }
 
@@ -217,10 +197,6 @@
       cursor: pointer;
     }
 
-    /* ============================================================
-       AOL "CHANNELS"-STYLE MASTHEAD
-       ============================================================ */
-
     .aol-masthead {
       display: grid;
       grid-template-columns: 30% 1fr;
@@ -228,8 +204,8 @@
       padding: 12px;
       background:
         linear-gradient(135deg, rgba(255,255,255,.12), transparent 40%),
-        linear-gradient(90deg, #003075 0%, #0064c7 48%, #001f5c 100%);
-      border-bottom: 3px solid #ffcf00;
+        linear-gradient(90deg, #1a0033 0%, #4d0099 48%, #110022 100%);
+      border-bottom: 3px solid #ff6600;
     }
 
     .aol-id-card {
@@ -331,10 +307,6 @@
       width: 100%;
       max-width: 570px;
     }
-
-    /* ============================================================
-       TEMPORAL CONSUMER DEPARTMENTS
-       ============================================================ */
 
     .aol-channels {
       display: grid;
@@ -440,7 +412,7 @@
     }
 
     .ch-retail {
-      background: linear-gradient(#ffd84f, #d79c00);
+      background: linear-gradient(#ffaa00, #cc5500);
       color: #3a1f00 !important;
       font-family: Impact, "Arial Black", sans-serif;
       font-weight: 900;
@@ -458,8 +430,8 @@
     }
 
     .ch-extractions {
-      background: linear-gradient(#8fd0ff, #1f74c9);
-      color: #001b3f !important;
+      background: linear-gradient(#b366ff, #6600cc);
+      color: #fff !important;
       font-family: "Arial Narrow", Arial, sans-serif;
       font-weight: bold;
       font-size: 12px;
@@ -467,7 +439,7 @@
     }
 
     .ch-quality {
-      background: linear-gradient(#c9ffd0, #1f9e3a);
+      background: linear-gradient(#ffaa00, #cc5500);
       color: #04240c !important;
       font-family: Georgia, "Times New Roman", serif;
       font-style: italic;
@@ -510,90 +482,44 @@
       0%, 100% {
         transform: rotate(-8deg) scale(1);
       }
-
       50% {
         transform: rotate(-8deg) scale(1.18);
       }
     }
 
-    /* ============================================================
-       REVERSE YOUR MORTGAGE STARBURST
-       ============================================================ */
-
     .reverse-mortgage-cta {
       position: relative;
-
       grid-column: 4;
       grid-row: 1 / 3;
-
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-
       width: 142px;
       height: 107px;
       align-self: center;
-
       padding: 10px 8px;
-
       text-align: center;
       text-decoration: none !important;
-
       color: #fff !important;
       background: #d71920;
-
       border: 4px solid #111;
-
       clip-path: polygon(
-        50% 0%,
-        58% 12%,
-        68% 3%,
-        73% 17%,
-        86% 9%,
-        87% 24%,
-        99% 22%,
-        94% 36%,
-        100% 50%,
-        94% 62%,
-        99% 76%,
-        86% 75%,
-        87% 91%,
-        73% 83%,
-        68% 97%,
-        58% 88%,
-        50% 100%,
-        42% 88%,
-        32% 97%,
-        27% 83%,
-        14% 91%,
-        13% 75%,
-        1% 76%,
-        6% 62%,
-        0% 50%,
-        6% 36%,
-        1% 22%,
-        13% 24%,
-        14% 9%,
-        27% 17%,
-        32% 3%,
-        42% 12%
+        50% 0%, 58% 12%, 68% 3%, 73% 17%, 86% 9%, 87% 24%, 99% 22%, 94% 36%, 100% 50%,
+        94% 62%, 99% 76%, 86% 75%, 87% 91%, 73% 83%, 68% 97%, 58% 88%, 50% 100%, 42% 88%,
+        32% 97%, 27% 83%, 14% 91%, 13% 75%, 1% 76%, 6% 62%, 0% 50%, 6% 36%, 1% 22%,
+        13% 24%, 14% 9%, 27% 17%, 32% 3%, 42% 12%
       );
-
       filter: drop-shadow(3px 4px 0 #000);
-
       transform: rotate(-2deg);
-
-      transition:
-        transform .12s ease,
-        filter .12s ease;
+      transition: transform .12s ease, filter .12s ease;
     }
 
     .reverse-mortgage-cta::before {
       content: "";
       position: absolute;
       inset: 7px;
-      background: #ffd400;
+      background: #ff6600;
       clip-path: inherit;
       z-index: 0;
     }
@@ -602,7 +528,7 @@
       content: "";
       position: absolute;
       inset: 13px;
-      background: #d71920;
+      background: #660099;
       clip-path: inherit;
       z-index: 1;
     }
@@ -622,9 +548,7 @@
       display: block;
       line-height: .9;
       font-family: Impact, Haettenschweiler, "Arial Black", sans-serif;
-      text-shadow:
-        2px 2px 0 #000,
-        -1px -1px 0 #000;
+      text-shadow: 2px 2px 0 #000, -1px -1px 0 #000;
     }
 
     .reverse-mortgage-cta .cta-small {
@@ -641,16 +565,12 @@
       margin-top: 5px;
       padding: 2px 5px;
       color: #111;
-      background: #ffd400;
+      background: #ff6600;
       border: 2px solid #111;
       font-size: 10px;
       text-shadow: none;
       transform: rotate(2deg);
     }
-
-    /* ============================================================
-       MOBILE
-       ============================================================ */
 
     @media (max-width: 600px) {
       .aol-channels {
@@ -659,41 +579,32 @@
         max-width: 100%;
         gap: 4px;
       }
-
       .reverse-mortgage-cta {
         grid-column: 1 / 4;
         grid-row: 3;
-
         width: 190px;
         height: 82px;
-
         justify-self: center;
         margin-top: 4px;
       }
-
       .reverse-mortgage-cta .cta-big {
         font-size: 17px;
       }
-
       .reverse-mortgage-cta .cta-small {
         font-size: 9px;
       }
-
       .reverse-mortgage-cta .cta-sub {
         font-size: 9px;
       }
-
       .channel-btn {
         min-height: 42px;
         padding: 6px 3px;
         font-size: 9.5px;
       }
-
       .ch-retail,
       .ch-remembership {
         font-size: 11px;
       }
-
       .ch-compliance,
       .ch-extractions,
       .ch-quality,
@@ -706,40 +617,40 @@
       justify-content: space-between;
       gap: 8px;
       padding: 5px 8px;
-      color: #000;
-      background: linear-gradient(#fff6bf, #ffd84f);
-      border-bottom: 1px solid #936d00;
+      color: #ffaa00;
+      background: linear-gradient(#33004a, #110022);
+      border-bottom: 1px solid #ff6600;
       font-weight: bold;
     }
     .event-strip strong {
-      color: var(--alert-red);
+      color: #fff;
     }
     .content-grid {
       display: grid;
       grid-template-columns: 172px 1fr 180px;
       gap: 8px;
       padding: 8px;
-      background: #c7dffd;
+      background: #2b1142;
     }
     .panel {
       margin-bottom: 8px;
-      border: 1px solid #6f92bb;
+      border: 1px solid #ff6600;
       background: #fff;
       box-shadow: inset 1px 1px 0 #fff, 2px 2px 0 rgba(0,0,0,.08);
     }
     .panel-title {
       padding: 4px 6px;
       color: #fff;
-      background: linear-gradient(#1f74c9, #003f93);
-      border-bottom: 1px solid #002b65;
+      background: linear-gradient(#4d0099, #220044);
+      border-bottom: 1px solid #110022;
       font-size: 11px;
       font-weight: bold;
       letter-spacing: .04em;
       text-transform: uppercase;
     }
     .panel-title.yellow {
-      color: #001b3f;
-      background: linear-gradient(#fff6bf, #ffd13f);
+      color: #fff;
+      background: linear-gradient(#ffaa00, #cc5500);
       border-bottom-color: #ad8200;
     }
     .panel-title.red {
@@ -754,18 +665,18 @@
     .right-list a {
       display: block;
       padding: 4px 5px;
-      border-bottom: 1px solid #d7e8ff;
+      border-bottom: 1px solid #f4e6ff;
       text-decoration: none;
-      color: #003e9f;
+      color: #660099;
     }
     .left-nav a:before {
       content: "▶ ";
-      color: #ff9c00;
+      color: #ff6600;
     }
     .left-nav a:hover,
     .right-list a:hover {
-      background: #fff1a8;
-      color: #b00000;
+      background: #ffaa00;
+      color: #fff;
     }
     .login-row {
       display: grid;
@@ -797,12 +708,12 @@
     .hero {
       border: 1px solid #547aa8;
       background:
-        linear-gradient(90deg, rgba(255,255,255,.9), rgba(255,255,255,.65)),
-        repeating-linear-gradient(45deg, #cde6ff 0, #cde6ff 8px, #eaf6ff 8px, #eaf6ff 16px);
+        linear-gradient(90deg, rgba(255,230,200,.9), rgba(255,230,200,.65)),
+        repeating-linear-gradient(45deg, #ffcc80 0, #ffcc80 8px, #ffb347 8px, #ffb347 16px);
     }
     .hero h2 {
       margin: 0 0 5px;
-      color: #003a91;
+      color: #4d0099;
       font-size: 22px;
       letter-spacing: .02em;
     }
@@ -810,9 +721,9 @@
       display: inline-block;
       margin: 7px 0 2px;
       padding: 6px 8px;
-      border: 2px dotted #8e0000;
-      background: #fff6bf;
-      color: #8e0000;
+      border: 2px dotted #ff6600;
+      background: #2b1142;
+      color: #ff6600;
       font-size: 15px;
       font-weight: bold;
     }
@@ -824,21 +735,21 @@
     }
     .phase-tab {
       padding: 5px 4px;
-      border: 1px solid #375f8f;
-      background: linear-gradient(#fff, #b8dcff);
+      border: 1px solid #ffaa00;
+      background: linear-gradient(#fff, #ffe6cc);
       text-align: center;
       font-size: 10px;
       font-weight: bold;
-      color: #003a91;
+      color: #660099;
     }
     .bulletline {
       margin: 4px 0;
       padding-left: 16px;
-      background: linear-gradient(90deg, #ffcf00 0 8px, transparent 8px);
+      background: linear-gradient(90deg, #ff6600 0 8px, transparent 8px);
     }
     .notice {
       padding: 6px 7px;
-      border: 1px solid #ad8200;
+      border: 1px solid #ff6600;
       background: #fff6bf;
       color: #2a2100;
       font-weight: bold;
@@ -853,7 +764,7 @@
     .condition h3,
     .copy-block h3 {
       margin: 9px 0 3px;
-      color: #003a91;
+      color: #660099;
       font-size: 13px;
       letter-spacing: .04em;
       text-transform: uppercase;
@@ -870,20 +781,20 @@
     }
     .mini-status div:nth-child(odd) {
       font-weight: bold;
-      color: #003a91;
+      color: #660099;
     }
     .meter {
       height: 14px;
       border: 1px inset #999;
-      background: linear-gradient(90deg, #13a300 0 74%, #fff 74%);
+      background: linear-gradient(90deg, #ff6600 0 74%, #fff 74%);
     }
     .fake-marquee {
       overflow: hidden;
       white-space: nowrap;
       border-top: 1px solid #fff;
       border-bottom: 1px solid #777;
-      background: #002d72;
-      color: #fff;
+      background: #110022;
+      color: #ff8800;
       font-weight: bold;
     }
     .fake-marquee span {
@@ -901,8 +812,8 @@
       gap: 7px;
       margin: 6px 0;
       padding: 6px;
-      border: 1px solid #bdd7f2;
-      background: #f4faff;
+      border: 1px solid #ffaa00;
+      background: #fff8f0;
     }
     .icon-box {
       display: flex;
@@ -910,19 +821,16 @@
       justify-content: center;
       width: 52px;
       height: 42px;
-      border: 1px solid #6f92bb;
-      background: linear-gradient(#fff, #dbeeff);
+      border: 1px solid #ffaa00;
+      background: linear-gradient(#fff, #ffe6cc);
       font-size: 22px;
       font-weight: bold;
-      color: #003a91;
+      color: #660099;
     }
-    /* larger infinity glyph -- it's the whole point of that box */
     .icon-box-infinity {
       font-size: 38px;
       line-height: 1;
     }
-    /* OH wordmark, stacked and shrunk to actually fit the 52x42 box
-       instead of running the link text at full paragraph size */
     .icon-box-oh {
       padding: 2px;
     }
@@ -939,7 +847,7 @@
     }
     .icon-box-oh a:hover {
       background: none;
-      color: #b00000;
+      color: #ff6600;
     }
     .oh-by {
       font-family: var(--font-interface);
@@ -974,58 +882,20 @@
       background: repeating-linear-gradient(90deg, #111 0 2px, transparent 2px 5px, #111 5px 6px, transparent 6px 10px);
     }
     @media (max-width: 760px) {
-      body {
-        padding: 0;
-      }
-      .browser-shell {
-        width: 100%;
-        max-width: 100%;
-        border-left: 0;
-        border-right: 0;
-      }
-      .aol-masthead {
-        grid-template-columns: 1fr;
-      }
-      .aol-channels-title {
-        text-align: left;
-      }
-      .content-grid {
-        grid-template-columns: 1fr;
-      }
-      .phase-tabs {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .event-strip,
-      .keyword-bar {
-        grid-template-columns: 1fr;
-        display: block;
-      }
-      .keyword-input {
-        width: 100%;
-        margin: 4px 0;
-      }
+      body { padding: 0; }
+      .browser-shell { width: 100%; max-width: 100%; border-left: 0; border-right: 0; }
+      .aol-masthead { grid-template-columns: 1fr; }
+      .aol-channels-title { text-align: left; }
+      .content-grid { grid-template-columns: 1fr; }
+      .phase-tabs { grid-template-columns: repeat(2, 1fr); }
+      .event-strip, .keyword-bar { grid-template-columns: 1fr; display: block; }
+      .keyword-input { width: 100%; margin: 4px 0; }
     }
     @media (max-width: 420px) {
-      /* always 3 across, 3 across -- shrink the buttons themselves, never the column count */
-      .aol-channels {
-        gap: 4px;
-      }
-      .channel-btn {
-        min-height: 42px;
-        padding: 6px 3px;
-        font-size: 9.5px;
-        letter-spacing: 0 !important;
-      }
-      .ch-retail,
-      .ch-remembership {
-        font-size: 11px;
-      }
-      .ch-compliance,
-      .ch-extractions,
-      .ch-quality,
-      .ch-archives {
-        font-size: 9.5px;
-      }
+      .aol-channels { gap: 4px; }
+      .channel-btn { min-height: 42px; padding: 6px 3px; font-size: 9.5px; letter-spacing: 0 !important; }
+      .ch-retail, .ch-remembership { font-size: 11px; }
+      .ch-compliance, .ch-extractions, .ch-quality, .ch-archives { font-size: 9.5px; }
     }
   </style>
 </head>
@@ -1078,1305 +948,16 @@
           </a>
           <a class="channel-btn ch-remembership" href="terminal.html"><span class="btn-fx" aria-hidden="true"></span><span class="btn-label">Remembership Simulator</span></a>
           <a class="reverse-mortgage-cta" href="https://inexplicable2-1afa39roo-clockbuster1.vercel.app/" target="_blank" rel="noopener">
-  <span class="cta-small">CLICK NOW TO PLAY</span>
-  <span class="cta-big">TOM SELLECK'S<br>REVERSE<br>MORTGAGE 64</span>
-</a>
+            <span class="cta-small">CLICK NOW TO PLAY</span>
+            <span class="cta-big">TOM SELLECK'S<br>REVERSE<br>MORTGAGE 64</span>
+          </a>
         </div>
       </div>
     </header>
-  <!-- ============================================================
-     LOG ADVANCE
-     GBA-style graphical upgrade
-     Clockbuster / Game Roy Reverse
-     ============================================================ -->
 
-<style>
-  #logadv-root, #logadv-root * { box-sizing: border-box; }
-
-  #logadv-root {
-    --logadv-ink: #172515;
-    --logadv-screen-bg: #d8e6c8;
-    --logadv-frame: #20202a;
-    --logadv-frame-text: #eee9d5;
-    font-family: 'Press Start 2P', 'Courier New', monospace;
-    display: flex;
-    justify-content: center;
-    padding: 10px 12px;
-    user-select: none;
-    -webkit-user-select: none;
-  }
-
-  #logadv-root .logadv-caption {
-    text-align: center;
-    font-size: 10px;
-    color: #8a8878;
-    letter-spacing: 1px;
-    margin-top: 6px;
-  }
-
-  #logadv-frame {
-    position: relative;
-    display: grid;
-    grid-template-rows: 16px auto 16px;
-    width: 100%;
-    max-width: 420px;
-    border-radius: 4px;
-    overflow: hidden;
-    box-shadow: 0 8px 22px rgba(0,0,0,0.28);
-  }
-
-  .logadv-border {
-    background: var(--logadv-frame);
-    color: var(--logadv-frame-text);
-    font-size: 8px;
-    letter-spacing: 2px;
-    white-space: nowrap;
-    overflow: hidden;
-  }
-
-  .logadv-border-top,
-  .logadv-border-bottom {
-    display: flex;
-    align-items: center;
-  }
-
-  .logadv-border-top { grid-row: 1; }
-  .logadv-border-bottom { grid-row: 3; }
-
-  .logadv-border-left,
-  .logadv-border-right {
-    position: absolute;
-    top: 16px;
-    bottom: 16px;
-    width: 14px;
-    writing-mode: vertical-rl;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-  }
-
-  .logadv-border-left { left: 0; }
-  .logadv-border-right { right: 0; }
-
-  #logadv-inner {
-    grid-row: 2;
-    margin: 0 14px;
-    background: var(--logadv-frame);
-    padding: 10px 10px 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  #logadv-screenwrap {
-    background: #10131a;
-    border-radius: 5px;
-    padding: 7px;
-    box-shadow:
-      inset 0 2px 5px rgba(0,0,0,0.75),
-      0 1px 0 rgba(255,255,255,0.08);
-  }
-
-  #logadv-canvas {
-    display: block;
-    width: 100%;
-    aspect-ratio: 3 / 2;
-    background: var(--logadv-screen-bg);
-    image-rendering: pixelated;
-    image-rendering: crisp-edges;
-    border-radius: 2px;
-  }
-
-  #logadv-legend {
-    background: var(--logadv-screen-bg);
-    color: var(--logadv-ink);
-    font-size: 7px;
-    letter-spacing: 0.5px;
-    padding: 5px 6px 6px;
-    margin-top: 3px;
-    border-radius: 0 0 2px 2px;
-    display: flex;
-    justify-content: space-between;
-    min-height: 10px;
-  }
-
-  #logadv-buttonrow {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 6px;
-  }
-
-  #logadv-buttonrow button {
-    font-family: inherit;
-    font-size: 8px;
-    letter-spacing: 1px;
-    color: var(--logadv-frame-text);
-    background: #34324a;
-    border: 2px solid #4a4868;
-    border-radius: 3px;
-    padding: 6px 4px;
-    cursor: pointer;
-  }
-
-  #logadv-buttonrow button:active {
-    background: #4a4868;
-    transform: translateY(1px);
-  }
-</style>
-
-<div id="logadv-root">
-  <div style="width:100%; max-width:420px;">
-    <div id="logadv-frame">
-      <div class="logadv-border logadv-border-top" id="logadv-border-top"></div>
-      <div class="logadv-border logadv-border-bottom" id="logadv-border-bottom"></div>
-      <div class="logadv-border logadv-border-left" id="logadv-border-left"></div>
-      <div class="logadv-border logadv-border-right" id="logadv-border-right"></div>
-
-      <div id="logadv-inner">
-        <div id="logadv-screenwrap">
-          <canvas id="logadv-canvas" width="240" height="160"></canvas>
-          <div id="logadv-legend">
-            <span id="logadv-legend-l">&nbsp;</span>
-            <span id="logadv-legend-r">&nbsp;</span>
-          </div>
-        </div>
-
-        <div id="logadv-buttonrow">
-          <button data-k="SELECT">SELECT</button>
-          <button data-k="START">START</button>
-          <button data-k="B">B</button>
-          <button data-k="A">A</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="logadv-caption">LOG ADVANCE &middot; A CLOCKBUSTER PRODUCT</div>
-  </div>
-</div>
-
-<script>
-(function () {
-  var canvas = document.getElementById('logadv-canvas');
-  var ctx = canvas.getContext('2d');
-  ctx.imageSmoothingEnabled = false;
-
-  var legendL = document.getElementById('logadv-legend-l');
-  var legendR = document.getElementById('logadv-legend-r');
-
-  var W = 240, H = 160;
-
-  (function fillBorders() {
-    var track = new Array(40).fill('LOG ADVANCE').join('   ') + '   ';
-    document.getElementById('logadv-border-top').textContent = track;
-    document.getElementById('logadv-border-bottom').textContent = track;
-    document.getElementById('logadv-border-left').textContent = track;
-    document.getElementById('logadv-border-right').textContent = track;
-  })();
-
-  var actx = null;
-
-  function beep(freq, dur, type) {
-    try {
-      if (!actx) {
-        actx = new (window.AudioContext || window.webkitAudioContext)();
-      }
-
-      var o = actx.createOscillator();
-      var g = actx.createGain();
-
-      o.type = type || 'square';
-      o.frequency.value = freq;
-      g.gain.value = 0.05;
-
-      o.connect(g);
-      g.connect(actx.destination);
-
-      o.start();
-      g.gain.exponentialRampToValueAtTime(
-        0.0001,
-        actx.currentTime + dur
-      );
-      o.stop(actx.currentTime + dur);
-    } catch (e) {}
-  }
-
-  function sfxMove() {
-    beep(220, 0.05);
-  }
-
-  function sfxConfirm() {
-    beep(440, 0.07);
-  }
-
-  function sfxBack() {
-    beep(180, 0.08);
-  }
-
-  function sfxNew() {
-    beep(523, 0.09);
-    setTimeout(function () {
-      beep(784, 0.14);
-    }, 90);
-  }
-
-  function sfxError() {
-    beep(120, 0.05, 'sawtooth');
-    setTimeout(function () {
-      beep(90, 0.12, 'sawtooth');
-    }, 60);
-  }
-
-  var SPECIMENS = [
-    {
-      species:'CONIFER',
-      length:'MEDIUM',
-      bark:'INTACT',
-      condition:'SOUND',
-      note:'FOUND NEAR THE TREE LINE.',
-      color:'#8a5a35',
-      ring:'#c99a5c',
-      rot:2,
-      knots:[[0.3,0]],
-      moss:false,
-      crack:false,
-      hollow:false,
-      charred:false,
-      capEnd:'right'
-    },
-    {
-      species:'HARDWOOD',
-      length:'LONG',
-      bark:'PARTIAL',
-      condition:'WEATHERED',
-      note:'BARK HAS BEGUN TO SEPARATE.',
-      color:'#6b4a34',
-      ring:'#a9805c',
-      rot:-3,
-      knots:[[0.55,1]],
-      moss:false,
-      crack:true,
-      hollow:false,
-      charred:false,
-      capEnd:'left'
-    },
-    {
-      species:'BIRCH',
-      length:'SHORT',
-      bark:'INTACT',
-      condition:'SOUND',
-      note:'BARK PEELS IN PAPER-THIN LAYERS.',
-      color:'#d8cdb8',
-      ring:'#efe7d6',
-      rot:4,
-      knots:[],
-      moss:false,
-      crack:false,
-      hollow:false,
-      charred:false,
-      capEnd:'right',
-      barkStripe:true
-    },
-    {
-      species:'DRIFTWOOD',
-      length:'MEDIUM',
-      bark:'STRIPPED',
-      condition:'BLEACHED',
-      note:'SMOOTHED BY LONG CONTACT WITH WATER.',
-      color:'#c9bfa8',
-      ring:'#e4dcc7',
-      rot:-2,
-      knots:[],
-      moss:false,
-      crack:false,
-      hollow:false,
-      charred:false,
-      capEnd:'left'
-    },
-    {
-      species:'HARDWOOD',
-      length:'LONG',
-      bark:'INTACT',
-      condition:'HOLLOW',
-      note:'INTERIOR HAS ROTTED OUT.',
-      color:'#5f4530',
-      ring:'#8a6a48',
-      rot:1,
-      knots:[[0.2,1]],
-      moss:false,
-      crack:false,
-      hollow:true,
-      charred:false,
-      capEnd:'right'
-    },
-    {
-      species:'CONIFER',
-      length:'SHORT',
-      bark:'INTACT',
-      condition:'MOSS-COVERED',
-      note:'NORTH SIDE SHOWS HEAVIER GROWTH.',
-      color:'#7a5232',
-      ring:'#b08a58',
-      rot:-1,
-      knots:[[0.6,0]],
-      moss:true,
-      crack:false,
-      hollow:false,
-      charred:false,
-      capEnd:'left'
-    },
-    {
-      species:'HARDWOOD',
-      length:'MEDIUM',
-      bark:'PARTIAL',
-      condition:'SPLIT',
-      note:'A FRACTURE RUNS THE FULL LENGTH.',
-      color:'#71482c',
-      ring:'#a97a4a',
-      rot:3,
-      knots:[],
-      moss:false,
-      crack:true,
-      hollow:false,
-      charred:false,
-      capEnd:'right'
-    },
-    {
-      species:'CONIFER',
-      length:'LONG',
-      bark:'INTACT',
-      condition:'SOUND',
-      note:'A DENSE ARRANGEMENT OF GROWTH RINGS.',
-      color:'#8f5f38',
-      ring:'#d1a468',
-      rot:0,
-      knots:[[0.4,1],[0.7,0]],
-      moss:false,
-      crack:false,
-      hollow:false,
-      charred:false,
-      capEnd:'left'
-    },
-    {
-      species:'HARDWOOD',
-      length:'SHORT',
-      bark:'STRIPPED',
-      condition:'CHARRED',
-      note:'SURFACE SHOWS SIGNS OF FIRE EXPOSURE.',
-      color:'#3a322e',
-      ring:'#5c4f47',
-      rot:-4,
-      knots:[],
-      moss:false,
-      crack:false,
-      hollow:false,
-      charred:true,
-      capEnd:'right'
-    },
-    {
-      species:'PETRIFIED',
-      length:'MEDIUM',
-      bark:'ABSENT',
-      condition:'MINERALIZED',
-      note:'ORGANIC TISSUE FULLY REPLACED BY MINERAL.',
-      color:'#96938a',
-      ring:'#c4c1b6',
-      rot:2,
-      knots:[],
-      moss:false,
-      crack:false,
-      hollow:false,
-      charred:false,
-      capEnd:'left',
-      mineral:true
-    },
-    {
-      species:'BIRCH',
-      length:'LONG',
-      bark:'INTACT',
-      condition:'SOUND',
-      note:'UNUSUALLY STRAIGHT ALONG ITS LENGTH.',
-      color:'#ddd2bd',
-      ring:'#f2ead9',
-      rot:-2,
-      knots:[[0.5,1]],
-      moss:false,
-      crack:false,
-      hollow:false,
-      charred:false,
-      capEnd:'right',
-      barkStripe:true
-    },
-    {
-      species:'HARDWOOD',
-      length:'MEDIUM',
-      bark:'PARTIAL',
-      condition:'WATERLOGGED',
-      note:'NOTICEABLY HEAVIER THAN EXPECTED.',
-      color:'#544332',
-      ring:'#7c6650',
-      rot:1,
-      knots:[[0.35,0]],
-      moss:true,
-      crack:false,
-      hollow:false,
-      charred:false,
-      capEnd:'left'
-    },
-    {
-      special:'lincoln',
-      species:'LINCOLN',
-      length:'MEDIUM',
-      bark:'INTACT',
-      condition:'PRESIDENTIAL',
-      note:'BEARD APPEARS TO BE NATURAL GROWTH.',
-      color:'#8a5a35',
-      ring:'#c99a5c'
-    },
-    {
-      special:'captain',
-      species:"CAPTAIN'S LOG",
-      length:'MEDIUM',
-      bark:'INTACT',
-      condition:'SEAWORTHY',
-      note:'STARDATE FIELD LEFT BLANK.',
-      color:'#6b4a34',
-      ring:'#a9805c'
-    },
-    {
-      special:'syslog',
-      species:'SYSLOG',
-      length:'N/A',
-      bark:'N/A',
-      condition:'ERROR',
-      note:'NO ADDITIONAL DATA AVAILABLE.',
-      color:'#000000',
-      ring:'#000000'
-    }
-  ];
-
-  var found = new Array(SPECIMENS.length).fill(false);
-  var order = [];
-
-  for (var i = 0; i < SPECIMENS.length; i++) {
-    order.push(i);
-  }
-
-  var STATE = 'TITLE';
-  var current = 0;
-  var blink = true;
-  var flashTimer = 0;
-
-  function specimen() {
-    return SPECIMENS[order[current]];
-  }
-
-  function specNumber() {
-    return order[current] + 1;
-  }
-
-  function pickNext() {
-    current = (current + 1) % order.length;
-    var idx = order[current];
-
-    if (!found[idx]) {
-      found[idx] = true;
-      return true;
-    }
-
-    return false;
-  }
-
-  function clear(sky, ground) {
-    ctx.fillStyle = sky || '#8fc7e8';
-    ctx.fillRect(0, 0, W, H * 0.60);
-
-    ctx.fillStyle = '#78a96d';
-    ctx.fillRect(0, H * 0.48, W, H * 0.18);
-
-    ctx.fillStyle = ground || '#66894e';
-    ctx.fillRect(0, H * 0.60, W, H * 0.40);
-
-    ctx.fillStyle = '#47704a';
-
-    for (var tx = 0; tx < W; tx += 24) {
-      var th = 10 + ((tx * 7) % 18);
-
-      ctx.fillRect(tx + 5, H * 0.60 - th, 7, th);
-      ctx.fillRect(tx + 1, H * 0.60 - th + 5, 15, 5);
-    }
-
-    ctx.fillStyle = '#557544';
-
-    for (var gx = 0; gx < W; gx += 13) {
-      ctx.fillRect(gx, H * 0.72 + ((gx * 3) % 8), 5, 2);
-      ctx.fillRect(gx + 7, H * 0.84 + ((gx * 5) % 7), 3, 2);
-    }
-
-    ctx.fillStyle = '#385c3b';
-
-    for (var grass = 0; grass < W; grass += 11) {
-      var gy = H - 7 - ((grass * 5) % 9);
-
-      ctx.fillRect(grass, gy, 2, 7);
-
-      if (grass % 3 === 0) {
-        ctx.fillRect(grass + 2, gy + 2, 2, 4);
-      }
-    }
-
-    ctx.fillStyle = 'rgba(255,255,255,0.045)';
-
-    for (var y = 0; y < H; y += 4) {
-      ctx.fillRect(0, y, W, 1);
-    }
-  }
-
-  function drawLogBody(spec) {
-    ctx.save();
-
-    ctx.translate(W / 2, H * 0.60);
-    ctx.rotate((spec.rot || 0) * Math.PI / 180);
-
-    var lenMap = {
-      SHORT: 70,
-      MEDIUM: 102,
-      LONG: 136
-    };
-
-    var len = lenMap[spec.length] || 102;
-    var thick = spec.species === 'BIRCH' ? 24 : 32;
-
-    var x0 = Math.round(-len / 2);
-    var x1 = Math.round(len / 2);
-    var y0 = Math.round(-thick / 2);
-    var y1 = Math.round(thick / 2);
-
-    ctx.fillStyle = '#34452f';
-    ctx.fillRect(x0 + 4, y1 + 5, len - 4, 7);
-
-    ctx.fillStyle = '#30251d';
-    ctx.fillRect(x0 - 2, y0 + 3, len + 4, thick - 6);
-    ctx.fillRect(x0 + 3, y0 - 2, len - 6, 4);
-    ctx.fillRect(x0 + 3, y1 - 2, len - 6, 4);
-
-    ctx.fillStyle = spec.color;
-    ctx.fillRect(x0, y0, len, thick);
-
-    ctx.fillStyle = 'rgba(255,255,255,0.16)';
-    ctx.fillRect(x0 + 4, y0 + 3, len - 8, 5);
-
-    ctx.fillStyle = 'rgba(0,0,0,0.18)';
-    ctx.fillRect(x0 + 3, y1 - 7, len - 6, 5);
-
-    var stripeGap = spec.barkStripe ? 5 : 10;
-
-    for (var x = x0 + 6; x < x1 - 5; x += stripeGap) {
-      ctx.fillStyle = 'rgba(0,0,0,0.14)';
-      ctx.fillRect(x, y0 + 7, 2, thick - 12);
-
-      ctx.fillStyle = 'rgba(255,255,255,0.07)';
-      ctx.fillRect(x + 2, y0 + 7, 1, thick - 12);
-    }
-
-    ctx.fillStyle = 'rgba(0,0,0,0.20)';
-    ctx.fillRect(x0 + 5, -1, len - 10, 2);
-
-    (spec.knots || []).forEach(function (k) {
-      var kx = Math.round(x0 + k[0] * len);
-      var ky = k[1] === 0 ? y0 + 8 : y1 - 8;
-
-      ctx.fillStyle = '#39291f';
-      ctx.fillRect(kx - 5, ky - 3, 10, 6);
-
-      ctx.fillStyle = spec.ring;
-      ctx.fillRect(kx - 2, ky - 2, 4, 4);
-
-      ctx.fillStyle = 'rgba(255,255,255,0.16)';
-      ctx.fillRect(kx - 1, ky - 2, 2, 1);
-    });
-
-    if (spec.crack) {
-      ctx.fillStyle = '#30231b';
-
-      ctx.beginPath();
-      ctx.moveTo(x0 + 6, -2);
-      ctx.lineTo(x0 + len * 0.32, 2);
-      ctx.lineTo(x0 + len * 0.58, -2);
-      ctx.lineTo(x1 - 7, 4);
-      ctx.lineTo(x1 - 7, 6);
-      ctx.lineTo(x0 + len * 0.58, 1);
-      ctx.lineTo(x0 + len * 0.32, 5);
-      ctx.lineTo(x0 + 6, 1);
-      ctx.closePath();
-      ctx.fill();
-    }
-
-    if (spec.charred) {
-      ctx.fillStyle = '#292522';
-      ctx.fillRect(x0, y0, Math.round(len * 0.42), thick);
-
-      ctx.fillStyle = '#41372f';
-
-      for (var c = 0; c < 10; c++) {
-        ctx.fillRect(
-          x0 + ((c * 13) % Math.max(10, Math.round(len * 0.38))),
-          y0 + ((c * 7) % Math.max(5, thick - 5)),
-          3,
-          2
-        );
-      }
-    }
-
-    if (spec.moss) {
-      ctx.fillStyle = '#47753c';
-
-      for (var m = 0; m < 6; m++) {
-        var mx = x0 + 7 + m * Math.max(7, Math.round(len / 6));
-        var my = y0 + 2 + ((m * 3) % 7);
-
-        ctx.fillRect(mx, my, 7, 4);
-        ctx.fillRect(mx + 2, my - 2, 3, 3);
-      }
-
-      ctx.fillStyle = '#719552';
-
-      for (var mh = 0; mh < 4; mh++) {
-        ctx.fillRect(
-          x0 + 9 + mh * Math.round(len / 5),
-          y0 + 2,
-          3,
-          2
-        );
-      }
-    }
-
-    var capX = spec.capEnd === 'right' ? x1 : x0;
-
-    ctx.fillStyle = '#4b3828';
-    ctx.beginPath();
-    ctx.ellipse(capX, 0, 11, thick / 2 + 1, 0, 0, Math.PI * 2);
-    ctx.fill();
-
-    ctx.fillStyle = spec.ring;
-    ctx.beginPath();
-    ctx.ellipse(capX, 0, 8, thick / 2 - 2, 0, 0, Math.PI * 2);
-    ctx.fill();
-
-    ctx.strokeStyle = 'rgba(72,48,31,0.55)';
-    ctx.lineWidth = 1;
-
-    for (var r = 3; r < thick / 2 - 2; r += 4) {
-      ctx.beginPath();
-      ctx.ellipse(
-        capX,
-        0,
-        Math.max(2, r * 0.55),
-        r,
-        0,
-        0,
-        Math.PI * 2
-      );
-      ctx.stroke();
-    }
-
-    ctx.fillStyle = 'rgba(255,255,255,0.18)';
-    ctx.fillRect(
-      capX - (spec.capEnd === 'right' ? 5 : -4),
-      -6,
-      3,
-      5
-    );
-
-    if (spec.hollow) {
-      ctx.fillStyle = '#211914';
-
-      ctx.beginPath();
-      ctx.ellipse(
-        capX,
-        0,
-        4,
-        thick / 2 - 7,
-        0,
-        0,
-        Math.PI * 2
-      );
-      ctx.fill();
-
-      ctx.fillStyle = '#0e0b09';
-      ctx.fillRect(
-        capX - 2,
-        -thick / 2 + 7,
-        4,
-        thick - 14
-      );
-    }
-
-    if (spec.mineral) {
-      ctx.fillStyle = 'rgba(255,255,255,0.22)';
-      ctx.fillRect(capX - 5, -7, 3, 14);
-      ctx.fillRect(capX + 1, -4, 2, 8);
-    }
-
-    return {
-      x1: x1,
-      thick: thick
-    };
-  }
-
-  function drawLincoln(spec) {
-    var dims = drawLogBody(spec);
-
-    ctx.fillStyle = '#e7e2d3';
-
-    ctx.beginPath();
-    ctx.moveTo(dims.x1 - 14, dims.thick / 2 - 2);
-    ctx.lineTo(dims.x1 - 2, dims.thick / 2 - 2);
-    ctx.lineTo(dims.x1 - 4, dims.thick / 2 + 16);
-    ctx.lineTo(dims.x1 - 8, dims.thick / 2 + 9);
-    ctx.lineTo(dims.x1 - 12, dims.thick / 2 + 16);
-    ctx.closePath();
-    ctx.fill();
-
-    ctx.fillStyle = '#1c1b26';
-    ctx.fillRect(dims.x1 - 15, -dims.thick / 2 - 4, 12, 3);
-    ctx.fillRect(dims.x1 - 12, -dims.thick / 2 - 20, 6, 16);
-
-    ctx.restore();
-  }
-
-  function drawCaptain(spec) {
-    var dims = drawLogBody(spec);
-
-    ctx.fillStyle = '#e3e8ee';
-
-    ctx.beginPath();
-    ctx.moveTo(-dims.x1 + 2, -dims.thick / 2 - 2);
-    ctx.lineTo(-dims.x1 + 22, -dims.thick / 2 - 2);
-    ctx.lineTo(-dims.x1 + 12, dims.thick / 2 + 6);
-    ctx.closePath();
-    ctx.fill();
-
-    ctx.strokeStyle = '#4a6fa5';
-    ctx.lineWidth = 1.5;
-    ctx.stroke();
-
-    ctx.fillStyle = '#e3e8ee';
-    ctx.fillRect(-dims.x1 - 2, -dims.thick / 2 - 12, 22, 8);
-
-    ctx.fillStyle = '#1c1b26';
-    ctx.fillRect(-dims.x1 - 4, -dims.thick / 2 - 5, 26, 3);
-
-    ctx.fillStyle = '#d6b24a';
-    ctx.fillRect(-dims.x1 + 5, -dims.thick / 2 - 10, 4, 4);
-
-    ctx.restore();
-  }
-
-  function drawSyslog() {
-    ctx.fillStyle = '#0a0a0a';
-    ctx.fillRect(0, 0, W, H);
-
-    ctx.strokeStyle = '#2a2a2a';
-    ctx.lineWidth = 1;
-
-    for (var y = 0; y < H; y += 6) {
-      ctx.beginPath();
-      ctx.moveTo(0, y);
-      ctx.lineTo(W, y);
-      ctx.stroke();
-    }
-
-    pixelText(
-      'ERROR',
-      W / 2,
-      H / 2 - 10,
-      20,
-      '#ff5a4e',
-      'center'
-    );
-  }
-
-  function drawSpecimenVisual(spec) {
-    if (spec.special === 'syslog') {
-      drawSyslog();
-      return;
-    }
-
-    clear('#8fc7e8', '#66894e');
-
-    if (spec.special === 'lincoln') {
-      drawLincoln(spec);
-      return;
-    }
-
-    if (spec.special === 'captain') {
-      drawCaptain(spec);
-      return;
-    }
-
-    drawLogBody(spec);
-    ctx.restore();
-  }
-
-  function pixelText(text, x, y, size, color, align) {
-    ctx.fillStyle = color || '#172515';
-    ctx.font = size + 'px "Press Start 2P", monospace';
-    ctx.textAlign = align || 'left';
-    ctx.textBaseline = 'top';
-    ctx.fillText(text, x, y);
-  }
-
-  function drawTitle() {
-    clear('#82b9d8', '#6f9858');
-
-    pixelText(
-      'GAME ROY REVERSE',
-      W / 2 + 2,
-      21,
-      6,
-      '#344b3a',
-      'center'
-    );
-
-    pixelText(
-      'GAME ROY REVERSE',
-      W / 2,
-      19,
-      6,
-      '#f2ead0',
-      'center'
-    );
-
-    pixelText(
-      'LOG',
-      W / 2 + 2,
-      45,
-      25,
-      '#30251e',
-      'center'
-    );
-
-    pixelText(
-      'LOG',
-      W / 2,
-      43,
-      25,
-      '#d28a4e',
-      'center'
-    );
-
-    pixelText(
-      'ADVANCE',
-      W / 2 + 1,
-      77,
-      12,
-      '#30251e',
-      'center'
-    );
-
-    pixelText(
-      'ADVANCE',
-      W / 2,
-      76,
-      12,
-      '#f1dfad',
-      'center'
-    );
-
-    ctx.fillStyle = '#263c2d';
-    ctx.fillRect(30, 101, W - 60, 3);
-
-    ctx.fillStyle = '#d9bd7b';
-    ctx.fillRect(34, 102, W - 68, 1);
-
-    if (blink) {
-      pixelText(
-        'PRESS START',
-        W / 2,
-        117,
-        8,
-        '#f3ecd8',
-        'center'
-      );
-    }
-
-    pixelText(
-      '(C) CLOCKBUSTER',
-      W / 2,
-      H - 16,
-      6,
-      '#304936',
-      'center'
-    );
-  }
-
-  function drawField(overlayNote) {
-    var spec = specimen();
-
-    drawSpecimenVisual(spec);
-
-    ctx.fillStyle = spec.special === 'syslog'
-      ? '#16161b'
-      : '#26392b';
-
-    ctx.fillRect(0, 0, W, 17);
-
-    ctx.fillStyle = '#d4a65d';
-    ctx.fillRect(0, 16, W, 2);
-
-    pixelText(
-      'SPECIMEN ' + String(specNumber()).padStart(3, '0'),
-      6,
-      4,
-      6,
-      '#f0e7ca'
-    );
-
-    var seen = found.filter(Boolean).length;
-
-    pixelText(
-      seen + '/' + SPECIMENS.length,
-      W - 6,
-      4,
-      6,
-      '#f0e7ca',
-      'right'
-    );
-
-    if (overlayNote) {
-      pixelText(
-        overlayNote,
-        W / 2,
-        H - 20,
-        6,
-        '#f0e7ca',
-        'center'
-      );
-    }
-  }
-
-  function drawLook() {
-    var spec = specimen();
-    var isSys = spec.special === 'syslog';
-
-    ctx.fillStyle = isSys ? '#111116' : '#9fc7d2';
-    ctx.fillRect(0, 0, W, H);
-
-    if (!isSys) {
-      ctx.save();
-      ctx.translate(0, -30);
-      drawSpecimenVisual(spec);
-      ctx.restore();
-    }
-
-    if (isSys) {
-      ctx.fillStyle = '#241f25';
-      ctx.fillRect(6, 7, W - 12, H - 14);
-
-      ctx.strokeStyle = '#ff6255';
-      ctx.strokeRect(7, 8, W - 14, H - 16);
-
-      pixelText('SYSLOG', 14, 18, 9, '#ff6255');
-
-      pixelText(
-        'SPECIMEN ' + String(specNumber()).padStart(3, '0'),
-        14,
-        38,
-        6,
-        '#e7e3d2'
-      );
-
-      pixelText('TYPE: LOG', 14, 53, 6, '#e7e3d2');
-      pixelText('STATUS: ERROR', 14, 68, 6, '#ff6255');
-      pixelText('NO ADDITIONAL DATA', 14, 91, 5, '#8a8878');
-
-      return;
-    }
-
-    ctx.fillStyle = '#f0e6c8';
-    ctx.fillRect(6, 79, W - 12, H - 85);
-
-    ctx.fillStyle = '#293a2a';
-    ctx.fillRect(6, 79, W - 12, 14);
-
-    pixelText(
-      'LOG',
-      12,
-      83,
-      7,
-      '#f3ecd7'
-    );
-
-    pixelText(
-      'SPECIMEN ' + String(specNumber()).padStart(3, '0'),
-      W - 12,
-      83,
-      5,
-      '#f3ecd7',
-      'right'
-    );
-
-    var lines = [
-      'TYPE: LOG',
-      'SPECIES: ' + spec.species,
-      'LENGTH: ' + spec.length,
-      'BARK: ' + spec.bark,
-      'CONDITION: ' + spec.condition
-    ];
-
-    var ly = 98;
-
-    lines.forEach(function (line) {
-      pixelText(line, 12, ly, 5, '#293a2a');
-      ly += 9;
-    });
-
-    pixelText(
-      spec.note,
-      12,
-      146,
-      4,
-      '#50674e'
-    );
-  }
-
-  function drawIndex() {
-    ctx.fillStyle = '#d8e6c8';
-    ctx.fillRect(0, 0, W, H);
-
-    ctx.fillStyle = '#26392b';
-    ctx.fillRect(0, 0, W, 17);
-
-    pixelText(
-      'SPECIMEN INDEX',
-      W / 2,
-      5,
-      8,
-      '#f0e7ca',
-      'center'
-    );
-
-    var seen = found.filter(Boolean).length;
-
-    pixelText(
-      seen + ' OF ' + SPECIMENS.length + ' RECORDED',
-      W / 2,
-      22,
-      5,
-      '#4a6045',
-      'center'
-    );
-
-    var cols = 5;
-    var cellW = 42;
-    var cellH = 30;
-    var startX = 8;
-    var startY = 37;
-
-    for (var i = 0; i < SPECIMENS.length; i++) {
-      var col = i % cols;
-      var row = Math.floor(i / cols);
-      var x = startX + col * cellW;
-      var y = startY + row * cellH;
-
-      ctx.strokeStyle = '#3b5138';
-      ctx.strokeRect(x, y, cellW - 6, cellH - 6);
-
-      if (found[i]) {
-        ctx.save();
-
-        ctx.beginPath();
-        ctx.rect(x, y, cellW - 6, cellH - 6);
-        ctx.clip();
-
-        ctx.translate(
-          x + (cellW - 6) / 2,
-          y + (cellH - 6) / 2 + 6
-        );
-
-        ctx.scale(0.24, 0.24);
-
-        drawSpecimenVisual(SPECIMENS[i]);
-
-        ctx.restore();
-
-        pixelText(
-          String(i + 1).padStart(3, '0'),
-          x + 2,
-          y + cellH - 12,
-          5,
-          '#2c3d2b'
-        );
-      } else {
-        pixelText(
-          '???',
-          x + (cellW - 6) / 2,
-          y + (cellH - 6) / 2 - 4,
-          6,
-          '#7c8a6f',
-          'center'
-        );
-      }
-    }
-  }
-
-  function render() {
-    if (STATE === 'TITLE') {
-      drawTitle();
-    } else if (STATE === 'FIELD') {
-      drawField(
-        flashTimer > 0
-          ? 'NEW SPECIMEN RECORDED'
-          : null
-      );
-    } else if (STATE === 'LOOK') {
-      drawLook();
-    } else if (STATE === 'INDEX') {
-      drawIndex();
-    }
-  }
-
-  function setLegend(l, r) {
-    legendL.textContent = l || '';
-    legendR.textContent = r || '';
-  }
-
-  function refreshLegend() {
-    if (STATE === 'TITLE') {
-      setLegend('', 'START: BEGIN');
-    } else if (STATE === 'FIELD') {
-      setLegend('SELECT: INDEX', 'A: LOOK   START: NEXT');
-    } else if (STATE === 'LOOK') {
-      setLegend('', 'A/B: BACK');
-    } else if (STATE === 'INDEX') {
-      setLegend('', 'B: BACK');
-    }
-  }
-
-  function press(key) {
-    if (STATE === 'TITLE') {
-      if (key === 'START' || key === 'A') {
-        STATE = 'FIELD';
-        sfxConfirm();
-
-        if (!found[order[current]]) {
-          found[order[current]] = true;
-        }
-      }
-    } else if (STATE === 'FIELD') {
-      if (key === 'A') {
-        STATE = 'LOOK';
-
-        specimen().special === 'syslog'
-          ? sfxError()
-          : sfxConfirm();
-
-      } else if (key === 'START') {
-        var isNew = pickNext();
-
-        if (isNew) {
-          sfxNew();
-          flashTimer = 40;
-        } else {
-          sfxMove();
-        }
-
-      } else if (key === 'SELECT') {
-        STATE = 'INDEX';
-        sfxConfirm();
-      }
-
-    } else if (STATE === 'LOOK') {
-      if (key === 'A' || key === 'B') {
-        STATE = 'FIELD';
-        sfxBack();
-      }
-
-    } else if (STATE === 'INDEX') {
-      if (key === 'B') {
-        STATE = 'FIELD';
-        sfxBack();
-      }
-    }
-
-    refreshLegend();
-  }
-
-  document.querySelectorAll(
-    '#logadv-root [data-k]'
-  ).forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      press(btn.getAttribute('data-k'));
-    });
-  });
-
-  window.addEventListener('keydown', function (e) {
-    var root = document.getElementById('logadv-root');
-    var rect = root.getBoundingClientRect();
-
-    var inView =
-      rect.top < window.innerHeight &&
-      rect.bottom > 0;
-
-    if (!inView) return;
-
-    var map = {
-      'z': 'A',
-      'Z': 'A',
-      'x': 'B',
-      'X': 'B',
-      'Enter': 'START',
-      'Shift': 'SELECT'
-    };
-
-    if (map[e.key]) {
-      press(map[e.key]);
-      e.preventDefault();
-    }
-  });
-
-  setInterval(function () {
-    blink = !blink;
-
-    if (flashTimer > 0) {
-      flashTimer--;
-    }
-
-    render();
-  }, 420);
-
-  refreshLegend();
-  render();
-
-})();
-</script>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link
-  href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
-  rel="stylesheet"
->
-
-<!-- ============================================================
-     END LOG ADVANCE
-     ============================================================ -->
-<!--
-  CLOCKBUSTER VHS ARCHIVE CAROUSEL
-  Paste this ENTIRE block in index.html immediately AFTER </header>
-  (right below the Consumer Departments buttons, above .event-strip).
-
-  Uses Adobe Fonts already on the page (kit rxf5hlm):
-    eurostile-extended, adobe-garamond-pro, cooper-black-std,
-    itc-avant-garde-gothic-pro, myriad-pro.
-
-  To add a tape: append an object to window.CB_VHS_TAPES below.
-  All slides link to archive.html.
--->
 <style id="cb-vhs-css">
 /* ============================================================
    CLOCKBUSTER VHS ARCHIVE CAROUSEL
-   Self-contained. Prefix: cb-vhs-
-   Sits flush under the Consumer Departments masthead.
    ============================================================ */
 .cb-vhs {
   --cb-plastic: #141414;
@@ -3059,8 +1640,7 @@ window.CB_VHS_TAPES = [
     Array.prototype.forEach.call(well.children, function (el, n) {
       el.classList.toggle("is-on", n === i);
     });
-    var on = well.children[i];
-    if (on && on.scrollIntoView) on.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+    // Removed scrollIntoView to prevent the page from snapping down every time the tape changes
   }
 
   function go(n) {
@@ -3100,12 +1680,12 @@ window.CB_VHS_TAPES = [
 
 </script>
     <div class="event-strip" id="sale">
-      <span>TIMLINE INDICATOR: <strong>ERROR</strong></span>
-      <span>SALES PROGRAM: <strong>UNDEFINED 9% OFF EVENT HORIZON PHENOMENON</strong></span>
-      <span>COUPON: <strong>REWINDREALITY</strong></span>
+      <span>TIMLINE INDICATOR: <strong>HAUNTED</strong></span>
+      <span>SALES PROGRAM: <strong>HALLOWEEN SPOOKTACULAR 9% OFF EVENT</strong></span>
+      <span>COUPON: <strong>SPOOKYREALITY</strong></span>
     </div>
     <div class="fake-marquee" aria-hidden="true">
-      <span><span class="rmb-font">REMEMBERSHIP</span> NOTICE: The world will end in seven days, unless you dig a giant hole! Use coupon code REWINDREALITY for 9.999% off everything. Do nothing and experience a smaller markdown as assigned by the marketing department.</span>
+      <span><span class="rmb-font">REMEMBERSHIP</span> NOTICE: Trick or Treat! The veil is thinning and our prices are dropping into the abyss. Use coupon code SPOOKYREALITY for a scary good 9.999% off everything in store.</span>
     </div>
     <main class="content-grid">
       <aside class="left-col">
@@ -3151,11 +1731,11 @@ window.CB_VHS_TAPES = [
           <div class="panel-title red">Clockbuster Video</div>
           <div class="panel-body">
             <h2>Trusted worldwide for obsolete entertainment and alternate-reality marketing tie-ins.</h2>
-            <p><strong>Take away 9% of money prices automatically, 8/4 through 9/17</strong></p>
-            <p>The name and purpose of this sales event cannot be completed as dialed.</p>
+            <p><strong>Take away 9% of money prices automatically, 10/1 through 10/31</strong></p>
+            <p>Our graveyard shift has unearthed some terrifyingly good deals! Shop our haunted physical-media objects before they turn to dust.</p>
             <p>Please check the number, confirm the timeline, and try your transaction again. Certain physical-media objects have remained temporarily marked down while Clockbuster attempts to reach the appropriate dimension.</p>
             <p>Please remain on the line. This transaction may be monitored for quality assurance, reality stability, or evidence of illegal streaming services.</p>
-            <div class="coupon">..or use coupon code REWINDREALITY for 9.999% off everything.</div>
+            <div class="coupon">..or use coupon code SPOOKYREALITY for 9.999% off everything.</div>
             <p>All orders come complete with a <span class="rmb-font">REMEMBERSHIP</span> CARD.</p>
             <div class="phase-tabs" aria-label="operational phases">
               <div class="phase-tab">PHASE 1<br>Identify</div>
@@ -3169,7 +1749,7 @@ window.CB_VHS_TAPES = [
           <div class="panel-title">Access Terminals</div>
           <div class="panel-body copy-block">
             <p><a href="https://www.ebay.com/str/clockbustervideo">Obsolete House store on eBay</a>: </p>
-            <p><a href="https://www.ebay.com/sch/i.html?_dkr=1&iconV2Request=true&_blrs=recall_filtering&_ssn=clockbustervideo&store_name=clockbustervideo&_oac=1&_sop=10&LH_SALE_CURRENCY=0&_pgn=1">UNKNOWN SALES EVENT</a>:8/4 through 9/17: 9% Off</p>
+            <p><a href="https://www.ebay.com/sch/i.html?_dkr=1&iconV2Request=true&_blrs=recall_filtering&_ssn=clockbustervideo&store_name=clockbustervideo&_oac=1&_sop=10&LH_SALE_CURRENCY=0&_pgn=1">HALLOWEEN SPOOKTACULAR SALE</a>:10/1 through 10/31: 9% Off</p>
             <p><a href="archive.html">Sold-Out Hall of Fame</a>: archival record of successful extractions.</p>
           </div>
         </section>
@@ -3269,7 +1849,7 @@ Are you in possession of information regarding the location of abandoned timelin
           <div class="panel-title yellow">Today on Clockbuster</div>
           <div class="panel-body">
             <a href="https://www.ebay.com/str/clockbustervideo">Browse the Store</a>
-            <a href="https://www.ebay.com/sch/i.html?_dkr=1&iconV2Request=true&_blrs=recall_filtering&_ssn=clockbustervideo&store_name=clockbustervideo&_oac=1&_sop=10&LH_SALE_CURRENCY=0&_pgn=1">REWINDREALITY</a>
+            <a href="https://www.ebay.com/sch/i.html?_dkr=1&iconV2Request=true&_blrs=recall_filtering&_ssn=clockbustervideo&store_name=clockbustervideo&_oac=1&_sop=10&LH_SALE_CURRENCY=0&_pgn=1">SPOOKYREALITY</a>
             <a href="archive.html">Review Sold-Out Extractions</a>
           </div>
         </section>
@@ -3310,7 +1890,7 @@ Are you in possession of information regarding the location of abandoned timelin
 </div>
     <footer class="footer"><div class="--font-remembership"><span class="rmb-font">
       CLOCKBUSTER By <a href="https://www.obsoletehouse.com">Obsolete House</a>© 2025-2026<br>
-      Serving you since 2.22.2022 | Rewind Reality<br>
+      Serving you since 2.22.2022 | Spooky Reality<br>
       Obsolete House<br>
       P.O. Box 2222<br>
       SILVER SPRINGS FL 34489-2222<br>
