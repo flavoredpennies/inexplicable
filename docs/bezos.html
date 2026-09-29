@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<title>Bezos Teaches Amazon Prime Numbers: Widdle Management Training Program</title>
+<style>
+  :root {
+    --orange: #FF9900;
+    --orange-d: #C77700;
+    --gray: #EAEAEA;
+    --gray-d: #B9BEC2;
+    --blue: #00A8E1;
+    --dark: #1B2733;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { margin: 0; background: var(--dark); color: var(--gray); font-family: "Courier New", monospace; }
+  body { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 12px; }
+
+  /* The handheld: warehouse-gray shell, cardboard-orange base */
+  .shell {
+    width: 100%; max-width: 720px;
+    background: var(--gray);
+    border-radius: 14px 14px 64px 14px;
+    padding: 18px 18px 22px;
+    border-bottom: 12px solid var(--orange);
+    box-shadow: 0 10px 0 #0d141b;
+    user-select: none; -webkit-user-select: none;
+  }
+  .bezel { background: var(--dark); padding: 14px; border-radius: 8px 8px 34px 8px; }
+  .brand { color: var(--gray); font-size: 11px; letter-spacing: 2px; margin: 0 0 8px 2px; }
+
+  /* Required scaling: 160x144 logical pixels, blown up with no blur */
+  canvas {
+    display: block;
+    width: 100%; max-width: 640px;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    background: #000;
+    margin: 0 auto;
+    touch-action: none;
+  }
+
+  /* On-screen controls for phones and tablets */
+  .controls { display: flex; align-items: center; justify-content: space-between; margin-top: 18px; gap: 10px; }
+  .controls button {
+    font-family: inherit; font-weight: bold; color: var(--gray);
+    border: 0; touch-action: none; cursor: pointer;
+    user-select: none; -webkit-user-select: none;
+  }
+  .dpad {
+    --s: clamp(44px, 12vw, 58px);
+    display: grid; grid-template-columns: repeat(3, var(--s)); grid-template-rows: repeat(3, var(--s));
+    grid-template-areas: ". up ." "left . right" ". down .";
+  }
+  .dpad button { background: var(--dark); font-size: 16px; }
+  .dpad button:active, .dpad button.on { background: var(--blue); }
+  .dpad .up { grid-area: up; border-radius: 8px 8px 0 0; }
+  .dpad .left { grid-area: left; border-radius: 8px 0 0 8px; }
+  .dpad .right { grid-area: right; border-radius: 0 8px 8px 0; }
+  .dpad .down { grid-area: down; border-radius: 0 0 8px 8px; }
+  .mid button { background: var(--dark); border-radius: 20px; padding: 10px 18px; font-size: 12px; letter-spacing: 1px; }
+  .mid button:active, .mid button.on { background: var(--blue); }
+  .ab { display: flex; gap: 14px; align-items: flex-end; transform: rotate(-18deg); }
+  .ab button {
+    width: clamp(52px, 14vw, 66px); height: clamp(52px, 14vw, 66px);
+    border-radius: 50%; background: var(--orange); font-size: 22px; color: var(--dark);
+    box-shadow: 0 4px 0 var(--orange-d);
+  }
+  .ab button.a { margin-bottom: 18px; }
+  .ab button:active, .ab button.on { background: #ffb84d; transform: translateY(3px); box-shadow: 0 1px 0 var(--orange-d); }
+  .hint { color: #59636c; font-size: 11px; text-align: center; margin: 14px 0 0; letter-spacing: 1px; }
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="bezel">
+    <p class="brand">WIDDLE MANAGEMENT TRAINING PROGRAM</p>
+    <canvas id="screen" width="160" height="144" aria-label="Game screen"></canvas>
+  </div>
+
+  <div class="controls">
+    <div class="dpad">
+      <button class="up" data-k="up" aria-label="Up">&#9650;</button>
+      <button class="left" data-k="left" aria-label="Left">&#9664;</button>
+      <button class="right" data-k="right" aria-label="Right">&#9654;</button>
+      <button class="down" data-k="down" aria-label="Down">&#9660;</button>
+    </div>
+    <div class="mid"><button data-k="start">START</button></div>
+    <div class="ab">
+      <button class="b" data-k="b" aria-label="B button">B</button>
+      <button class="a" data-k="a" aria-label="A button">A</button>
+    </div>
+  </div>
+  <p class="hint">ARROWS MOVE / Z = A / X = B / ENTER = START</p>
+</div>
+
+<script>
+(() => {
+'use strict';
+
+/* =====================================================================
+   BEZOS TEACHES AMAZON PRIME NUMBERS: WIDDLE MANAGEMENT TRAINING PROGRAM
+   Vanilla JS + Canvas. Logical resolution 160x144 (Game Boy Color).
+   Rows 0..111 are the play field. Rows 112..143 are the 8-bit text box.
+   ===================================================================== */
+
+// ---------- Canvas + logical constants ----------
+const W = 160, H = 144;
+const BOX_H = 32;                 // bottom UI text box height
+const PLAY_H = H - BOX_H;         // 112
+const FLOOR_Y = 108;              // where the avatar's feet rest
+const BELT_END = 104;             // meat that reaches this line is "missed"
+const CHUNKS_PER_SHIFT = 8;       // meat chunks per shift (quota)
+
+const canvas = document.getElementById('screen');
+const ctx = canvas.getContext('2d');
+ctx.imageSmoothingEnabled = false;
+
+// ---------- Limited GBC-style palette ----------
+const P = {
+  orange: '#FF9900',  // Amazon Orange
+  orangeD: '#C77700',
+  gray: '#EAEAEA',    // Warehouse Gray
+  grayD: '#B9BEC2',
+  blue: '#00A8E1',    // Prime Blue
+  blueD: '#0073A0',
+  dark: '#1B2733',
+  mid: '#6F7B85',
+  white: '#FFFFFF',
+  meat: '#F0707F', meatL: '#FFB0B8', meatD: '#B23A4A',
+  skin: '#F2C29B', skinD: '#D49A72'
+};
+
+// ---------- Drawing helpers (everything is snapped to whole pixels) ----------
+function rect(x, y, w, h, c) {
+  ctx.fillStyle = c;
+  ctx.fillRect(Math.round(x), Math.round(y), Math.round(w), Math.round(h));
+}
+// Scaled sprite rect: origin (ox,oy), scale s, local rect (dx,dy,w,h). Never collapses below 1px.
+function sp(ox, oy, s, dx, dy, w, h, c) {
+  ctx.fillStyle = c;
+  ctx.fillRect(Math.round(ox + dx * s), Math.round(oy + dy * s),
+               Math.max(1, Math.round(w * s)), Math.max(1, Math.round(h * s)));
+}
+
+// ---------- Tiny 3x5 bitmap font (crisp at any scale, no font files) ----------
+// Each glyph is 5 rows of 3 bits (bit 2 = left column).
+const FONT = {
+  '0':[7,5,5,5,7],'1':[2,6,2,2,7],'2':[7,1,7,4,7],'3':[7,1,7,1,7],'4':[5,5,7,1,1],
+  '5':[7,4,7,1,7],'6':[7,4,7,5,7],'7':[7,1,1,1,1],'8':[7,5,7,5,7],'9':[7,5,7,1,7],
+  A:[2,5,7,5,5],B:[6,5,6,5,6],C:[3,4,4,4,3],D:[6,5,5,5,6],E:[7,4,6,4,7],F:[7,4,6,4,4],
+  G:[3,4,5,5,3],H:[5,5,7,5,5],I:[7,2,2,2,7],J:[1,1,1,5,2],K:[5,5,6,5,5],L:[4,4,4,4,7],
+  M:[5,7,7,5,5],N:[6,5,5,5,5],O:[2,5,5,5,2],P:[6,5,6,4,4],Q:[2,5,5,7,3],R:[6,5,6,5,5],
+  S:[3,4,2,1,6],T:[7,2,2,2,2],U:[5,5,5,5,7],V:[5,5,5,5,2],W:[5,5,7,7,5],X:[5,5,2,5,5],
+  Y:[5,5,2,2,2],Z:[7,1,2,4,7],
+  ' ':[0,0,0,0,0],'.':[0,0,0,0,2],',':[0,0,0,2,4],'!':[2,2,2,0,2],'?':[6,1,2,0,2],
+  ':':[0,2,0,2,0],'-':[0,0,7,0,0],'/':[1,1,2,4,4],'=':[0,7,0,7,0],'+':[0,2,7,2,0],
+  "'":[2,2,0,0,0],'(':[1,2,2,2,1],')':[4,2,2,2,4]
+};
+function textWidth(str, s = 1) { return (str.length * 4 - 1) * s; }
+function text(str, x, y, color, s = 1) {
+  ctx.fillStyle = color;
+  x = Math.round(x); y = Math.round(y);
+  for (const ch of String(str).toUpperCase()) {
+    const g = FONT[ch];
+    if (g) {
+      for (let r = 0; r < 5; r++)
+        for (let c = 0; c < 3; c++)
+          if ((g[r] >> (2 - c)) & 1) ctx.fillRect(x + c * s, y + r * s, s, s);
+    }
+    x += 4 * s;
+  }
+}
+function textC(str, y, color, s = 1, cx = W / 2) {
+  text(str, cx - textWidth(str, s) / 2, y, color, s);
+}
+function wrap(str, max) {
+  const lines = []; let cur = '';
+  for (const w of str.split(' ')) {
+    if ((cur + ' ' + w).trim().length > max) { lines.push(cur); cur = w; }
+    else cur = (cur + ' ' + w).trim();
+  }
+  if (cur) lines.push(cur);
+  return lines;
+}
+const pad = (n, d) => String(n).padStart(d, '0');
+
+// ---------- Math: the actual lesson ----------
+// Trial division by modulo, only up to sqrt(num).
+function isPrime(num) {
+  if (num < 2) return false;
+  if (num % 2 === 0) return num === 2;
+  for (let i = 3; i * i <= num; i += 2) {
+    if (num % i === 0) return false;
+  }
+  return true;
+}
+function primeFactors(n) {            // with multiplicity: 18 -> [2,3,3]
+  const f = [];
+  for (let d = 2; d * d <= n; d++) while (n % d === 0) { f.push(d); n /= d; }
+  if (n > 1) f.push(n);
+  return f;
+}
+const factorStr = n => primeFactors(n).join('X');
+function divisors(n) {
+  const d = [];
+  for (let i = 1; i <= n; i++) if (n % i === 0) d.push(i);
+  return d;
+}
+const primeCache = {};
+function primesUpTo(m) {
+  if (!primeCache[m]) { const a = []; for (let i = 2; i <= m; i++) if (isPrime(i)) a.push(i); primeCache[m] = a; }
+  return primeCache[m];
+}
+const rand = (a, b) => Math.floor(Math.random() * (b - a + 1)) + a;
+const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+// Shift 1 uses 2..50. The ceiling climbs 25 per shift.
+const shiftMax = s => Math.min(50 + (s - 1) * 25, 500);
+
+// ---------- Sound (square-wave beeps; unlocked via gesture) ----------
+let actx = null;
+let audioUnlocked = false;
+
+function initAudio() {
+  if (audioUnlocked) return;
+  try {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (!actx) actx = new AudioContext();
+    if (actx.state === 'suspended') actx.resume();
+
+    // Play a silent buffer to forcefully unlock iOS Safari
+    const osc = actx.createOscillator();
+    osc.connect(actx.destination);
+    osc.start(0); osc.stop(0.01);
+
+    audioUnlocked = true;
+  } catch (e) { /* audio is optional */ }
+}
+
+function beep(freq, dur = 0.08, type = 'square', vol = 0.05, delay = 0) {
+  if (!actx || !audioUnlocked) return;
+  try {
+    const t = actx.currentTime + delay;
+    const o = actx.createOscillator(), g = actx.createGain();
+    o.type = type; o.frequency.setValueAtTime(freq, t);
+    g.gain.setValueAtTime(vol, t);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    o.connect(g); g.connect(actx.destination);
+    o.start(t); o.stop(t + dur + 0.02);
+  } catch (e) {}
+}
+const sfx = {
+  good: () => { beep(880, 0.06); beep(1320, 0.08, 'square', 0.05, 0.06); },
+  bad: () => beep(150, 0.25, 'sawtooth', 0.06),
+  catch: () => beep(660, 0.07),
+  widdle: () => [600, 450, 330, 220].forEach((f, i) => beep(f, 0.14, 'square', 0.06, i * 0.13)),
+  win: () => [523, 659, 784, 1047].forEach((f, i) => beep(f, 0.12, 'square', 0.05, i * 0.09)),
+  select: () => beep(1000, 0.05)
+};
+
+// =====================================================================
+// INPUT: keyboard + on-screen buttons feed the same two tables.
+//   held    = level-triggered (movement)
+//   pressed = edge-triggered (A, B, Start), consumed once per update
+// =====================================================================
+const held = { left: false, right: false, up: false, down: false };
+const pressed = { a: false, b: false, start: false };
+function press(k)   { held[k] = true; if (k in pressed) pressed[k] = true; }
+function release(k) { held[k] = false; }
+
+const KEYMAP = { ArrowLeft:'left', ArrowRight:'right', ArrowUp:'up', ArrowDown:'down',
+                 z:'a', Z:'a', x:'b', X:'b', Enter:'start' };
+addEventListener('keydown', e => {
+  initAudio(); // Unlock audio on first keypress
+  const k = KEYMAP[e.key];
+  if (!k) return;
+  e.preventDefault();
+  if (!e.repeat) press(k);
+});
+addEventListener('keyup', e => { const k = KEYMAP[e.key]; if (k) release(k); });
+addEventListener('blur', () => { for (const k in held) held[k] = false; });
+
+document.querySelectorAll('[data-k]').forEach(btn => {
+  const k = btn.dataset.k;
+  btn.addEventListener('pointerdown', e => {
+    e.preventDefault();
+    initAudio(); // Unlock audio on first tap
+    try { btn.setPointerCapture(e.pointerId); } catch (err) { /* ignore stale pointers */ }
+    btn.classList.add('on');
+    press(k);
+  });
+  const up = e => { btn.classList.remove('on'); release(k); };
+  btn.addEventListener('pointerup', up);
+  btn.addEventListener('pointercancel', up);
+  btn.addEventListener('lostpointercapture', up);
+  btn.addEventListener('contextmenu', e => e.preventDefault());
+});
+
+// =====================================================================
+// GAME STATE
+// =====================================================================
+let scene = 'title';       // title | belt | shiftEnd | boss | widdleAlert | paused | gameOver
+let sceneT = 0;            // frames spent in current scene
+let resumeScene = 'belt';  // where to return after an overlay scene
+
+let score = 0, hiScore = 0, streak = 0;
+let strikes = 0;           // required state variable
+let isWiddle = false;      // required state variable
+
+let shift = 1, processed = 0, spawnTimer = 0, meat = null, lastVal = 0, beltScroll = 0;
+let boss = null, bossCount = 0;
+let tick = 0, shake = 0;
+const player = { x: 75 };
+
+try { hiScore = +localStorage.getItem('widdleHi') || 0; } catch (e) {}
+
+function setScene(s) { scene = s; sceneT = 0; }
+
+// Text box message with a typewriter reveal
+let msgFull = '', msgLen = 0;
+function setMsg(s) { msgFull = s.toUpperCase(); msgLen = 0; }
+
+// Widdle Mode modifiers
+const pScale = () => isWiddle ? 0.5 : 1;        // avatar drawn at 50%
+const mScale = () => isWiddle ? 2 : 1;          // meat / items drawn at 200%
+const pSpeed = () => 2 * (isWiddle ? 0.5 : 1);  // horizontal speed halved
+
+// =====================================================================
+// FLOW CONTROL
+// =====================================================================
+function startGame() {
+  score = 0; streak = 0; strikes = 0; isWiddle = false;
+  shift = 1; bossCount = 0; meat = null; boss = null;
+  player.x = 75;
+  startShift();
+  setMsg('PRESS Z: PRIME TO SMILEY BOX. X: COMPOSITE TO SUBPRIME.');
+  sfx.select();
+}
+function startShift() {
+  processed = 0; meat = null; spawnTimer = 90;
+  setScene('belt');
+  if (shift > 1 || sceneT > 0) setMsg(`SHIFT ${shift}. NUMBERS 2 TO ${shiftMax(shift)}. QUOTA ${CHUNKS_PER_SHIFT}.`);
+}
+function endShift() {
+  setScene('shiftEnd');
+  sfx.win();
+}
+function gameOver() {
+  if (score > hiScore) {
+    hiScore = score;
+    try { localStorage.setItem('widdleHi', hiScore); } catch (e) {}
+  }
+  setScene('gameOver');
+  sfx.bad();
+}
+// Strike ladder: 3 strikes shrinks you. 3 more strikes while already Widdle ends the run.
+function checkWiddle() {
+  if (strikes >= 3) {
+    if (isWiddle) { gameOver(); }
+    else {
+      isWiddle = true;               // Widdle_Demotion: sizes and speed key off this flag
+      resumeScene = scene;
+      setScene('widdleAlert');
+      sfx.widdle();
+    }
+  }
+}
+function addStrike() {
+  strikes++; streak = 0; shake = 8; sfx.bad();
+  checkWiddle();
+}
+
+// =====================================================================
+// SCENE 1: THE FULFILLMENT BELT
+// =====================================================================
+const SMILEY_CX = 26, SUB_CX = 134, BOX_Y = 44, ROUTE_Y = 50;
+
+function spawnMeat() {
+  const max = shiftMax(shift);
+  let val;
+  do {
+    // About 40% primes so the player is not just mashing X.
+    val = Math.random() < 0.4 ? pick(primesUpTo(max)) : rand(2, max);
+  } while (val === lastVal);
+  lastVal = val;
+  meat = { val, cx: 80, y: -12 * mScale(), state: 'fall', dir: 0, prime: isPrime(val) };
+}
+const beltSpeed = () => Math.min(0.45 + 0.05 * (shift - 1), 1.2);
+
+function route(toSmiley) {
+  const v = meat.val;
+  processed++;
+  meat.state = 'route';
+  meat.dir = toSmiley ? -1 : 1;
+  const ok = (toSmiley === meat.prime);          // A = prime check true, B = prime check false
+  if (ok) {
+    streak++;
+    score += 10 + Math.min(streak, 9);
+    sfx.good();
+    setMsg(meat.prime ? `${v} IS PRIME. SMILEY BOX!` : `${v} = ${factorStr(v)}. SUBPRIME BIN.`);
+  } else {
+    setMsg(meat.prime ? `STRIKE! ${v} IS PRIME. ONLY 1 AND ${v} DIVIDE IT.`
+                      : `STRIKE! ${v} = ${factorStr(v)}. NOT PRIME.`);
+    addStrike();
+  }
+}
+function missed() {
+  processed++;
+  setMsg(`STRIKE! ${meat.val} IDLED. THE BELT NEVER STOPS.`);
+  meat = null; spawnTimer = 40;
+  addStrike();
+}
+
+function movePlayer() {
+  const s = pScale(), w = 10 * s, sp_ = pSpeed();
+  if (held.left)  player.x -= sp_;
+  if (held.right) player.x += sp_;
+  player.x = clamp(player.x, 2, W - 2 - w);
+}
+
+function updateBelt() {
+  movePlayer();
+  beltScroll = (beltScroll + beltSpeed()) % 8;
+
+  if (!meat) {
+    if (processed >= CHUNKS_PER_SHIFT) { endShift(); return; }
+    if (--spawnTimer <= 0) spawnMeat();
+    return;
+  }
+  const k = mScale(), h = 12 * k;
+  if (meat.state === 'fall') {
+    meat.y += beltSpeed();                       // move down the Y axis
+    if (pressed.a)      route(true);             // Z -> Smiley Box
+    else if (pressed.b) route(false);            // X -> Subprime Bin
+    else if (meat.y + h >= BELT_END) missed();
+  } else {                                       // sliding into a box
+    const tx = meat.dir < 0 ? SMILEY_CX : SUB_CX;
+    meat.cx += meat.dir * 3;
+    meat.y += (ROUTE_Y - meat.y) * 0.15;
+    if ((meat.dir < 0 && meat.cx <= tx) || (meat.dir > 0 && meat.cx >= tx)) {
+      meat = null; spawnTimer = 35;
+    }
+  }
+}
+
+// =====================================================================
+// SCENE 2: QUARTERLY PERFORMANCE REVIEW (BOSS)
+// =====================================================================
+const BOSSES = [210, 330, 390, 462, 770, 1155, 2310];
+
+function startBoss() {
+  const N = BOSSES[bossCount % BOSSES.length];
+  bossCount++;
+  boss = {
+    N,
+    facs: [...new Set(primeFactors(N))],                                   // distinct prime factors
+    badDivs: divisors(N).filter(d => d > 1 && d < N && !isPrime(d)),       // real divisors, but composite
+    caught: new Set(), hp: 3, items: [],
+    drone: { x: 80, dir: 1 }, ammo: 26 + bossCount * 2, timer: 60,
+    phase: 'intro', t: 0, endT: 0, level: bossCount
+  };
+  player.x = 75; meat = null;
+  setScene('boss');
+  setMsg(`QUARTERLY PERFORMANCE REVIEW. CATCH ONLY PRIME FACTORS OF ${N}.`);
+}
+
+function dropItem() {
+  const b = boss, r = Math.random();
+  const missing = b.facs.filter(f => !b.caught.has(f));
+  let val;
+  if (r < 0.40 && missing.length) val = pick(missing);           // a factor you still need
+  else if (r < 0.55)              val = pick(b.facs);
+  else if (r < 0.80 && b.badDivs.length) val = pick(b.badDivs);  // divides N but is composite
+  else { do { val = rand(2, 40); } while (b.N % val === 0); }    // does not divide N at all
+  b.items.push({ val, cx: clamp(b.drone.x, 10, 150), y: 35, vy: 0.8 + b.level * 0.1 + Math.random() * 0.4 });
+  b.ammo--;
+}
+
+function catchItem(it) {
+  const b = boss, v = it.val, N = b.N;
+  const good = isPrime(v) && N % v === 0;
+  if (good) {
+    if (!b.caught.has(v)) {
+      b.caught.add(v); score += 25; sfx.catch();
+      setMsg(`${v} IS A PRIME FACTOR OF ${N}! ${b.caught.size}/${b.facs.length} LOGGED.`);
+    } else {
+      score += 5; sfx.catch();
+      setMsg(`${v} ALREADY LOGGED. GOOD HUSTLE.`);
+    }
+  } else {
+    b.hp--; shake = 8; sfx.bad();
+    if (N % v === 0) setMsg(`${v} DIVIDES ${N} BUT ${v} = ${factorStr(v)}. NOT PRIME. -1 HP`);
+    else if (isPrime(v)) setMsg(`${v} IS PRIME BUT DOES NOT DIVIDE ${N}. -1 HP`);
+    else setMsg(`${v} DOES NOT EVEN DIVIDE ${N}. -1 HP`);
+  }
+}
+
+function updateBoss() {
+  const b = boss; b.t++;
+  movePlayer();
+
+  // The drone patrols the top edge
+  const d = b.drone;
+  d.x += d.dir * (1 + b.level * 0.08);
+  if (d.x < 14) { d.x = 14; d.dir = 1; }
+  if (d.x > 146) { d.x = 146; d.dir = -1; }
+  if (Math.random() < 0.01) d.dir *= -1;
+
+  if (b.phase === 'intro') { if (b.t > 110) b.phase = 'play'; return; }
+
+  if (b.phase === 'play') {
+    if (--b.timer <= 0 && b.ammo > 0) {
+      dropItem();
+      b.timer = Math.max(20, 44 - b.level * 3) + rand(0, 8);
+    }
+    const k = mScale(), s = pScale();
+    const px = player.x - 2, pw = 10 * s + 4, ph = 14 * s, py = FLOOR_Y - ph;
+    for (let i = b.items.length - 1; i >= 0; i--) {
+      const it = b.items[i];
+      it.y += it.vy;
+      const iw = 18 * k, ih = 11 * k, ix = it.cx - iw / 2;
+      if (ix < px + pw && ix + iw > px && it.y < py + ph && it.y + ih > py) {
+        catchItem(it); b.items.splice(i, 1);
+      } else if (it.y + ih >= FLOOR_Y) {
+        b.items.splice(i, 1);                       // hit the floor, nobody cares
+      }
+    }
+    if (b.caught.size === b.facs.length) {
+      b.phase = 'win'; b.endT = b.t;
+      score += 100 + b.hp * 20;
+      sfx.win();
+      setMsg(isWiddle ? 'PROMOTED! FULL HEIGHT RESTORED. +100' : 'EXCEEDS EXPECTATIONS. +100');
+    } else if (b.hp <= 0 || (b.ammo <= 0 && b.items.length === 0)) {
+      b.phase = 'lose'; b.endT = b.t;
+      sfx.bad();
+      setMsg('PERFORMANCE IMPROVEMENT PLAN ISSUED. -50');
+    }
+    return;
+  }
+
+  // win / lose: wait for acknowledgement
+  if (b.t - b.endT > 45 && pressed.a) finishBoss();
+}
+
+function finishBoss() {
+  const won = boss.phase === 'win';
+  boss = null;
+  if (won) {
+    isWiddle = false; strikes = 0;                  // promotion undoes the demotion
+    startShift();
+  } else {
+    score = Math.max(0, score - 50);
+    startShift();
+    strikes = 3;                                    // failing the review costs the demotion
+    checkWiddle();                                  // (or the job, if already a Widdle)
+  }
+}
+
+// =====================================================================
+// UPDATE (fixed 60 Hz)
+// =====================================================================
+function update() {
+  tick++; sceneT++;
+  if (msgLen < msgFull.length) msgLen += 0.7;
+
+  switch (scene) {
+    case 'title':
+      if (pressed.start || pressed.a) startGame();
+      break;
+
+    case 'belt':
+      if (pressed.start) { resumeScene = 'belt'; setScene('paused'); break; }
+      updateBelt();
+      break;
+
+    case 'boss':
+      if (pressed.start && boss.phase !== 'win' && boss.phase !== 'lose') { resumeScene = 'boss'; setScene('paused'); break; }
+      updateBoss();
+      break;
+
+    case 'shiftEnd':
+      if (sceneT > 30 && pressed.a) {
+        const done = shift;
+        shift++;
+        if (done % 5 === 0) startBoss(); else startShift();
+      }
+      break;
+
+    case 'widdleAlert':      // game loop is paused; only Z resumes
+      if (sceneT > 20 && pressed.a) { strikes = 0; setScene(resumeScene); }
+      break;
+
+    case 'paused':
+      if (pressed.start) setScene(resumeScene);
+      break;
+
+    case 'gameOver':
+      if (sceneT > 40 && (pressed.a || pressed.start)) startGame();
+      break;
+  }
+  pressed.a = pressed.b = pressed.start = false;
+}
+
+// =====================================================================
+// SPRITES (all drawn from fillRect)
+// =====================================================================
+function drawPlayer() {
+  const s = pScale();
+  const x = player.x, y = FLOOR_Y - 14 * s;
+  sp(x, y, s, 2, 0, 6, 2, P.blue);         // hard hat
+  sp(x, y, s, 1, 2, 8, 1, P.blue);
+  sp(x, y, s, 2, 3, 6, 4, P.skin);         // face
+  sp(x, y, s, 3, 4, 1, 1, P.dark);
+  sp(x, y, s, 6, 4, 1, 1, P.dark);
+  sp(x, y, s, 1, 7, 8, 5, P.orange);       // vest
+  sp(x, y, s, 4, 7, 2, 5, P.orangeD);
+  sp(x, y, s, 0, 8, 1, 3, P.skin);         // arms
+  sp(x, y, s, 9, 8, 1, 3, P.skin);
+  sp(x, y, s, 2, 12, 2, 2, P.dark);        // legs
+  sp(x, y, s, 6, 12, 2, 2, P.dark);
+}
+
+function drawMeat(cx, y, val, k) {
+  const x = cx - 8 * k;
+  sp(x, y, k, 2, 0, 12, 12, P.meat);
+  sp(x, y, k, 0, 2, 16, 8, P.meat);
+  sp(x, y, k, 3, 1, 5, 1, P.meatL);
+  sp(x, y, k, 1, 3, 1, 3, P.meatL);
+  sp(x, y, k, 2, 11, 12, 1, P.meatD);
+  sp(x, y, k, 15, 3, 1, 6, P.meatD);
+  const s = String(val);
+  text(s, x + (16 * k - textWidth(s, k)) / 2, y + (12 * k - 5 * k) / 2, P.dark, k);
+}
+
+function drawItem(cx, y, val, k) {          // boss-fight numbered crate
+  const x = cx - 9 * k;
+  sp(x, y, k, 0, 0, 18, 11, P.dark);
+  sp(x, y, k, 1, 1, 16, 9, P.blue);
+  sp(x, y, k, 1, 1, 16, 1, '#5cc9ee');
+  const s = String(val);
+  text(s, x + (18 * k - textWidth(s, k)) / 2, y + (11 * k - 5 * k) / 2, P.white, k);
+}
+
+// 16x16 Bezos head, pixel-art array. Bald, enormous grin.
+const BEZOS = [
+  '....SSSSSSSS....',
+  '..SSSSSSSSSSSS..',
+  '.SSSSSSSSSSSSSS.',
+  '.SSSSSSSSSSSSSS.',
+  '.SSDDDSSSSDDDSS.',
+  '.SSDWDSSSSDWDSS.',
+  '.SSSSSSSSSSSSSS.',
+  'sSSSSSSSSSSSSSSs',
+  'sSSSSSSSSSSSSSSs',
+  '.SSSSSSssSSSSSS.',
+  '.SSSDDDDDDDDSSS.',
+  '.SSSDWWWWWWDSSS.',
+  '..SSSDRRRRDSSS..',
+  '..SSSSDDDDSSSS..',
+  '...SSSSSSSSSS...',
+  '....OOOOOOOO....'
+];
+const BEZOS_COL = { S: P.skin, s: P.skinD, D: P.dark, W: P.white, R: P.meatD, O: P.orange };
+function drawBezos(x, y, s = 1) {
+  x = Math.round(x); y = Math.round(y);
+  for (let r = 0; r < 16; r++)
+    for (let c = 0; c < 16; c++) {
+      const col = BEZOS_COL[BEZOS[r][c]];
+      if (col) { ctx.fillStyle = col; ctx.fillRect(x + c * s, y + r * s, s, s); }
+    }
+}
+
+function drawDrone(x, y) {
+  const flick = (tick >> 1) % 2;
+  rect(x - 8, y + 3, 16, 5, P.dark);
+  rect(x - 5, y + 4, 10, 2, P.mid);
+  rect(x - 2, y, 4, 3, P.mid);
+  rect(x - 14 + flick * 2, y + 1, 8, 1, P.blue);
+  rect(x + 6 - flick * 2, y + 1, 8, 1, P.blue);
+  rect(x - 2, y + 8, 4, 2, P.orange);
+}
+
+function panel(x, y, w, h) {
+  rect(x - 2, y - 2, w + 4, h + 4, P.orange);
+  rect(x, y, w, h, P.dark);
+}
+
+// =====================================================================
+// RENDER
+// =====================================================================
+function drawTextBox() {
+  rect(0, PLAY_H, W, BOX_H, P.dark);
+  rect(1, PLAY_H + 1, 158, 1, P.orange);
+  rect(1, H - 2, 158, 1, P.orange);
+  rect(1, PLAY_H + 1, 1, BOX_H - 2, P.orange);
+  rect(158, PLAY_H + 1, 1, BOX_H - 2, P.orange);
+  let left = Math.floor(msgLen);
+  wrap(msgFull, 37).slice(0, 3).forEach((ln, i) => {
+    if (left <= 0) return;
+    text(ln.slice(0, left), 6, PLAY_H + 6 + i * 7, P.white);
+    left -= ln.length + 1;
+  });
+}
+
+function drawHazardStrip(y) {
+  for (let x = 0; x < W; x += 8) {
+    rect(x, y, 4, 4, P.dark);
+    rect(x + 4, y, 4, 4, P.orange);
+  }
+}
+
+function drawFloor() {
+  rect(0, 0, W, PLAY_H, P.gray);
+  for (let x = 0; x < W; x += 16) rect(x, 0, 1, PLAY_H, '#DCDFE2');
+  drawHazardStrip(FLOOR_Y);
+}
+
+function renderBelt() {
+  drawFloor();
+
+  // conveyor belt
+  rect(54, 0, 3, BELT_END, P.dark);
+  rect(103, 0, 3, BELT_END, P.dark);
+  rect(57, 0, 46, BELT_END, P.mid);
+  for (let y = -8 + beltScroll; y < BELT_END; y += 8) rect(57, y, 46, 1, '#5B6670');
+  for (let y = -16 + beltScroll * 2 % 16; y < BELT_END - 6; y += 16) rect(79, y, 2, 6, P.orange);
+  rect(52, BELT_END, 56, 4, P.dark);
+
+  // Smiley Box (prime)
+  const sx = SMILEY_CX - 20;
+  textC('PRIME', BOX_Y - 8, P.dark, 1, SMILEY_CX);
+  rect(sx - 1, BOX_Y - 1, 42, 42, P.dark);
+  rect(sx, BOX_Y, 40, 40, P.orange);
+  rect(sx + 17, BOX_Y, 6, 40, P.orangeD);
+  rect(sx, BOX_Y + 3, 40, 1, P.orangeD);
+  const my = BOX_Y + 14;                       // the smile
+  rect(sx + 8, my, 2, 2, P.dark);
+  rect(sx + 10, my + 2, 2, 2, P.dark);
+  rect(sx + 12, my + 4, 16, 2, P.dark);
+  rect(sx + 28, my + 2, 2, 2, P.dark);
+  rect(sx + 30, my, 2, 2, P.dark);
+  rect(sx + 30, my - 2, 2, 2, P.dark);
+
+  // Subprime Bin (composite)
+  const bx = SUB_CX - 20;
+  textC('SUBPRIME', BOX_Y - 8, P.dark, 1, SUB_CX);
+  rect(bx - 1, BOX_Y - 1, 42, 42, P.dark);
+  rect(bx, BOX_Y, 40, 40, '#4A5560');
+  rect(bx, BOX_Y, 40, 6, P.mid);
+  rect(bx + 4, BOX_Y + 2, 32, 3, P.dark);
+  for (let i = 0; i < 5; i++) rect(bx + 4 + i * 8, BOX_Y + 30, 4, 4, P.orangeD);
+
+  // meat
+  if (meat) drawMeat(meat.cx, meat.y, meat.val, mScale());
+
+  drawPlayer();
+
+  // HUD
+  text(`SHIFT ${shift}`, 2, 2, P.dark);
+  text(`${processed}/${CHUNKS_PER_SHIFT}`, 34, 2, P.dark);
+  text(`SC ${pad(score, 5)}`, 56, 2, P.dark);
+  if (isWiddle) text('WIDDLE', 92, 2, P.orangeD);
+  for (let i = 0; i < 3; i++) {                 // strike boxes
+    rect(127 + i * 10, 1, 8, 8, P.dark);
+    rect(128 + i * 10, 2, 6, 6, i < strikes ? P.orange : P.gray);
+  }
+  drawTextBox();
+}
+
+function renderBoss() {
+  const b = boss;
+  drawFloor();
+
+  // top bar: HP, boss number, score
+  rect(0, 0, W, 13, P.dark);
+  text('HP', 3, 4, P.gray);
+  for (let i = 0; i < 3; i++) rect(15 + i * 7, 4, 5, 5, i < b.hp ? P.orange : P.mid);
+  textC(String(b.N), 2, P.orange, 2);
+  text(`SC ${pad(score, 5)}`, 122, 4, P.gray);
+
+  // factor slots
+  text('FACTORS', 3, 16, P.dark);
+  b.facs.forEach((f, i) => {
+    const got = b.caught.has(f);
+    const x = 34 + i * 15;
+    rect(x, 14, 13, 9, P.dark);
+    rect(x + 1, 15, 11, 7, got ? P.orange : P.gray);
+    const s = got ? String(f) : '?';
+    text(s, x + 6.5 - textWidth(s) / 2, 16, P.dark);
+  });
+
+  drawDrone(b.drone.x, 25);
+  const k = mScale();
+  b.items.forEach(it => drawItem(it.cx, it.y, it.val, k));
+  drawPlayer();
+
+  if (b.phase === 'win' || b.phase === 'lose') {
+    const win = b.phase === 'win';
+    panel(24, 44, 112, 40);
+    textC(win ? 'REVIEW PASSED!' : 'REVIEW FAILED', 51, win ? P.orange : P.meatL, 1);
+    textC(win ? (isWiddle ? 'BACK TO FULL SIZE' : 'NO DEMOTION TODAY') : 'WIDDLE PENALTY APPLIES', 60, P.white, 1);
+    if (b.t - b.endT > 45 && (tick >> 4) % 2) textC('PRESS Z', 72, P.gray, 1);
+  }
+  drawTextBox();
+}
+
+function renderUnder(name) { if (name === 'boss' && boss) renderBoss(); else renderBelt(); }
+
+function renderTitle() {
+  rect(0, 0, W, H, P.blue);
+  for (let y = 0; y < H; y += 16) rect(0, y, W, 1, P.blueD);
+  textC('BEZOS TEACHES', 9, P.dark, 2); textC('BEZOS TEACHES', 8, P.white, 2);
+  textC('AMAZON PRIME', 27, P.dark, 2); textC('AMAZON PRIME', 26, P.orange, 2);
+  textC('NUMBERS', 45, P.dark, 2); textC('NUMBERS', 44, P.orange, 2);
+  drawBezos(64, 63 + Math.round(Math.sin(tick / 20) * 2), 2);
+  textC('WIDDLE MANAGEMENT', 101, P.white);
+  textC('TRAINING PROGRAM', 108, P.white);
+  if ((tick >> 5) % 2 === 0) textC('PRESS START', 122, P.orange);
+  if (hiScore) textC(`HI ${pad(hiScore, 5)}`, 134, P.dark);
+  drawHazardStrip(140);
+}
+
+function renderShiftEnd() {
+  renderBelt();
+  const done = shift, next = done % 5 === 0;
+  panel(20, 24, 120, 66);
+  textC(`SHIFT ${done} COMPLETE`, 32, P.orange);
+  textC(`SCORE ${pad(score, 5)}`, 43, P.white);
+  textC(`STRIKES ${strikes}/3`, 51, P.white);
+  textC(next ? 'REVIEW INCOMING' : `NEXT RANGE 2-${shiftMax(done + 1)}`, 62, P.grayD);
+  if (sceneT > 30 && (tick >> 4) % 2) textC('PRESS Z', 76, P.gray);
+}
+
+function renderWiddleAlert() {
+  renderUnder(resumeScene);
+  panel(10, 10, 140, 100);
+  drawBezos(72, 17 + Math.round(Math.sin(tick / 12) * 2), 1);   // floating 16x16 head
+  wrap('FRUGALITY PRINCIPLE VIOLATED. WIDDLE MANAGER STATUS ENGAGED.', 32)
+    .forEach((ln, i) => textC(ln, 42 + i * 8, P.white));
+  textC('YOU ARE NOW SMALL', 72, P.orange);
+  textC('MOVEMENT SPEED HALVED', 80, P.grayD);
+  if (sceneT > 20 && (tick >> 4) % 2) textC('PRESS Z', 96, P.gray);
+}
+
+function renderGameOver() {
+  rect(0, 0, W, H, P.dark);
+  drawHazardStrip(0); drawHazardStrip(140);
+  textC('PERFORMANCE PLAN', 24, P.orange, 1);
+  textC('FAILED', 34, P.orange, 2);
+  drawBezos(72, 54, 1);
+  textC('YOU HAVE BEEN LET GO', 78, P.white);
+  textC(`SCORE ${pad(score, 5)}   HI ${pad(hiScore, 5)}`, 92, P.gray);
+  if (sceneT > 40 && (tick >> 5) % 2 === 0) textC('PRESS START', 112, P.orange);
+}
+
+function render() {
+  ctx.save();
+  if (shake > 0) { ctx.translate(rand(-1, 1), rand(-1, 1)); shake--; }
+  switch (scene) {
+    case 'title':       renderTitle(); break;
+    case 'belt':        renderBelt(); break;
+    case 'shiftEnd':    renderShiftEnd(); break;
+    case 'boss':        renderBoss(); break;
+    case 'widdleAlert': renderWiddleAlert(); break;
+    case 'paused':
+      renderUnder(resumeScene);
+      panel(50, 46, 60, 20);
+      textC('PAUSED', 54, P.orange);
+      textC('START', 59, P.gray);
+      break;
+    case 'gameOver':    renderGameOver(); break;
+  }
+  ctx.restore();
+}
+
+// =====================================================================
+// MAIN LOOP: requestAnimationFrame + fixed 60 Hz simulation step
+// =====================================================================
+const STEP = 1000 / 60;
+let last = performance.now(), acc = 0;
+function frame(now) {
+  acc += Math.min(now - last, 100);
+  last = now;
+  while (acc >= STEP) { update(); acc -= STEP; }
+  render();
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
