@@ -145,7 +145,7 @@
       border: 2px inset #ffffff;
     }
 
-    /*  Floating Header Flairs */
+    /* Floating Header Flairs */
     .cinco-control-banner {
       background: #000;
       color: #00ff00;
@@ -310,7 +310,7 @@
       100% { transform: rotate(-8deg) scale(0.96); }
     }
 
-    /* Psychedelic Dept Department Channels */
+    /* Dept Department Channels */
     .channels-wrapper {
       padding: 6px;
       background: rgba(0, 0, 0, 0.85);
@@ -376,9 +376,7 @@
       100% { transform: rotate(15deg) scale(1.2); }
     }
 
-    /* ========================================================
-        1998 GEOCITIES OVERHAULED CTAs
-       ======================================================== */
+    /* CTAs */
     .cta-hero-deck {
       display: flex;
       justify-content: center;
@@ -394,7 +392,7 @@
       position: relative;
     }
 
-    /* Tom Selleck Reverse Mortgage 64 - Surreal Tim & Eric Shrine */
+    /* Tom Selleck Reverse Mortgage 64 */
     .selleck-surreal-cta {
       width: 280px;
       min-height: 140px;
@@ -428,7 +426,7 @@
       box-shadow: 0 0 35px #ffff00, 8px 8px 0 #000;
     }
 
-    /* Bezos Prime Numbers - Cyberpunk 90s Surrealism */
+    /* Bezos Prime Numbers */
     .bezos-surreal-cta {
       width: 280px;
       min-height: 140px;
@@ -507,7 +505,7 @@
     .sticker-left { top: -10px; left: -10px; }
     .sticker-right { bottom: -10px; right: -10px; transform: rotate(10deg); background: #8b0000; }
 
-    /* Content Layout: 1998 Frames/Table Emulation */
+    /* Content Layout */
     .geocities-content-table {
       display: grid;
       grid-template-columns: 210px 1fr 190px;
@@ -547,7 +545,7 @@
       color: #000;
     }
 
-    /* Sidebar Navigation Links with 90s Bullets */
+    /* Sidebar Navigation Links */
     .retro-nav-list {
       list-style: none;
       padding: 0;
@@ -925,9 +923,7 @@
     <!-- Gratuitous Animated Separator -->
     <hr class="rainbow-hr" />
 
-    <!-- ========================================================
-         OVERHAULED PSYCHEDELIC TIM & ERIC CTA BUTTONS
-         ======================================================== -->
+    <!-- OVERHAULED PSYCHEDELIC TIM & ERIC CTA BUTTONS -->
     <div class="cta-hero-deck">
       <div class="tim-eric-sticker sticker-left">YOUR MOTHER APPROVES!</div>
       <div class="tim-eric-sticker sticker-right">PEOPLE LOVE US! 👍</div>
@@ -955,10 +951,7 @@
       </a>
     </div>
 
-    <!-- ========================================================
-         CLOCKBUSTER VHS ARCHIVE CAROUSEL
-         (Fully Preserved Engine & Dataset with 1998 Hardware Aesthetic)
-         ======================================================== -->
+    <!-- CLOCKBUSTER VHS ARCHIVE CAROUSEL -->
     <style id="cb-vhs-css">
       .cb-vhs {
         position: relative;
@@ -1233,7 +1226,7 @@
       </p>
     </section>
 
-    <!-- CAROUSEL JAVASCRIPT LOGIC & TAPES (100% UNTOUCHED ORIGINAL DATA) -->
+    <!-- CAROUSEL JAVASCRIPT LOGIC -->
     <script>
       window.CB_VHS_TAPES = [
         {
@@ -1639,8 +1632,6 @@
           </div>
         </section>
 
-        <!-- NOTE: EXCLUSIVE EDITION Guide has been completely omitted as requested! -->
-
         <!-- Operational Phases -->
         <section class="retro-box">
           <div class="retro-box-header">⚙ Operational Phases</div>
@@ -1663,7 +1654,7 @@
           </div>
         </section>
 
-        <!-- REPLACED: 1998 GeoCities Interactive Public Guestbook -->
+        <!-- 1998 GEOCITIES GUESTBOOK CONTAINER WITH DIRECT REST INTEGRATION -->
         <section class="retro-box" id="contact">
           <div class="retro-box-header header-yellow">
             <span>📖 Official Clockbuster Public Guestbook [1998 EDITION]</span>
@@ -1693,7 +1684,7 @@
               ></textarea>
               
               <div style="margin: 4px 0 10px;">
-                <button class="guestbook-btn" onclick="signGuestbook()" type="button">
+                <button id="guestbook-submit-btn" class="guestbook-btn" type="button">
                   ✍ Sign Guestbook 🚀
                 </button>
               </div>
@@ -1708,10 +1699,138 @@
               </div>
 
               <div id="guestbook-entries" class="guestbook-entries-container">
-                <div class="guestbook-status-msg">Loading entries from timeline database...</div>
+                <div class="guestbook-status-msg">Accessing timeline archives...</div>
               </div>
             </div>
           </div>
+
+          <!-- DIRECT SUPABASE REST INTEGRATION (ZERO CDN DEPENDENCIES) -->
+          <script>
+            (function() {
+              var SB_URL = "https://vycoswzdobasmbdbdmqh.supabase.co/rest/v1/guestbook";
+              var SB_KEY = "sb_publishable_JlzzLsVl0nLsMZKnS_urvA_MD-G8P3H";
+
+              function escapeHtml(text) {
+                var div = document.createElement("div");
+                div.textContent = text || "";
+                return div.innerHTML;
+              }
+
+              function showFeedback(msg, isError) {
+                var fb = document.getElementById("guestbook-feedback");
+                if (!fb) return;
+                fb.style.display = "block";
+                fb.style.color = isError ? "#ff0000" : "#00aa00";
+                fb.textContent = msg;
+              }
+
+              async function loadEntries() {
+                var entriesBox = document.getElementById("guestbook-entries");
+                if (!entriesBox) return;
+
+                try {
+                  var res = await fetch(SB_URL + "?select=*&order=created_at.desc", {
+                    method: "GET",
+                    headers: {
+                      "apikey": SB_KEY,
+                      "Authorization": "Bearer " + SB_KEY
+                    }
+                  });
+
+                  if (!res.ok) {
+                    var errText = await res.text();
+                    console.error("Supabase REST Fetch Error:", errText);
+                    entriesBox.innerHTML = "<div class='guestbook-status-msg' style='color:#cc0000;'>Database connection issue (" + res.status + ").</div>";
+                    return;
+                  }
+
+                  var data = await res.json();
+                  if (!data || data.length === 0) {
+                    entriesBox.innerHTML = "<div class='guestbook-status-msg'>No entries yet! Be the first time traveler to sign.</div>";
+                    return;
+                  }
+
+                  entriesBox.innerHTML = data.map(function(entry) {
+                    var dateStr = entry.created_at ? new Date(entry.created_at).toLocaleDateString() : "1998-TIMELINE";
+                    return (
+                      '<div class="guestbook-entry-card">' +
+                        '<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px dotted #808080; padding-bottom:3px; margin-bottom:4px;">' +
+                          '<span class="guestbook-author">👤 ' + escapeHtml(entry.name) + '</span>' +
+                          '<span style="font-family:\'VT323\'; font-size:14px; color:#666;">TIMESTAMP: ' + dateStr + '</span>' +
+                        '</div>' +
+                        '<div class="guestbook-body-text">' +
+                          escapeHtml(entry.message) +
+                        '</div>' +
+                      '</div>'
+                    );
+                  }).join("");
+                } catch (e) {
+                  console.error("Network Fetch Exception:", e);
+                  entriesBox.innerHTML = "<div class='guestbook-status-msg' style='color:#cc0000;'>Failed to reach database server.</div>";
+                }
+              }
+
+              async function submitEntry() {
+                var nameInput = document.getElementById("guest-name");
+                var msgInput = document.getElementById("guest-message");
+                var submitBtn = document.getElementById("guestbook-submit-btn");
+
+                var name = (nameInput && nameInput.value.trim()) || "Anonymous";
+                var message = msgInput ? msgInput.value.trim() : "";
+
+                if (!message) {
+                  showFeedback("⚠️ Please write a message before signing!", true);
+                  return;
+                }
+
+                if (submitBtn) {
+                  submitBtn.disabled = true;
+                  submitBtn.textContent = "Broadcasting...";
+                }
+                showFeedback("Transmitting to timeline registry...", false);
+
+                try {
+                  var res = await fetch(SB_URL, {
+                    method: "POST",
+                    headers: {
+                      "apikey": SB_KEY,
+                      "Authorization": "Bearer " + SB_KEY,
+                      "Content-Type": "application/json",
+                      "Prefer": "return=minimal"
+                    },
+                    body: JSON.stringify({ name: name, message: message })
+                  });
+
+                  if (!res.ok) {
+                    var errData = await res.text();
+                    console.error("Supabase Insert Error:", errData);
+                    showFeedback("Error saving message: " + errData, true);
+                  } else {
+                    showFeedback("★ Guestbook signed successfully! Transmission beamed to 1998.", false);
+                    if (msgInput) msgInput.value = "";
+                    loadEntries();
+                  }
+                } catch (err) {
+                  console.error("Submit Exception:", err);
+                  showFeedback("Network error during broadcast.", true);
+                } finally {
+                  if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = "✍ Sign Guestbook 🚀";
+                  }
+                }
+              }
+
+              // Bind submit button
+              var btn = document.getElementById("guestbook-submit-btn");
+              if (btn) {
+                btn.onclick = submitEntry;
+              }
+
+              // Load entries on start
+              loadEntries();
+            })();
+          </script>
         </section>
       </section>
 
@@ -1738,7 +1857,6 @@
             <p><strong>Timeline Routing:</strong> Guaranteed</p>
             <p><strong>Human Customer Service:</strong> YES</p>
             <p><strong>Validity:</strong> Until Collapse</p>
-            <!-- 90s Barcode -->
             <div style="margin-top:8px; height:32px; background:repeating-linear-gradient(90deg, #000 0 2px, #fff 2px 4px, #000 4px 6px, #fff 6px 9px); border:1px solid #000;"></div>
           </div>
         </section>
@@ -1807,7 +1925,7 @@
       </div>
     </div>
 
-    <!-- 1998 FOOTER (ALL TEXT PRESERVED) -->
+    <!-- 1998 FOOTER -->
     <footer class="geocities-footer">
       <div style="font-weight:bold; margin-bottom:6px;">
         CLOCKBUSTER By <a href="https://www.obsoletehouse.com">Obsolete House</a>© 2025-2026<br>
@@ -1837,7 +1955,7 @@
 
   </div>
 
-  <!-- TIM & ERIC SURREAL INTERACTIVE FX (JavaScript) -->
+  <!-- TIM & ERIC SURREAL INTERACTIVE FX -->
   <script>
     // 1. Mouse Sparkle Trail Effect
     var sparkleIcons = ['A', 'S', 'D', 'F', '💾', '🍤', '👾', '🌀', '🤡'];
@@ -1877,7 +1995,7 @@
       }
     });
 
-    // 3. Web Audio 90s Dial Tone & Chime Generator (No external MP3 dependencies)
+    // 3. Web Audio 90s Dial Tone & Chime Generator
     var audioCtx = null;
     function getAudioCtx() {
       if (!audioCtx) {
@@ -1906,7 +2024,6 @@
     soundBtn.addEventListener('click', function() {
       try {
         var ctx = getAudioCtx();
-        // Dial-up dual frequency tone generator (350Hz + 440Hz standard dial-tone)
         var osc1 = ctx.createOscillator();
         var osc2 = ctx.createOscillator();
         var gain = ctx.createGain();
@@ -1940,99 +2057,6 @@
         alert("CINCO™ NOTICE: Tim & Eric have reviewed your timeline coordinates. Everything is completely fine. Great Job!");
       });
     });
-  </script>
-
-  <!-- SUPABASE GUESTBOOK INTEGRATION SCRIPT -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script>
-    const supabase = window.supabase.createClient(
-      "https://vycoswzdobasmbdbdmqh.supabase.co",
-      "sb_publishable_JlzzLsVl0nLsMZKnS_urvA_MD-G8P3H"
-    );
-
-    function escapeHtml(text) {
-      const div = document.createElement("div");
-      div.textContent = text;
-      return div.innerHTML;
-    }
-
-    function showGuestbookFeedback(text, isError) {
-      const fb = document.getElementById("guestbook-feedback");
-      if (!fb) return;
-      fb.style.display = "block";
-      fb.style.color = isError ? "#ff0000" : "#008800";
-      fb.textContent = text;
-      setTimeout(function() {
-        fb.style.display = "none";
-      }, 5000);
-    }
-
-    async function signGuestbook() {
-      const name =
-        document.getElementById("guest-name").value.trim() ||
-        "Anonymous";
-      const message =
-        document.getElementById("guest-message").value.trim();
-      if (!message) {
-        showGuestbookFeedback("⚠️ Please write a message before signing the guestbook!", true);
-        return;
-      }
-      
-      const { error } = await supabase
-        .from("guestbook")
-        .insert([{ name, message }]);
-        
-      if (error) {
-        showGuestbookFeedback("Error saving message. Please check timeline connectivity.", true);
-        console.error(error);
-        return;
-      }
-      
-      document.getElementById("guest-message").value = "";
-      showGuestbookFeedback("★ Guestbook signed successfully! Transmission beamed to 1998.", false);
-      loadGuestbook();
-    }
-
-    async function loadGuestbook() {
-      const entriesContainer = document.getElementById("guestbook-entries");
-      if (!entriesContainer) return;
-      
-      const { data, error } = await supabase
-        .from("guestbook")
-        .select("*")
-        .order("created_at", { ascending: false });
-        
-      if (error) {
-        entriesContainer.innerHTML =
-          "<div class='guestbook-status-msg'>Could not load guestbook entries. (Verify Publishable Key in client)</div>";
-        return;
-      }
-      
-      if (!data || data.length === 0) {
-        entriesContainer.innerHTML =
-          "<div class='guestbook-status-msg'>No entries yet! Be the first time traveler to sign.</div>";
-        return;
-      }
-
-      entriesContainer.innerHTML =
-        data.map(function(entry) {
-          const entryDate = entry.created_at ? new Date(entry.created_at).toLocaleDateString() : "1998-TIMELINE";
-          return `
-            <div class="guestbook-entry-card">
-              <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px dotted #808080; padding-bottom:3px; margin-bottom:4px;">
-                <span class="guestbook-author">👤 ${escapeHtml(entry.name)}</span>
-                <span style="font-family:'VT323'; font-size:14px; color:#666;">TIMESTAMP: ${entryDate}</span>
-              </div>
-              <div class="guestbook-body-text">
-                ${escapeHtml(entry.message)}
-              </div>
-            </div>
-          `;
-        }).join("");
-    }
-
-    // Auto load on initialization
-    loadGuestbook();
   </script>
 </body>
 </html>
