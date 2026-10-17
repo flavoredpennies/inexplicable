@@ -1654,7 +1654,7 @@
           </div>
         </section>
 
-        <!-- 1998 GEOCITIES GUESTBOOK CONTAINER WITH DIRECT REST INTEGRATION -->
+       <!-- 1998 GEOCITIES GUESTBOOK CONTAINER -->
         <section class="retro-box" id="contact">
           <div class="retro-box-header header-yellow">
             <span>📖 Official Clockbuster Public Guestbook [1998 EDITION]</span>
@@ -1704,11 +1704,20 @@
             </div>
           </div>
 
-          <!-- DIRECT SUPABASE REST INTEGRATION (ZERO CDN DEPENDENCIES) -->
+          <!-- SUPABASE OFFICIAL SDK INTEGRATION -->
+          <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
           <script>
             (function() {
-              var SB_URL = "https://vycoswzdobasmbdbdmqh.supabase.co/rest/v1/guestbook";
+              var SB_URL = "https://vycoswzdobasmbdbdmqh.supabase.co";
               var SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ5Y29zd3pkb2Jhc21iZGJkbXFoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIxOTY0MTcsImV4cCI6MjEwNzc3MjQxN30.xpq0tI0Py3G2cB3Jap57pBM5IX56g80t_PLwlhxwues";
+
+              var sb = null;
+              function getSb() {
+                if (!sb && window.supabase) {
+                  sb = window.supabase.createClient(SB_URL, SB_KEY);
+                }
+                return sb;
+              }
 
               function escapeHtml(text) {
                 var div = document.createElement("div");
@@ -1728,23 +1737,26 @@
                 var entriesBox = document.getElementById("guestbook-entries");
                 if (!entriesBox) return;
 
-                try {
-                  var res = await fetch(SB_URL + "?select=*&order=created_at.desc", {
-                    method: "GET",
-                    headers: {
-                      "apikey": SB_KEY,
-                      "Authorization": "Bearer " + SB_KEY
-                    }
-                  });
+                var client = getSb();
+                if (!client) {
+                  // Fallback if CDN is still downloading
+                  setTimeout(loadEntries, 250);
+                  return;
+                }
 
-                  if (!res.ok) {
-                    var errText = await res.text();
-                    console.error("Supabase REST Fetch Error:", errText);
-                    entriesBox.innerHTML = "<div class='guestbook-status-msg' style='color:#cc0000;'>Database connection issue (" + res.status + ").</div>";
+                try {
+                  var res = await client
+                    .from("guestbook")
+                    .select("*")
+                    .order("created_at", { ascending: false });
+
+                  if (res.error) {
+                    console.error("Supabase Error:", res.error);
+                    entriesBox.innerHTML = "<div class='guestbook-status-msg' style='color:#cc0000;'>Database error: " + escapeHtml(res.error.message) + "</div>";
                     return;
                   }
 
-                  var data = await res.json();
+                  var data = res.data;
                   if (!data || data.length === 0) {
                     entriesBox.innerHTML = "<div class='guestbook-status-msg'>No entries yet! Be the first time traveler to sign.</div>";
                     return;
@@ -1765,8 +1777,8 @@
                     );
                   }).join("");
                 } catch (e) {
-                  console.error("Network Fetch Exception:", e);
-                  entriesBox.innerHTML = "<div class='guestbook-status-msg' style='color:#cc0000;'>Failed to reach database server.</div>";
+                  console.error("Exception loading entries:", e);
+                  entriesBox.innerHTML = "<div class='guestbook-status-msg' style='color:#cc0000;'>Connection failure.</div>";
                 }
               }
 
@@ -1783,6 +1795,12 @@
                   return;
                 }
 
+                var client = getSb();
+                if (!client) {
+                  showFeedback("⚠️ Connecting to database library, try again in 1 second...", true);
+                  return;
+                }
+
                 if (submitBtn) {
                   submitBtn.disabled = true;
                   submitBtn.textContent = "Broadcasting...";
@@ -1790,21 +1808,13 @@
                 showFeedback("Transmitting to timeline registry...", false);
 
                 try {
-                  var res = await fetch(SB_URL, {
-                    method: "POST",
-                    headers: {
-                      "apikey": SB_KEY,
-                      "Authorization": "Bearer " + SB_KEY,
-                      "Content-Type": "application/json",
-                      "Prefer": "return=minimal"
-                    },
-                    body: JSON.stringify({ name: name, message: message })
-                  });
+                  var res = await client
+                    .from("guestbook")
+                    .insert([{ name: name, message: message }]);
 
-                  if (!res.ok) {
-                    var errData = await res.text();
-                    console.error("Supabase Insert Error:", errData);
-                    showFeedback("Error saving message: " + errData, true);
+                  if (res.error) {
+                    console.error("Supabase Insert Error:", res.error);
+                    showFeedback("Error saving message: " + res.error.message, true);
                   } else {
                     showFeedback("★ Guestbook signed successfully! Transmission beamed to 1998.", false);
                     if (msgInput) msgInput.value = "";
@@ -1821,14 +1831,18 @@
                 }
               }
 
-              // Bind submit button
+              // Bind submit button explicitly
               var btn = document.getElementById("guestbook-submit-btn");
               if (btn) {
                 btn.onclick = submitEntry;
               }
 
-              // Load entries on start
-              loadEntries();
+              // Run when page loads
+              if (document.readyState === "complete" || document.readyState === "interactive") {
+                loadEntries();
+              } else {
+                window.addEventListener("DOMContentLoaded", loadEntries);
+              }
             })();
           </script>
         </section>
