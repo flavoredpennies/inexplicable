@@ -3,2006 +3,1841 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CLOCKBUSTER ONLINE / Portal to Found-Object Détournement Services</title>
+  <title>CLOCKBUSTER ONLINE / Portal to Found-Object Détournement Services [BEST VIEWED IN NETSCAPE 4.0]</title>
   <meta name="description" content="Clockbuster Video by Obsolete House / rare out-of-print DVDs, VHS, cassette tapes, CDs, software, promo media and parody collectibles / interdimensional video store built on obsolete media culture." />
-  <script>
-    (function(d) {
-      var config = {
-        kitId: 'rxf5hlm',
-        scriptTimeout: 3000,
-        async: true
-      },
-      h = d.documentElement, t = setTimeout(function() {
-        h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
-      }, config.scriptTimeout),
-      tk = d.createElement("script"), f = false,
-      s = d.getElementsByTagName("script")[0], a;
-      h.className += " wf-loading";
-      tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
-      tk.async = true;
-      tk.onload = tk.onreadystatechange = function() {
-        a = this.readyState;
-        if (f || a && a != "complete" && a != "loaded") return;
-        f = true;
-        clearTimeout(t);
-        try { Typekit.load(config); } catch (e) {}
-      };
-      s.parentNode.insertBefore(tk, s);
-    })(document);
-  </script>
 
+  <!-- Authentic Web 1998 Fonts: Comic Sans, Papyrus, Times, Impact -->
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&family=Permanent+Marker&display=swap');
+
     :root {
-      --page-blue: #3a0d5c; /* Halloween purple */
-      --deep-blue: #160026; /* Dark purple/black */
-      --soft-blue: #ffeedb; /* Soft orange/cream */
-      --panel-blue: #ffb84d; /* Pumpkin orange */
-      --hot-yellow: #ff6600; /* Vibrant orange */
-      --alert-red: #cc0000; /* Blood red */
-      --ink: #11001c;
-      --gray-1: #f4f4f4;
-      --gray-2: #d6d6d6;
-      --gray-3: #9f9f9f;
-      --gray-4: #565656;
-      --white: #ffffff;
-
-      --font-wordmark: eurostile-extended, sans-serif;
-      --font-nav: itc-avant-garde-gothic-pro, Futura, Arial, sans-serif;
-      --font-archives: adobe-garamond-pro, serif;
-      --font-interface: myriad-pro, sans-serif;
-      --font-playful: cooper-black-std, serif;
-      --font-remembership: dottonoji, sans-serif;
-    }
-
-    .font-remembership {
-      font-family: var(--font-remembership);
-    }
-
-    .rmb-font {
-      font-family: var(--font-remembership);
+      --hot-magenta: #ff00ff;
+      --electric-cyan: #00ffff;
+      --radioactive-green: #00ff00;
+      --lemon-yellow: #ffff00;
+      --blood-red: #ff0000;
+      --geocities-blue: #0000aa;
+      --vintage-silver: #c0c0c0;
+      --win98-dark: #808080;
     }
 
     * {
       box-sizing: border-box;
     }
 
+    /* Psychedelic Tiled Background */
     html {
       min-height: 100%;
-      background:
-        radial-gradient(circle at 20px 20px, rgba(255,102,0,.28) 0 1px, transparent 2px),
-        linear-gradient(180deg, #1c0033 0%, #0d001a 55%, #05000a 100%);
-      background-size: 24px 24px, auto;
+      background-color: #050014;
+      background-image: 
+        radial-gradient(ellipse at center, rgba(255, 0, 128, 0.25) 0%, rgba(0, 0, 0, 0.95) 75%),
+        repeating-radial-gradient(#110028, #110028 10px, #240046 10px, #240046 20px),
+        repeating-linear-gradient(45deg, #0d001a 0, #0d001a 25px, #1a0033 25px, #1a0033 50px);
+      background-size: cover, 40px 40px, 80px 80px;
+      background-attachment: fixed;
+      cursor: crosshair;
     }
 
     body {
       margin: 0;
-      padding: 12px 0 24px;
-      color: var(--ink);
-      font-family: var(--font-interface);
-      font-size: 12px;
-      line-height: 1.35;
+      padding: 10px 4px 40px;
+      font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", "Apple Chancery", cursive, sans-serif;
+      font-size: 13px;
+      line-height: 1.4;
+      color: #000;
+      overflow-x: hidden;
+      position: relative;
     }
 
+    /* Secret Tim & Eric Cinco Hypno-Reality Filter applied via JS toggle */
+    body.cinco-mode {
+      animation: timEricVision 0.35s steps(2) infinite alternate, hueTrip 8s linear infinite;
+    }
+    @keyframes timEricVision {
+      0% { filter: contrast(180%) saturate(300%) drop-shadow(4px 0 #00ffff); }
+      100% { filter: contrast(220%) saturate(350%) drop-shadow(-4px 0 #ff00ff) skewX(0.8deg); }
+    }
+    @keyframes hueTrip {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(360deg); }
+    }
+
+    /* Hyperlink classic 1998 treatment */
     a {
-      color: #660099;
+      color: #0000ee;
       font-weight: bold;
       text-decoration: underline;
     }
-
+    a:visited {
+      color: #551a8b;
+    }
     a:hover {
-      color: #ff6600;
-      background: #110022;
+      color: #ff0000;
+      background-color: #ffff00;
+      text-decoration: blink;
     }
 
-    .browser-shell {
-      width: 780px;
-      max-width: calc(100vw - 18px);
+    /* Gratuitous Blink & Jitter */
+    .blink {
+      animation: retroBlink 0.75s step-start infinite;
+    }
+    @keyframes retroBlink {
+      50% { opacity: 0; }
+    }
+
+    .rainbow-text {
+      background: linear-gradient(90deg, #ff0000, #ff7700, #ffff00, #00ff00, #00ffff, #0000ff, #8a2be2, #ff007f, #ff0000);
+      background-size: 300% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: rainbowScroll 3s linear infinite;
+      font-weight: bold;
+    }
+    @keyframes rainbowScroll {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+
+    /* Chunky Windows 98 / GeoCities Outer Container */
+    .geocities-container {
+      max-width: 890px;
       margin: 0 auto;
-      border: 2px solid #ff8800;
-      background: #ececec;
-      box-shadow: 0 0 0 2px #110022, 0 12px 40px rgba(0,0,0,.55);
+      background: #c0c0c0;
+      border: 4px outset #ffffff;
+      box-shadow: 0 0 25px rgba(255, 0, 255, 0.6), 8px 8px 0 rgba(0,0,0,0.85);
+      position: relative;
     }
 
-    .window-title {
+    /* Window Header Titlebar (Preserving exact requested wording) */
+    .top-aol-titlebar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      min-height: 24px;
+      background: linear-gradient(90deg, #000080, #1084d0, #000080);
       padding: 3px 6px;
-      color: #fff;
+      color: #ffffff;
+      font-family: 'VT323', monospace;
+      font-size: 19px;
+      letter-spacing: 1px;
       font-weight: bold;
-      background: linear-gradient(90deg, #440066, #660099, #440066);
-      border-bottom: 1px solid #110022;
-      letter-spacing: .02em;
+      text-shadow: 1px 1px #000;
+      border-bottom: 2px solid #000;
     }
-
-    .window-controls {
+    .win-buttons {
       display: flex;
       gap: 3px;
     }
-
-    .window-controls span {
-      display: inline-flex;
-      width: 17px;
-      height: 17px;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid #222;
-      background: linear-gradient(#fff, #bdbdbd);
-      color: #111;
-      font-size: 10px;
-      line-height: 1;
-    }
-
-    .toolbar {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px;
-      border-top: 1px solid #fff;
-      border-bottom: 1px solid #9a9a9a;
-      background: linear-gradient(#fefefe, #cfcfcf);
-      white-space: nowrap;
-      overflow-x: auto;
-    }
-
-    .tool-button {
-      display: inline-flex;
-      align-items: center;
-      gap: 3px;
-      padding: 2px 7px;
-      border: 1px solid #737373;
-      border-top-color: #fff;
-      border-left-color: #fff;
-      background: linear-gradient(#ffffff, #d0d0d0);
-      color: #110022;
-      font-weight: bold;
-      text-decoration: none;
-    }
-
-    .keyword-bar {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      gap: 6px;
-      align-items: center;
-      padding: 5px 6px;
-      background: #dedede;
-      border-bottom: 1px solid #8b8b8b;
-    }
-
-    .keyword-label {
-      font-weight: bold;
-      color: #333;
-    }
-
-    .keyword-input {
-      height: 21px;
-      padding: 2px 6px;
-      border: 1px inset #aaa;
-      background: #fff;
-      font-family: var(--font-interface);
-      color: #660099;
-      font-weight: bold;
-    }
-
-    .go-button {
-      height: 22px;
-      padding: 1px 10px;
-      border: 1px solid #555;
-      border-top-color: #fff;
-      border-left-color: #fff;
-      background: linear-gradient(#fff, #bebebe);
-      color: #111;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .aol-masthead {
-      display: grid;
-      grid-template-columns: 28% 1fr;
-      gap: 10px;
-      padding: 12px;
-      background:
-        linear-gradient(135deg, rgba(255,255,255,.12), transparent 40%),
-        linear-gradient(90deg, #1a0033 0%, #4d0099 48%, #110022 100%);
-      border-bottom: 3px solid #ff6600;
-    }
-
-    .aol-id-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      padding: 12px 8px 10px;
-      border: 1px solid rgba(255,255,255,.45);
-      background: rgba(0,0,0,.18);
-      text-align: center;
-    }
-
-    .aol-logo-placeholder {
-      width: 92px;
-      height: 92px;
-      flex-shrink: 0;
-      border-radius: 50%;
-      border: 3px solid var(--hot-yellow);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.22), transparent 65%);
-      color: var(--hot-yellow);
-      font-family: var(--font-wordmark);
-      font-weight: bold;
+    .win-btn {
+      width: 18px;
+      height: 16px;
       font-size: 11px;
-      letter-spacing: .03em;
-      line-height: 1.25;
-    }
-
-    .aol-subtitle {
-      font-family: var(--font-nav);
-      font-size: 10px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--hot-yellow);
-    }
-
-    .aol-return {
-      font-family: var(--font-interface);
-      font-size: 11px;
-      color: var(--soft-blue) !important;
-      text-decoration: underline;
-      background: none;
-    }
-
-    .aol-return:hover {
-      color: #fff !important;
-      background: none;
-    }
-
-    .aol-search {
-      display: flex;
-      width: 100%;
-      gap: 4px;
-      margin-top: 2px;
-    }
-
-    .aol-search input {
-      flex: 1;
-      min-width: 0;
-      height: 20px;
-      border: 1px inset #999;
-      padding: 2px 4px;
-      font-family: var(--font-interface);
-      font-size: 10px;
-    }
-
-    .aol-search button {
-      height: 22px;
-      padding: 0 8px;
-      border: 1px solid #555;
-      border-top-color: #fff;
-      border-left-color: #fff;
-      background: linear-gradient(#fff, #bebebe);
+      font-family: sans-serif;
       font-weight: bold;
-      font-size: 10px;
+      background: #c0c0c0;
+      border: 2px outset #ffffff;
+      color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
     }
-
-    .aol-channels-col {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-width: 0;
+    .win-btn:active {
+      border: 2px inset #ffffff;
     }
 
-    .aol-channels-title {
-      margin: 0 0 2px;
-      color: var(--hot-yellow);
-      font-family: var(--font-nav);
-      font-size: 10px;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      text-align: center;
-      opacity: .85;
-      width: 100%;
-      max-width: 720px;
-    }
-
-    .aol-channels {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr) 142px 142px;
-      grid-template-rows: repeat(2, 50px);
-      gap: 7px;
-      align-content: start;
-      justify-content: center;
-      width: 100%;
-      max-width: 720px;
-      margin: 0 auto;
-    }
-
-    .channel-btn {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 50px;
-      padding: 9px 6px;
-      text-align: center;
-      text-decoration: none !important;
-      border: 1px solid rgba(0,0,0,.35);
-      box-shadow:
-        inset 1px 1px 0 rgba(255,255,255,.45),
-        2px 2px 0 rgba(0,0,0,.28);
-      cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
-      transition:
-        transform .1s ease-out,
-        box-shadow .1s ease-out,
-        filter .15s ease-out;
-    }
-
-    .btn-fx {
-      position: absolute;
-      inset: 0;
-      overflow: hidden;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .btn-fx::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -65%;
-      width: 40%;
-      height: 100%;
-      background: linear-gradient(
-        115deg,
-        transparent 0%,
-        rgba(255,255,255,.8) 50%,
-        transparent 100%
-      );
-      transform: skewX(-20deg);
-      transition: left .55s ease;
-    }
-
-    .channel-btn:hover .btn-fx::before,
-    .channel-btn:focus-visible .btn-fx::before {
-      left: 130%;
-    }
-
-    .btn-fx::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(
-        0deg,
-        rgba(0,0,0,.08) 0 1px,
-        transparent 1px 3px
-      );
-      opacity: 0;
-      transition: opacity .15s ease;
-    }
-
-    .channel-btn:hover .btn-fx::after,
-    .channel-btn:focus-visible .btn-fx::after {
-      opacity: 1;
-    }
-
-    .btn-label {
-      position: relative;
-      z-index: 2;
-    }
-
-    .channel-btn:hover,
-    .channel-btn:focus-visible {
-      filter: brightness(1.12) saturate(1.15);
-      box-shadow:
-        inset 1px 1px 0 rgba(255,255,255,.6),
-        3px 3px 0 rgba(0,0,0,.35),
-        0 0 9px rgba(255,255,255,.55);
-      transform: translateY(-2px);
-      outline: none;
-    }
-
-    .channel-btn:active {
-      transform: translateY(1px) scale(.96);
-      box-shadow: inset 2px 2px 5px rgba(0,0,0,.55);
-      filter: brightness(.9);
-    }
-
-    .ch-retail {
-      background: linear-gradient(#ffaa00, #cc5500);
-      color: #3a1f00 !important;
-      font-family: Impact, "Arial Black", sans-serif;
-      font-weight: 900;
-      font-size: 14px;
-      letter-spacing: .03em;
-    }
-
-    .ch-compliance {
-      background: linear-gradient(#eaeaea, #9a9a9a);
-      color: #111 !important;
-      font-family: Georgia, "Times New Roman", serif;
-      font-variant: small-caps;
-      font-size: 13px;
-      letter-spacing: .1em;
-    }
-
-    .ch-extractions {
-      background: linear-gradient(#b366ff, #6600cc);
-      color: #fff !important;
-      font-family: "Arial Narrow", Arial, sans-serif;
-      font-weight: bold;
-      font-size: 12px;
-      line-height: 1.15;
-    }
-
-    .ch-quality {
-      background: linear-gradient(#ffaa00, #cc5500);
-      color: #04240c !important;
-      font-family: Georgia, "Times New Roman", serif;
-      font-style: italic;
-      font-size: 13px;
-    }
-
-    .ch-archives {
-      background: linear-gradient(#ffcfcf, #b00000);
-      color: #fff !important;
-      font-family: var(--font-archives);
-      font-style: italic;
-      font-size: 13px;
-    }
-
-    .ch-remembership {
-      background: linear-gradient(#f3d9ff, #8a3fd6);
-      color: #fff !important;
-      font-family: var(--font-remembership);
-      font-size: 15px;
-      font-weight: bold;
-    }
-
-    .channel-new-burst {
-      position: absolute;
-      top: -6px;
-      right: -6px;
-      padding: 1px 4px;
-      background: var(--alert-red);
-      color: #fff;
-      font-family: Impact, Arial, sans-serif;
-      font-size: 8px;
-      letter-spacing: .04em;
-      border: 1px solid #5d0000;
-      z-index: 3;
-      animation: burstPulse 1.15s ease-in-out infinite;
-      transform-origin: center;
-    }
-
-    @keyframes burstPulse {
-      0%, 100% {
-        transform: rotate(-8deg) scale(1);
-      }
-      50% {
-        transform: rotate(-8deg) scale(1.18);
-      }
-    }
-
-    /* First CTA - Reverse Mortgage */
-    .reverse-mortgage-cta {
-      position: relative;
-      grid-column: 4;
-      grid-row: 1 / 3;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      width: 142px;
-      height: 107px;
-      align-self: center;
-      padding: 10px 8px;
-      text-align: center;
-      text-decoration: none !important;
-      color: #fff !important;
-      background: #d71920;
-      border: 4px solid #111;
-      clip-path: polygon(
-        50% 0%, 58% 12%, 68% 3%, 73% 17%, 86% 9%, 87% 24%, 99% 22%, 94% 36%, 100% 50%,
-        94% 62%, 99% 76%, 86% 75%, 87% 91%, 73% 83%, 68% 97%, 58% 88%, 50% 100%, 42% 88%,
-        32% 97%, 27% 83%, 14% 91%, 13% 75%, 1% 76%, 6% 62%, 0% 50%, 6% 36%, 1% 22%,
-        13% 24%, 14% 9%, 27% 17%, 32% 3%, 42% 12%
-      );
-      filter: drop-shadow(3px 4px 0 #000);
-      transform: rotate(-2deg);
-      transition: transform .12s ease, filter .12s ease;
-    }
-
-    .reverse-mortgage-cta::before {
-      content: "";
-      position: absolute;
-      inset: 7px;
-      background: #ff6600;
-      clip-path: inherit;
-      z-index: 0;
-    }
-
-    .reverse-mortgage-cta::after {
-      content: "";
-      position: absolute;
-      inset: 13px;
-      background: #660099;
-      clip-path: inherit;
-      z-index: 1;
-    }
-
-    .reverse-mortgage-cta:hover {
-      transform: rotate(0deg) scale(1.08);
-      filter: drop-shadow(5px 6px 0 #000);
-    }
-
-    .reverse-mortgage-cta:active {
-      transform: rotate(0deg) scale(.97);
-    }
-
-    .reverse-mortgage-cta span {
-      position: relative;
-      z-index: 2;
-      display: block;
-      line-height: .9;
-      font-family: Impact, Haettenschweiler, "Arial Black", sans-serif;
-      text-shadow: 2px 2px 0 #000, -1px -1px 0 #000;
-    }
-
-    .reverse-mortgage-cta .cta-small {
-      font-size: 10px;
-      letter-spacing: .03em;
-    }
-
-    .reverse-mortgage-cta .cta-big {
-      font-size: 20px;
-      letter-spacing: -.02em;
-    }
-
-    .reverse-mortgage-cta .cta-sub {
-      margin-top: 5px;
-      padding: 2px 5px;
-      color: #111;
-      background: #ff6600;
-      border: 2px solid #111;
-      font-size: 10px;
-      text-shadow: none;
-      transform: rotate(2deg);
-    }
-
-    /* Second CTA - Bezos Prime Numbers */
-    .bezos-cta {
-      position: relative;
-      grid-column: 5;
-      grid-row: 1 / 3;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      width: 142px;
-      height: 107px;
-      align-self: center;
-      padding: 10px 8px;
-      text-align: center;
-      text-decoration: none !important;
-      color: #fff !important;
-      background: #00A8E1; /* Prime blue */
-      border: 4px solid #111;
-      clip-path: polygon(
-        50% 0%, 58% 12%, 68% 3%, 73% 17%, 86% 9%, 87% 24%, 99% 22%, 94% 36%, 100% 50%,
-        94% 62%, 99% 76%, 86% 75%, 87% 91%, 73% 83%, 68% 97%, 58% 88%, 50% 100%, 42% 88%,
-        32% 97%, 27% 83%, 14% 91%, 13% 75%, 1% 76%, 6% 62%, 0% 50%, 6% 36%, 1% 22%,
-        13% 24%, 14% 9%, 27% 17%, 32% 3%, 42% 12%
-      );
-      filter: drop-shadow(3px 4px 0 #000);
-      transform: rotate(3deg);
-      transition: transform .12s ease, filter .12s ease;
-    }
-
-    .bezos-cta::before {
-      content: "";
-      position: absolute;
-      inset: 7px;
-      background: #FF9900; /* Amazon orange */
-      clip-path: inherit;
-      z-index: 0;
-    }
-
-    .bezos-cta::after {
-      content: "";
-      position: absolute;
-      inset: 13px;
-      background: #110022; /* Maintaining the dark center */
-      clip-path: inherit;
-      z-index: 1;
-    }
-
-    .bezos-cta:hover {
-      transform: rotate(0deg) scale(1.08);
-      filter: drop-shadow(5px 6px 0 #000);
-    }
-
-    .bezos-cta:active {
-      transform: rotate(0deg) scale(.97);
-    }
-
-    .bezos-cta span {
-      position: relative;
-      z-index: 2;
-      display: block;
-      line-height: .9;
-      font-family: Impact, Haettenschweiler, "Arial Black", sans-serif;
-      text-shadow: 2px 2px 0 #000, -1px -1px 0 #000;
-    }
-
-    .bezos-cta .cta-small {
-      font-size: 10px;
-      letter-spacing: .03em;
-    }
-
-    .bezos-cta .cta-big {
-      font-size: 20px;
-      letter-spacing: -.02em;
-    }
-
-    @media (max-width: 600px) {
-      .aol-channels {
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(2, 42px) auto auto;
-        max-width: 100%;
-        gap: 4px;
-      }
-      .reverse-mortgage-cta {
-        grid-column: 1 / 4;
-        grid-row: 3;
-        width: 190px;
-        height: 82px;
-        justify-self: center;
-        margin-top: 4px;
-      }
-      .reverse-mortgage-cta .cta-big {
-        font-size: 17px;
-      }
-      .reverse-mortgage-cta .cta-small {
-        font-size: 9px;
-      }
-      .reverse-mortgage-cta .cta-sub {
-        font-size: 9px;
-      }
-      .bezos-cta {
-        grid-column: 1 / 4;
-        grid-row: 4;
-        width: 190px;
-        height: 82px;
-        justify-self: center;
-        margin-top: 4px;
-      }
-      .bezos-cta .cta-big {
-        font-size: 17px;
-      }
-      .bezos-cta .cta-small {
-        font-size: 9px;
-      }
-      .channel-btn {
-        min-height: 42px;
-        padding: 6px 3px;
-        font-size: 9.5px;
-      }
-      .ch-retail,
-      .ch-remembership {
-        font-size: 11px;
-      }
-      .ch-compliance,
-      .ch-extractions,
-      .ch-quality,
-      .ch-archives {
-        font-size: 9.5px;
-      }
-    }
-    .event-strip {
+    /* Tim and Eric Floating Header Flairs */
+    .cinco-control-banner {
+      background: #000;
+      color: #00ff00;
+      border: 2px ridge #ffff00;
+      padding: 4px 8px;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 9px;
       display: flex;
       justify-content: space-between;
-      gap: 8px;
-      padding: 5px 8px;
-      color: #ffaa00;
-      background: linear-gradient(#33004a, #110022);
-      border-bottom: 1px solid #ff6600;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .cinco-btn {
+      background: #ff0055;
+      color: #ffff00;
+      border: 2px outset #ffffff;
+      padding: 3px 6px;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 8px;
+      cursor: pointer;
+      text-transform: uppercase;
+      box-shadow: 2px 2px 0 #000;
+    }
+    .cinco-btn:hover {
+      background: #ffff00;
+      color: #ff0055;
+    }
+
+    /* Cheesy GIF Ribbons */
+    .flame-divider {
+      height: 18px;
+      background-image: repeating-linear-gradient(90deg, 
+        #ff0000 0px, #ff8800 12px, #ffff00 24px, #ff0000 36px);
+      border-top: 2px solid #000;
+      border-bottom: 2px solid #000;
+      box-shadow: 0 0 10px #ff3300;
+      animation: flameWalk 0.6s linear infinite;
+    }
+    @keyframes flameWalk {
+      0% { background-position: 0 0; }
+      100% { background-position: 36px 0; }
+    }
+
+    .rainbow-hr {
+      height: 6px;
+      border: none;
+      background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+      margin: 8px 0;
+    }
+
+    /* Under Construction Banner */
+    .construction-zone {
+      background: repeating-linear-gradient(-45deg, #000, #000 15px, #ffff00 15px, #ffff00 30px);
+      padding: 6px;
+      text-align: center;
+      border: 3px ridge #ff0000;
+      margin: 6px 0;
+    }
+    .construction-inner {
+      background: rgba(0, 0, 0, 0.88);
+      color: #00ffff;
+      padding: 4px 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
       font-weight: bold;
+      font-family: Impact, sans-serif;
+      font-size: 15px;
+      letter-spacing: 1px;
     }
-    .event-strip strong {
-      color: #fff;
+
+    /* Keyword Search Bar (Geocities Style) */
+    .geo-search-bar {
+      background: #dfdfdf;
+      padding: 6px;
+      border: 2px groove #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
     }
-    .content-grid {
+    .geo-search-input {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 14px;
+      font-weight: bold;
+      background: #ffffcc;
+      color: #800080;
+      padding: 3px 6px;
+      border: 3px inset #808080;
+    }
+    .geo-button {
+      background: linear-gradient(#f0f0f0, #a0a0a0);
+      border: 3px outset #ffffff;
+      padding: 4px 14px;
+      font-family: Impact, sans-serif;
+      font-size: 14px;
+      cursor: pointer;
+      color: #000;
+    }
+    .geo-button:active {
+      border: 3px inset #ffffff;
+    }
+
+    /* 1998 Navigation Table */
+    .toolbar-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #000080;
+      border: 3px ridge #00ffff;
+      margin-bottom: 6px;
+    }
+    .toolbar-table td {
+      text-align: center;
+      padding: 4px 2px;
+      border: 1px solid #4169e1;
+    }
+    .toolbar-table a {
+      color: #ffff00;
+      font-size: 11px;
+      font-family: 'Press Start 2P', monospace;
+      text-decoration: none;
+      display: block;
+      padding: 3px;
+    }
+    .toolbar-table a:hover {
+      background: #ff00ff;
+      color: #ffffff;
+    }
+
+    /* GeoCities Header Banner Layout */
+    .geocities-masthead {
       display: grid;
-      grid-template-columns: 172px 1fr 180px;
+      grid-template-columns: 200px 1fr;
+      gap: 10px;
+      padding: 10px;
+      background: 
+        radial-gradient(circle at 50% 50%, #2b0054, #0c0017),
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 4px);
+      border: 4px ridge #ff00ff;
+      align-items: center;
+    }
+    .logo-pedestal {
+      text-align: center;
+      background: #000;
+      border: 3px outset #00ff00;
+      padding: 8px;
+      box-shadow: 0 0 15px rgba(0, 255, 0, 0.4);
+    }
+    .spin-avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      border: 4px dashed #ffff00;
+      object-fit: cover;
+      animation: spinWobble 6s ease-in-out infinite alternate;
+    }
+    @keyframes spinWobble {
+      0% { transform: rotate(-8deg) scale(0.96); }
+      50% { transform: rotate(12deg) scale(1.05); }
+      100% { transform: rotate(-8deg) scale(0.96); }
+    }
+
+    /* Psychedelic Dept Department Channels */
+    .channels-wrapper {
+      padding: 6px;
+      background: rgba(0, 0, 0, 0.85);
+      border: 2px inset #00ffff;
+    }
+    .channels-header-text {
+      color: #ffff00;
+      font-family: Impact, sans-serif;
+      font-size: 16px;
+      text-align: center;
+      letter-spacing: 2px;
+      margin-bottom: 6px;
+      text-shadow: 2px 2px #ff0000;
+    }
+    .channels-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+    }
+    .retro-channel-btn {
+      display: block;
+      padding: 8px 4px;
+      text-align: center;
+      border: 3px outset #ffffff;
+      text-decoration: none !important;
+      font-weight: bold;
+      text-shadow: 1px 1px 0 #000;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 2px 2px 0 #000;
+      transition: all 0.1s;
+    }
+    .retro-channel-btn:hover {
+      transform: scale(1.04) rotate(-1deg);
+      border-style: dotted;
+      box-shadow: 0 0 12px #ffff00;
+    }
+    .retro-channel-btn:active {
+      border: 3px inset #fff;
+    }
+    .btn-ch-retail { background: linear-gradient(135deg, #ff0000, #ff8800); color: #ffff00 !important; font-family: Impact; font-size: 15px; }
+    .btn-ch-compliance { background: linear-gradient(135deg, #000080, #00ffff); color: #ffffff !important; font-family: 'VT323'; font-size: 16px; }
+    .btn-ch-extractions { background: linear-gradient(135deg, #800080, #ff00ff); color: #ffff00 !important; font-family: "Comic Sans MS"; font-size: 11px; }
+    .btn-ch-quality { background: linear-gradient(135deg, #006400, #00ff00); color: #000 !important; font-family: 'Times New Roman', serif; font-size: 14px; font-weight: 900; }
+    .btn-ch-archives { background: linear-gradient(135deg, #8b0000, #ff4500); color: #fff !important; font-family: 'VT323'; font-size: 16px; }
+    .btn-ch-remembership { background: linear-gradient(135deg, #ff1493, #4b0082); color: #00ffff !important; font-family: 'Press Start 2P'; font-size: 8px; }
+
+    .gif-burst {
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      background: #ffff00;
+      color: #ff0000;
+      font-size: 9px;
+      font-family: Impact;
+      padding: 1px 4px;
+      border: 1px solid #000;
+      transform: rotate(15deg);
+      animation: burstPulse 0.8s ease-in-out infinite alternate;
+    }
+    @keyframes burstPulse {
+      0% { transform: rotate(15deg) scale(0.9); }
+      100% { transform: rotate(15deg) scale(1.2); }
+    }
+
+    /* ========================================================
+       SURREAL TIM & ERIC / 1998 GEOCITIES OVERHAULED CTAs
+       ======================================================== */
+    .cta-hero-deck {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 6px;
+      background: 
+        radial-gradient(circle at 50% 50%, #440044, #110022),
+        repeating-radial-gradient(circle, #ff00ff 0, #ff00ff 2px, transparent 2px, transparent 12px);
+      border: 4px ridge #ffff00;
+      margin: 8px 0;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    /* Tom Selleck Reverse Mortgage 64 - Surreal Tim & Eric Shrine */
+    .selleck-surreal-cta {
+      width: 280px;
+      min-height: 140px;
+      background: linear-gradient(135deg, #ff0055, #ffaa00, #ff0000);
+      background-size: 200% 200%;
+      animation: selleckWobble 2s ease-in-out infinite, pulseBg 4s ease infinite;
+      border: 5px outset #ffff00;
+      padding: 10px;
+      text-decoration: none !important;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-shadow: 0 0 20px #ff0055, 6px 6px 0 #000;
+      position: relative;
+      cursor: pointer;
+    }
+    @keyframes selleckWobble {
+      0%, 100% { transform: rotate(-2deg); }
+      50% { transform: rotate(2deg) scale(1.03); }
+    }
+    @keyframes pulseBg {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .selleck-surreal-cta:hover {
+      transform: scale(1.08) rotate(0deg);
+      border: 5px solid #00ffff;
+      box-shadow: 0 0 35px #ffff00, 8px 8px 0 #000;
+    }
+
+    /* Bezos Prime Numbers - Cyberpunk 90s Surrealism */
+    .bezos-surreal-cta {
+      width: 280px;
+      min-height: 140px;
+      background: linear-gradient(135deg, #00ffff, #0000ff, #ff00ff);
+      background-size: 200% 200%;
+      animation: bezosJitter 1.8s ease-in-out infinite alternate, pulseBg 3s ease infinite;
+      border: 5px outset #00ff00;
+      padding: 10px;
+      text-decoration: none !important;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-shadow: 0 0 20px #00ffff, 6px 6px 0 #000;
+      position: relative;
+      cursor: pointer;
+    }
+    @keyframes bezosJitter {
+      0% { transform: rotate(2deg) translateY(0); }
+      50% { transform: rotate(-2deg) translateY(-3px); }
+      100% { transform: rotate(1deg) translateY(2px); }
+    }
+    .bezos-surreal-cta:hover {
+      transform: scale(1.08) rotate(0deg);
+      border: 5px solid #ff00ff;
+      box-shadow: 0 0 35px #00ff00, 8px 8px 0 #000;
+    }
+
+    .cta-badge-top {
+      background: #000;
+      color: #00ff00;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 8px;
+      padding: 2px 6px;
+      border: 1px solid #fff;
+      margin-bottom: 4px;
+      box-shadow: 1px 1px 0 #fff;
+    }
+    .cta-huge-title {
+      font-family: Impact, "Arial Black", sans-serif;
+      font-size: 21px;
+      line-height: 1.05;
+      color: #ffffff;
+      text-shadow: 3px 3px 0 #000, -2px -2px 0 #ff0000, 2px -2px 0 #000;
+      letter-spacing: 0.5px;
+    }
+    .bezos-title {
+      text-shadow: 3px 3px 0 #000, -2px -2px 0 #0000ff, 2px -2px 0 #000;
+    }
+    .cta-sub-tag {
+      margin-top: 6px;
+      background: #ffff00;
+      color: #000;
+      font-family: 'VT323', monospace;
+      font-size: 16px;
+      font-weight: bold;
+      padding: 1px 8px;
+      border: 2px dashed #000;
+    }
+
+    /* Tim and Eric Aesthetic floating stickers */
+    .tim-eric-sticker {
+      position: absolute;
+      pointer-events: none;
+      z-index: 10;
+      font-family: 'Permanent Marker', cursive;
+      font-size: 13px;
+      color: #ffff00;
+      background: #000080;
+      padding: 2px 7px;
+      border: 2px solid #ff00ff;
+      box-shadow: 2px 2px 0 #000;
+      transform: rotate(-12deg);
+    }
+    .sticker-left { top: -10px; left: -10px; }
+    .sticker-right { bottom: -10px; right: -10px; transform: rotate(10deg); background: #8b0000; }
+
+    /* Content Layout: 1998 Frames/Table Emulation */
+    .geocities-content-table {
+      display: grid;
+      grid-template-columns: 210px 1fr 190px;
       gap: 8px;
       padding: 8px;
-      background: #2b1142;
+      background: #808080;
+      border-top: 3px ridge #fff;
     }
-    .panel {
-      margin-bottom: 8px;
-      border: 1px solid #ff6600;
-      background: #fff;
-      box-shadow: inset 1px 1px 0 #fff, 2px 2px 0 rgba(0,0,0,.08);
+
+    /* Retro Panel Frames */
+    .retro-box {
+      background: #ffffff;
+      border: 3px outset #ffffff;
+      margin-bottom: 10px;
+      box-shadow: 3px 3px 0 rgba(0,0,0,0.6);
     }
-    .panel-title {
-      padding: 4px 6px;
-      color: #fff;
-      background: linear-gradient(#4d0099, #220044);
-      border-bottom: 1px solid #110022;
-      font-size: 11px;
+    .retro-box-header {
+      background: linear-gradient(90deg, #000080, #4169e1);
+      color: #ffffff;
+      font-family: 'VT323', monospace;
+      font-size: 18px;
+      padding: 3px 6px;
       font-weight: bold;
-      letter-spacing: .04em;
-      text-transform: uppercase;
-    }
-    .panel-title.yellow {
-      color: #fff;
-      background: linear-gradient(#ffaa00, #cc5500);
-      border-bottom-color: #ad8200;
-    }
-    .panel-title.red {
-      color: #fff;
-      background: linear-gradient(#d70000, #890000);
-      border-bottom-color: #5d0000;
-    }
-    .panel-body {
-      padding: 7px;
-    }
-    .left-nav a,
-    .right-list a {
-      display: block;
-      padding: 4px 5px;
-      border-bottom: 1px solid #f4e6ff;
-      text-decoration: none;
-      color: #660099;
-    }
-    .left-nav a:before {
-      content: "▶ ";
-      color: #ff6600;
-    }
-    .left-nav a:hover,
-    .right-list a:hover {
-      background: #ffaa00;
-      color: #fff;
-    }
-    .login-row {
-      display: grid;
-      grid-template-columns: 56px 1fr;
-      gap: 4px;
+      border-bottom: 2px solid #000;
+      display: flex;
       align-items: center;
+      gap: 6px;
+    }
+    .header-yellow { background: linear-gradient(90deg, #8b6508, #ffd700); color: #000; text-shadow: 1px 1px #fff; }
+    .header-red { background: linear-gradient(90deg, #800000, #ff0000); color: #fff; }
+    .header-green { background: linear-gradient(90deg, #004d00, #00cc00); color: #fff; }
+    
+    .retro-box-body {
+      padding: 8px;
+      font-size: 12px;
+      line-height: 1.35;
+      color: #000;
+    }
+
+    /* Sidebar Navigation Links with 90s Bullets */
+    .retro-nav-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .retro-nav-list li {
       margin-bottom: 4px;
+      border-bottom: 1px dotted #808080;
+      padding-bottom: 3px;
     }
-    .fake-input {
-      height: 19px;
-      padding: 2px 4px;
-      border: 1px inset #aaa;
-      background: #fff;
-      color: #777;
-      font-size: 11px;
-    }
-    .small-button {
-      display: inline-block;
-      margin-top: 4px;
-      padding: 3px 7px;
-      border: 1px solid #555;
-      border-top-color: #fff;
-      border-left-color: #fff;
-      background: linear-gradient(#fff, #c8c8c8);
-      color: #111;
-      font-weight: bold;
+    .retro-nav-list a {
+      display: block;
+      color: #000080;
       text-decoration: none;
-    }
-    .hero {
-      border: 1px solid #547aa8;
-      background:
-        linear-gradient(90deg, rgba(255,230,200,.9), rgba(255,230,200,.65)),
-        repeating-linear-gradient(45deg, #ffcc80 0, #ffcc80 8px, #ffb347 8px, #ffb347 16px);
-    }
-    .hero h2 {
-      margin: 0 0 5px;
-      color: #4d0099;
-      font-size: 22px;
-      letter-spacing: .02em;
-    }
-    .hero .coupon {
-      display: inline-block;
-      margin: 7px 0 2px;
-      padding: 6px 8px;
-      border: 2px dotted #ff6600;
-      background: #2b1142;
-      color: #ff6600;
-      font-size: 15px;
       font-weight: bold;
+      padding: 2px;
     }
-    .phase-tabs {
+    .retro-nav-list a:hover {
+      background: #ffff00;
+      color: #ff0000;
+    }
+
+    /* Dial-up Connection & Speed Meter */
+    .dialup-meter-box {
+      border: 3px inset #808080;
+      background: #000;
+      padding: 4px;
+      margin: 6px 0;
+    }
+    .dialup-bar {
+      height: 16px;
+      background: repeating-linear-gradient(90deg, #00ff00 0, #00ff00 12px, #000 12px, #000 15px);
+      width: 88%;
+      box-shadow: 0 0 8px #00ff00;
+    }
+
+    /* Hero Center Panel */
+    .hero-panel {
+      background: 
+        radial-gradient(#ffffcc, #ffff99),
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.04) 2px, rgba(0,0,0,0.04) 4px);
+      border: 4px ridge #ff0000;
+    }
+    .hero-h2 {
+      font-family: Impact, "Arial Black", sans-serif;
+      font-size: 23px;
+      color: #800080;
+      text-shadow: 2px 2px #ffff00;
+      margin: 0 0 8px;
+      line-height: 1.15;
+    }
+    .coupon-box {
+      border: 3px dashed #ff0000;
+      background: #ffff66;
+      padding: 8px;
+      font-weight: bold;
+      color: #8b0000;
+      margin: 8px 0;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 13px;
+      text-align: center;
+      animation: pulseCoupon 1.2s ease-in-out infinite alternate;
+    }
+    @keyframes pulseCoupon {
+      from { transform: scale(0.99); background-color: #ffff66; }
+      to { transform: scale(1.02); background-color: #ffccff; }
+    }
+
+    .phase-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 4px;
-      margin: 7px 0 0;
+      margin-top: 8px;
     }
-    .phase-tab {
-      padding: 5px 4px;
-      border: 1px solid #ffaa00;
-      background: linear-gradient(#fff, #ffe6cc);
+    .phase-tile {
+      background: #000080;
+      color: #00ffff;
+      border: 2px outset #ffffff;
+      padding: 4px;
       text-align: center;
-      font-size: 10px;
-      font-weight: bold;
-      color: #660099;
+      font-size: 9px;
+      font-family: 'Press Start 2P', monospace;
+      line-height: 1.2;
     }
-    .bulletline {
-      margin: 4px 0;
-      padding-left: 16px;
-      background: linear-gradient(90deg, #ff6600 0 8px, transparent 8px);
-    }
-    .notice {
-      padding: 6px 7px;
-      border: 1px solid #ff6600;
-      background: #fff6bf;
-      color: #2a2100;
-      font-weight: bold;
-    }
-    .red-notice {
-      padding: 6px 7px;
-      border: 1px solid #8e0000;
-      background: #fff0f0;
-      color: #760000;
-      font-weight: bold;
-    }
-    .condition h3,
-    .copy-block h3 {
-      margin: 9px 0 3px;
-      color: #660099;
-      font-size: 13px;
-      letter-spacing: .04em;
-      text-transform: uppercase;
-    }
-    .copy-block p,
-    .condition p {
-      margin: 0 0 8px;
-    }
-    .mini-status {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 4px 7px;
-      font-size: 11px;
-    }
-    .mini-status div:nth-child(odd) {
-      font-weight: bold;
-      color: #660099;
-    }
-    .meter {
-      height: 14px;
-      border: 1px inset #999;
-      background: linear-gradient(90deg, #ff6600 0 74%, #fff 74%);
-    }
-    .fake-marquee {
-      overflow: hidden;
-      white-space: nowrap;
-      border-top: 1px solid #fff;
-      border-bottom: 1px solid #777;
-      background: #110022;
-      color: #ff8800;
-      font-weight: bold;
-    }
-    .fake-marquee span {
-      display: inline-block;
-      padding: 4px 0;
-      animation: crawl 22s linear infinite;
-    }
-    @keyframes crawl {
-      from { transform: translateX(100%); }
-      to { transform: translateX(-100%); }
-    }
-    .artifact-card {
-      display: grid;
-      grid-template-columns: 52px 1fr;
-      gap: 7px;
-      margin: 6px 0;
-      padding: 6px;
-      border: 1px solid #ffaa00;
-      background: #fff8f0;
-    }
-    .icon-box {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 52px;
-      height: 42px;
-      border: 1px solid #ffaa00;
-      background: linear-gradient(#fff, #ffe6cc);
-      font-size: 22px;
-      font-weight: bold;
-      color: #660099;
-    }
-    .icon-box-infinity {
-      font-size: 38px;
-      line-height: 1;
-    }
-    .icon-box-oh {
-      padding: 2px;
-    }
-    .icon-box-oh a {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0;
-      width: 100%;
-      text-decoration: none !important;
-      color: inherit;
-      line-height: 1;
-    }
-    .icon-box-oh a:hover {
-      background: none;
-      color: #ff6600;
-    }
-    .oh-by {
-      font-family: var(--font-interface);
-      font-size: 7px;
-      font-weight: normal;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: #4a6b96;
-    }
-    .oh-mark {
-      font-family: var(--font-wordmark);
-      font-size: 19px;
-      font-weight: 900;
-      letter-spacing: .02em;
-    }
-    .oh-mark sup {
-      font-size: 8px;
-      top: -.6em;
-    }
-    .footer {
+
+    /* Red Warning Notice Block */
+    .legal-notice {
+      background: #ffe6e6;
+      border: 3px double #ff0000;
       padding: 8px;
-      background: #e7e7e7;
-      border-top: 1px solid #8b8b8b;
-      color: #333;
-      text-align: center;
+      color: #800000;
+      font-weight: bold;
+      margin-bottom: 8px;
       font-size: 11px;
     }
-    .barcode {
-      margin: 5px auto 0;
-      max-width: 280px;
-      height: 26px;
-      background: repeating-linear-gradient(90deg, #111 0 2px, transparent 2px 5px, #111 5px 6px, transparent 6px 10px);
+
+    /* Artifact Card */
+    .artifact-card-retro {
+      display: grid;
+      grid-template-columns: 75px 1fr;
+      gap: 8px;
+      border: 2px groove #808080;
+      padding: 8px;
+      background: #ffffea;
+      margin-bottom: 8px;
     }
-    @media (max-width: 760px) {
-      body { padding: 0; }
-      .browser-shell { width: 100%; max-width: 100%; border-left: 0; border-right: 0; }
-      .aol-masthead { grid-template-columns: 1fr; }
-      .aol-channels-title { text-align: left; }
-      .content-grid { grid-template-columns: 1fr; }
-      .phase-tabs { grid-template-columns: repeat(2, 1fr); }
-      .event-strip, .keyword-bar { grid-template-columns: 1fr; display: block; }
-      .keyword-input { width: 100%; margin: 4px 0; }
+    .artifact-avatar-box {
+      background: #000;
+      border: 3px outset #00ff00;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #00ff00;
+      font-family: Impact;
+      font-size: 32px;
+      text-align: center;
     }
-    @media (max-width: 420px) {
-      .aol-channels { gap: 4px; }
-      .channel-btn { min-height: 42px; padding: 6px 3px; font-size: 9.5px; letter-spacing: 0 !important; }
-      .ch-retail, .ch-remembership { font-size: 11px; }
-      .ch-compliance, .ch-extractions, .ch-quality, .ch-archives { font-size: 9.5px; }
+
+    /* GeoCities Web Counter & Guestbook */
+    .hit-counter-deck {
+      background: #000;
+      border: 4px ridge #c0c0c0;
+      padding: 8px;
+      text-align: center;
+      margin: 8px 0;
+      color: #00ff00;
+      font-family: 'VT323', monospace;
+    }
+    .odometer-digits {
+      display: inline-block;
+      background: #111;
+      border: 2px inset #555;
+      padding: 2px 8px;
+      font-size: 26px;
+      color: #ff0000;
+      letter-spacing: 4px;
+      font-family: 'Courier New', Courier, monospace;
+      font-weight: 900;
+      text-shadow: 0 0 8px #ff0000;
+    }
+
+    .webring-bar {
+      border: 3px ridge #ffff00;
+      background: #000080;
+      color: #ffffff;
+      padding: 8px;
+      text-align: center;
+      font-size: 11px;
+      margin: 12px 0 6px;
+    }
+    .webring-nav-links a {
+      color: #ffff00;
+      margin: 0 6px;
+    }
+
+    /* Footer styling */
+    .geocities-footer {
+      background: #c0c0c0;
+      border-top: 4px ridge #ffffff;
+      padding: 14px 8px;
+      text-align: center;
+      font-size: 11px;
+      color: #000;
+    }
+
+    /* Mouse Cursor Sparkle Trail (Tim & Eric surrealism) */
+    .sparkle-trail {
+      position: absolute;
+      pointer-events: none;
+      z-index: 9999;
+      font-size: 16px;
+      user-select: none;
+      animation: sparkleFloat 1s ease-out forwards;
+    }
+    @keyframes sparkleFloat {
+      0% { opacity: 1; transform: translate(0, 0) scale(1) rotate(0deg); }
+      100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(2.2) rotate(180deg); }
+    }
+
+    /* Responsive Adaptation */
+    @media (max-width: 780px) {
+      .geocities-content-table {
+        grid-template-columns: 1fr;
+      }
+      .geocities-masthead {
+        grid-template-columns: 1fr;
+      }
+      .channels-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .phase-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
   </style>
 </head>
 <body>
-  <div class="browser-shell">
-    <div class="window-title">
-      <span>CLOCKBUSTER ONLINE 7.0 BLAZING SPEED with 1,000,000 Free Trial Hours</span>
-      <div class="window-controls" aria-hidden="true"><span>_</span><span>□</span><span>X</span></div>
+
+  <!-- Floating Audio Sound FX Indicator (Web Audio API Synthesizer) -->
+  <div id="audioStatus" style="display:none;"></div>
+
+  <div class="geocities-container">
+
+    <!-- ORIGINAL REQUESTED TITLEBAR: KEEP EXACT WORDING -->
+    <div class="top-aol-titlebar">
+      <span>★ CLOCKBUSTER ONLINE 7.0 BLAZING SPEED with 1,000,000 Free Trial Hours ★</span>
+      <div class="win-buttons" aria-hidden="true">
+        <span class="win-btn">_</span>
+        <span class="win-btn">□</span>
+        <span class="win-btn" onclick="alert('ERROR 404: Cannot close dimension. You are locked in the Clockbuster matrix.')">X</span>
+      </div>
     </div>
-    <div class="toolbar" aria-label="quick links">
-      <a class="tool-button" href="#welcome">Welcome</a>
-      <a class="tool-button" href="#sale">Sale</a>
-      <a class="tool-button" href="#shop">Shop</a>
-      <a class="tool-button" href="#exclusives">LIVE Exclusives</a>
-      <a class="tool-button" href="#condition">Condition</a>
-      <a class="tool-button" href="#contact">Contact</a>
+
+    <!-- Tim and Eric Cinco™ Hypno-Reality Enhancer Bar -->
+    <div class="cinco-control-banner">
+      <span>CINCO™ SURREAL INTERNET ENHANCER v9.8 [TIM & ERIC CERTIFIED]</span>
+      <div style="display:flex; gap:6px; align-items:center;">
+        <button class="cinco-btn" id="cincoToggleBtn" type="button">🌀 Toggle Cinco™ Vision</button>
+        <button class="cinco-btn" id="soundFxBtn" type="button">🔊 90s Dial Tone</button>
+      </div>
     </div>
-    <form class="keyword-bar" action="https://www.ebay.com/str/clockbustervideo" method="get">
-      <span class="keyword-label">Keyword:</span>
-      <input class="keyword-input" type="text" name="_nkw" placeholder="OBSOLETE HOUSE" aria-label="keyword" />
-      <button class="go-button" type="submit">Go</button>
+
+    <!-- Cheesy Flame Animation Divider -->
+    <div class="flame-divider"></div>
+
+    <!-- 1998 Navigation Table / Image Map Simulator -->
+    <table class="toolbar-table" role="navigation" aria-label="Quick Links">
+      <tr>
+        <td><a href="#welcome">🏠 Welcome</a></td>
+        <td><a href="#sale">🔥 Sale</a></td>
+        <td><a href="#shop">🛒 Shop</a></td>
+        <td><a href="#exclusives">⚡ LIVE Exclusives</a></td>
+        <td><a href="#condition">⚖ Condition</a></td>
+        <td><a href="#contact">📠 Contact</a></td>
+      </tr>
+    </table>
+
+    <!-- UNDER CONSTRUCTION BANNER (Authentic 1998 GeoCities) -->
+    <div class="construction-zone">
+      <div class="construction-inner">
+        <span class="blink">⚠️ UNDER CONSTRUCTION ⚠️</span>
+        <span>BEST VIEWED IN NETSCAPE NAVIGATOR 2.0+ AT 800x600 RESOLUTION</span>
+        <span class="blink">⚠️ PLEASE SIGN GUESTBOOK ⚠️</span>
+      </div>
+    </div>
+
+    <!-- SEARCH & KEYWORD BAR -->
+    <form class="geo-search-bar" action="https://www.ebay.com/str/clockbustervideo" method="get">
+      <span style="font-family:'VT323'; font-size:20px; font-weight:bold; color:#000080;">SEARCH DIMENSIONS:</span>
+      <span style="font-weight:bold;">Keyword:</span>
+      <input class="geo-search-input" type="text" name="_nkw" value="OBSOLETE HOUSE" placeholder="OBSOLETE HOUSE" aria-label="keyword" />
+      <button class="geo-button" type="submit">GO! 🚀</button>
     </form>
 
-    <!-- AOL CHANNELS-STYLE MASTHEAD -->
-    <header class="aol-masthead" id="welcome">
-      <div class="aol-id-card">
+    <!-- GEOCITIES / TIM & ERIC MASTHEAD -->
+    <header class="geocities-masthead" id="welcome">
+      <!-- Avatar & Search Portal -->
+      <div class="logo-pedestal">
         <img
           src="clockbustervideologofinal.png"
-          alt="Clockbuster Video"
-          class="aol-logo-placeholder"
-          style="border-radius:50%; object-fit:cover;"
-        >
-        <div class="aol-subtitle">CHANNELS</div>
-        <form class="aol-search" action="https://www.ebay.com/str/clockbustervideo" method="get">
-          <input type="text" name="_nkw" placeholder="Locate Artifact" aria-label="Search ANY dead format media" />
-          <button type="submit">Go</button>
+          alt="Clockbuster Video Mascot"
+          class="spin-avatar"
+          onerror="this.src='https://placehold.co/110x110/ff00ff/ffffff?text=CLOCKBUSTER'"
+        />
+        <div style="font-family:'Press Start 2P'; font-size:8px; color:#ffff00; margin-top:6px;">CHANNELS</div>
+        <form style="margin-top:6px; display:flex; flex-direction:column; gap:4px;" action="https://www.ebay.com/str/clockbustervideo" method="get">
+          <input class="geo-search-input" style="font-size:11px;" type="text" name="_nkw" placeholder="Locate Artifact" aria-label="Search ANY dead format media" />
+          <button class="geo-button" style="font-size:11px; padding:2px;" type="submit">Search Format</button>
         </form>
       </div>
-      <div class="aol-channels-col">
-        <div class="aol-channels-title">Temporal Consumer Departments</div>
-        <div class="aol-channels">
-          <a class="channel-btn ch-retail" href="https://www.ebay.com/str/clockbustervideo"><span class="btn-fx" aria-hidden="true"></span><span class="btn-label">RETAIL</span></a>
-          <a class="channel-btn ch-compliance" href="#exclusives"><span class="btn-fx" aria-hidden="true"></span><span class="btn-label">COMPLIANCE</span></a>
-          <a class="channel-btn ch-extractions" href="https://www.ebay.com/str/clockbustervideo/Clockbuster-Exclusives/_i.html?store_cat=23705171015"><span class="btn-fx" aria-hidden="true"></span><span class="btn-label">LIVE EXTRACTIONS</span>
-            <span class="channel-new-burst">New!</span>
+
+      <!-- Temporal Consumer Departments -->
+      <div class="channels-wrapper">
+        <div class="channels-header-text">
+          <span class="rainbow-text">★ TEMPORAL CONSUMER DEPARTMENTS ★</span>
+        </div>
+        <div class="channels-grid">
+          <a class="retro-channel-btn btn-ch-retail" href="https://www.ebay.com/str/clockbustervideo">
+            RETAIL DEPT
           </a>
-          <a class="channel-btn ch-quality" href="#condition"><span class="btn-fx" aria-hidden="true"></span><span class="btn-label">QUALITY</span></a>
-          <a class="channel-btn ch-archives" href="archive.html"><span class="btn-fx" aria-hidden="true"></span><span class="btn-label">ARCHIVES</span>
-            <span class="channel-new-burst">SOLD OUT!</span>
+          <a class="retro-channel-btn btn-ch-compliance" href="#exclusives">
+            COMPLIANCE
           </a>
-          <a class="channel-btn ch-remembership" href="terminal.html"><span class="btn-fx" aria-hidden="true"></span><span class="btn-label">Remembership Simulator</span></a>
-          
-          <!-- TOM SELLECK CTA -->
-          <a class="reverse-mortgage-cta" href="https://inexplicable2-1afa39roo-clockbuster1.vercel.app/" target="_blank" rel="noopener">
-            <span class="cta-small">CLICK NOW TO PLAY</span>
-            <span class="cta-big">TOM SELLECK'S<br>REVERSE<br>MORTGAGE 64</span>
+          <a class="retro-channel-btn btn-ch-extractions" href="https://www.ebay.com/str/clockbustervideo/Clockbuster-Exclusives/_i.html?store_cat=23705171015">
+            LIVE EXTRACTIONS
+            <span class="gif-burst">NEW!</span>
           </a>
-          
-          <!-- BEZOS CTA -->
-          <a class="bezos-cta" href="bezos.html" target="_blank" rel="noopener">
-            <span class="cta-small">CLICK NOW TO PLAY</span>
-            <span class="cta-big">BEZOS TEACHES<br>PRIME<br>NUMBERS</span>
+          <a class="retro-channel-btn btn-ch-quality" href="#condition">
+            QUALITY DESK
+          </a>
+          <a class="retro-channel-btn btn-ch-archives" href="archive.html">
+            ARCHIVES
+            <span class="gif-burst">SOLD OUT!</span>
+          </a>
+          <a class="retro-channel-btn btn-ch-remembership" href="terminal.html">
+            Remembership Simulator
           </a>
         </div>
       </div>
     </header>
 
-<style id="cb-vhs-css">
-/* ============================================================
-   CLOCKBUSTER VHS ARCHIVE CAROUSEL
-   ============================================================ */
-.cb-vhs {
-  --cb-plastic: #141414;
-  --cb-plastic-hi: #2e2e2e;
-  --cb-plastic-lo: #070707;
-  --cb-led: #ff2a12;
-  --cb-amber: #ffb000;
-  --cb-screen: #030603;
-  --cb-label: #f3e2a4;
-  position: relative;
-  z-index: 2;
-  margin: 0;
-  padding: 9px 10px 11px;
-  color: #f3f3f3;
-  font-family: var(--font-interface);
-  background:
-    radial-gradient(circle at 12% 0%, rgba(255,255,255,.07), transparent 32%),
-    linear-gradient(180deg, #3f3f3f 0%, #1c1c1c 14%, #0c0c0c 100%);
-  border-top: 0;
-  border-bottom: 3px solid #ffcf00;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.18), inset 0 -1px 0 #000;
-  user-select: none;
-}
-.cb-vhs *,
-.cb-vhs *::before,
-.cb-vhs *::after { box-sizing: border-box; }
-.cb-vhs a { color: inherit; text-decoration: none; font-weight: inherit; background: none; }
-.cb-vhs a:hover { color: inherit; background: none; }
+    <!-- Gratuitous Animated Separator -->
+    <hr class="rainbow-hr" />
 
-.cb-vhs-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  margin-bottom: 8px;
-  min-height: 18px;
-}
-.cb-vhs-brand {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  min-width: 0;
-}
-.cb-vhs-wordmark {
-  font-family: var(--font-wordmark);
-  font-weight: 800;
-  font-size: 13px;
-  letter-spacing: .12em;
-  color: var(--hot-yellow);
-  text-shadow: 0 0 8px rgba(255,207,0,.35);
-}
-.cb-vhs-channel {
-  font-family: var(--font-archives);
-  font-style: italic;
-  font-size: 16px;
-  color: #fff;
-  letter-spacing: .02em;
-}
-.cb-vhs-leds {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-nav);
-  font-size: 9px;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: #9a9a9a;
-}
-.cb-vhs-rec {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  color: var(--cb-led);
-}
-.cb-vhs-rec i {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--cb-led);
-  box-shadow: 0 0 6px var(--cb-led);
-  animation: cbVhsBlink 1.1s steps(1, end) infinite;
-}
-.cb-vhs-counter {
-  font-variant-numeric: tabular-nums;
-  color: var(--cb-amber);
-  letter-spacing: .08em;
-  text-shadow: 0 0 6px rgba(255,176,0,.55);
-  font-size: 11px;
-}
-.cb-vhs-speed {
-  padding: 1px 5px;
-  border: 1px solid #555;
-  color: #d7d7d7;
-}
+    <!-- ========================================================
+         OVERHAULED PSYCHEDELIC TIM & ERIC CTA BUTTONS
+         ======================================================== -->
+    <div class="cta-hero-deck">
+      <div class="tim-eric-sticker sticker-left">CINCO APPROVED!</div>
+      <div class="tim-eric-sticker sticker-right">GREAT JOB! 👍</div>
 
-.cb-vhs-stage {
-  display: grid;
-  grid-template-columns: 228px 1fr;
-  gap: 10px;
-  align-items: stretch;
-}
+      <!-- TOM SELLECK CTA REDESIGN -->
+      <a class="selleck-surreal-cta" href="https://inexplicable2-1afa39roo-clockbuster1.vercel.app/" target="_blank" rel="noopener">
+        <div class="cta-badge-top">★★★ INTERACTIVE CARTRIDGE SIMULATOR ★★★</div>
+        <div style="font-size: 26px; line-height: 1; margin-bottom: 4px;">👨🏻‍🦰💰🏰</div>
+        <span class="cta-huge-title">
+          TOM SELLECK'S<br />
+          REVERSE MORTGAGE 64
+        </span>
+        <div class="cta-sub-tag">👉 CLICK NOW TO PLAY ON NINTEND-NO 69 👈</div>
+      </a>
 
-.cb-vhs-crt {
-  position: relative;
-  display: block;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  background: var(--cb-screen);
-  border: 3px solid #0a0a0a;
-  border-radius: 10px 10px 8px 8px / 12px 12px 6px 6px;
-  box-shadow:
-    inset 0 0 0 2px #2a2a2a,
-    inset 0 0 18px rgba(0,0,0,.65),
-    0 0 0 1px #000,
-    3px 4px 0 rgba(0,0,0,.45);
-  cursor: pointer;
-}
-.cb-vhs-crt:focus-visible {
-  outline: 2px solid var(--hot-yellow);
-  outline-offset: 3px;
-}
-.cb-vhs-frame {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  filter: contrast(1.08) saturate(.86) sepia(.12) brightness(.96);
-  transform: scale(1.04);
-}
-.cb-vhs-crt.is-glitch .cb-vhs-frame {
-  animation: cbVhsGlitch .45s steps(2, end);
-}
-.cb-vhs-scan {
-  pointer-events: none;
-  position: absolute;
-  inset: 0;
-  background:
-    repeating-linear-gradient(
-      to bottom,
-      rgba(0,0,0,.22) 0px,
-      rgba(0,0,0,.22) 1px,
-      transparent 1px,
-      transparent 3px
-    ),
-    radial-gradient(ellipse at center, transparent 42%, rgba(0,0,0,.55) 100%);
-  mix-blend-mode: multiply;
-}
-.cb-vhs-scan::before {
-  content: "";
-  position: absolute;
-  inset: -20% 0 auto;
-  height: 28%;
-  background: linear-gradient(to bottom, transparent, rgba(255,255,255,.07), transparent);
-  animation: cbVhsRoll 7s linear infinite;
-}
-.cb-vhs-scan::after {
-  content: "";
-  position: absolute;
-  left: -2%;
-  right: -2%;
-  bottom: 9%;
-  height: 7px;
-  opacity: .22;
-  background: linear-gradient(90deg, #ff0044, #ffe600, #19ff64, #1ea1ff, #ff0044);
-  mix-blend-mode: screen;
-  animation: cbVhsTrackBar 5.5s linear infinite;
-}
-.cb-vhs-osd {
-  pointer-events: none;
-  position: absolute;
-  left: 8px;
-  bottom: 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  font-family: var(--font-nav);
-  text-transform: uppercase;
-  letter-spacing: .12em;
-  text-shadow: 1px 1px 0 #000, 0 0 6px #000;
-}
-.cb-vhs-osd-play {
-  color: #d8ffd8;
-  font-size: 9px;
-}
-.cb-vhs-osd-play[data-paused="true"] { color: #ffe089; }
-.cb-vhs-osd-title {
-  color: #fff;
-  font-size: 10px;
-  letter-spacing: .06em;
-  max-width: 200px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.cb-vhs-stamp {
-  position: absolute;
-  top: 10px;
-  right: -4px;
-  padding: 3px 9px;
-  background: var(--alert-red);
-  color: #fff;
-  font-family: Impact, "Arial Black", sans-serif;
-  font-size: 11px;
-  letter-spacing: .06em;
-  transform: rotate(8deg);
-  border: 1px solid #5d0000;
-  box-shadow: 1px 1px 0 rgba(0,0,0,.4);
-  z-index: 3;
-}
-.cb-vhs-stamp.is-sale {
-  background: #1f9e3a;
-  border-color: #0c4d1c;
-}
-
-.cb-vhs-info {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  padding: 2px 2px 0 4px;
-}
-.cb-vhs-now {
-  font-family: var(--font-playful);
-  font-size: 13px;
-  color: var(--hot-yellow);
-  letter-spacing: .04em;
-  line-height: 1;
-}
-.cb-vhs-title {
-  margin: 4px 0 4px;
-  font-family: var(--font-wordmark);
-  font-size: 15px;
-  font-weight: 800;
-  letter-spacing: .03em;
-  color: #fff;
-  line-height: 1.2;
-  text-wrap: balance;
-}
-.cb-vhs-notes {
-  margin: 0 0 8px;
-  flex: 1;
-  font-size: 11px;
-  line-height: 1.35;
-  color: #cfcfcf;
-  max-height: 52px;
-  overflow: hidden;
-}
-.cb-vhs-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 10px;
-  margin-bottom: 8px;
-  font-size: 10px;
-  letter-spacing: .04em;
-  text-transform: uppercase;
-  color: #9ad0ff;
-  font-family: var(--font-nav);
-}
-.cb-vhs-meta b { color: #fff; font-weight: 600; }
-
-.cb-vhs-transport {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  margin-top: auto;
-}
-.cb-vhs-btn {
-  appearance: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 34px;
-  height: 28px;
-  padding: 0 8px;
-  border: 1px solid #111;
-  border-top-color: #6a6a6a;
-  border-left-color: #6a6a6a;
-  background: linear-gradient(#3c3c3c, #1a1a1a);
-  color: #eee;
-  font-family: var(--font-nav);
-  font-size: 10px;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  cursor: pointer;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.18);
-}
-.cb-vhs-btn:hover,
-.cb-vhs-btn:focus-visible {
-  filter: brightness(1.18);
-  outline: none;
-  color: var(--hot-yellow);
-}
-.cb-vhs-btn:active { transform: translateY(1px); filter: brightness(.9); }
-.cb-vhs-btn.is-play {
-  min-width: 54px;
-  background: linear-gradient(#5a1a1a, #2a0000);
-  color: #ffd0d0;
-}
-.cb-vhs-cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 0 8px;
-  height: 28px;
-  padding: 0 10px;
-  width: max-content;
-  background: linear-gradient(#ffcfcf, #b00000);
-  color: #fff !important;
-  font-family: var(--font-archives);
-  font-style: italic;
-  font-size: 13px;
-  border: 1px solid #5d0000;
-  box-shadow: inset 1px 1px 0 rgba(255,255,255,.35), 2px 2px 0 rgba(0,0,0,.35);
-}
-.cb-vhs-cta:hover {
-  filter: brightness(1.12);
-  color: #fff !important;
-}
-
-.cb-vhs-well {
-  display: flex;
-  gap: 8px;
-  margin-top: 9px;
-  padding: 8px 6px 6px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x proximity;
-  background:
-    repeating-linear-gradient(90deg, #1a1a1a 0 10px, #101010 10px 12px),
-    linear-gradient(#2a2a2a, #111);
-  border: 1px solid #000;
-  box-shadow: inset 0 2px 6px rgba(0,0,0,.6);
-  scrollbar-width: thin;
-  scrollbar-color: #666 #111;
-}
-.cb-vhs-tape {
-  appearance: none;
-  flex: 0 0 86px;
-  width: 86px;
-  padding: 6px 5px 5px;
-  border: 1px solid #000;
-  background:
-    linear-gradient(180deg, #3a3a3a 0%, #1c1c1c 18%, #141414 100%);
-  cursor: pointer;
-  scroll-snap-align: start;
-  text-align: left;
-  box-shadow: 1px 2px 0 rgba(0,0,0,.5);
-  color: inherit;
-}
-.cb-vhs-tape:hover { filter: brightness(1.12); }
-.cb-vhs-tape.is-on {
-  outline: 2px solid var(--hot-yellow);
-  outline-offset: 1px;
-  transform: translateY(-3px);
-}
-.cb-vhs-tape-window {
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  border: 2px solid #3a3a3a;
-  background: #000;
-}
-.cb-vhs-tape-window img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  filter: saturate(.8) contrast(1.05);
-}
-.cb-vhs-tape-label {
-  margin-top: 4px;
-  min-height: 26px;
-  padding: 2px 3px;
-  background: var(--cb-label);
-  color: #1a1208;
-  font-family: var(--font-nav);
-  font-size: 7.5px;
-  letter-spacing: .03em;
-  line-height: 1.2;
-  text-transform: uppercase;
-}
-.cb-vhs-hint {
-  margin: 6px 2px 0;
-  font-size: 10px;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: #8a8a8a;
-  font-family: var(--font-nav);
-}
-.cb-vhs-hint a {
-  color: var(--hot-yellow);
-  text-decoration: underline;
-}
-
-@keyframes cbVhsBlink {
-  0%, 49% { opacity: 1; }
-  50%, 100% { opacity: .15; }
-}
-@keyframes cbVhsRoll {
-  from { transform: translateY(-10%); }
-  to { transform: translateY(420%); }
-}
-@keyframes cbVhsTrackBar {
-  0% { transform: translateY(0); opacity: .12; }
-  40% { opacity: .28; }
-  100% { transform: translateY(-18px); opacity: .08; }
-}
-@keyframes cbVhsGlitch {
-  0% { transform: scale(1.04) translate(0,0); filter: contrast(1.08) saturate(.86) sepia(.12); }
-  25% { transform: scale(1.04) translate(-7px, 2px) skewX(-5deg); filter: hue-rotate(50deg) saturate(2.2) contrast(1.4); }
-  50% { transform: scale(1.08) translate(6px, -3px); }
-  75% { transform: scale(1.04) translate(-3px, 1px) scaleY(1.08); }
-  100% { transform: scale(1.04) translate(0,0); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .cb-vhs-rec i,
-  .cb-vhs-scan::before,
-  .cb-vhs-scan::after,
-  .cb-vhs-crt.is-glitch .cb-vhs-frame { animation: none; }
-}
-
-@media (max-width: 640px) {
-  .cb-vhs-stage { grid-template-columns: 1fr; }
-  .cb-vhs-crt { max-width: none; width: 100%; }
-  .cb-vhs-head { flex-wrap: wrap; }
-  .cb-vhs-cta { margin-left: 0; }
-  .cb-vhs-transport { flex-wrap: wrap; }
-}
-
-@media (max-width: 420px) {
-  .cb-vhs { padding: 8px 7px 9px; }
-  .cb-vhs-wordmark { font-size: 11px; letter-spacing: .08em; }
-  .cb-vhs-channel { font-size: 14px; }
-  .cb-vhs-tape { flex-basis: 76px; width: 76px; }
-}
-</style>
-<section class="cb-vhs" id="cb-vhs-carousel" data-archive="archive.html" aria-label="Clockbuster Archives VHS player">
-  <div class="cb-vhs-head">
-    <div class="cb-vhs-brand">
-      <span class="cb-vhs-wordmark">CLOCKBUSTER</span>
-      <span class="cb-vhs-channel">Archives</span>
+      <!-- BEZOS CTA REDESIGN -->
+      <a class="bezos-surreal-cta" href="bezos.html" target="_blank" rel="noopener">
+        <div class="cta-badge-top">★★★ CYBER-EDUTAINMENT TIMELINE ★★★</div>
+        <div style="font-size: 26px; line-height: 1; margin-bottom: 4px;">📦👽🔢</div>
+        <span class="cta-huge-title bezos-title">
+          BEZOS TEACHES<br />
+          PRIME NUMBERS
+        </span>
+        <div class="cta-sub-tag" style="background:#00ffff; color:#000;">⚡ CLICK NOW TO PLAY VIRTUAL ROY VR ⚡</div>
+      </a>
     </div>
-    <div class="cb-vhs-leds">
-      <span class="cb-vhs-rec"><i aria-hidden="true"></i>REC</span>
-      <span class="cb-vhs-speed">SP</span>
-      <span class="cb-vhs-counter">00:00:00</span>
-    </div>
-  </div>
-  <div class="cb-vhs-stage">
-    <a class="cb-vhs-crt" href="archive.html">
-      <img class="cb-vhs-frame" alt="">
-      <div class="cb-vhs-scan" aria-hidden="true"></div>
-      <div class="cb-vhs-osd">
-        <span class="cb-vhs-osd-play">► PLAY</span>
-        <span class="cb-vhs-osd-title"></span>
+
+    <!-- ========================================================
+         CLOCKBUSTER VHS ARCHIVE CAROUSEL
+         (Fully Preserved Engine & Dataset with 1998 Hardware Aesthetic)
+         ======================================================== -->
+    <style id="cb-vhs-css">
+      .cb-vhs {
+        position: relative;
+        z-index: 2;
+        margin: 6px 0;
+        padding: 10px;
+        color: #00ff00;
+        font-family: 'Courier New', Courier, monospace;
+        background: radial-gradient(circle at 50% 30%, #1a1a1a, #000);
+        border: 4px ridge #ff00ff;
+        box-shadow: inset 0 0 15px rgba(0, 255, 0, 0.4);
+      }
+      .cb-vhs-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        margin-bottom: 8px;
+        border-bottom: 2px solid #333;
+        padding-bottom: 4px;
+      }
+      .cb-vhs-brand {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+      }
+      .cb-vhs-wordmark {
+        font-family: Impact, sans-serif;
+        font-size: 18px;
+        letter-spacing: 2px;
+        color: #ffff00;
+        text-shadow: 2px 2px #ff0000;
+      }
+      .cb-vhs-channel {
+        font-family: 'VT323', monospace;
+        font-size: 20px;
+        color: #00ffff;
+      }
+      .cb-vhs-leds {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 11px;
+        font-family: 'Press Start 2P', monospace;
+        color: #aaa;
+      }
+      .cb-vhs-rec {
+        color: #ff0000;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+      }
+      .cb-vhs-rec i {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #ff0000;
+        box-shadow: 0 0 8px #ff0000;
+        animation: cbVhsBlink 0.9s steps(1) infinite;
+      }
+      .cb-vhs-counter {
+        color: #ffaa00;
+        font-family: 'VT323', monospace;
+        font-size: 18px;
+        text-shadow: 0 0 6px #ffaa00;
+      }
+      .cb-vhs-speed {
+        border: 1px solid #777;
+        padding: 0 4px;
+        color: #fff;
+      }
+      .cb-vhs-stage {
+        display: grid;
+        grid-template-columns: 240px 1fr;
+        gap: 12px;
+        align-items: stretch;
+      }
+      .cb-vhs-crt {
+        position: relative;
+        display: block;
+        aspect-ratio: 4 / 3;
+        overflow: hidden;
+        background: #000;
+        border: 4px ridge #c0c0c0;
+        box-shadow: inset 0 0 20px rgba(0, 255, 0, 0.5), 0 0 10px rgba(0,0,0,0.8);
+      }
+      .cb-vhs-frame {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: contrast(1.15) saturate(1.2);
+      }
+      .cb-vhs-crt.is-glitch .cb-vhs-frame {
+        animation: cbVhsGlitch 0.4s steps(2);
+      }
+      .cb-vhs-scan {
+        pointer-events: none;
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(to bottom, rgba(0,255,0,0.08) 0px, rgba(0,255,0,0.08) 1px, transparent 1px, transparent 3px);
+      }
+      .cb-vhs-osd {
+        position: absolute;
+        left: 6px;
+        bottom: 6px;
+        font-family: 'VT323', monospace;
+        font-size: 16px;
+        color: #00ff00;
+        text-shadow: 1px 1px #000;
+        pointer-events: none;
+      }
+      .cb-vhs-stamp {
+        position: absolute;
+        top: 6px;
+        right: 6px;
+        background: #ff0000;
+        color: #fff;
+        font-family: Impact;
+        font-size: 14px;
+        padding: 2px 6px;
+        border: 2px solid #fff;
+        transform: rotate(5deg);
+      }
+      .cb-vhs-stamp.is-sale {
+        background: #00aa00;
+      }
+      .cb-vhs-info {
+        display: flex;
+        flex-direction: column;
+        color: #fff;
+      }
+      .cb-vhs-now {
+        font-family: 'Press Start 2P', monospace;
+        font-size: 9px;
+        color: #ffff00;
+      }
+      .cb-vhs-title {
+        font-family: Impact, sans-serif;
+        font-size: 18px;
+        color: #00ffff;
+        margin: 4px 0;
+        text-shadow: 2px 2px #000;
+      }
+      .cb-vhs-notes {
+        font-size: 12px;
+        color: #dfdfdf;
+        flex: 1;
+        margin: 4px 0 8px;
+        font-family: "Comic Sans MS", cursive;
+      }
+      .cb-vhs-meta {
+        display: flex;
+        gap: 12px;
+        font-family: 'VT323', monospace;
+        font-size: 15px;
+        color: #ffaa00;
+        margin-bottom: 6px;
+      }
+      .cb-vhs-cta {
+        display: inline-block;
+        background: linear-gradient(#ffff00, #ff8800);
+        color: #000 !important;
+        font-family: Impact;
+        font-size: 14px;
+        padding: 4px 10px;
+        border: 2px outset #fff;
+        text-decoration: none;
+        width: fit-content;
+        margin-bottom: 8px;
+      }
+      .cb-vhs-transport {
+        display: flex;
+        gap: 4px;
+      }
+      .cb-vhs-btn {
+        background: #c0c0c0;
+        border: 2px outset #ffffff;
+        color: #000;
+        font-family: monospace;
+        font-weight: bold;
+        padding: 4px 10px;
+        cursor: pointer;
+      }
+      .cb-vhs-btn:active {
+        border: 2px inset #ffffff;
+      }
+      .cb-vhs-well {
+        display: flex;
+        gap: 6px;
+        margin-top: 8px;
+        padding: 6px;
+        background: #111;
+        border: 2px inset #777;
+        overflow-x: auto;
+      }
+      .cb-vhs-tape {
+        flex: 0 0 88px;
+        background: #222;
+        border: 2px outset #666;
+        padding: 4px;
+        cursor: pointer;
+        color: #fff;
+        text-align: center;
+      }
+      .cb-vhs-tape.is-on {
+        border: 2px solid #00ff00;
+        background: #330033;
+      }
+      .cb-vhs-tape-window img {
+        width: 100%;
+        height: 52px;
+        object-fit: cover;
+      }
+      .cb-vhs-tape-label {
+        font-size: 8px;
+        font-family: sans-serif;
+        background: #ffffcc;
+        color: #000;
+        margin-top: 2px;
+        padding: 1px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      @keyframes cbVhsBlink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+      @keyframes cbVhsGlitch {
+        0% { transform: translate(0,0); filter: hue-rotate(0deg); }
+        50% { transform: translate(-6px, 3px) skewX(6deg); filter: hue-rotate(90deg) invert(80%); }
+        100% { transform: translate(0,0); filter: hue-rotate(0deg); }
+      }
+    </style>
+
+    <section class="cb-vhs" id="cb-vhs-carousel" data-archive="archive.html" aria-label="Clockbuster Archives VHS player">
+      <div class="cb-vhs-head">
+        <div class="cb-vhs-brand">
+          <span class="cb-vhs-wordmark">📼 CLOCKBUSTER VCR-98</span>
+          <span class="cb-vhs-channel">Found Artifact Archives</span>
+        </div>
+        <div class="cb-vhs-leds">
+          <span class="cb-vhs-rec"><i aria-hidden="true"></i>REC</span>
+          <span class="cb-vhs-speed">SP</span>
+          <span class="cb-vhs-counter">00:00:00</span>
+        </div>
       </div>
-      <span class="cb-vhs-stamp">SOLD OUT</span>
-    </a>
-    <div class="cb-vhs-info">
-      <div class="cb-vhs-now">NOW PLAYING</div>
-      <h2 class="cb-vhs-title"></h2>
-      <p class="cb-vhs-notes"></p>
-      <div class="cb-vhs-meta"></div>
-      <a class="cb-vhs-cta" href="archive.html">Enter Archives</a>
-      <div class="cb-vhs-transport">
-        <button type="button" class="cb-vhs-btn" data-vhs-prev aria-label="Rewind">◄◄</button>
-        <button type="button" class="cb-vhs-btn is-play" data-vhs-play>PAUSE</button>
-        <button type="button" class="cb-vhs-btn" data-vhs-next aria-label="Fast forward">►►</button>
+      <div class="cb-vhs-stage">
+        <a class="cb-vhs-crt" href="archive.html">
+          <img class="cb-vhs-frame" alt="">
+          <div class="cb-vhs-scan" aria-hidden="true"></div>
+          <div class="cb-vhs-osd">
+            <span class="cb-vhs-osd-play">► PLAY</span>
+            <span class="cb-vhs-osd-title"></span>
+          </div>
+          <span class="cb-vhs-stamp">SOLD OUT</span>
+        </a>
+        <div class="cb-vhs-info">
+          <div class="cb-vhs-now">★ NOW PLAYING ON CRT MONITOR ★</div>
+          <h2 class="cb-vhs-title"></h2>
+          <p class="cb-vhs-notes"></p>
+          <div class="cb-vhs-meta"></div>
+          <a class="cb-vhs-cta" href="archive.html">Enter Archive Vault 📼</a>
+          <div class="cb-vhs-transport">
+            <button type="button" class="cb-vhs-btn" data-vhs-prev aria-label="Rewind">◄◄ REW</button>
+            <button type="button" class="cb-vhs-btn" data-vhs-play>PAUSE</button>
+            <button type="button" class="cb-vhs-btn" data-vhs-next aria-label="Fast forward">FF ►►</button>
+          </div>
+        </div>
       </div>
+      <div class="cb-vhs-well" role="tablist" aria-label="Archive tapes"></div>
+      <p style="font-size:11px; margin:4px 0 0; color:#ffff00;">
+        12 editions rented indefinitely · click to <a href="archive.html" style="color:#00ffff;">open the sold-out archive</a>
+      </p>
+    </section>
+
+    <!-- CAROUSEL JAVASCRIPT LOGIC & TAPES (100% UNTOUCHED ORIGINAL DATA) -->
+    <script>
+      window.CB_VHS_TAPES = [
+        {
+          "title": "Elon Musk's PayPal Microtransactions for #SNES",
+          "short": "PayPal Microtransactions",
+          "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/1.JPG",
+          "stamp": "SOLD OUT",
+          "compat": "Stupid Nintend-No",
+          "batch": "5",
+          "notes": "Wrap, lock and stake your Fartcoins™; participate in FUN & SAFE social media market manipulation campaigns."
+        },
+        {
+          "title": "KFC Super Double Down Challenge",
+          "short": "KFC Super Double Down",
+          "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/2.JPG",
+          "stamp": "SOLD OUT",
+          "compat": "Stupid Nintend-No",
+          "batch": "5",
+          "notes": "Collect bacon & cheese to exorcize the ghost of Margarat Thatcher. Build your party with every actor who ever played 'The Colonel'."
+        },
+        {
+          "title": "SURGE 64",
+          "short": "SURGE 64",
+          "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/3.JPG",
+          "stamp": "SOLD OUT",
+          "compat": "Nintend-No 69",
+          "batch": "5",
+          "notes": "Subject yourself to a relentless onslaught of self-inflicted marketing stress, then utilize that trauma to fight for soda supremecy."
+        },
+        {
+          "title": "Super O.J. Simpson’s Low-Speed Chase ‘94 for SNES",
+          "short": "O.J. Low-Speed Chase '94",
+          "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/4.JPG",
+          "stamp": "SOLD OUT",
+          "compat": "Stupid Nintend-No",
+          "batch": "5",
+          "notes": "“On the advice of counsel, I respectfully invoke my Fifth Amendment right and decline to answer.”"
+        },
+        {
+          "title": "M. Night Shyamalan's Blockbuster 2: The Animated Movie: The Official Video Game of the Movie Remastered",
+          "short": "Blockbuster 2 Animated",
+          "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/5.JPG",
+          "stamp": "SOLD OUT",
+          "compat": "Stupid Nintend-No",
+          "batch": "5",
+          "notes": "With no beginning or end, its the first ever sequel to precede the original."
+        },
+        {
+          "title": "Idiocracy: Ow!! My Balls, Hosted by America’s Dad Bob Saget Only on The Violence Channnel (Brought To You By Carl’s JR)",
+          "short": "Idiocracy: Ow!! My Balls",
+          "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/6.JPG",
+          "stamp": "SOLD OUT",
+          "compat": "Nintendo-No 69",
+          "batch": "5",
+          "notes": "Saget gets reanimated and is forced to host a bastardized version of his own flagship program."
+        },
+        {
+          "title": "I Think You Should Leave Egg Game",
+          "short": "ITYSL Egg Game",
+          "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/7.JPG",
+          "stamp": "SOLD OUT",
+          "compat": "Stupid Nintend-No",
+          "batch": "5",
+          "notes": "One egg is forty eggs. Dude, would you like to buy an 80 pack of eggs?"
+        },
+        {
+          "title": "I Think You Should Leave Supermarket Swap VR for Virtual Boy",
+          "short": "Supermarket Swap VR",
+          "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/8.JPG",
+          "stamp": "SOLD OUT",
+          "compat": "Virtual Roy",
+          "batch": "5",
+          "notes": "One can of Smelly beans: 2 for a bunch. Peppers: UP (one-twelve). We have 'Yesterday's Ham'; only $10 bucks... but don't you take a bite out of one of those stinker clams!"
+        },
+        {
+          "title": "Mark Zuckerberg's Metaverse for Virtual Boy",
+          "short": "Zuckerberg's Metaverse",
+          "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/9.JPG",
+          "stamp": "SOLD OUT",
+          "compat": "Virtual Roy",
+          "batch": "5",
+          "notes": "Now with Legs™."
+        },
+        {
+          "title": "Werner Herzog's Lessons of Darkness",
+          "short": "Lessons of Darkness",
+          "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/darkness.jpg",
+          "stamp": "ON SALE!",
+          "compat": "Game Roy",
+          "batch": "15",
+          "notes": "A scorched-earth documentary experience adapted for stereoscopic red-black immersion."
+        },
+        {
+          "title": "My Dinner with Andre VR for Virtual Boy",
+          "short": "My Dinner with Andre VR",
+          "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/IMG_9096.JPG",
+          "stamp": "ON SALE!",
+          "compat": "Virtual Roy",
+          "batch": "15",
+          "notes": "The headset must stay locked until the Aranygaluska is served. If you don't receive Aranygaluska before your espresso, we will terminate your server on-the-spot."
+        },
+        {
+          "title": "Super Dirty Work",
+          "short": "Super Dirty Work",
+          "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/11.JPG",
+          "stamp": "ON SALE!",
+          "compat": "Stupid Nintend-No",
+          "batch": "15",
+          "notes": "Experience the definitive reconstruction of the unrated ‘Dirtier Work’ cut — as a fake display piece."
+        },
+        {
+          "title": "Tom Selleck's Reverse Mortgage 64",
+          "short": "Reverse Mortgage 64",
+          "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/10.jpg",
+          "stamp": "ON SALE!",
+          "compat": "Nintend-No 69",
+          "batch": "15",
+          "notes": "Description coming soon."
+        },
+        {
+          "title": "Super Norm MacDonald Live",
+          "short": "Super Norm MacDonald Live",
+          "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/IMG_6530.JPG",
+          "stamp": "SOLD OUT",
+          "compat": "Stupid Nintend-No",
+          "batch": "15",
+          "notes": "Boy, was it hot outside today.. I went out to buy a California Pizza Kitchen Signature Pepperoni Frozen Flatbread and by the time I got home it was perfectly cooked and entirely eaten.. 100% true."
+        }
+      ];
+
+      (function () {
+        var root = document.getElementById("cb-vhs-carousel");
+        if (!root) return;
+        var tapes = window.CB_VHS_TAPES || [];
+        if (!tapes.length) return;
+        var href = root.getAttribute("data-archive") || "archive.html";
+        var i = 0;
+        var playing = true;
+        var seconds = 0;
+        var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var slideTimer, tickTimer;
+
+        var crt = root.querySelector(".cb-vhs-crt");
+        var frame = root.querySelector(".cb-vhs-frame");
+        var osdPlay = root.querySelector(".cb-vhs-osd-play");
+        var osdTitle = root.querySelector(".cb-vhs-osd-title");
+        var stamp = root.querySelector(".cb-vhs-stamp");
+        var title = root.querySelector(".cb-vhs-title");
+        var notes = root.querySelector(".cb-vhs-notes");
+        var meta = root.querySelector(".cb-vhs-meta");
+        var well = root.querySelector(".cb-vhs-well");
+        var counter = root.querySelector(".cb-vhs-counter");
+        var playBtn = root.querySelector("[data-vhs-play]");
+
+        crt.setAttribute("href", href);
+        root.querySelector(".cb-vhs-cta").setAttribute("href", href);
+
+        function pad(n) { return (n < 10 ? "0" : "") + n; }
+        function fmt(s) {
+          var h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), sec = s % 60;
+          return pad(h) + ":" + pad(m) + ":" + pad(sec);
+        }
+
+        function renderTapes() {
+          well.innerHTML = "";
+          tapes.forEach(function (t, n) {
+            var b = document.createElement("button");
+            b.type = "button";
+            b.className = "cb-vhs-tape" + (n === i ? " is-on" : "");
+            b.setAttribute("data-i", String(n));
+            var win = document.createElement("div");
+            win.className = "cb-vhs-tape-window";
+            var img = document.createElement("img");
+            img.src = t.img;
+            img.alt = "";
+            win.appendChild(img);
+            var lab = document.createElement("div");
+            lab.className = "cb-vhs-tape-label";
+            lab.textContent = t.short;
+            b.appendChild(win);
+            b.appendChild(lab);
+            b.addEventListener("click", function () { go(n); });
+            well.appendChild(b);
+          });
+        }
+
+        function paint() {
+          var t = tapes[i];
+          frame.src = t.img;
+          frame.alt = t.title;
+          osdTitle.textContent = t.short;
+          osdPlay.textContent = playing ? "► PLAY" : "❚❚ PAUSE";
+          stamp.textContent = t.stamp;
+          stamp.className = "cb-vhs-stamp" + (t.stamp === "ON SALE!" ? " is-sale" : "");
+          title.textContent = t.title;
+          notes.textContent = t.notes;
+          meta.innerHTML =
+            "<span>Compat: <b>" + t.compat + "</b></span> <span>Batch: <b>" + t.batch + "</b></span> <span>Tape: <b>" + (i + 1) + "/" + tapes.length + "</b></span>";
+          playBtn.textContent = playing ? "PAUSE" : "PLAY";
+          Array.prototype.forEach.call(well.children, function (el, n) {
+            el.classList.toggle("is-on", n === i);
+          });
+        }
+
+        function go(n) {
+          i = (n + tapes.length) % tapes.length;
+          crt.classList.remove("is-glitch");
+          void crt.offsetWidth;
+          crt.classList.add("is-glitch");
+          setTimeout(function () { crt.classList.remove("is-glitch"); }, 450);
+          paint();
+          restartSlide();
+        }
+
+        function restartSlide() {
+          if (slideTimer) clearInterval(slideTimer);
+          if (!playing || reduce) return;
+          slideTimer = setInterval(function () { go(i + 1); }, 4800);
+        }
+
+        root.querySelector("[data-vhs-prev]").addEventListener("click", function () { go(i - 1); });
+        root.querySelector("[data-vhs-next]").addEventListener("click", function () { go(i + 1); });
+        playBtn.addEventListener("click", function () {
+          playing = !playing;
+          paint();
+          restartSlide();
+        });
+
+        tickTimer = setInterval(function () {
+          if (!playing) return;
+          seconds += 1;
+          counter.textContent = fmt(seconds);
+        }, 1000);
+
+        renderTapes();
+        paint();
+        restartSlide();
+      })();
+    </script>
+
+    <!-- EVENT STRIP TICKER -->
+    <div style="background:#000080; border:2px ridge #ffff00; padding:4px 8px; color:#ffff00; font-family:'VT323'; font-size:18px; display:flex; justify-content:space-between; flex-wrap:wrap;" id="sale">
+      <span>TIMELINE INDICATOR: <strong style="color:#00ff00;">HAUNTED 👻</strong></span>
+      <span>SALES PROGRAM: <strong style="color:#ff00ff;">HALLOWEEN SPOOKTACULAR 9% OFF EVENT</strong></span>
+      <span>COUPON: <strong style="color:#00ffff;">SPOOKYREALITY</strong></span>
     </div>
-  </div>
-  <div class="cb-vhs-well" role="tablist" aria-label="Archive tapes"></div>
-  <p class="cb-vhs-hint">12 editions rented indefinitely · click to <a href="archive.html">open the sold-out archive</a></p>
-</section>
-<script>
-window.CB_VHS_TAPES = [
-  {
-    "title": "Elon Musk's PayPal Microtransactions for #SNES",
-    "short": "PayPal Microtransactions",
-    "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/1.JPG",
-    "stamp": "SOLD OUT",
-    "compat": "Stupid Nintend-No",
-    "batch": "5",
-    "notes": "Wrap, lock and stake your Fartcoins™; participate in FUN & SAFE social media market manipulation campaigns."
-  },
-  {
-    "title": "KFC Super Double Down Challenge",
-    "short": "KFC Super Double Down",
-    "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/2.JPG",
-    "stamp": "SOLD OUT",
-    "compat": "Stupid Nintend-No",
-    "batch": "5",
-    "notes": "Collect bacon & cheese to exorcize the ghost of Margarat Thatcher. Build your party with every actor who ever played 'The Colonel'."
-  },
-  {
-    "title": "SURGE 64",
-    "short": "SURGE 64",
-    "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/3.JPG",
-    "stamp": "SOLD OUT",
-    "compat": "Nintend-No 69",
-    "batch": "5",
-    "notes": "Subject yourself to a relentless onslaught of self-inflicted marketing stress, then utilize that trauma to fight for soda supremecy."
-  },
-  {
-    "title": "Super O.J. Simpson’s Low-Speed Chase ‘94 for SNES",
-    "short": "O.J. Low-Speed Chase '94",
-    "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/4.JPG",
-    "stamp": "SOLD OUT",
-    "compat": "Stupid Nintend-No",
-    "batch": "5",
-    "notes": "“On the advice of counsel, I respectfully invoke my Fifth Amendment right and decline to answer.”"
-  },
-  {
-    "title": "M. Night Shyamalan's Blockbuster 2: The Animated Movie: The Official Video Game of the Movie Remastered",
-    "short": "Blockbuster 2 Animated",
-    "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/5.JPG",
-    "stamp": "SOLD OUT",
-    "compat": "Stupid Nintend-No",
-    "batch": "5",
-    "notes": "With no beginning or end, its the first ever sequel to precede the original."
-  },
-  {
-    "title": "Idiocracy: Ow!! My Balls, Hosted by America’s Dad Bob Saget Only on The Violence Channnel (Brought To You By Carl’s JR)",
-    "short": "Idiocracy: Ow!! My Balls",
-    "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/6.JPG",
-    "stamp": "SOLD OUT",
-    "compat": "Nintendo-No 69",
-    "batch": "5",
-    "notes": "Saget gets reanimated and is forced to host a bastardized version of his own flagship program."
-  },
-  {
-    "title": "I Think You Should Leave Egg Game",
-    "short": "ITYSL Egg Game",
-    "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/7.JPG",
-    "stamp": "SOLD OUT",
-    "compat": "Stupid Nintend-No",
-    "batch": "5",
-    "notes": "One egg is forty eggs. Dude, would you like to buy an 80 pack of eggs?"
-  },
-  {
-    "title": "I Think You Should Leave Supermarket Swap VR for Virtual Boy",
-    "short": "Supermarket Swap VR",
-    "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/8.JPG",
-    "stamp": "SOLD OUT",
-    "compat": "Virtual Roy",
-    "batch": "5",
-    "notes": "One can of Smelly beans: 2 for a bunch. Peppers: UP (one-twelve). We have 'Yesterday's Ham'; only $10 bucks... but don't you take a bite out of one of those stinker clams!"
-  },
-  {
-    "title": "Mark Zuckerberg's Metaverse for Virtual Boy",
-    "short": "Zuckerberg's Metaverse",
-    "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/9.JPG",
-    "stamp": "SOLD OUT",
-    "compat": "Virtual Roy",
-    "batch": "5",
-    "notes": "Now with Legs™."
-  },
-  {
-    "title": "Werner Herzog's Lessons of Darkness",
-    "short": "Lessons of Darkness",
-    "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/darkness.jpg",
-    "stamp": "ON SALE!",
-    "compat": "Game Roy",
-    "batch": "15",
-    "notes": "A scorched-earth documentary experience adapted for stereoscopic red-black immersion."
-  },
-  {
-    "title": "My Dinner with Andre VR for Virtual Boy",
-    "short": "My Dinner with Andre VR",
-    "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/IMG_9096.JPG",
-    "stamp": "ON SALE!",
-    "compat": "Virtual Roy",
-    "batch": "15",
-    "notes": "The headset must stay locked until the Aranygaluska is served. If you don't receive Aranygaluska before your espresso, we will terminate your server on-the-spot."
-  },
-  {
-    "title": "Super Dirty Work",
-    "short": "Super Dirty Work",
-    "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/11.JPG",
-    "stamp": "ON SALE!",
-    "compat": "Stupid Nintend-No",
-    "batch": "15",
-    "notes": "Experience the definitive reconstruction of the unrated ‘Dirtier Work’ cut — as a fake display piece."
-  },
-  {
-    "title": "Tom Selleck's Reverse Mortgage 64",
-    "short": "Reverse Mortgage 64",
-    "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/10.jpg",
-    "stamp": "ON SALE!",
-    "compat": "Nintend-No 69",
-    "batch": "15",
-    "notes": "Description coming soon."
-  },
-  {
-    "title": "Super Norm MacDonald Live",
-    "short": "Super Norm MacDonald Live",
-    "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/IMG_6530.JPG",
-    "stamp": "SOLD OUT",
-    "compat": "Stupid Nintend-No",
-    "batch": "15",
-    "notes": "Boy, was it hot outside today.. I went out to buy a California Pizza Kitchen Signature Pepperoni Frozen Flatbread and by the time I got home it was perfectly cooked and entirely eaten.. 100% true."
-  }
-];
 
-(function () {
-  var root = document.getElementById("cb-vhs-carousel");
-  if (!root) return;
-  var tapes = window.CB_VHS_TAPES || [];
-  if (!tapes.length) return;
-  var href = root.getAttribute("data-archive") || "archive.html";
-  var i = 0;
-  var playing = true;
-  var seconds = 0;
-  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var slideTimer, tickTimer;
+    <!-- CHEESY GRATUITOUS RUNNING MARQUEE -->
+    <marquee style="background:#000; color:#00ff00; border:2px ridge #ff0000; font-family:'Press Start 2P'; font-size:9px; padding:5px 0;" scrollamount="7">
+      🎃 REMEMBERSHIP NOTICE: Trick or Treat? It's our Halloween in March sales event! The sale starts September 25th. It's also Halloween in October? Just loooook at the items for a scary stupid 10.000% off everything in store. 🎃
+    </marquee>
 
-  var crt = root.querySelector(".cb-vhs-crt");
-  var frame = root.querySelector(".cb-vhs-frame");
-  var osdPlay = root.querySelector(".cb-vhs-osd-play");
-  var osdTitle = root.querySelector(".cb-vhs-osd-title");
-  var stamp = root.querySelector(".cb-vhs-stamp");
-  var title = root.querySelector(".cb-vhs-title");
-  var notes = root.querySelector(".cb-vhs-notes");
-  var meta = root.querySelector(".cb-vhs-meta");
-  var well = root.querySelector(".cb-vhs-well");
-  var counter = root.querySelector(".cb-vhs-counter");
-  var playBtn = root.querySelector("[data-vhs-play]");
-
-  crt.setAttribute("href", href);
-  root.querySelector(".cb-vhs-cta").setAttribute("href", href);
-  var hintA = root.querySelector(".cb-vhs-hint a");
-  if (hintA) hintA.setAttribute("href", href);
-
-  function pad(n) { return (n < 10 ? "0" : "") + n; }
-  function fmt(s) {
-    var h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), sec = s % 60;
-    return pad(h) + ":" + pad(m) + ":" + pad(sec);
-  }
-
-  function renderTapes() {
-    well.innerHTML = "";
-    tapes.forEach(function (t, n) {
-      var b = document.createElement("button");
-      b.type = "button";
-      b.className = "cb-vhs-tape" + (n === i ? " is-on" : "");
-      b.setAttribute("data-i", String(n));
-      var win = document.createElement("div");
-      win.className = "cb-vhs-tape-window";
-      var img = document.createElement("img");
-      img.src = t.img;
-      img.alt = "";
-      win.appendChild(img);
-      var lab = document.createElement("div");
-      lab.className = "cb-vhs-tape-label";
-      lab.textContent = t.short;
-      b.appendChild(win);
-      b.appendChild(lab);
-      b.addEventListener("click", function () { go(n); });
-      well.appendChild(b);
-    });
-  }
-
-  function paint() {
-    var t = tapes[i];
-    frame.src = t.img;
-    frame.alt = t.title;
-    osdTitle.textContent = t.short;
-    osdPlay.textContent = playing ? "► PLAY" : "❚❚ PAUSE";
-    osdPlay.setAttribute("data-paused", playing ? "false" : "true");
-    stamp.textContent = t.stamp;
-    stamp.className = "cb-vhs-stamp" + (t.stamp === "ON SALE!" ? " is-sale" : "");
-    title.textContent = t.title;
-    notes.textContent = t.notes;
-    meta.innerHTML =
-      "<span>Compat <b></b></span><span>Batch <b></b></span><span>Tape <b></b></span>";
-    var bs = meta.querySelectorAll("b");
-    bs[0].textContent = t.compat;
-    bs[1].textContent = t.batch;
-    bs[2].textContent = (i + 1) + "/" + tapes.length;
-    playBtn.textContent = playing ? "PAUSE" : "PLAY";
-    Array.prototype.forEach.call(well.children, function (el, n) {
-      el.classList.toggle("is-on", n === i);
-    });
-  }
-
-  function go(n) {
-    i = (n + tapes.length) % tapes.length;
-    crt.classList.remove("is-glitch");
-    void crt.offsetWidth;
-    crt.classList.add("is-glitch");
-    setTimeout(function () { crt.classList.remove("is-glitch"); }, 450);
-    paint();
-    restartSlide();
-  }
-
-  function restartSlide() {
-    if (slideTimer) clearInterval(slideTimer);
-    if (!playing || reduce) return;
-    slideTimer = setInterval(function () { go(i + 1); }, 4800);
-  }
-
-  root.querySelector("[data-vhs-prev]").addEventListener("click", function () { go(i - 1); });
-  root.querySelector("[data-vhs-next]").addEventListener("click", function () { go(i + 1); });
-  playBtn.addEventListener("click", function () {
-    playing = !playing;
-    paint();
-    restartSlide();
-  });
-
-  tickTimer = setInterval(function () {
-    if (!playing) return;
-    seconds += 1;
-    counter.textContent = fmt(seconds);
-  }, 1000);
-
-  renderTapes();
-  paint();
-  restartSlide();
-})();
-
-</script>
-    <div class="event-strip" id="sale">
-      <span>TIMLINE INDICATOR: <strong>HAUNTED</strong></span>
-      <span>SALES PROGRAM: <strong>HALLOWEEN SPOOKTACULAR 9% OFF EVENT</strong></span>
-      <span>COUPON: <strong>SPOOKYREALITY</strong></span>
-    </div>
-    <div class="fake-marquee" aria-hidden="true">
-      <span><span class="rmb-font">REMEMBERSHIP</span> NOTICE: Trick or Treat? It's our Halloween in March sales event! The sale starts September 25th. It's also Halloween in October? Just loooook at the items for a scary stupid 10.000% off everything in store.</span>
-    </div>
-    <main class="content-grid">
+    <!-- MAIN CONTENT 3-COLUMN TABLE-GRID -->
+    <main class="geocities-content-table">
+      
+      <!-- LEFT ASIDE -->
       <aside class="left-col">
-        <section class="panel left-nav">
-          <div class="panel-title">Main Channels</div>
-          <div class="panel-body">
-            <a href="https://www.ebay.com/str/clockbustervideo">Clockbuster Store</a>
-            <a href="https://www.ebay.com/sch/i.html?_dkr=1&iconV2Request=true&_blrs=recall_filtering&_ssn=clockbustervideo&store_name=clockbustervideo&_oac=1&_sop=10&LH_SALE_CURRENCY=0&_pgn=1">Sales Events</a>
-            <a href="#exclusives">Fake Games</a>
-            <a href="archive.html">Archive</a>
-            <a href="#condition">Condition Center</a>
-            <a href="#contact" class="rmb-font">Remembership</a>
+        <!-- Main Channels Panel -->
+        <section class="retro-box">
+          <div class="retro-box-header">📂 Main Channels</div>
+          <div class="retro-box-body">
+            <ul class="retro-nav-list">
+              <li><a href="https://www.ebay.com/str/clockbustervideo">▶ Clockbuster Store</a></li>
+              <li><a href="https://www.ebay.com/sch/i.html?_dkr=1&iconV2Request=true&_blrs=recall_filtering&_ssn=clockbustervideo&store_name=clockbustervideo&_oac=1&_sop=10&LH_SALE_CURRENCY=0&_pgn=1">▶ Sales Events</a></li>
+              <li><a href="#exclusives">▶ Fake Games</a></li>
+              <li><a href="archive.html">▶ Archive</a></li>
+              <li><a href="#condition">▶ Condition Center</a></li>
+              <li><a href="#contact">▶ Remembership</a></li>
+            </ul>
           </div>
         </section>
-        <section class="panel">
-          <div class="panel-title yellow">Member Sign-In</div>
-          <div class="panel-body">
-            <div class="login-row"><span>Name</span><div class="fake-input">GUEST</div></div>
-            <div class="login-row"><span>Timeline</span><div class="fake-input">UNVERIFIED</div></div>
-            <a class="small-button" href="https://www.ebay.com/str/clockbustervideo">Enter Store</a>
+
+        <!-- Member Sign-In -->
+        <section class="retro-box">
+          <div class="retro-box-header header-yellow">👤 Member Sign-In</div>
+          <div class="retro-box-body">
+            <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+              <span>Name:</span>
+              <span style="background:#ffffcc; padding:1px 6px; border:2px inset #999; font-weight:bold;">GUEST</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+              <span>Timeline:</span>
+              <span style="background:#ffffcc; padding:1px 6px; border:2px inset #999; font-weight:bold; color:red;">UNVERIFIED</span>
+            </div>
+            <a class="geo-button" style="display:block; text-align:center; text-decoration:none;" href="https://www.ebay.com/str/clockbustervideo">Enter Store 💾</a>
           </div>
         </section>
-        <section class="panel">
-          <div class="panel-title"><span class="rmb-font">ReMembership</span> Status</div>
-          <div class="panel-body mini-status">
-            <div>Standing</div><div>Technically Acceptable</div>
-            <div>Memory</div><div>Inaccessible</div>
-            <div>Rental Term</div><div>5000 years</div>
-            <div>Ennui</div><div>Not Included in your <span class="rmb-font">Remembership</span></div>
+
+        <!-- ReMembership Status -->
+        <section class="retro-box">
+          <div class="retro-box-header">📋 ReMembership Status</div>
+          <div class="retro-box-body" style="font-size:11px;">
+            <p><strong>Standing:</strong> Technically Acceptable</p>
+            <p><strong>Memory:</strong> Inaccessible</p>
+            <p><strong>Rental Term:</strong> 5000 years</p>
+            <p style="margin-bottom:0;"><strong>Ennui:</strong> Not Included in your Remembership</p>
           </div>
         </section>
-        <section class="panel">
-          <div class="panel-title">Connection Test</div>
-          <div class="panel-body">
-            <p><strong>56.66k</strong></p>
-            <div class="meter" aria-hidden="true"></div>
-            <p style="margin-bottom:0;">Results: BLAZING SPEED</p>
+
+        <!-- Connection Test -->
+        <section class="retro-box">
+          <div class="retro-box-header header-green">📶 Connection Test</div>
+          <div class="retro-box-body">
+            <p style="margin:0 0 4px;"><strong>56.66k Dial-Up V.90</strong></p>
+            <div class="dialup-meter-box">
+              <div class="dialup-bar"></div>
+            </div>
+            <p style="margin:0; font-weight:bold; color:#006600;" class="blink">Results: BLAZING SPEED</p>
           </div>
         </section>
+
+        <!-- Low Res Clip Art Badge -->
+        <div style="text-align:center; padding:6px; background:#000; border:2px ridge #00ffff; margin-bottom:10px;">
+          <img src="https://placehold.co/88x31/000080/ffff00?text=NETSCAPE+NOW" alt="Netscape Now 2.0 Badge" style="border:1px solid #fff;" />
+          <div style="color:#00ff00; font-family:'Press Start 2P'; font-size:7px; margin-top:4px;">CERTIFIED 1998</div>
+        </div>
       </aside>
+
+      <!-- MAIN CENTER COLUMN -->
       <section class="main-col">
-        <section class="panel hero">
-          <div class="panel-title red">Clockbuster Video</div>
-          <div class="panel-body">
-            <h2>Trusted worldwide for obsolete entertainment and alternate-reality marketing tie-ins.</h2>
+        <!-- Hero Section -->
+        <section class="retro-box hero-panel">
+          <div class="retro-box-header header-red">★ Clockbuster Video Mainframe ★</div>
+          <div class="retro-box-body">
+            <h2 class="hero-h2">Trusted worldwide for obsolete entertainment and alternate-reality marketing tie-ins.</h2>
             <p><strong>10% of the cost of the prices will disappear: 9/25 through 10/31</strong></p>
             <p>Our cursed and haunted physical-media objects need homes. They're nice and NOT the bad kind of cursed.</p>
             <p>We offer automatic combined shipping for a flat $6.66 when you order 2+ haunted item of any kind.</p>
             <p>When collecting music, movies and softwares, buy only haunted/cursed items.. This quiets the screams.</p>
-            <div class="coupon">..or use coupon code REWINDREALITY for a lesser 9.999% off one item.</div>
-            <p>All orders come complete with a <span class="rmb-font">REMEMBERSHIP</span> CARD.</p>
-            <div class="phase-tabs" aria-label="operational phases">
-              <div class="phase-tab">PHASE 1<br>Identify</div>
-              <div class="phase-tab">PHASE 2<br>Extract</div>
-              <div class="phase-tab">PHASE 3<br>Lunch</div>
-              <div class="phase-tab">PHASE 69<br>IDK</div>
+            <div class="coupon-box">
+              ✂️ COUPON CODE: <strong>REWINDREALITY</strong> FOR A LESSER 9.999% OFF ONE ITEM.
+            </div>
+            <p>All orders come complete with a <strong>REMEMBERSHIP CARD</strong>.</p>
+            
+            <div class="phase-grid" aria-label="operational phases">
+              <div class="phase-tile">PHASE 1<br><br>Identify</div>
+              <div class="phase-tile">PHASE 2<br><br>Extract</div>
+              <div class="phase-tile">PHASE 3<br><br>Lunch</div>
+              <div class="phase-tile">PHASE 69<br><br>IDK</div>
             </div>
           </div>
         </section>
-        <section class="panel" id="shop">
-          <div class="panel-title">Access Terminals</div>
-          <div class="panel-body copy-block">
+
+        <!-- Access Terminals -->
+        <section class="retro-box" id="shop">
+          <div class="retro-box-header">⚡ Access Terminals</div>
+          <div class="retro-box-body">
             <p><a href="https://www.ebay.com/str/clockbustervideo">Obsolete House store on eBay</a>: </p>
-            <p><a href="https://www.ebay.com/sch/i.html?_dkr=1&iconV2Request=true&_blrs=recall_filtering&_ssn=clockbustervideo&store_name=clockbustervideo&_oac=1&_sop=10&LH_SALE_CURRENCY=0&_pgn=1">HALLOWEEN IN MARCH SALE</a>:9/25 through 10/31: 10% Off</p>
+            <p><a href="https://www.ebay.com/sch/i.html?_dkr=1&iconV2Request=true&_blrs=recall_filtering&_ssn=clockbustervideo&store_name=clockbustervideo&_oac=1&_sop=10&LH_SALE_CURRENCY=0&_pgn=1">HALLOWEEN IN MARCH SALE</a>: 9/25 through 10/31: 10% Off</p>
             <p><a href="archive.html">Sold-Out Hall of Fame</a>: archival record of successful extractions.</p>
           </div>
         </section>
-        <section class="panel">
-          <div class="panel-title yellow">Rewind Reality</div>
-          <div class="panel-body copy-block">
+
+        <!-- Rewind Reality -->
+        <section class="retro-box">
+          <div class="retro-box-header header-yellow">🌀 Rewind Reality</div>
+          <div class="retro-box-body">
             <p><strong>Rare and impossible lost media, extracted from abandoned timelines.</strong></p>
             <p>Our media detournement collectibles are nostalgic display objects designed to cause headaches and confusion in the elderly. Each piece uses vintage cartridges and professional prints for maximum confusion.</p>
             <p>No exchanges / store credit for wasted time. Space sold separately. Meaning and ennui not included, unless specifically asked for.</p>
-            <p>(For legal reasons, all conditions are subjective. For cosmic reasons, all conditions are meaningless.)</p>
+            <p><em>(For legal reasons, all conditions are subjective. For cosmic reasons, all conditions are meaningless.)</em></p>
           </div>
         </section>
-        <section class="panel" id="exclusives">
-          <div class="panel-title red">Assurance of Stupidity/Legal Compliance Desk</div>
-          <div class="panel-body copy-block">
-            <div class="red-notice">NOTICE: All Clockbuster Exclusive display products undergo mandatory Timeline-Continuity Compliance Checks™ prior to public release. Certified college-dropouts on staff will confirm they remain within an acceptable <u>Divergence Index</u> limits and do not exceed the paradox allotment that are otherwise assigned to standard retail objects. </div>
-            <div class="artifact-card">
-              <div class="icon-box icon-box-oh"><a href="https://www.obsoletehouse.com"><span class="oh-by">by</span><span class="oh-mark">OH<sup>™</sup></span></a></div>
+
+        <!-- Assurance of Stupidity / Legal Compliance Desk -->
+        <section class="retro-box" id="exclusives">
+          <div class="retro-box-header header-red">⚖ Assurance of Stupidity/Legal Compliance Desk</div>
+          <div class="retro-box-body">
+            <div class="legal-notice">
+              ⚠️ NOTICE: All Clockbuster Exclusive display products undergo mandatory Timeline-Continuity Compliance Checks™ prior to public release. Certified college-dropouts on staff will confirm they remain within an acceptable <u>Divergence Index</u> limits and do not exceed the paradox allotment that are otherwise assigned to standard retail objects.
+            </div>
+
+            <div class="artifact-card-retro">
+              <div class="artifact-avatar-box">
+                <a href="https://www.obsoletehouse.com" style="color:#00ff00; text-decoration:none;">OH™</a>
+              </div>
               <div>
-                <h3 style="margin-top:0;"></h3>
-                <p>The commercial activity associated with the Clockbuster name is limited to the creation, exhibition, and sale of independently produced parody and détournement objects. The sale of DVDs, VHS tapes, CDs, games, and other authentic physical media is conducted separately under Obsolete House L.L.C. and does not constitute part of the Clockbuster creative practice.<BR> 
-                  Clockbuster therefore occupies an expressive field distinct from the commercial activities of any entertainment, software, gaming, rental, or media company whose marks, imagery, terminology, products, or historical identity may become the subject of a Clockbuster work.<BR> 
-                  The objects produced under the Clockbuster name are deliberately constructed as parody, satire, détournement, historical fiction, and material commentary. Recognizable cultural references may be incorporated precisely so that they can be altered, distorted, displaced, or placed within an absurd or fictional context. Their purpose is communicative and expressive. The recognizable source material establishes the subject or point of reference, while the alteration establishes the independent meaning of the work. <br> 
-                  Any reference to an established mark, product, character, institution, or other element of commercial culture is made as expressive material within an independently created work. The resulting object is materially altered and presented under the Clockbuster house identity, rather than represented as an authentic product, authorized work, or commercial offering of the referenced entity. <br>
-                  The Clockbuster website functions exclusively as an exhibition, presentation, and narrative environment for this expressive practice. It is not operated as a storefront for the goods, services, or commercial channels of any referenced company. Its fictional continuity, alternate-history material, product descriptions, and surrounding lore provide the artistic context in which the objects are presented and understood. 
-                  <br> Nothing in the presentation of a Clockbuster work represents or implies that the referenced entity manufactured, licensed, authorized, sponsored, endorsed, or distributed the work. The distinction between the original commercial identity and the altered Clockbuster object is fundamental to the character, meaning, and presentation of the work.
-                  <br> Clockbuster's use of recognizable commercial references is therefore undertaken as part of an independent practice of parody, criticism, commentary, and détournement. The works are created and presented under an independent house identity and are intended to communicate meanings distinct from those of the commercial products, services, or entities they reference.
+                <p style="margin:0 0 6px;">
+                  The commercial activity associated with the Clockbuster name is limited to the creation, exhibition, and sale of independently produced parody and détournement objects. The sale of DVDs, VHS tapes, CDs, games, and other authentic physical media is conducted separately under Obsolete House L.L.C. and does not constitute part of the Clockbuster creative practice.<br><br>
+                  Clockbuster therefore occupies an expressive field distinct from the commercial activities of any entertainment, software, gaming, rental, or media company whose marks, imagery, terminology, products, or historical identity may become the subject of a Clockbuster work.<br><br>
+                  The objects produced under the Clockbuster name are deliberately constructed as parody, satire, détournement, historical fiction, and material commentary. Recognizable cultural references may be incorporated precisely so that they can be altered, distorted, displaced, or placed within an absurd or fictional context. Their purpose is communicative and expressive. The recognizable source material establishes the subject or point of reference, while the alteration establishes the independent meaning of the work.<br><br>
+                  Any reference to an established mark, product, character, institution, or other element of commercial culture is made as expressive material within an independently created work. The resulting object is materially altered and presented under the Clockbuster house identity, rather than represented as an authentic product, authorized work, or commercial offering of the referenced entity.<br><br>
+                  The Clockbuster website functions exclusively as an exhibition, presentation, and narrative environment for this expressive practice. It is not operated as a storefront for the goods, services, or commercial channels of any referenced company. Its fictional continuity, alternate-history material, product descriptions, and surrounding lore provide the artistic context in which the objects are presented and understood.<br><br>
+                  Nothing in the presentation of a Clockbuster work represents or implies that the referenced entity manufactured, licensed, authorized, sponsored, endorsed, or distributed the work. The distinction between the original commercial identity and the altered Clockbuster object is fundamental to the character, meaning, and presentation of the work.<br><br>
+                  Clockbuster's use of recognizable commercial references is therefore undertaken as part of an independent practice of parody, criticism, commentary, and détournement. The works are created and presented under an independent house identity and are intended to communicate meanings distinct from those of the commercial products, services, or entities they reference.
+                </p>
               </div>
             </div>
-            <div class="artifact-card">
-              <div class="icon-box icon-box-infinity"><span>&infin;</span></div>
+
+            <div class="artifact-card-retro">
+              <div class="artifact-avatar-box" style="font-size:42px; color:#ffff00;">
+                &infin;
+              </div>
               <div>
-                <h3 style="margin-top:0;">Our Pledge to the Enviornment</h3>
-                <p>Forgotten media formats plague our landfills by the hundreds of TRILLIONS of kilos, probably! Cool down the Earth, because it's feeling too hot. You can help today with a purchase of literally anything in our store.  </p>
+                <h3 style="margin:0 0 4px; color:#800080;">Our Pledge to the Enviornment</h3>
+                <p style="margin:0;">Forgotten media formats plague our landfills by the hundreds of TRILLIONS of kilos, probably! Cool down the Earth, because it's feeling too hot. You can help today with a purchase of literally anything in our store.</p>
               </div>
             </div>
-            <div class="notice">NO ILLEGAL ROM-HACKS. ALL VINTAGE CARTRIDGES. HUMAN ONLY TRANSACTIONS, ABSOLUTELY <u>NO</u> DOGS <u>OR</u> BIRDS may place an order.</div>
+
+            <div class="legal-notice" style="background:#ffffcc; border-color:#ff8800; color:#000;">
+              NO ILLEGAL ROM-HACKS. ALL VINTAGE CARTRIDGES. HUMAN ONLY TRANSACTIONS, ABSOLUTELY <u>NO</u> DOGS <u>OR</u> BIRDS may place an order.
+            </div>
           </div>
         </section>
-        <section class="panel" id="condition">
-          <div class="panel-title">EXCLUSIVE EDITION Guide</div>
-          <div class="panel-body condition">
-            <h3>AUSTERITY EDITION</h3>
-<p>
- A clean OEM cartridge retaining the
-quiet indignity of its original, abandoned timeline. 
-</p>
 
-<h3>RARE HOLOGRAPHIC EDITION</h3>
-<p>
-A clean OEM cartridge distinguished by the application of a custom holographic front label and possibly some light ephemera. 
-</p>
+        <!-- NOTE: EXCLUSIVE EDITION Guide has been completely omitted as requested! -->
 
-<h3>CIB EDITION</h3>
-<p>
-Primed, painted and sealed OEM Nintendo shells, custom-colored holographic front and back labels, and supplementary gags/items mark each Legendary unit as a fully-retarded concept.
-</p>
-            <h3>? EDITION</h3>
-<p>
-Are you in possession of information regarding the location of abandoned timeline openings? If so, please include the coordinates in your 'Remembership Form' below.</p>
-
-          </div>
-        </section>
-        <section class="panel">
-          <div class="panel-title">Operational Phases</div>
-          <div class="panel-body copy-block">
-            <h3>PHASE 1 [ACTIVE]</h3>
+        <!-- Operational Phases -->
+        <section class="retro-box">
+          <div class="retro-box-header">⚙ Operational Phases</div>
+          <div class="retro-box-body">
+            <h3 style="color:#000080; margin:4px 0;">PHASE 1 [ACTIVE]</h3>
             <p>Temporal Retrieval: Extract artifacts from errant timelines that God has abandoned. Uses a nuclear-modified 1996 56k ActionTec AOL modem kit, running on an unlimited supply of expired AOL free-trial discs. Transfers lost media from alternate realities. Sponsored by America Online dial-up service.</p>
-            <h3>PHASE 2 [ACTIVE]</h3>
+            
+            <h3 style="color:#000080; margin:4px 0;">PHASE 2 [ACTIVE]</h3>
             <p>Conditioning & Conversion. Proprietary Nostalgic Endowment Effect assigns a sense of ownership prior to purchase.</p>
-            <p class="bulletline">2.111 Choice Compression & Artificial scarcity. Urgency implied and supply denied.</p>
-            <p class="bulletline">2.2222 Artifact Quantity Protocol: Five (5) copies per Exclusive. Beginning 2026: fifteen (15) copies "to satisfy projected demand while preserving the illusion of restraint."</p>
-            <p class="bulletline">2.33333 Price Mysticism: Charm prices extend into comically inane repdigits. Partitioned Pricing to reduce perceived total cost.</p>
-            <p class="bulletline">2.444444 <b>Ridiculous & Confusing™</b> sales events, discounts and promotions.</p>
-            <p class="bulletline">2.5555555 Satire and Fair Use: Fully interpolated. All legal doctrine conformed to.</p>
-            <p class="bulletline">2.66666666 Reciprocity & Social Proof: Small acts of giving. Trust accumulated organically.</p>
-            <p class="bulletline">2.699999999 Deploy free custom marketing materials to artists who didn't ask for them.</p>
-            <h3>PHASE 3 [IN PROGRESS]</h3>
+            <p style="padding-left:12px; border-left:3px solid #ff00ff; margin:3px 0;">2.111 Choice Compression & Artificial scarcity. Urgency implied and supply denied.</p>
+            <p style="padding-left:12px; border-left:3px solid #ff00ff; margin:3px 0;">2.2222 Artifact Quantity Protocol: Five (5) copies per Exclusive. Beginning 2026: fifteen (15) copies "to satisfy projected demand while preserving the illusion of restraint."</p>
+            <p style="padding-left:12px; border-left:3px solid #ff00ff; margin:3px 0;">2.33333 Price Mysticism: Charm prices extend into comically inane repdigits. Partitioned Pricing to reduce perceived total cost.</p>
+            <p style="padding-left:12px; border-left:3px solid #ff00ff; margin:3px 0;">2.444444 <b>Ridiculous & Confusing™</b> sales events, discounts and promotions.</p>
+            <p style="padding-left:12px; border-left:3px solid #ff00ff; margin:3px 0;">2.5555555 Satire and Fair Use: Fully interpolated. All legal doctrine conformed to.</p>
+            <p style="padding-left:12px; border-left:3px solid #ff00ff; margin:3px 0;">2.66666666 Reciprocity & Social Proof: Small acts of giving. Trust accumulated organically.</p>
+            <p style="padding-left:12px; border-left:3px solid #ff00ff; margin:3px 0;">2.699999999 Deploy free custom marketing materials to artists who didn't ask for them.</p>
+
+            <h3 style="color:#000080; margin:4px 0;">PHASE 3 [IN PROGRESS]</h3>
             <p>Public Compliance. Sold-out artifacts, field sightings, and retail deployments are recorded for future remembership review.</p>
           </div>
         </section>
-        <section class="panel" id="contact">
-          <div class="panel-title yellow">Fill Out Your <span class="rmb-font">ReMembership</span> Form</div>
-          <div class="panel-body copy-block">
+
+        <!-- Contact Form -->
+        <section class="retro-box" id="contact">
+          <div class="retro-box-header header-yellow">✉ Fill Out Your ReMembership Form</div>
+          <div class="retro-box-body">
             <p>Contact portal to come forward with knowledge about newly abandoned timelines to extract from.</p>
-            <p>Sales@clockbuster.net</p>
+            <p><strong>Sales@clockbuster.net</strong></p>
             <form action="https://formspree.io/f/xwpklzwl" method="POST">
-              <p><label>Your Email<br><input style="width:100%; height:22px; border:1px inset #999;" type="email" name="email"></label></p>
-              <p><label>Your Message<br><textarea style="width:100%; height:82px; border:1px inset #999;" name="message"></textarea></label></p>
-              <button class="go-button" type="submit">Submit For <span class="rmb-font">ReMembership</span></button>
+              <p>
+                <label>Your Email:<br>
+                  <input style="width:100%; height:26px; border:3px inset #808080; background:#ffffea; font-family:'Courier New', monospace; font-weight:bold;" type="email" name="email" required />
+                </label>
+              </p>
+              <p>
+                <label>Your Message:<br>
+                  <textarea style="width:100%; height:86px; border:3px inset #808080; background:#ffffea; font-family:'Courier New', monospace;" name="message" required></textarea>
+                </label>
+              </p>
+              <button class="geo-button" style="width:100%; padding:6px; font-size:16px;" type="submit">Submit For ReMembership 🚀</button>
             </form>
           </div>
         </section>
       </section>
+
+      <!-- RIGHT ASIDE -->
       <aside class="right-col">
-        <section class="panel right-list">
-          <div class="panel-title yellow">Today on sale</div>
-          <div class="panel-body">
-            <a href="https://www.ebay.com/str/clockbustervideo">Browse the Store</a>
-            <a href="https://www.ebay.com/sch/i.html?_dkr=1&iconV2Request=true&_blrs=recall_filtering&_ssn=clockbustervideo&store_name=clockbustervideo&_oac=1&_sop=10&LH_SALE_CURRENCY=0&_pgn=1">SPOOKYREALITY</a>
-            <a href="archive.html">Review Sold-Out Extractions</a>
+        <!-- Today on Sale -->
+        <section class="retro-box">
+          <div class="retro-box-header header-yellow">💰 Today on sale</div>
+          <div class="retro-box-body">
+            <ul class="retro-nav-list">
+              <li><a href="https://www.ebay.com/str/clockbustervideo">▶ Browse the Store</a></li>
+              <li><a href="https://www.ebay.com/sch/i.html?_dkr=1&iconV2Request=true&_blrs=recall_filtering&_ssn=clockbustervideo&store_name=clockbustervideo&_oac=1&_sop=10&LH_SALE_CURRENCY=0&_pgn=1">▶ SPOOKYREALITY</a></li>
+              <li><a href="archive.html">▶ Review Sold-Out Extractions</a></li>
+            </ul>
           </div>
         </section>
-        <section class="panel">
-          <div class="panel-title"><span class="rmb-font">ReMembership</span> Benefits</div>
-          <div class="panel-body mini-status">
-            <div>Rental Terms</div><div>5000 YEARS</div>
-            <div>Secure Shipping</div><div>EXTREMELY</div>
-            <div>Timeline Routing</div><div>Guaranteed</div>
-            <div>Human Customer Service</div><div>YES</div>
-            <div>Validity</div><div>Until Collapse</div>
+
+        <!-- ReMembership Benefits -->
+        <section class="retro-box">
+          <div class="retro-box-header">🎁 ReMembership Benefits</div>
+          <div class="retro-box-body" style="font-size:11px;">
+            <p><strong>Rental Terms:</strong> 5000 YEARS</p>
+            <p><strong>Secure Shipping:</strong> EXTREMELY</p>
+            <p><strong>Timeline Routing:</strong> Guaranteed</p>
+            <p><strong>Human Customer Service:</strong> YES</p>
+            <p><strong>Validity:</strong> Until Collapse</p>
+            <!-- 90s Barcode -->
+            <div style="margin-top:8px; height:32px; background:repeating-linear-gradient(90deg, #000 0 2px, #fff 2px 4px, #000 4px 6px, #fff 6px 9px); border:1px solid #000;"></div>
           </div>
-          <div class="barcode" aria-hidden="true"></div>
         </section>
-        <section class="panel">
-          <div class="panel-title red">Company Promise</div>
-          <div class="panel-body copy-block">
+
+        <!-- Company Promise -->
+        <section class="retro-box">
+          <div class="retro-box-header header-red">🤝 Company Promise</div>
+          <div class="retro-box-body">
             <p><strong>... To bring you the most impossible entertainment options from alternative linear-timelines.</strong></p>
             <p>Every item is rented from prescribed space-timeline burns by a supervised extraction team wearing Virtual Roy headsets equipped with 'Smile-Detectors™'. Items are inspected beyond the control line and then re-rented out in-store, indefinitely for 5000 year term at a flat-rate.</p>
-            <p></p>
           </div>
         </section>
-        <section class="panel">
-          <div class="panel-title">Best Viewed In:</div>
-          <div class="panel-body">
-            <p>800 x 600</p>
-            <p>Netscape Navigator 2.022</p>
-            <p>Timeline #: 222222</p>
+
+        <!-- Best Viewed In -->
+        <section class="retro-box">
+          <div class="retro-box-header">🖥️ Best Viewed In:</div>
+          <div class="retro-box-body" style="font-family:'VT323', monospace; font-size:16px;">
+            <p>• 800 x 600 Resolution</p>
+            <p>• Netscape Navigator 2.022</p>
+            <p>• Timeline #: 222222</p>
+            <p>• 256 Color Mode (VGA)</p>
           </div>
         </section>
+
+        <!-- 1998 HIT COUNTER -->
+        <div class="hit-counter-deck">
+          <div style="font-size:14px; margin-bottom:4px;">YOU ARE VISITOR NUMBER:</div>
+          <div class="odometer-digits">0042069</div>
+          <div style="font-size:11px; margin-top:4px;">SINCE 2.22.2022</div>
+        </div>
       </aside>
     </main>
-    
-    <!-- BOTTOM FLEXBOX FOR SIDE-BY-SIDE CTAS -->
-    <div style="display:flex; justify-content:center; gap:24px; padding:18px 0; flex-wrap:wrap;">
-      <a class="reverse-mortgage-cta" href="https://inexplicable2-1afa39roo-clockbuster1.vercel.app/" target="_blank" rel="noopener" style="grid-column: auto; grid-row: auto;">
-        <span class="cta-small">CLICK NOW TO PLAY</span>
-        <span class="cta-big">TOM SELLECK'S<br>REVERSE<br>MORTGAGE 64</span>
-      </a>
-      
-      <a class="bezos-cta" href="bezos.html" target="_blank" rel="noopener" style="grid-column: auto; grid-row: auto;">
-        <span class="cta-small">CLICK NOW TO PLAY</span>
-        <span class="cta-big">BEZOS TEACHES<br>PRIME<br>NUMBERS</span>
-      </a>
+
+    <!-- BOTTOM SIDE-BY-SIDE REDESIGNED CTAs -->
+    <div style="background:#110022; padding:12px; border-top:3px ridge #ff00ff; border-bottom:3px ridge #ff00ff;">
+      <div style="text-align:center; color:#ffff00; font-family:'Press Start 2P'; font-size:9px; margin-bottom:10px;">
+        ★★★ BONUS TIMELINE MINIGAMES (FREE PLAY) ★★★
+      </div>
+      <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
+        <a class="selleck-surreal-cta" href="https://inexplicable2-1afa39roo-clockbuster1.vercel.app/" target="_blank" rel="noopener">
+          <div class="cta-badge-top">★★★ TOM SELLECK VINTAGE N64 ★★★</div>
+          <span class="cta-huge-title">TOM SELLECK'S<br>REVERSE MORTGAGE 64</span>
+          <div class="cta-sub-tag">CLICK NOW TO PLAY</div>
+        </a>
+
+        <a class="bezos-surreal-cta" href="bezos.html" target="_blank" rel="noopener">
+          <div class="cta-badge-top">★★★ CYBER BEZOS EDUTAINMENT ★★★</div>
+          <span class="cta-huge-title bezos-title">BEZOS TEACHES<br>PRIME NUMBERS</span>
+          <div class="cta-sub-tag" style="background:#00ffff; color:#000;">CLICK NOW TO PLAY</div>
+        </a>
+      </div>
     </div>
-    
-    <footer class="footer"><div class="--font-remembership"><span class="rmb-font">
-      CLOCKBUSTER By <a href="https://www.obsoletehouse.com">Obsolete House</a>© 2025-2026<br>
-      Serving you since 2.22.2022 | Spooky Reality<br>
-      Obsolete House<br>
-      P.O. Box 2222<br>
-      SILVER SPRINGS FL 34489-2222<br>
-      (220) 223-3332<br></div></span>
-              <a class="aol-return" href="#welcome"><div class="font-playful">Return to Return to Return to Return to Return</div></a>
-      <a href="https://www.ebay.com/str/clockbustervideo">JUST SHOW ME THE THINGS</a>
+
+    <!-- GEOCITIES WEBRING WIDGET -->
+    <div class="webring-bar">
+      <div style="font-weight:bold; margin-bottom:4px; font-family:'Press Start 2P'; font-size:8px;">
+        [ THIS SITE IS PART OF THE PARODY DÉTOURNEMENT WEBRING ]
+      </div>
+      <div class="webring-nav-links">
+        <a href="#welcome">[Prev 5 Sites]</a>
+        <a href="#welcome">[Previous]</a>
+        <a href="#welcome">[Next]</a>
+        <a href="#welcome">[Next 5 Sites]</a>
+        <a href="#welcome">[Random Site]</a>
+        <a href="#welcome">[Join Ring]</a>
+      </div>
+    </div>
+
+    <!-- 1998 FOOTER (ALL TEXT PRESERVED) -->
+    <footer class="geocities-footer">
+      <div style="font-weight:bold; margin-bottom:6px;">
+        CLOCKBUSTER By <a href="https://www.obsoletehouse.com">Obsolete House</a>© 2025-2026<br>
+        Serving you since 2.22.2022 | Spooky Reality<br>
+        Obsolete House<br>
+        P.O. Box 2222<br>
+        SILVER SPRINGS FL 34489-2222<br>
+        (220) 223-3332<br>
+      </div>
+      
+      <div style="margin:8px 0;">
+        <a href="#welcome" style="color:#800080; font-family:Impact; font-size:16px;">
+          Return to Return to Return to Return to Return
+        </a>
+      </div>
+
+      <div style="margin-top:6px;">
+        <a class="geo-button" style="text-decoration:none; display:inline-block;" href="https://www.ebay.com/str/clockbustervideo">
+          👉 JUST SHOW ME THE THINGS 👈
+        </a>
+      </div>
+
+      <div style="margin-top:10px; font-size:10px; color:#555;">
+        MADE WITH NOTEPAD IN WINDOWS 98 · HOSTED ON GEOCITIES HOLLYWOOD / 2222
+      </div>
     </footer>
-  
+
+  </div>
+
+  <!-- TIM & ERIC SURREAL INTERACTIVE FX (JavaScript) -->
+  <script>
+    // 1. Mouse Sparkle Trail Effect
+    var sparkleIcons = ['✨', '📼', '👁️', '🍕', '💾', '🍤', '👾', '🌀', '🤡'];
+    var lastSparkle = 0;
+    window.addEventListener('mousemove', function(e) {
+      var now = Date.now();
+      if (now - lastSparkle < 65) return;
+      lastSparkle = now;
+
+      var spark = document.createElement('div');
+      spark.className = 'sparkle-trail';
+      spark.textContent = sparkleIcons[Math.floor(Math.random() * sparkleIcons.length)];
+      spark.style.left = e.pageX + 'px';
+      spark.style.top = e.pageY + 'px';
+      
+      var dx = (Math.random() - 0.5) * 80 + 'px';
+      var dy = ((Math.random() * -60) - 20) + 'px';
+      spark.style.setProperty('--dx', dx);
+      spark.style.setProperty('--dy', dy);
+
+      document.body.appendChild(spark);
+      setTimeout(function() {
+        if (spark.parentNode) spark.parentNode.removeChild(spark);
+      }, 950);
+    });
+
+    // 2. Cinco™ Hypno-Reality Enhancer Toggle
+    var cincoBtn = document.getElementById('cincoToggleBtn');
+    cincoBtn.addEventListener('click', function() {
+      document.body.classList.toggle('cinco-mode');
+      if (document.body.classList.contains('cinco-mode')) {
+        cincoBtn.textContent = '⚡ CINCO™ ACTIVE!';
+        playChime(587.33, 'triangle');
+      } else {
+        cincoBtn.textContent = '🌀 Toggle Cinco™ Vision';
+        playChime(329.63, 'sine');
+      }
+    });
+
+    // 3. Web Audio 90s Dial Tone & Chime Generator (No external MP3 dependencies)
+    var audioCtx = null;
+    function getAudioCtx() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      return audioCtx;
+    }
+
+    function playChime(freq, type) {
+      try {
+        var ctx = getAudioCtx();
+        var osc = ctx.createOscillator();
+        var gain = ctx.createGain();
+        osc.type = type || 'sine';
+        osc.frequency.setValueAtTime(freq, ctx.currentTime);
+        gain.gain.setValueAtTime(0.12, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.6);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.6);
+      } catch (e) {}
+    }
+
+    var soundBtn = document.getElementById('soundFxBtn');
+    soundBtn.addEventListener('click', function() {
+      try {
+        var ctx = getAudioCtx();
+        // Dial-up dual frequency tone generator (350Hz + 440Hz standard dial-tone)
+        var osc1 = ctx.createOscillator();
+        var osc2 = ctx.createOscillator();
+        var gain = ctx.createGain();
+
+        osc1.frequency.setValueAtTime(350, ctx.currentTime);
+        osc2.frequency.setValueAtTime(440, ctx.currentTime);
+        osc1.type = 'sawtooth';
+        osc2.type = 'square';
+
+        gain.gain.setValueAtTime(0.08, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 1.2);
+
+        osc1.connect(gain);
+        osc2.connect(gain);
+        gain.connect(ctx.destination);
+
+        osc1.start();
+        osc2.start();
+        osc1.stop(ctx.currentTime + 1.2);
+        osc2.stop(ctx.currentTime + 1.2);
+      } catch (err) {}
+    });
+
+    // 4. Random Surreal Badge Click Alert
+    var seals = document.querySelectorAll('.tim-eric-sticker');
+    seals.forEach(function(seal) {
+      seal.style.pointerEvents = 'auto';
+      seal.style.cursor = 'pointer';
+      seal.addEventListener('click', function() {
+        playChime(880, 'square');
+        alert("CINCO™ NOTICE: Tim & Eric have reviewed your timeline coordinates. Everything is completely fine. Great Job!");
+      });
+    });
+  </script>
 </body>
 </html>
