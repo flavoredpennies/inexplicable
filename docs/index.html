@@ -666,6 +666,79 @@
       text-align: center;
     }
 
+    /* 1998 GeoCities Guestbook Styling */
+    .guestbook-wrapper {
+      background: #ffffea;
+      border: 3px inset #808080;
+      padding: 10px;
+    }
+    .guestbook-input-label {
+      font-family: Impact, sans-serif;
+      font-size: 13px;
+      color: #000080;
+      letter-spacing: 0.5px;
+      display: block;
+      margin-bottom: 3px;
+    }
+    .guestbook-field {
+      width: 100%;
+      border: 3px inset #808080;
+      background: #ffffff;
+      color: #000080;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 13px;
+      font-weight: bold;
+      padding: 5px;
+      margin-bottom: 8px;
+    }
+    .guestbook-field:focus {
+      outline: none;
+      background: #ffffcc;
+    }
+    .guestbook-btn {
+      background: linear-gradient(#ff0055, #990033);
+      color: #ffff00;
+      border: 3px outset #ffffff;
+      padding: 6px 16px;
+      font-family: Impact, sans-serif;
+      font-size: 16px;
+      letter-spacing: 1px;
+      cursor: pointer;
+      box-shadow: 2px 2px 0 #000;
+      display: inline-block;
+    }
+    .guestbook-btn:active {
+      border: 3px inset #ffffff;
+    }
+    .guestbook-entry-card {
+      background: #f0f0ff;
+      border: 2px groove #000080;
+      padding: 8px 10px;
+      margin-bottom: 12px;
+      box-shadow: 2px 2px 0 rgba(0,0,0,0.25);
+    }
+    .guestbook-author {
+      font-family: "Press Start 2P", monospace;
+      font-size: 9px;
+      color: #8b0000;
+      display: inline-block;
+    }
+    .guestbook-body-text {
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      font-size: 13px;
+      color: #000;
+      margin-top: 4px;
+      line-height: 1.35;
+      word-break: break-word;
+    }
+    .guestbook-status-msg {
+      font-family: "VT323", monospace;
+      font-size: 18px;
+      color: #8b0000;
+      text-align: center;
+      padding: 10px;
+    }
+
     /* GeoCities Web Counter & Guestbook */
     .hit-counter-deck {
       background: #000;
@@ -1590,25 +1663,54 @@
           </div>
         </section>
 
-        <!-- Contact Form -->
+        <!-- REPLACED: 1998 GeoCities Interactive Public Guestbook -->
         <section class="retro-box" id="contact">
-          <div class="retro-box-header header-yellow">✉ Fill Out Your ReMembership Form</div>
+          <div class="retro-box-header header-yellow">
+            <span>📖 Official Clockbuster Public Guestbook [1998 EDITION]</span>
+          </div>
           <div class="retro-box-body">
-            <p>Contact portal to come forward with knowledge about newly abandoned timelines to extract from.</p>
-            <p><strong>Sales@clockbuster.net</strong></p>
-            <form action="https://formspree.io/f/xwpklzwl" method="POST">
-              <p>
-                <label>Your Email:<br>
-                  <input style="width:100%; height:26px; border:3px inset #808080; background:#ffffea; font-family:'Courier New', monospace; font-weight:bold;" type="email" name="email" required />
-                </label>
+            <div class="guestbook-wrapper">
+              <h2 style="font-family:Impact, 'Arial Black', sans-serif; color:#ff0055; text-shadow:1px 1px #ffff00; margin:2px 0 8px;">📖 CLOCKBUSTER GUESTBOOK</h2>
+              <p style="margin:0 0 8px; font-size:11px; font-family:'Press Start 2P', monospace; color:#000080;">
+                ★ LEAVE YOUR PERMANENT MARK IN THE TIMELINE REGISTRY ★
               </p>
-              <p>
-                <label>Your Message:<br>
-                  <textarea style="width:100%; height:86px; border:3px inset #808080; background:#ffffea; font-family:'Courier New', monospace;" name="message" required></textarea>
-                </label>
-              </p>
-              <button class="geo-button" style="width:100%; padding:6px; font-size:16px;" type="submit">Submit For ReMembership 🚀</button>
-            </form>
+              
+              <label class="guestbook-input-label" for="guest-name">TRAVELER HANDLE / NAME:</label>
+              <input
+                id="guest-name"
+                class="guestbook-field"
+                type="text"
+                placeholder="Your Name (optional)"
+              />
+              
+              <label class="guestbook-input-label" for="guest-message">YOUR TRANSMISSION / REMEMBERSHIP RECORD:</label>
+              <textarea
+                id="guest-message"
+                class="guestbook-field"
+                placeholder="Leave a message..."
+                rows="4"
+                cols="40"
+              ></textarea>
+              
+              <div style="margin: 4px 0 10px;">
+                <button class="guestbook-btn" onclick="signGuestbook()" type="button">
+                  ✍ Sign Guestbook 🚀
+                </button>
+              </div>
+
+              <div id="guestbook-feedback" style="display:none; margin-bottom:8px; font-weight:bold;"></div>
+
+              <hr class="rainbow-hr" />
+
+              <div style="display:flex; justify-content:space-between; align-items:center; margin:8px 0 6px;">
+                <span style="font-family:Impact; font-size:14px; color:#800080;">PUBLIC LOG ENTRIES:</span>
+                <span class="blink" style="font-family:'VT323'; font-size:16px; color:#008800;">● WORLDWIDE BROADCAST</span>
+              </div>
+
+              <div id="guestbook-entries" class="guestbook-entries-container">
+                <div class="guestbook-status-msg">Loading entries from timeline database...</div>
+              </div>
+            </div>
           </div>
         </section>
       </section>
@@ -1838,6 +1940,99 @@
         alert("CINCO™ NOTICE: Tim & Eric have reviewed your timeline coordinates. Everything is completely fine. Great Job!");
       });
     });
+  </script>
+
+  <!-- SUPABASE GUESTBOOK INTEGRATION SCRIPT -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const supabase = window.supabase.createClient(
+      "https://vycoswzdobasmbdbdmqh.supabase.co",
+      "PASTE_YOUR_PUBLISHABLE_KEY_HERE"
+    );
+
+    function escapeHtml(text) {
+      const div = document.createElement("div");
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    function showGuestbookFeedback(text, isError) {
+      const fb = document.getElementById("guestbook-feedback");
+      if (!fb) return;
+      fb.style.display = "block";
+      fb.style.color = isError ? "#ff0000" : "#008800";
+      fb.textContent = text;
+      setTimeout(function() {
+        fb.style.display = "none";
+      }, 5000);
+    }
+
+    async function signGuestbook() {
+      const name =
+        document.getElementById("guest-name").value.trim() ||
+        "Anonymous";
+      const message =
+        document.getElementById("guest-message").value.trim();
+      if (!message) {
+        showGuestbookFeedback("⚠️ Please write a message before signing the guestbook!", true);
+        return;
+      }
+      
+      const { error } = await supabase
+        .from("guestbook")
+        .insert([{ name, message }]);
+        
+      if (error) {
+        showGuestbookFeedback("Error saving message. Please check timeline connectivity.", true);
+        console.error(error);
+        return;
+      }
+      
+      document.getElementById("guest-message").value = "";
+      showGuestbookFeedback("★ Guestbook signed successfully! Transmission beamed to 1998.", false);
+      loadGuestbook();
+    }
+
+    async function loadGuestbook() {
+      const entriesContainer = document.getElementById("guestbook-entries");
+      if (!entriesContainer) return;
+      
+      const { data, error } = await supabase
+        .from("guestbook")
+        .select("*")
+        .order("created_at", { ascending: false });
+        
+      if (error) {
+        entriesContainer.innerHTML =
+          "<div class='guestbook-status-msg'>Could not load guestbook entries. (Verify Publishable Key in client)</div>";
+        return;
+      }
+      
+      if (!data || data.length === 0) {
+        entriesContainer.innerHTML =
+          "<div class='guestbook-status-msg'>No entries yet! Be the first time traveler to sign.</div>";
+        return;
+      }
+
+      entriesContainer.innerHTML =
+        data.map(function(entry) {
+          const entryDate = entry.created_at ? new Date(entry.created_at).toLocaleDateString() : "1998-TIMELINE";
+          return `
+            <div class="guestbook-entry-card">
+              <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px dotted #808080; padding-bottom:3px; margin-bottom:4px;">
+                <span class="guestbook-author">👤 ${escapeHtml(entry.name)}</span>
+                <span style="font-family:'VT323'; font-size:14px; color:#666;">TIMESTAMP: ${entryDate}</span>
+              </div>
+              <div class="guestbook-body-text">
+                ${escapeHtml(entry.message)}
+              </div>
+            </div>
+          `;
+        }).join("");
+    }
+
+    // Auto load on initialization
+    loadGuestbook();
   </script>
 </body>
 </html>
