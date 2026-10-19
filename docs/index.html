@@ -3,8 +3,77 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CLOCKBUSTER ONLINE / Portal to Found-Object Détournement Services [BEST VIEWED IN NETSCAPE 4.0]</title>
-  <meta name="description" content="Clockbuster Video by Obsolete House / rare out-of-print DVDs, VHS, cassette tapes, CDs, software, promo media and parody collectibles / interdimensional video store built on obsolete media culture." />
+  <title>Clockbuster Video | Weird Retro Game Parodies, Custom Cartridges & Cult Gifts</title>
+  <meta name="description" content="Shop weird retro video game merchandise, funny fake game cartridges, custom boxed parodies, and rare VHS/DVD media gifts for collectors who hate normal things." />
+  <link rel="canonical" href="https://clockbuster.net/" />
+
+  <!-- OpenGraph Social & Gift Sharing Meta -->
+  <meta property="og:title" content="Clockbuster Video | Weird Retro Game Parodies & Cult Gifts" />
+  <meta property="og:description" content="Real physical parody video game cartridges, custom retro boxes, and bizarre vintage media gifts. Ships worldwide." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://clockbuster.net/" />
+  <meta property="og:image" content="https://clockbuster.net/clockbustervideologofinal.png" />
+
+  <!-- Machine-Readable Structured Data for Search Crawlers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Store",
+        "@id": "https://clockbuster.net/#store",
+        "name": "Clockbuster Video",
+        "alternateName": "Obsolete House",
+        "url": "https://clockbuster.net/",
+        "logo": "https://clockbuster.net/clockbustervideologofinal.png",
+        "description": "Purveyor of satirical retro video game merchandise, custom parody NES/SNES/N64 display cartridges, funny fake video game boxes, and rare obsolete physical media gifts.",
+        "sameAs": [
+          "https://www.ebay.com/str/clockbustervideo",
+          "https://www.obsoletehouse.com"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "postOfficeBoxNumber": "P.O. Box 2222",
+          "addressLocality": "Silver Springs",
+          "addressRegion": "FL",
+          "postalCode": "34489-2222",
+          "addressCountry": "US"
+        }
+      },
+      {
+        "@type": "ItemList",
+        "name": "Clockbuster Parody Video Game Cartridges & Retro Collectibles",
+        "description": "Limited-edition custom display cartridges and Complete-in-Box (CIB) parody video game gifts.",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Tom Selleck's Reverse Mortgage 64 Custom Parody Cartridge",
+            "url": "https://www.ebay.com/str/clockbustervideo"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Werner Herzog's Lessons of Darkness Parody Game Collectible",
+            "url": "https://www.ebay.com/str/clockbustervideo"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "My Dinner with Andre VR Custom Virtual Boy Parody Display",
+            "url": "https://www.ebay.com/str/clockbustervideo"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Super Dirty Work Custom SNES Parody Display Cartridge",
+            "url": "https://www.ebay.com/str/clockbustervideo"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 
   <!-- Authentic Web 1998 Fonts: Comic Sans, Papyrus, Times, Impact -->
   <style>
@@ -175,6 +244,30 @@
       color: #ff0055;
     }
 
+    /* Above-the-Fold SEO & User Translator Strip (Modeled on Guestbook Aesthetic) */
+    .translator-banner {
+      background: #ffffea;
+      border: 3px inset #808080;
+      margin: 6px;
+      padding: 8px 10px;
+      text-align: center;
+    }
+    .seo-h1 {
+      font-family: Impact, "Arial Black", sans-serif;
+      font-size: 20px;
+      color: #ff0055;
+      text-shadow: 1px 1px #ffff00;
+      margin: 0 0 4px;
+      letter-spacing: 0.5px;
+      line-height: 1.15;
+    }
+    .translator-sub {
+      margin: 0;
+      font-size: 12px;
+      color: #000080;
+      font-weight: bold;
+    }
+
     /* Cheesy GIF Ribbons */
     .flame-divider {
       height: 18px;
@@ -216,6 +309,8 @@
       font-family: Impact, sans-serif;
       font-size: 15px;
       letter-spacing: 1px;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     /* Keyword Search Bar (Geocities Style) */
@@ -505,14 +600,39 @@
     .sticker-left { top: -10px; left: -10px; }
     .sticker-right { bottom: -10px; right: -10px; transform: rotate(10deg); background: #8b0000; }
 
+    /* Standards-Compliant Retro Marquee Ticker (Passes Lighthouse Audits) */
+    .retro-ticker-wrap {
+      background: #000;
+      color: #00ff00;
+      border: 2px ridge #ff0000;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 9px;
+      padding: 5px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .retro-ticker-move {
+      display: inline-block;
+      padding-left: 100%;
+      animation: tickerScroll 24s linear infinite;
+    }
+    @keyframes tickerScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
     /* Content Layout */
     .geocities-content-table {
       display: grid;
       grid-template-columns: 210px 1fr 190px;
       gap: 8px;
-      padding: 8px;
+      padding: 8px 8px 0;
       background: #808080;
       border-top: 3px ridge #fff;
+    }
+    .guestbook-bottom-deck {
+      padding: 0 8px 8px;
+      background: #808080;
     }
 
     /* Retro Panel Frames */
@@ -591,7 +711,7 @@
     }
     .hero-h2 {
       font-family: Impact, "Arial Black", sans-serif;
-      font-size: 23px;
+      font-size: 21px;
       color: #800080;
       text-shadow: 2px 2px #ffff00;
       margin: 0 0 8px;
@@ -645,12 +765,13 @@
     /* Artifact Card */
     .artifact-card-retro {
       display: grid;
-      grid-template-columns: 75px 1fr;
+      grid-template-columns: 65px 1fr;
       gap: 8px;
-      border: 2px groove #808080;
+      border: 2px groove #000080;
       padding: 8px;
-      background: #ffffea;
+      background: #f0f0ff;
       margin-bottom: 8px;
+      box-shadow: 2px 2px 0 rgba(0,0,0,0.25);
     }
     .artifact-avatar-box {
       background: #000;
@@ -660,11 +781,11 @@
       justify-content: center;
       color: #00ff00;
       font-family: Impact;
-      font-size: 32px;
+      font-size: 28px;
       text-align: center;
     }
 
-    /* 1998 GeoCities Guestbook Styling */
+    /* 1998 GeoCities Guestbook Styling (Used across main cards for unified design) */
     .guestbook-wrapper {
       background: #ffffea;
       border: 3px inset #808080;
@@ -704,6 +825,7 @@
       cursor: pointer;
       box-shadow: 2px 2px 0 #000;
       display: inline-block;
+      text-decoration: none !important;
     }
     .guestbook-btn:active {
       border: 3px inset #ffffff;
@@ -712,8 +834,18 @@
       background: #f0f0ff;
       border: 2px groove #000080;
       padding: 8px 10px;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       box-shadow: 2px 2px 0 rgba(0,0,0,0.25);
+    }
+    .guestbook-card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px dotted #808080;
+      padding-bottom: 3px;
+      margin-bottom: 4px;
+      flex-wrap: wrap;
+      gap: 4px;
     }
     .guestbook-author {
       font-family: "Press Start 2P", monospace;
@@ -721,9 +853,15 @@
       color: #8b0000;
       display: inline-block;
     }
+    .guestbook-timestamp {
+      font-family: 'VT323', monospace;
+      font-size: 15px;
+      color: #000080;
+      font-weight: bold;
+    }
     .guestbook-body-text {
       font-family: "Comic Sans MS", cursive, sans-serif;
-      font-size: 13px;
+      font-size: 12.5px;
       color: #000;
       margin-top: 4px;
       line-height: 1.35;
@@ -812,6 +950,9 @@
       .phase-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+      .cb-vhs-stage {
+        grid-template-columns: 1fr !important;
+      }
     }
   </style>
 </head>
@@ -844,32 +985,39 @@
     <!-- Cheesy Flame Animation Divider -->
     <div class="flame-divider"></div>
 
+    <!-- ABOVE-THE-FOLD TRANSLATOR & PRIMARY H1 FOR USERS & CRAWLERS -->
+    <div class="translator-banner">
+      <h1 class="seo-h1">CLOCKBUSTER VIDEO: WEIRD RETRO GAME PARODIES, CUSTOM CARTRIDGES &amp; CULT GIFTS</h1>
+      <p class="translator-sub">
+        ★ YES, THESE ARE REAL PHYSICAL ITEMS YOU CAN BUY: Custom parody NES/SNES/N64 display cartridges, fake boxed games &amp; rare VHS/DVD media for people who don't care what normal people like. ★
+      </p>
+    </div>
+
     <!-- 1998 Navigation Table / Image Map Simulator -->
     <table class="toolbar-table" role="navigation" aria-label="Quick Links">
       <tr>
-        <td><a href="#welcome"> Welcome</a></td>
-        <td><a href="#sale"> Sale</a></td>
-        <td><a href="#shop"> Shop</a></td>
-        <td><a href="#exclusives"> LIVE Exclusives</a></td>
-        <td><a href="#condition"> Condition</a></td>
-        <td><a href="#contact"> Contact</a></td>
+        <td><a href="#welcome">Welcome</a></td>
+        <td><a href="#sale">Deals</a></td>
+        <td><a href="#shop">Shop</a></td>
+        <td><a href="#exclusives">Parody Games</a></td>
+        <td><a href="#condition">Specs</a></td>
+        <td><a href="#contact">Guestbook</a></td>
       </tr>
     </table>
 
     <!-- UNDER CONSTRUCTION BANNER (Authentic 1998 GeoCities) -->
     <div class="construction-zone">
       <div class="construction-inner">
-        <span class="blink">⚠️ UNDER CONSTRUCTION ⚠️</span>
-        <span>BEST VIEWED IN NETSCAPE NAVIGATOR 2.0+ AT 800x600 RESOLUTION</span>
+        <span class="blink">⚠️ TIMELINE ACTIVE ⚠️</span>
+        <span>WEIRD RETRO GAMING GIFTS &amp; OBSCURE MEDIA ART · SHIPS WORLDWIDE</span>
         <span class="blink">⚠️ PLEASE SIGN GUESTBOOK ⚠️</span>
       </div>
     </div>
 
     <!-- SEARCH & KEYWORD BAR -->
     <form class="geo-search-bar" action="https://www.ebay.com/str/clockbustervideo" method="get">
-      <span style="font-family:'VT323'; font-size:20px; font-weight:bold; color:#000080;">SEARCH DIMENSIONS:</span>
-      <span style="font-weight:bold;">Keyword:</span>
-      <input class="geo-search-input" type="text" name="_nkw" value="OBSOLETE HOUSE" placeholder="OBSOLETE HOUSE" aria-label="keyword" />
+      <label for="ebay-search-main" style="font-family:'VT323'; font-size:20px; font-weight:bold; color:#000080;">SEARCH THE STORE:</label>
+      <input id="ebay-search-main" class="geo-search-input" type="text" name="_nkw" value="OBSOLETE HOUSE" placeholder="Search parody games, VHS, DVDs..." aria-label="Search Clockbuster Store" />
       <button class="geo-button" type="submit">GO! 🚀</button>
     </form>
 
@@ -879,11 +1027,13 @@
       <div class="logo-pedestal">
         <img
           src="clockbustervideologofinal.png"
-          alt="Clockbuster Video Mascot"
+          alt="Clockbuster Video Mascot - Weird Retro Game Parodies and Collectibles"
+          width="110"
+          height="110"
           class="spin-avatar"
           onerror="this.src='https://placehold.co/110x110/ff00ff/ffffff?text=CLOCKBUSTER'"
         />
-        <div style="font-family:'Press Start 2P'; font-size:8px; color:#ffff00; margin-top:6px;">CHANNELS</div>
+        <div style="font-family:'Press Start 2P'; font-size:8px; color:#ffff00; margin-top:6px;">FAST FINDER</div>
         <form style="margin-top:6px; display:flex; flex-direction:column; gap:4px;" action="https://www.ebay.com/str/clockbustervideo" method="get">
           <input class="geo-search-input" style="font-size:11px;" type="text" name="_nkw" placeholder="Locate Artifact" aria-label="Search ANY dead format media" />
           <button class="geo-button" style="font-size:11px; padding:2px;" type="submit">Search Format</button>
@@ -897,17 +1047,17 @@
         </div>
         <div class="channels-grid">
           <a class="retro-channel-btn btn-ch-retail" href="https://www.ebay.com/str/clockbustervideo">
-            RETAIL DEPT
+            ALL STORE ITEMS
           </a>
           <a class="retro-channel-btn btn-ch-compliance" href="#exclusives">
-            COMPLIANCE
+            WHAT IS THIS?
           </a>
           <a class="retro-channel-btn btn-ch-extractions" href="https://www.ebay.com/str/clockbustervideo/Clockbuster-Exclusives/_i.html?store_cat=23705171015">
-            LIVE EXTRACTIONS
+            PARODY GAMES
             <span class="gif-burst">NEW!</span>
           </a>
           <a class="retro-channel-btn btn-ch-quality" href="#condition">
-            QUALITY DESK
+            EDITION SPECS
           </a>
           <a class="retro-channel-btn btn-ch-archives" href="archive.html">
             ARCHIVES
@@ -1185,11 +1335,11 @@
       }
     </style>
 
-    <section class="cb-vhs" id="cb-vhs-carousel" data-archive="archive.html" aria-label="Clockbuster Archives VHS player">
+    <section class="cb-vhs" id="cb-vhs-carousel" data-archive="archive.html" aria-label="Clockbuster Parody Video Game Showcase">
       <div class="cb-vhs-head">
         <div class="cb-vhs-brand">
-          <span class="cb-vhs-wordmark">📼 CLOCKBUSTER EXCLUSIVE RENTALS</span>
-          <span class="cb-vhs-channel">Archives</span>
+          <span class="cb-vhs-wordmark">📼 CLOCKBUSTER PARODY CARTRIDGE VAULT</span>
+          <span class="cb-vhs-channel">Live &amp; Sold-Out Editions</span>
         </div>
         <div class="cb-vhs-leds">
           <span class="cb-vhs-rec"><i aria-hidden="true"></i>REC</span>
@@ -1199,7 +1349,7 @@
       </div>
       <div class="cb-vhs-stage">
         <a class="cb-vhs-crt" href="archive.html">
-          <img class="cb-vhs-frame" alt="">
+          <img class="cb-vhs-frame" src="https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/1.JPG" alt="Custom parody retro video game display cartridge">
           <div class="cb-vhs-scan" aria-hidden="true"></div>
           <div class="cb-vhs-osd">
             <span class="cb-vhs-osd-play">► PLAY</span>
@@ -1208,21 +1358,21 @@
           <span class="cb-vhs-stamp">SOLD OUT</span>
         </a>
         <div class="cb-vhs-info">
-          <div class="cb-vhs-now">★NEVER COMING BACK★</div>
+          <div class="cb-vhs-now">★ LIMITED-BATCH PARODY COLLECTIBLES ★</div>
           <h2 class="cb-vhs-title"></h2>
           <p class="cb-vhs-notes"></p>
           <div class="cb-vhs-meta"></div>
           <a class="cb-vhs-cta" href="archive.html">Enter Archive Vault 📼</a>
           <div class="cb-vhs-transport">
-            <button type="button" class="cb-vhs-btn" data-vhs-prev aria-label="Rewind">◄◄ REW</button>
+            <button type="button" class="cb-vhs-btn" data-vhs-prev aria-label="Previous Parody Game">◄◄ REW</button>
             <button type="button" class="cb-vhs-btn" data-vhs-play>PAUSE</button>
-            <button type="button" class="cb-vhs-btn" data-vhs-next aria-label="Fast forward">FF ►►</button>
+            <button type="button" class="cb-vhs-btn" data-vhs-next aria-label="Next Parody Game">FF ►►</button>
           </div>
         </div>
       </div>
-      <div class="cb-vhs-well" role="tablist" aria-label="Archive tapes"></div>
+      <div class="cb-vhs-well" role="tablist" aria-label="Parody game cartridges"></div>
       <p style="font-size:11px; margin:4px 0 0; color:#ffff00;">
-        12 editions rented indefinitely · click to <a href="archive.html" style="color:#00ffff;">open the sold-out archive</a>
+         Handmade small-batch parody cartridges &amp; boxed editions · <a href="archive.html" style="color:#00ffff;">Browse the full Archive</a> or <a href="https://www.ebay.com/str/clockbustervideo" style="color:#00ff00;">Shop In-Stock Items on eBay</a>
       </p>
     </section>
 
@@ -1245,7 +1395,7 @@
           "stamp": "SOLD OUT",
           "compat": "Stupid Nintend-No",
           "batch": "5",
-          "notes": "Collect bacon & cheese to exorcize the ghost of Margarat Thatcher. Build your party with every actor who ever played 'The Colonel'."
+          "notes": "Collect bacon & cheese to banish the specter of Margaret Thatcher. Build your party with every actor who ever played 'The Colonel'."
         },
         {
           "title": "SURGE 64",
@@ -1254,7 +1404,7 @@
           "stamp": "SOLD OUT",
           "compat": "Nintend-No 69",
           "batch": "5",
-          "notes": "Subject yourself to a relentless onslaught of self-inflicted marketing stress, then utilize that trauma to fight for soda supremecy."
+          "notes": "Subject yourself to a relentless onslaught of self-inflicted marketing stress, then utilize that trauma to fight for soda supremacy."
         },
         {
           "title": "Super O.J. Simpson’s Low-Speed Chase ‘94 for SNES",
@@ -1272,14 +1422,14 @@
           "stamp": "SOLD OUT",
           "compat": "Stupid Nintend-No",
           "batch": "5",
-          "notes": "With no beginning or end, its the first ever sequel to precede the original."
+          "notes": "With no beginning or end, it's the first ever sequel to precede the original."
         },
         {
-          "title": "Idiocracy: Ow!! My Balls, Hosted by America’s Dad Bob Saget Only on The Violence Channnel (Brought To You By Carl’s JR)",
+          "title": "Idiocracy: Ow!! My Balls, Hosted by America’s Dad Bob Saget Only on The Violence Channel (Brought To You By Carl’s JR)",
           "short": "Idiocracy: Ow!! My Balls",
           "img": "https://raw.githubusercontent.com/flavoredpennies/inexplicable/main/docs/6.JPG",
           "stamp": "SOLD OUT",
-          "compat": "Nintendo-No 69",
+          "compat": "Nintend-No 69",
           "batch": "5",
           "notes": "Saget gets reanimated and is forced to host a bastardized version of his own flagship program."
         },
@@ -1299,7 +1449,7 @@
           "stamp": "SOLD OUT",
           "compat": "Virtual Roy",
           "batch": "5",
-          "notes": "One can of Smelly beans: 2 for a bunch. Peppers: UP (one-twelve). We have 'Yesterday's Ham'; only $10 bucks... but don't you take a bite out of one of those stinker clams!"
+          "notes": "One can of Smelly beans: 2 for a bunch. Peppers: UP (one-twelve). We have 'Yesterday's Ham'; only $10 bucks... don't bite those stinker clams!"
         },
         {
           "title": "Mark Zuckerberg's Metaverse for Virtual Boy",
@@ -1317,7 +1467,7 @@
           "stamp": "ON SALE!",
           "compat": "Game Roy",
           "batch": "15",
-          "notes": "A scorched-earth documentary experience adapted for stereoscopic red-black immersion."
+          "notes": "A scorched-earth documentary experience adapted for stereoscopic red-black display immersion."
         },
         {
           "title": "My Dinner with Andre VR for Virtual Boy",
@@ -1326,7 +1476,7 @@
           "stamp": "ON SALE!",
           "compat": "Virtual Roy",
           "batch": "15",
-          "notes": "The headset must stay locked until the Aranygaluska is served. If you don't receive Aranygaluska before your espresso, we will terminate your server on-the-spot."
+          "notes": "The headset must stay locked until the Aranygaluska is served. Custom Virtual Boy parody art collectible."
         },
         {
           "title": "Super Dirty Work",
@@ -1335,7 +1485,7 @@
           "stamp": "ON SALE!",
           "compat": "Stupid Nintend-No",
           "batch": "15",
-          "notes": "Experience the definitive reconstruction of the unrated ‘Dirtier Work’ cut — as a fake display piece."
+          "notes": "Experience the definitive reconstruction of the unrated ‘Dirtier Work’ cut — as a custom SNES parody display piece."
         },
         {
           "title": "Tom Selleck's Reverse Mortgage 64",
@@ -1344,7 +1494,7 @@
           "stamp": "ON SALE!",
           "compat": "Nintend-No 69",
           "batch": "15",
-          "notes": "Description coming soon."
+          "notes": "Unlock the hidden equity in your home on 64-bit hardware. Custom N64 parody cartridge & box display."
         },
         {
           "title": "Super Norm MacDonald Live",
@@ -1401,7 +1551,8 @@
             win.className = "cb-vhs-tape-window";
             var img = document.createElement("img");
             img.src = t.img;
-            img.alt = "";
+            img.alt = t.short + " retro game parody";
+            img.loading = "lazy";
             win.appendChild(img);
             var lab = document.createElement("div");
             lab.className = "cb-vhs-tape-label";
@@ -1416,7 +1567,7 @@
         function paint() {
           var t = tapes[i];
           frame.src = t.img;
-          frame.alt = t.title;
+          frame.alt = t.title + " - Custom Retro Video Game Parody Collectible";
           osdTitle.textContent = t.short;
           osdPlay.textContent = playing ? "► PLAY" : "❚❚ PAUSE";
           stamp.textContent = t.stamp;
@@ -1467,41 +1618,43 @@
       })();
     </script>
 
-    <!-- EVENT STRIP TICKER -->
+    <!-- EVENT STRIP TICKER (GENERIC EVERGREEN PROMO) -->
     <div style="background:#000080; border:2px ridge #ffff00; padding:4px 8px; color:#ffff00; font-family:'VT323'; font-size:18px; display:flex; justify-content:space-between; flex-wrap:wrap;" id="sale">
-      <span>TIMELINE INDICATOR: <strong style="color:#00ff00;">Ghosts are real dimension </strong></span>
-      <span>SALES PROGRAM: <strong style="color:#ff00ff;">HALLOWEEN SPOOKTACULAR 9% OFF EVENT</strong></span>
+      <span>TIMELINE STATUS: <strong style="color:#00ff00;">OBSOLETE MEDIA EXTRACTION ACTIVE</strong></span>
+      <span>PROMO EVENT: <strong style="color:#ff00ff;">PERPETUAL LIQUIDATION 9.999% OFF</strong></span>
       <span>COUPON: <strong style="color:#00ffff;">REWINDREALITY</strong></span>
     </div>
 
-    <!-- CHEESY GRATUITOUS RUNNING MARQUEE -->
-    <marquee style="background:#000; color:#00ff00; border:2px ridge #ff0000; font-family:'Press Start 2P'; font-size:9px; padding:5px 0;" scrollamount="7">
-       REMEMBERSHIP NOTICE: It's our Halloween in March sales event! The sale ends Halloween Night at Midnight. It's also Halloween in October? Just loooook at the items for a scaaary 10.000% off everything in store. 
-    </marquee>
+    <!-- STANDARDS-COMPLIANT RUNNING TICKER -->
+    <div class="retro-ticker-wrap" role="region" aria-label="Promotional Ticker">
+      <div class="retro-ticker-move">
+        ★ REMEMBERSHIP NOTICE: Welcome to our Perpetual Interdimensional Clearance Event! Take a staggering 9.999% OFF any weird retro game gift or vintage tape in store with code REWINDREALITY · Flat $5.55 combined shipping on 2+ items! ★
+      </div>
+    </div>
 
-    <!-- MAIN CONTENT 3-COLUMN TABLE-GRID -->
+    <!-- MAIN CONTENT 3-COLUMN TABLE-GRID (MODELED ON GUESTBOOK AESTHETIC) -->
     <main class="geocities-content-table">
       
       <!-- LEFT ASIDE -->
       <aside class="left-col">
         <!-- Main Channels Panel -->
         <section class="retro-box">
-          <div class="retro-box-header"> Main Channels</div>
+          <div class="retro-box-header">📂 Main Channels</div>
           <div class="retro-box-body">
             <ul class="retro-nav-list">
-              <li><a href="https://www.ebay.com/str/clockbustervideo">▶ Clockbuster Store</a></li>
-              <li><a href="https://www.ebay.com/sch/i.html?_dkr=1&iconV2Request=true&_blrs=recall_filtering&_ssn=clockbustervideo&store_name=clockbustervideo&_oac=1&_sop=10&LH_SALE_CURRENCY=0&_pgn=1">▶ Sales Events</a></li>
-              <li><a href="#exclusives">▶ Fake Games</a></li>
-              <li><a href="archive.html">▶ Archive</a></li>
-              <li><a href="#condition">▶ Condition Center</a></li>
-              <li><a href="#contact">▶ Remembership</a></li>
+              <li><a href="https://www.ebay.com/str/clockbustervideo">▶ Clockbuster eBay Store</a></li>
+              <li><a href="https://www.ebay.com/sch/i.html?_dkr=1&iconV2Request=true&_blrs=recall_filtering&_ssn=clockbustervideo&store_name=clockbustervideo&_oac=1&_sop=10&LH_SALE_CURRENCY=0&_pgn=1">▶ Current Sale Items</a></li>
+              <li><a href="#exclusives">▶ Parody Game Editions</a></li>
+              <li><a href="archive.html">▶ Sold-Out Archive</a></li>
+              <li><a href="#condition">▶ Edition Specs &amp; FAQ</a></li>
+              <li><a href="#contact">▶ Sign Guestbook</a></li>
             </ul>
           </div>
         </section>
 
         <!-- Member Sign-In -->
         <section class="retro-box">
-          <div class="retro-box-header header-yellow">Member Sign-In</div>
+          <div class="retro-box-header header-yellow">🔑 Member Sign-In</div>
           <div class="retro-box-body">
             <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
               <span>Name:</span>
@@ -1511,18 +1664,18 @@
               <span>Timeline:</span>
               <span style="background:#ffffcc; padding:1px 6px; border:2px inset #999; font-weight:bold; color:red;">UNVERIFIED</span>
             </div>
-            <a class="geo-button" style="display:block; text-align:center; text-decoration:none;" href="https://www.ebay.com/str/clockbustervideo">Enter Store </a>
+            <a class="geo-button" style="display:block; text-align:center; text-decoration:none;" href="https://www.ebay.com/str/clockbustervideo">Enter Store 🚀</a>
           </div>
         </section>
 
         <!-- ReMembership Status -->
         <section class="retro-box">
-          <div class="retro-box-header"> ReMembership Status</div>
+          <div class="retro-box-header">💳 ReMembership Status</div>
           <div class="retro-box-body" style="font-size:11px;">
             <p><strong>Standing:</strong> Technically Acceptable</p>
-            <p><strong>Memory:</strong> Inaccessible</p>
-            <p><strong>Rental Term:</strong> 5000 years</p>
-            <p style="margin-bottom:0;"><strong>Ennui:</strong> Not Included in your Remembership</p>
+            <p><strong>Card Included:</strong> Free w/ Every Order</p>
+            <p><strong>Rental Term:</strong> 5,000 Years</p>
+            <p style="margin-bottom:0;"><strong>Ennui:</strong> Sold Separately</p>
           </div>
         </section>
 
@@ -1540,121 +1693,202 @@
 
         <!-- Low Res Clip Art Badge -->
         <div style="text-align:center; padding:6px; background:#000; border:2px ridge #00ffff; margin-bottom:10px;">
-          <img src="https://placehold.co/88x31/000080/ffff00?text=NETSCAPE+NOW" alt="Netscape Now 2.0 Badge" style="border:1px solid #fff;" />
+          <img src="https://placehold.co/88x31/000080/ffff00?text=NETSCAPE+NOW" alt="Netscape Now 2.0 Retro Web Badge" width="88" height="31" style="border:1px solid #fff;" />
           <div style="color:#00ff00; font-family:'Press Start 2P'; font-size:7px; margin-top:4px;">CERTIFIED 1998</div>
         </div>
       </aside>
 
-      <!-- MAIN CENTER COLUMN -->
+      <!-- MAIN CENTER COLUMN (UNIFIED WITH GUESTBOOK CARD LAYOUT) -->
       <section class="main-col">
-        <!-- Hero Section -->
-        <section class="retro-box hero-panel">
+        
+        <!-- 1. Hero Section: What We Actually Sell -->
+        <section class="retro-box hero-panel" id="shop">
           <div class="retro-box-header header-red">★ Clockbuster Video Mainframe ★</div>
           <div class="retro-box-body">
-            <h2 class="hero-h2">Trusted worldwide for obsolete entertainment and alternate-reality marketing tie-ins.</h2>
-            <p><strong>10% of the cost of the prices will disappear: 9/25 through 10/31</strong></p>
-            <p>Our cursed and haunted physical-media objects need homes. They're nice and NOT the bad kind of cursed.</p>
-            <p>We offer automatic combined shipping for a flat $6.66 when you order 2+ haunted item of any kind.</p>
-            <p>When collecting music, movies and softwares, buy only haunted/cursed items.. </p>
-            <div class="coupon-box">
-              ✂️ COUPON CODE: <strong>REWINDREALITY</strong> FOR A LESSER 9.999% OFF ONE ITEM.
+            <div class="guestbook-wrapper">
+              <h2 class="hero-h2">WEIRD RETRO VIDEO GAME GIFTS &amp; ABSURD PHYSICAL MEDIA COLLECTIBLES</h2>
+
+              <div class="guestbook-entry-card">
+                <div class="guestbook-card-head">
+                  <span class="guestbook-author">👾 DEPT 01: CUSTOM PARODY GAMES</span>
+                  <span class="guestbook-timestamp">STATUS: SMALL BATCHES (5–15 COPIES)</span>
+                </div>
+                <div class="guestbook-body-text">
+                  <strong>Lore:</strong> Impossible marketing tie-ins extracted from abandoned linear timelines.<br>
+                  <strong>Real Specs:</strong> Handmade custom parody artwork built on real vintage NES, SNES, N64, Game Boy &amp; Virtual Boy cartridge shells and boxes. Non-playable display art designed to confuse normal people and delight unhinged collectors.
+                </div>
+              </div>
+
+              <div class="guestbook-entry-card">
+                <div class="guestbook-card-head">
+                  <span class="guestbook-author">📼 DEPT 02: OBSOLETE HOUSE VINTAGE MEDIA</span>
+                  <span class="guestbook-timestamp">STATUS: 100% AUTHENTIC</span>
+                </div>
+                <div class="guestbook-body-text">
+                  <strong>Real Specs:</strong> Rare out-of-print VHS tapes, cult DVDs, cassette tapes, promotional software, and bizarre 80s/90s physical media relics shipped in bomb-proof packaging.
+                </div>
+              </div>
+
+              <div class="coupon-box">
+                ✂️ COUPON CODE: <strong>REWINDREALITY</strong> FOR 9.999% OFF · FLAT $5.55 COMBINED SHIPPING ON 2+ ITEMS!
+              </div>
+
+              <div style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:8px;">
+                <a class="guestbook-btn" href="https://www.ebay.com/str/clockbustervideo">🛒 SHOP ALL ITEMS ON EBAY</a>
+                <a class="geo-button" style="text-decoration:none; display:inline-flex; align-items:center;" href="https://www.ebay.com/str/clockbustervideo/Clockbuster-Exclusives/_i.html?store_cat=23705171015">🎮 VIEW PARODY CARTRIDGES</a>
+              </div>
+
+              <div class="phase-grid" aria-label="operational phases">
+                <div class="phase-tile">STEP 1<br><br>Identify</div>
+                <div class="phase-tile">STEP 2<br><br>Extract</div>
+                <div class="phase-tile">STEP 3<br><br>Ship Fast</div>
+                <div class="phase-tile">STEP 69<br><br>Rejoice</div>
+              </div>
             </div>
-            <p>All orders come complete with a <strong>REMEMBERSHIP CARD</strong>.</p>
-            
-            <div class="phase-grid" aria-label="operational phases">
-              <div class="phase-tile">PHASE 1<br><br>Identify</div>
-              <div class="phase-tile">PHASE 2<br><br>Extract</div>
-              <div class="phase-tile">PHASE 3<br><br>Lunch</div>
-              <div class="phase-tile">PHASE 69<br><br>IDK</div>
-            </div>
           </div>
         </section>
 
-        <!-- Access Terminals -->
-        <section class="retro-box" id="shop">
-          <div class="retro-box-header">⚡ Access Terminals</div>
-          <div class="retro-box-body">
-            <p><a href="https://www.ebay.com/str/clockbustervideo">Obsolete House store on eBay</a>: </p>
-            <p><a href="https://www.ebay.com/sch/i.html?_dkr=1&iconV2Request=true&_blrs=recall_filtering&_ssn=clockbustervideo&store_name=clockbustervideo&_oac=1&_sop=10&LH_SALE_CURRENCY=0&_pgn=1">HALLOWEEN IN MARCH SALE</a>: 9/25 through 10/31: 10% Off</p>
-            <p><a href="archive.html">Sold-Out Hall of Fame</a>: archival record of successful extractions.</p>
-          </div>
-        </section>
-
-        <!-- Rewind Reality -->
-        <section class="retro-box">
-          <div class="retro-box-header header-yellow"> Rewind Reality</div>
-          <div class="retro-box-body">
-            <p><strong>Rare and impossible lost media, extracted from abandoned timelines.</strong></p>
-            <p>Our media detournement collectibles are nostalgic display objects designed to cause headaches and confusion in the elderly. Each piece uses vintage cartridges and professional prints for maximum confusion.</p>
-            <p>No exchanges / store credit for wasted time. Space sold separately. Meaning and ennui not included, unless specifically asked for.</p>
-            <p><em>(For legal reasons, all conditions are subjective. For cosmic reasons, all conditions are meaningless.)</em></p>
-          </div>
-        </section>
-
-        <!-- Assurance of Stupidity / Legal Compliance Desk -->
+        <!-- 2. Edition Specifications & Condition Center -->
         <section class="retro-box" id="exclusives">
-          <div class="retro-box-header header-red">⚖ Assurance of Stupidity/Legal Compliance Desk</div>
-          <div class="retro-box-body">
-            <div class="legal-notice">
-              ⚠️ NOTICE: All Clockbuster Exclusive display products undergo mandatory Timeline-Continuity Compliance Checks™ prior to public release. Certified college-dropouts on staff will confirm they remain within an acceptable <u>Divergence Index</u> limits and do not exceed the paradox allotment that are otherwise assigned to standard retail objects.
-            </div>
+          <div class="retro-box-header header-yellow">📦 Parody Game Editions &amp; Physical Specs</div>
+          <div class="retro-box-body" id="condition">
+            <div class="guestbook-wrapper">
+              <div class="guestbook-entry-card">
+                <div class="guestbook-card-head">
+                  <span class="guestbook-author">💾 TIER A: AUSTERITY EDITION (CARTRIDGE ONLY)</span>
+                  <span class="guestbook-timestamp">AUTHENTIC SHELL</span>
+                </div>
+                <div class="guestbook-body-text">
+                  Recycled authentic vintage OEM cartridge shell + custom high-gloss die-cut parody label + protective dust sleeve + official Clockbuster 5,000-Year Remembership Card.
+                </div>
+              </div>
 
-            <div class="artifact-card-retro">
-              <div class="artifact-avatar-box">
-                <a href="https://www.obsoletehouse.com" style="color:#00ff00; text-decoration:none;">OH™</a>
+              <div class="guestbook-entry-card">
+                <div class="guestbook-card-head">
+                  <span class="guestbook-author">🎁 TIER B: COMPLETE-IN-BOX (CIB COLLECTOR EDITION)</span>
+                  <span class="guestbook-timestamp">NUMBERED /15</span>
+                </div>
+                <div class="guestbook-body-text">
+                  Custom heavy-stock retail game box + internal cartridge tray + satirical full-color instruction booklet + custom display cartridge + shrink-wrapped with hang-tab. The ultimate weird retro gift.
+                </div>
               </div>
-              <div>
-                <p style="margin:0 0 6px;">
-                  The commercial activity associated with the Clockbuster name is limited to the creation, exhibition, and sale of independently produced parody and détournement objects. The sale of DVDs, VHS tapes, CDs, games, and other authentic physical media is conducted separately under Obsolete House L.L.C. and does not constitute part of the Clockbuster creative practice.<br><br>
-                  Clockbuster therefore occupies an expressive field distinct from the commercial activities of any entertainment, software, gaming, rental, or media company whose marks, imagery, terminology, products, or historical identity may become the subject of a Clockbuster work.<br><br>
-                  The objects produced under the Clockbuster name are deliberately constructed as parody, satire, détournement, historical fiction, and material commentary. Recognizable cultural references may be incorporated precisely so that they can be altered, distorted, displaced, or placed within an absurd or fictional context. Their purpose is communicative and expressive. The recognizable source material establishes the subject or point of reference, while the alteration establishes the independent meaning of the work.<br><br>
-                  Any reference to an established mark, product, character, institution, or other element of commercial culture is made as expressive material within an independently created work. The resulting object is materially altered and presented under the Clockbuster house identity, rather than represented as an authentic product, authorized work, or commercial offering of the referenced entity.<br><br>
-                  The Clockbuster website functions exclusively as an exhibition, presentation, and narrative environment for this expressive practice. It is not operated as a storefront for the goods, services, or commercial channels of any referenced company. Its fictional continuity, alternate-history material, product descriptions, and surrounding lore provide the artistic context in which the objects are presented and understood.<br><br>
-                  Nothing in the presentation of a Clockbuster work represents or implies that the referenced entity manufactured, licensed, authorized, sponsored, endorsed, or distributed the work. The distinction between the original commercial identity and the altered Clockbuster object is fundamental to the character, meaning, and presentation of the work.<br><br>
-                  Clockbuster's use of recognizable commercial references is therefore undertaken as part of an independent practice of parody, criticism, commentary, and détournement. The works are created and presented under an independent house identity and are intended to communicate meanings distinct from those of the commercial products, services, or entities they reference.
-                </p>
-              </div>
-            </div>
 
-            <div class="artifact-card-retro">
-              <div class="artifact-avatar-box" style="font-size:42px; color:#ffff00;">
-                &infin;
+              <div class="legal-notice" style="background:#ffffcc; border-color:#ff8800; color:#000; margin-bottom:0;">
+                ⚠️ COLLECTOR NOTE: Zero illegal bootleg ROMs. We upcycle dead sports/shovelware shells into original physical comedy art. Human orders only — absolutely <u>NO</u> dogs or birds may place an order.
               </div>
-              <div>
-                <h3 style="margin:0 0 4px; color:#800080;">Our Pledge to the Enviornment</h3>
-                <p style="margin:0;">Forgotten media formats plague our landfills by the hundreds of TRILLIONS of kilos, probably! Cool down the Earth, because it's feeling too hot. You can help today with a purchase of literally anything in our store.</p>
-              </div>
-            </div>
-
-            <div class="legal-notice" style="background:#ffffcc; border-color:#ff8800; color:#000;">
-              NO ILLEGAL ROM-HACKS. ALL VINTAGE CARTRIDGES. HUMAN ONLY TRANSACTIONS, ABSOLUTELY <u>NO</u> DOGS <u>OR</u> BIRDS may place an order.
             </div>
           </div>
         </section>
 
-        <!-- Operational Phases -->
+        <!-- 3. Streamlined Legal & Parody Compliance Desk -->
         <section class="retro-box">
-          <div class="retro-box-header">⚙ Operational Phases</div>
+          <div class="retro-box-header header-red">⚖ Assurance of Stupidity &amp; Parody Notice</div>
           <div class="retro-box-body">
-            <h3 style="color:#000080; margin:4px 0;">PHASE 1 [ACTIVE]</h3>
-            <p>Temporal Retrieval: Extract artifacts from errant timelines that God has abandoned. Uses a nuclear-modified 1996 56k ActionTec AOL modem kit, running on an unlimited supply of expired AOL free-trial discs. Transfers lost media from alternate realities. Sponsored by America Online dial-up service.</p>
-            
-            <h3 style="color:#000080; margin:4px 0;">PHASE 2 [ACTIVE]</h3>
-            <p>Conditioning & Conversion. Proprietary Nostalgic Endowment Effect assigns a sense of ownership prior to purchase.</p>
-            <p style="padding-left:12px; border-left:3px solid #ff00ff; margin:3px 0;">2.111 Choice Compression & Artificial scarcity. Urgency implied and supply denied.</p>
-            <p style="padding-left:12px; border-left:3px solid #ff00ff; margin:3px 0;">2.2222 Artifact Quantity Protocol: Five (5) copies per Exclusive. Beginning 2026: fifteen (15) copies "to satisfy projected demand while preserving the illusion of restraint."</p>
-            <p style="padding-left:12px; border-left:3px solid #ff00ff; margin:3px 0;">2.33333 Price Mysticism: Charm prices extend into comically inane repdigits. Partitioned Pricing to reduce perceived total cost.</p>
-            <p style="padding-left:12px; border-left:3px solid #ff00ff; margin:3px 0;">2.444444 <b>Ridiculous & Confusing™</b> sales events, discounts and promotions.</p>
-            <p style="padding-left:12px; border-left:3px solid #ff00ff; margin:3px 0;">2.5555555 Satire and Fair Use: Fully interpolated. All legal doctrine conformed to.</p>
-            <p style="padding-left:12px; border-left:3px solid #ff00ff; margin:3px 0;">2.66666666 Reciprocity & Social Proof: Small acts of giving. Trust accumulated organically.</p>
-            <p style="padding-left:12px; border-left:3px solid #ff00ff; margin:3px 0;">2.699999999 Deploy free custom marketing materials to artists who didn't ask for them.</p>
+            <div class="guestbook-wrapper">
+              <div class="artifact-card-retro">
+                <div class="artifact-avatar-box">
+                  <a href="https://www.obsoletehouse.com" style="color:#00ff00; text-decoration:none;">OH™</a>
+                </div>
+                <div class="guestbook-body-text" style="margin-top:0;">
+                  <strong>Parody &amp; Détournement Disclosure:</strong> Clockbuster Exclusive items are independent works of physical satire, parody, and material comedy produced by <strong>Obsolete House L.L.C.</strong> They are not licensed, endorsed, or manufactured by any referenced corporation or celebrity. Authentic vintage VHS, DVDs, CDs, and video games are sold separately in our eBay store.
+                </div>
+              </div>
 
-            <h3 style="color:#000080; margin:4px 0;">PHASE 3 [IN PROGRESS]</h3>
-            <p>Public Compliance. Sold-out artifacts, field sightings, and retail deployments are recorded for future remembership review.</p>
+              <div class="artifact-card-retro" style="margin-bottom:0;">
+                <div class="artifact-avatar-box" style="font-size:36px; color:#ffff00;">
+                  &infin;
+                </div>
+                <div class="guestbook-body-text" style="margin-top:0;">
+                  <strong>Environmental Pledge:</strong> Forgotten sports cartridges and dead media formats clog landfills by the millions. We rescue obsolete plastic and transform it into shelf-worthy conversation pieces.
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
-       <!-- 1998 GEOCITIES GUESTBOOK CONTAINER -->
+      </section>
+
+      <!-- RIGHT ASIDE -->
+      <aside class="right-col">
+        <!-- Today on Sale -->
+        <section class="retro-box">
+          <div class="retro-box-header header-yellow">💰 Quick Shop Links</div>
+          <div class="retro-box-body">
+            <ul class="retro-nav-list">
+              <li><a href="https://www.ebay.com/str/clockbustervideo">▶ Browse Full eBay Store</a></li>
+              <li><a href="https://www.ebay.com/str/clockbustervideo/Clockbuster-Exclusives/_i.html?store_cat=23705171015">▶ Parody Game Exclusives</a></li>
+              <li><a href="https://www.ebay.com/sch/i.html?_dkr=1&iconV2Request=true&_blrs=recall_filtering&_ssn=clockbustervideo&store_name=clockbustervideo&_oac=1&_sop=10&LH_SALE_CURRENCY=0&_pgn=1">▶ Active Discounted Items</a></li>
+              <li><a href="archive.html">▶ Sold-Out Hall of Fame</a></li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- ReMembership Benefits -->
+        <section class="retro-box">
+          <div class="retro-box-header">🎁 Buyer Perks</div>
+          <div class="retro-box-body" style="font-size:11px;">
+            <p><strong>Rental Terms:</strong> 5,000 YEARS</p>
+            <p><strong>Combined Shipping:</strong> Flat $5.55</p>
+            <p><strong>Box Protection:</strong> Heavy Duty</p>
+            <p><strong>Human Support:</strong> 100% Real</p>
+            <p><strong>Freebie:</strong> Remembership Card</p>
+            <div style="margin-top:8px; height:32px; background:repeating-linear-gradient(90deg, #000 0 2px, #fff 2px 4px, #000 4px 6px, #fff 6px 9px); border:1px solid #000;" aria-hidden="true"></div>
+          </div>
+        </section>
+
+        <!-- Company Promise -->
+        <section class="retro-box">
+          <div class="retro-box-header header-red">🤝 Company Promise</div>
+          <div class="retro-box-body">
+            <p><strong>Impossible entertainment for people who already own everything normal.</strong></p>
+            <p style="margin-bottom:0;">Every collectible is hand-assembled and inspected by our extraction team wearing Virtual Roy headsets equipped with Smile-Detectors™.</p>
+          </div>
+        </section>
+
+        <!-- Best Viewed In -->
+        <section class="retro-box">
+          <div class="retro-box-header">🖥️ Best Viewed In:</div>
+          <div class="retro-box-body" style="font-family:'VT323', monospace; font-size:16px;">
+            <p style="margin:2px 0;">• 800 x 600 Resolution</p>
+            <p style="margin:2px 0;">• Netscape Navigator 4.0</p>
+            <p style="margin:2px 0;">• Timeline #: 222222</p>
+            <p style="margin:2px 0;">• 256 Color Mode (VGA)</p>
+          </div>
+        </section>
+
+        <!-- 1998 HIT COUNTER -->
+        <div class="hit-counter-deck">
+          <div style="font-size:14px; margin-bottom:4px;">YOU ARE VISITOR NUMBER:</div>
+          <div class="odometer-digits">0042069</div>
+          <div style="font-size:11px; margin-top:4px;">SINCE 2.22.2022</div>
+        </div>
+      </aside>
+    </main>
+
+    <!-- BOTTOM SIDE-BY-SIDE REDESIGNED CTAs -->
+    <div style="background:#110022; padding:12px; border-top:3px ridge #ff00ff; border-bottom:3px ridge #ff00ff;">
+      <div style="text-align:center; color:#ffff00; font-family:'Press Start 2P'; font-size:9px; margin-bottom:10px;">
+        ★★★ BONUS TIMELINE MINIGAMES (FREE PLAY IN BROWSER) ★★★
+      </div>
+      <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
+        <a class="selleck-surreal-cta" href="https://inexplicable2-1afa39roo-clockbuster1.vercel.app/" target="_blank" rel="noopener">
+          <div class="cta-badge-top">★★★ TOM SELLECK VINTAGE N64 ★★★</div>
+          <span class="cta-huge-title">TOM SELLECK'S<br>REVERSE MORTGAGE 64</span>
+          <div class="cta-sub-tag">CLICK NOW TO PLAY</div>
+        </a>
+
+        <a class="bezos-surreal-cta" href="bezos.html" target="_blank" rel="noopener">
+          <div class="cta-badge-top">★★★ CYBER BEZOS EDUTAINMENT ★★★</div>
+          <span class="cta-huge-title bezos-title">BEZOS TEACHES<br>PRIME NUMBERS</span>
+          <div class="cta-sub-tag" style="background:#00ffff; color:#000;">CLICK NOW TO PLAY</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- UNDISTURBED 1998 GEOCITIES GUESTBOOK CONTAINER AT VERY BOTTOM         -->
+    <!-- ===================================================================== -->
+    <div class="guestbook-bottom-deck">
         <section class="retro-box" id="contact">
           <div class="retro-box-header header-yellow">
             <span>📖 Official Clockbuster Public Guestbook [1998 EDITION]</span>
@@ -1846,88 +2080,12 @@
             })();
           </script>
         </section>
-      </section>
-
-      <!-- RIGHT ASIDE -->
-      <aside class="right-col">
-        <!-- Today on Sale -->
-        <section class="retro-box">
-          <div class="retro-box-header header-yellow">💰 Today on sale</div>
-          <div class="retro-box-body">
-            <ul class="retro-nav-list">
-              <li><a href="https://www.ebay.com/str/clockbustervideo">▶ Browse the Store</a></li>
-              <li><a href="https://www.ebay.com/sch/i.html?_dkr=1&iconV2Request=true&_blrs=recall_filtering&_ssn=clockbustervideo&store_name=clockbustervideo&_oac=1&_sop=10&LH_SALE_CURRENCY=0&_pgn=1">▶ SPOOKYREALITY</a></li>
-              <li><a href="archive.html">▶ Review Sold-Out Extractions</a></li>
-            </ul>
-          </div>
-        </section>
-
-        <!-- ReMembership Benefits -->
-        <section class="retro-box">
-          <div class="retro-box-header">🎁 ReMembership Benefits</div>
-          <div class="retro-box-body" style="font-size:11px;">
-            <p><strong>Rental Terms:</strong> 5000 YEARS</p>
-            <p><strong>Secure Shipping:</strong> EXTREMELY</p>
-            <p><strong>Timeline Routing:</strong> Guaranteed</p>
-            <p><strong>Human Customer Service:</strong> YES</p>
-            <p><strong>Validity:</strong> Until Collapse</p>
-            <div style="margin-top:8px; height:32px; background:repeating-linear-gradient(90deg, #000 0 2px, #fff 2px 4px, #000 4px 6px, #fff 6px 9px); border:1px solid #000;"></div>
-          </div>
-        </section>
-
-        <!-- Company Promise -->
-        <section class="retro-box">
-          <div class="retro-box-header header-red"> Company Promise</div>
-          <div class="retro-box-body">
-            <p><strong>... To bring you the most impossible entertainment options from alternative linear-timelines.</strong></p>
-            <p>Every item is rented from prescribed space-timeline burns by a supervised extraction team wearing Virtual Roy headsets equipped with 'Smile-Detectors™'. Items are inspected beyond the control line and then re-rented out in-store, indefinitely for 5000 year term at a flat-rate.</p>
-          </div>
-        </section>
-
-        <!-- Best Viewed In -->
-        <section class="retro-box">
-          <div class="retro-box-header">🖥️ Best Viewed In:</div>
-          <div class="retro-box-body" style="font-family:'VT323', monospace; font-size:16px;">
-            <p>• 800 x 600 Resolution</p>
-            <p>• Netscape Navigator 2.022</p>
-            <p>• Timeline #: 222222</p>
-            <p>• 256 Color Mode (VGA)</p>
-          </div>
-        </section>
-
-        <!-- 1998 HIT COUNTER -->
-        <div class="hit-counter-deck">
-          <div style="font-size:14px; margin-bottom:4px;">YOU ARE VISITOR NUMBER:</div>
-          <div class="odometer-digits">0042069</div>
-          <div style="font-size:11px; margin-top:4px;">SINCE 2.22.2022</div>
-        </div>
-      </aside>
-    </main>
-
-    <!-- BOTTOM SIDE-BY-SIDE REDESIGNED CTAs -->
-    <div style="background:#110022; padding:12px; border-top:3px ridge #ff00ff; border-bottom:3px ridge #ff00ff;">
-      <div style="text-align:center; color:#ffff00; font-family:'Press Start 2P'; font-size:9px; margin-bottom:10px;">
-        ★★★ BONUS TIMELINE MINIGAMES (FREE PLAY) ★★★
-      </div>
-      <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
-        <a class="selleck-surreal-cta" href="https://inexplicable2-1afa39roo-clockbuster1.vercel.app/" target="_blank" rel="noopener">
-          <div class="cta-badge-top">★★★ TOM SELLECK VINTAGE N64 ★★★</div>
-          <span class="cta-huge-title">TOM SELLECK'S<br>REVERSE MORTGAGE 64</span>
-          <div class="cta-sub-tag">CLICK NOW TO PLAY</div>
-        </a>
-
-        <a class="bezos-surreal-cta" href="bezos.html" target="_blank" rel="noopener">
-          <div class="cta-badge-top">★★★ CYBER BEZOS EDUTAINMENT ★★★</div>
-          <span class="cta-huge-title bezos-title">BEZOS TEACHES<br>PRIME NUMBERS</span>
-          <div class="cta-sub-tag" style="background:#00ffff; color:#000;">CLICK NOW TO PLAY</div>
-        </a>
-      </div>
     </div>
 
     <!-- GEOCITIES WEBRING WIDGET -->
     <div class="webring-bar">
       <div style="font-weight:bold; margin-bottom:4px; font-family:'Press Start 2P'; font-size:8px;">
-        [ THIS SITE IS PART OF THE PARODY DÉTOURNEMENT WEBRING ]
+        [ THIS SITE IS PART OF THE PARODY DÉTOURNEMENT &amp; RETRO COLLECTIBLES WEBRING ]
       </div>
       <div class="webring-nav-links">
         <a href="#welcome">[Prev 5 Sites]</a>
@@ -1942,17 +2100,14 @@
     <!-- 1998 FOOTER -->
     <footer class="geocities-footer">
       <div style="font-weight:bold; margin-bottom:6px;">
-        CLOCKBUSTER By <a href="https://www.obsoletehouse.com">Obsolete House</a>© 2025-2026<br>
-        Serving you since 2.22.2022 | Spooky Reality<br>
-        Obsolete House<br>
-        P.O. Box 2222<br>
-        SILVER SPRINGS FL 34489-2222<br>
-        (220) 223-3332<br>
+        CLOCKBUSTER VIDEO By <a href="https://www.obsoletehouse.com">Obsolete House</a> © 2022–2026<br>
+        Weird Retro Video Game Parodies, Custom Cartridges &amp; Obsolete Media Gifts<br>
+        Obsolete House L.L.C. · P.O. Box 2222 · SILVER SPRINGS, FL 34489-2222 · (220) 223-3332
       </div>
       
       <div style="margin:8px 0;">
         <a href="#welcome" style="color:#800080; font-family:Impact; font-size:16px;">
-          Return to Return to Return to Return to Return
+          Return to Top of Timeline
         </a>
       </div>
 
@@ -2004,7 +2159,7 @@
         cincoBtn.textContent = '⚡ CINCO™ ACTIVE!';
         playChime(587.33, 'triangle');
       } else {
-        cincoBtn.textContent = '🌀 Toggle Cinco™ Vision';
+        cincoBtn.textContent = '🌀 Toggle Hella™ Vision';
         playChime(329.63, 'sine');
       }
     });
